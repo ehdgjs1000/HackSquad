@@ -2,48 +2,55 @@ using UnityEngine;
 
 public class MonsterCtrl : MonoBehaviour
 {
+    //Stats
+    [SerializeField] float speed;
+    [SerializeField] float hp;
 
-    /// <summary>
-    /// Fight System
-    /// </summary>
-    protected bool isFightMode = false;
-    [SerializeField] float fightModeRange;
-    [SerializeField] LayerMask playerLayer;
-    [SerializeField] LayerMask monsterLayer;
+    //BattleInfo
     Collider[] playerColl = new Collider[3];
-    Collider[] monsterColls = new Collider[5];
+    LayerMask playerLayer;
+    Vector3 targetPos, dir;
+    Quaternion lookTarget;
+    bool isMoving = false;
+    [SerializeField] float attackRange;
+    
 
     private void Update()
     {
-        if(!PlayerCtrl.instance.isFightMode) CheckPlayer();
-        
-
+        MoveToTarget();
     }
-    private void CheckPlayer()
+    private void MoveToTarget()
     {
-        //playerColl = null;
-        int isPlayerDetected = Physics.OverlapSphereNonAlloc(this.transform.position, 
-            fightModeRange, playerColl, playerLayer);
-        print(isPlayerDetected);
-        if (isPlayerDetected > 0)
+        targetPos = PlayerCtrl.instance.transform.position;
+        dir = targetPos - transform.position;
+        lookTarget = Quaternion.LookRotation(dir);
+
+        if ((transform.position - targetPos).magnitude > attackRange)
         {
-            // todo : FightMode 시작
-            CheckMonster();
-            PlayerCtrl.instance.isFightMode = true;
-            BattleGround.instance.StartFight();
+            transform.position += dir.normalized * Time.deltaTime * speed;
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookTarget, 0.25f);
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+            AttackPlayer();
         }
     }
-    // 주면 몬스터 탐색 및 Collider 저장
-    private void CheckMonster()
+    public void GetAttack(float _dmg)
     {
-        monsterColls = null;
-        monsterColls = Physics.OverlapSphere(this.transform.position, fightModeRange,
-            monsterLayer);
+        hp -= _dmg;
+        if (hp <= 0.0f) Die();
+    }
+    private void Die()
+    {
+        Debug.Log("Die");
 
-        foreach (Collider monsters in monsterColls)
-        {
-            monsters.GetComponent<MonsterCtrl>().isFightMode = true;
-        }
+    }
+    private void AttackPlayer()
+    {
+        //공격 구현
+
     }
     
 
