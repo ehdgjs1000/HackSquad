@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6559939183637088806}
   - component: {fileID: 6761360878742354879}
   - component: {fileID: 8035144893415331400}
-  - component: {fileID: 448823183530858602}
+  - component: {fileID: -3314553753380251040}
   m_Layer: 0
   m_Name: SniperBullet
   m_TagString: Untagged
@@ -254,7 +254,7 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!114 &448823183530858602
+--- !u!114 &-3314553753380251040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,12 +263,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6219019435635073176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6846f3a7c757b946ac411c167a59532, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b38ad468bce4bf4f9676f841a856e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  criticalChange: 10
+  criticalChange: 30
   bulletDestroyTime: 2
-  bulletSpeed: 50
+  bulletSpeed: 100
   damagePopUpTr: {fileID: 4453229395328416960, guid: f89fa60e57839544d9d1d446af99bea3, type: 3}
   onHitVFX: {fileID: 7249675442437269305, guid: dd2b1ac4a32ca184683f15984f30d88f, type: 3}

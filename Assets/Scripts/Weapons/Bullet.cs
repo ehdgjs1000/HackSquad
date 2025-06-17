@@ -7,8 +7,8 @@ public abstract class Bullet : MonoBehaviour
     public float criticalChange = 10.0f;
     [SerializeField] protected float bulletDestroyTime;
     [SerializeField] float bulletSpeed;
-    private int penetrateCount = 0;
-    private bool canPenetrate = false;
+    protected int penetrateCount = 0;
+    protected bool canPenetrate = false;
 
     [SerializeField] private GameObject damagePopUpTr;
     [SerializeField] private Transform onHitVFX;
