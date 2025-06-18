@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BazookaBullet : Bullet
 {
-    [SerializeField] float exploseRadius;
+    public float exploseRadius;
     [SerializeField] LayerMask monsterLayer;
     Collider[] monsterColls;
 

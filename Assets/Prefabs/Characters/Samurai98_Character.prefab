@@ -1390,6 +1390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41899fa844618df4e97fdf9c66c033e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: "\uC0AC\uBB34\uB77C\uC77498"
   attackRange: 5
   fireRate: 0.667
   bulletSpawnPos: {fileID: 438582962504984047}
@@ -1397,6 +1398,12 @@ MonoBehaviour:
   muzzleFlash: {fileID: 1525029902450385051, guid: 0358748320912694885c1e979f39345b, type: 3}
   maxBullet: 10
   reloadingTime: 3
+  attackRandom: 0
+  characterSkills:
+  - {fileID: 11400000, guid: 09ddf674b86e1f2419d5daef04ad26f6, type: 2}
+  - {fileID: 11400000, guid: f0aa609e6a28a70439a00f996505af91, type: 2}
+  - {fileID: 11400000, guid: f4878e9426e30384ea119ebdd9b4350b, type: 2}
+  damage: 1
   isMoving: 0
   monsterLayer:
     serializedVersion: 2

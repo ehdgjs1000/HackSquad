@@ -16,8 +16,8 @@ public class Sniper : PlayerCtrl
         nowBullet--;
 
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
-        Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
-
+        GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
+        bullet.GetComponent<SniperBullet>().SetBulletInfo(damage, 10);
         if (nowBullet <= 0) StartCoroutine(Reloading());
 
         yield return null;

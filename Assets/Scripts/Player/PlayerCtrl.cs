@@ -4,17 +4,20 @@ using UnityEngine;
 public abstract class PlayerCtrl : MonoBehaviour
 {
     public static PlayerCtrl instance;
-    
     protected Animator _animator;
 
+    public string characterName;
     //About Fight Mode
-    [SerializeField] float attackRange;
-    [SerializeField] protected float fireRate;
     [SerializeField] protected Transform bulletSpawnPos;
     [SerializeField] protected GameObject bulletGo;
     [SerializeField] protected Transform muzzleFlash;
-    [SerializeField] protected int maxBullet;
-    [SerializeField] protected float reloadingTime;
+    [SerializeField] bool attackRandom;
+    public SkillData[] characterSkills;
+    public float attackRange;
+    public float fireRate;
+    public int maxBullet;
+    public float reloadingTime;
+    public float damage;
     protected int nowBullet;
     protected float tempFireRate;
     protected bool isReloading = false;
@@ -59,11 +62,23 @@ public abstract class PlayerCtrl : MonoBehaviour
             {
                 try
                 {
-                    GameObject enemyGO = FindClosestTarget(monsterColls).gameObject;
-                    this.transform.LookAt(enemyGO.transform.position);
-                    MonsterCtrl enemy = enemyGO.GetComponent<MonsterCtrl>();
-                    //공격
-                    if (fireRate <= 0.0f && !isReloading) Attack(enemy);
+                    if (!attackRandom)
+                    {
+                        GameObject enemyGO = FindClosestTarget(monsterColls).gameObject;
+                        this.transform.LookAt(enemyGO.transform.position);
+                        MonsterCtrl enemy = enemyGO.GetComponent<MonsterCtrl>();
+                        //공격
+                        if (fireRate <= 0.0f && !isReloading) Attack(enemy);
+                    }
+                    else
+                    {
+                        int randomMonster = Random.Range(0,monsterColls.Length);
+                        GameObject enemyGO = monsterColls[randomMonster].gameObject;
+                        MonsterCtrl enemy = enemyGO.GetComponent<MonsterCtrl>();
+                        //공격
+                        if (fireRate <= 0.0f && !isReloading) Attack(enemy);
+                    }
+                    
                 }
 
                 catch (System.ObjectDisposedException e)

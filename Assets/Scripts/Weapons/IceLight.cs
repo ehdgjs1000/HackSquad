@@ -4,6 +4,8 @@ using UnityEngine;
 public class IceLight : MonoBehaviour
 {
     [SerializeField] Transform iceGround;
+    public float slowAmount;
+    public float damage;
 
     private void Start()
     {
@@ -12,8 +14,9 @@ public class IceLight : MonoBehaviour
     IEnumerator SpawnIce()
     {
         yield return new WaitForSeconds(0.1f);
-        Instantiate(iceGround, transform.position,Quaternion.identity);
-
+        Transform bullet = Instantiate(iceGround, transform.position,Quaternion.identity);
+        bullet.GetComponent<IceGround>().iceDamage = damage;
+        bullet.GetComponent<IceGround>().slowAmount = slowAmount;
         yield return null;
     }
     

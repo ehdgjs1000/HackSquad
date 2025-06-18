@@ -1279,7 +1279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7671765680855321515
 Transform:
   m_ObjectHideFlags: 0
@@ -1332,6 +1332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa839cf166052140b2b5ae48fdaf251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: "\uC11C\uBD80\uC758\uCD1D\uC7A1\uC774"
   attackRange: 15
   fireRate: 0.5
   bulletSpawnPos: {fileID: 5906901562998750478}
@@ -1339,6 +1340,12 @@ MonoBehaviour:
   muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
   maxBullet: 100
   reloadingTime: 1
+  attackRandom: 0
+  characterSkills:
+  - {fileID: 11400000, guid: b7faada89841eb449b11e0187815574a, type: 2}
+  - {fileID: 11400000, guid: 6d81d5cce69b43e49bb711d754751425, type: 2}
+  - {fileID: 11400000, guid: f455a488923fbd8418841f5bfdcda703, type: 2}
+  damage: 1
   isMoving: 0
   monsterLayer:
     serializedVersion: 2

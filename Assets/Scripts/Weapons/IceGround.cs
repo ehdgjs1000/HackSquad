@@ -5,8 +5,9 @@ public class IceGround : MonoBehaviour
     float attackTerm = 0.3f;
     float tempAttackTerm;
     [SerializeField] float iceRadius;
-    [SerializeField] float iceDamage;
     [SerializeField] LayerMask monsterLayer;
+    public float iceDamage;
+    public float slowAmount;
     Collider[] monsterColls;
 
     private void Awake()
@@ -29,6 +30,7 @@ public class IceGround : MonoBehaviour
             foreach(Collider col in monsterColls)
             {
                 col.GetComponent<MonsterCtrl>().GetAttack(iceDamage);
+                col.GetComponent<MonsterCtrl>().GetSlow(slowAmount);
                 DamagePopUp.Create(new Vector3(col.transform.position.x,
                     col.transform.position.y + 2.0f, col.transform.position.z), iceDamage);
             }

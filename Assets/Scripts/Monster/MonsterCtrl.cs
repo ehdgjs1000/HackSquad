@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MonsterCtrl : MonoBehaviour
@@ -5,10 +6,11 @@ public class MonsterCtrl : MonoBehaviour
     //Stats
     [SerializeField] float speed;
     [SerializeField] float hp;
+    bool canMove = true;
 
     //BattleInfo
     Collider[] playerColl = new Collider[3];
-    LayerMask playerLayer;
+    [SerializeField] LayerMask playerLayer;
     Vector3 targetPos, dir;
     Quaternion lookTarget;
     bool isMoving = false;
@@ -17,7 +19,23 @@ public class MonsterCtrl : MonoBehaviour
 
     private void Update()
     {
-        MoveToTarget();
+        if (canMove)
+        {
+            MoveToTarget();
+        }
+    }
+    public IEnumerator GetStun(float _stunTime)
+    {
+        canMove = false;
+        yield return new WaitForSeconds(_stunTime);
+        canMove = true;
+    }
+    public IEnumerator GetSlow(float _slowAmount)
+    {
+        float tempSpeed = speed;
+        speed *= (1 - _slowAmount);
+        yield return new WaitForSeconds(2.0f);
+        speed = tempSpeed;
     }
     private void MoveToTarget()
     {
@@ -44,7 +62,7 @@ public class MonsterCtrl : MonoBehaviour
     }
     private void Die()
     {
-        Debug.Log("Die");
+        
 
     }
     private void AttackPlayer()

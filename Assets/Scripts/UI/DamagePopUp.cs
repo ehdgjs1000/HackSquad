@@ -6,7 +6,7 @@ using TMPro;
 public class DamagePopUp : MonoBehaviour
 {
     private TextMeshPro damageMesh;
-    private float dissapearTime = 0.5f;
+    private float dissapearTime = 0.3f;
 
     private void Awake()
     {

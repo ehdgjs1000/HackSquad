@@ -333,6 +333,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1032492221252452501, guid: 8ae075570cff8c34685f56c7c293fb28, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1032492221252452507, guid: 8ae075570cff8c34685f56c7c293fb28, type: 3}
       propertyPath: m_Name
       value: Samurai_Projectile

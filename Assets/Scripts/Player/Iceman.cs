@@ -3,7 +3,14 @@ using UnityEngine;
 
 public class Iceman : PlayerCtrl
 {
+    int slowSkillLevel = 0;
+    float slowAmount = 20;
     MonsterCtrl monster;
+    public void UpgradeSlowSkill()
+    {
+        slowSkillLevel++;
+        slowAmount += 10;
+    }
     protected override void Attack(MonsterCtrl enemy)
     {
         fireRate = tempFireRate;
@@ -16,7 +23,9 @@ public class Iceman : PlayerCtrl
     {
         nowBullet--;
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
-        Instantiate(bulletGo, monster.transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(bulletGo, monster.transform.position, Quaternion.identity);
+        bullet.GetComponent<IceLight>().damage = damage;
+        bullet.GetComponent<IceLight>().slowAmount = slowAmount;
         if (nowBullet <= 0) StartCoroutine(Reloading());
 
         yield return new WaitForSeconds(0.5f);
