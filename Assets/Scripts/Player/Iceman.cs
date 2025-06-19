@@ -3,20 +3,55 @@ using UnityEngine;
 
 public class Iceman : PlayerCtrl
 {
+    [SerializeField] Transform finalSkillTs;
+    [SerializeField] float finalSkillTime;
+    float tempFinalSkillTime;
+    
+    bool isFinalSkill = false;
     int slowSkillLevel = 0;
-    float slowAmount = 20;
+    float slowAmount = 0.2f;
     MonsterCtrl monster;
+
+    protected override void Update()
+    {
+        base.Update();
+        finalSkillTime -= Time.deltaTime;
+        if(isFinalSkill && finalSkillTime <= 0.0f)
+        {
+            StartCoroutine(UseFinalSkill());
+        }
+    }
+    protected override void Awake()
+    {
+        base.Awake();
+        tempFinalSkillTime = finalSkillTime;
+    }
+    IEnumerator UseFinalSkill()
+    {
+        finalSkillTime = tempFinalSkillTime;
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(finalSkillTs, transform.position, Quaternion.identity);
+        finalSkillTs.GetComponent<IceGround>().iceDamage = damage * 1.5f;
+        finalSkillTs.GetComponent<IceGround>().slowAmount = 1;
+    }
+    public void UpgradeFinalSkill()
+    {
+        isFinalSkill = true;
+    }
     public void UpgradeSlowSkill()
     {
         slowSkillLevel++;
-        slowAmount += 10;
+        slowAmount += 0.1f;
     }
     protected override void Attack(MonsterCtrl enemy)
     {
-        fireRate = tempFireRate;
-        monster = enemy;
-        _animator.SetBool("isAttacking", true);
-        StartCoroutine(Shoot());
+        if (enemy != null)
+        {
+            fireRate = tempFireRate;
+            monster = enemy;
+            _animator.SetBool("isAttacking", true);
+            StartCoroutine(Shoot());
+        }
     }
 
     protected override IEnumerator Shoot()

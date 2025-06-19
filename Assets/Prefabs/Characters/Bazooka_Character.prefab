@@ -74,9 +74,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6438403582337594217}
   - component: {fileID: 4852438023412154464}
+  - component: {fileID: 4208636807303334144}
   - component: {fileID: 6896667776085871785}
   - component: {fileID: 2756405111545345264}
-  - component: {fileID: 4208636807303334144}
   m_Layer: 0
   m_Name: Bazooka_Character
   m_TagString: Untagged
@@ -115,7 +115,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 71fd4e503a1e13b46b2af318b3b9fe68, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -124,6 +124,42 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4208636807303334144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400532037552124468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa20a32a3a670d146ab24366d42e67ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: "\uB179\uC999\uD558\uC0AC"
+  bulletSpawnPos: {fileID: 7521352462324473895}
+  bulletGo: {fileID: 7998820718401073692, guid: 67e1c828ccbc7d94e8f7896e3f271116, type: 3}
+  muzzleFlash: {fileID: 3600534211347027299, guid: 017805bf0bd1a6540b54cb600470f066, type: 3}
+  attackRandom: 0
+  characterSkills:
+  - {fileID: 11400000, guid: b38baa24ea9c5d94b93186b515663aaf, type: 2}
+  - {fileID: 11400000, guid: fcb199172ce9ecc4d83ba8a119f7a97c, type: 2}
+  - {fileID: 11400000, guid: a31fdecb96b197a459d88c3157080b4c, type: 2}
+  finalSkill: {fileID: 11400000, guid: c50ab58f863ab3645a98a0d9da56cb42, type: 2}
+  attackRange: 20
+  fireRate: 1
+  maxBullet: 1
+  reloadingTime: 3
+  damage: 5
+  isMoving: 0
+  monsterLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  finalSkillGO: {fileID: 6845791643628858721, guid: b70a9de85ded1a24c96f36e418a30f3f, type: 3}
+  plane: {fileID: 1499464776196500, guid: acaaf9ebbaefe2744b8efca7ac70d859, type: 3}
+  finalSkillTime: 5
+  exploseRadius: 20
+  canUseFinalSkill: 0
 --- !u!54 &6896667776085871785
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -172,36 +208,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &4208636807303334144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400532037552124468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa20a32a3a670d146ab24366d42e67ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: "\uB179\uC999\uD558\uC0AC"
-  attackRange: 20
-  fireRate: 3.5
-  bulletSpawnPos: {fileID: 7521352462324473895}
-  bulletGo: {fileID: 7998820718401073692, guid: 67e1c828ccbc7d94e8f7896e3f271116, type: 3}
-  muzzleFlash: {fileID: 3600534211347027299, guid: 017805bf0bd1a6540b54cb600470f066, type: 3}
-  maxBullet: 1
-  reloadingTime: 3
-  attackRandom: 0
-  characterSkills:
-  - {fileID: 11400000, guid: b38baa24ea9c5d94b93186b515663aaf, type: 2}
-  - {fileID: 11400000, guid: fcb199172ce9ecc4d83ba8a119f7a97c, type: 2}
-  - {fileID: 11400000, guid: a31fdecb96b197a459d88c3157080b4c, type: 2}
-  damage: 1
-  isMoving: 0
-  monsterLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &1462263109482212955
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     [SerializeField] protected Transform muzzleFlash;
     [SerializeField] bool attackRandom;
     public SkillData[] characterSkills;
+    public SkillData finalSkill;
     public float attackRange;
     public float fireRate;
     public int maxBullet;
@@ -22,27 +23,21 @@ public abstract class PlayerCtrl : MonoBehaviour
     protected float tempFireRate;
     protected bool isReloading = false;
 
-
-    Vector3 targetPos;
-    Vector3 dir;
-    Quaternion lookTarget;
-    Rigidbody rigid;
     public bool isMoving = false;
     
     //Monster
-    [SerializeField]  LayerMask monsterLayer;
+    [SerializeField] protected LayerMask monsterLayer;
     private Collider[] monsterColls;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if (instance == null) instance = this;
-        rigid = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
 
         InitCharacterStats();
     }
-    private void Update()
+    protected virtual void Update()
     {
         fireRate -= Time.deltaTime;
         CheckMonster();

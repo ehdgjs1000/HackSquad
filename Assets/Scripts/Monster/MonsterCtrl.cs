@@ -14,6 +14,8 @@ public class MonsterCtrl : MonoBehaviour
     Vector3 targetPos, dir;
     Quaternion lookTarget;
     bool isMoving = false;
+    bool isSlow = false;
+    float slowAmount;
     [SerializeField] float attackRange;
     
 
@@ -32,10 +34,10 @@ public class MonsterCtrl : MonoBehaviour
     }
     public IEnumerator GetSlow(float _slowAmount)
     {
-        float tempSpeed = speed;
-        speed *= (1 - _slowAmount);
-        yield return new WaitForSeconds(2.0f);
-        speed = tempSpeed;
+        isSlow = true;
+        slowAmount = _slowAmount;
+        yield return new WaitForSeconds(1.0f);
+        isSlow = false;
     }
     private void MoveToTarget()
     {
@@ -45,7 +47,9 @@ public class MonsterCtrl : MonoBehaviour
 
         if ((transform.position - targetPos).magnitude > attackRange)
         {
-            transform.position += dir.normalized * Time.deltaTime * speed;
+            if(!isSlow) transform.position += dir.normalized * Time.deltaTime * speed;
+            else transform.position += dir.normalized * Time.deltaTime * speed * (1-slowAmount) ;
+
             transform.rotation = Quaternion.Lerp(transform.rotation, lookTarget, 0.25f);
             isMoving = true;
         }

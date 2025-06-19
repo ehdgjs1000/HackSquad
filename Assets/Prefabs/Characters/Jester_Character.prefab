@@ -72,9 +72,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8938337900680506433}
   - component: {fileID: 4709771721828765062}
+  - component: {fileID: 6631523188191314197}
   - component: {fileID: 5922995484593701344}
   - component: {fileID: 3156688756998329329}
-  - component: {fileID: 6631523188191314197}
   m_Layer: 0
   m_Name: Jester_Character
   m_TagString: Untagged
@@ -113,7 +113,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 18b5ab25172d10a408e73d305fca858d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -122,6 +122,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6631523188191314197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417451982240984076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8701948fa19bfd840bd9a6356eb29809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: "P.\uC5D0\uB85C"
+  bulletSpawnPos: {fileID: 6662217893701859795}
+  bulletGo: {fileID: 6108195706035121270, guid: 6f692cd2d2d5eb84ab790976eccc0bae, type: 3}
+  muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
+  attackRandom: 1
+  characterSkills:
+  - {fileID: 11400000, guid: 105c2291b8f504a4d9e514e6727341ae, type: 2}
+  - {fileID: 11400000, guid: 8d93ad338b3faff44a617e640968afef, type: 2}
+  - {fileID: 11400000, guid: 49a4dba4a3062244c85f05977f2711a3, type: 2}
+  finalSkill: {fileID: 11400000, guid: 08c5c0d82c267a34b95a88c150b60172, type: 2}
+  attackRange: 20
+  fireRate: 3
+  maxBullet: 2
+  reloadingTime: 3
+  damage: 2
+  isMoving: 0
+  monsterLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  finalBullet: {fileID: 6108195706035121270, guid: 2ac265a359485f6429d7c6a1ab9edb75, type: 3}
 --- !u!135 &5922995484593701344
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -170,36 +202,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
---- !u!114 &6631523188191314197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417451982240984076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8701948fa19bfd840bd9a6356eb29809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: "P.\uC5D0\uB85C"
-  attackRange: 20
-  fireRate: 3
-  bulletSpawnPos: {fileID: 6662217893701859795}
-  bulletGo: {fileID: 6108195706035121270, guid: 6f692cd2d2d5eb84ab790976eccc0bae, type: 3}
-  muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
-  maxBullet: 2
-  reloadingTime: 3
-  attackRandom: 1
-  characterSkills:
-  - {fileID: 11400000, guid: 105c2291b8f504a4d9e514e6727341ae, type: 2}
-  - {fileID: 11400000, guid: 8d93ad338b3faff44a617e640968afef, type: 2}
-  - {fileID: 11400000, guid: 49a4dba4a3062244c85f05977f2711a3, type: 2}
-  damage: 1
-  isMoving: 0
-  monsterLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &437629238717501120
 GameObject:
   m_ObjectHideFlags: 0

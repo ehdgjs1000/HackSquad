@@ -31,10 +31,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        ResetSkillInfo();
+        InitSkillInfo();
     }
     //게임 시작시 초기 스킬들을 저장해둠
-    private void ResetSkillInfo() 
+    private void InitSkillInfo() 
     {
         int skillCount = 0;
         for (int a = 0; a < players.Length; a++)
@@ -44,7 +44,9 @@ public class GameManager : MonoBehaviour
                 SkillManager.instance.skillDatas[skillCount] = players[a].characterSkills[b];
                 skillCount++;
             }
+            SkillManager.instance.finalSkill[a] = players[a].finalSkill;
         }
+        ResetSkillLevel();
     }
     public void UpdateGameSpeed(int _speed)
     {
@@ -54,7 +56,15 @@ public class GameManager : MonoBehaviour
     {
         hpImage.fillAmount = hp / 100;
         expImage.fillAmount = nowExp / needExp;
-        levelText.text = level.ToString();
+        levelText.text = level.ToString() + "레 벨";
+    }
+    private void GameOver()
+    {
+        ResetSkillLevel();
+    }
+    private void ResetSkillLevel()
+    {
+        SkillManager.instance.ResetSkillLevel();
     }
 
     public void LevelUp()

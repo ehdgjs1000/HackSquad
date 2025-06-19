@@ -19640,6 +19640,7 @@ MonoBehaviour:
     m_Bits: 128
   attackTerm: 0.2
   damage: 1
+  tempAttackTerm: 0
 --- !u!1 &7067059861002664775
 GameObject:
   m_ObjectHideFlags: 0
@@ -19652,6 +19653,7 @@ GameObject:
   - component: {fileID: 7031934482445556305}
   - component: {fileID: 6471481033136323621}
   - component: {fileID: 295533958634708497}
+  - component: {fileID: 2597893081202199746}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -24588,7 +24590,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: NaN, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 5.625e-42, y: 0, z: 2.7105054e-20, w: 4.59188e-39}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -24597,6 +24599,29 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &2597893081202199746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7067059861002664775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &7399072444645607653
 GameObject:
   m_ObjectHideFlags: 0

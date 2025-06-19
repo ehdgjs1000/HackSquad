@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85dbd979e32d9b743b88088fcd7243e7, type: 3}
+  m_Name: CowboyFinalSK
+  m_EditorClassIdentifier: 
+  ID: 109
+  skillName: "\uAD00\uD1B5 \uC624\uD1A0 \uC0F7\uAC74"
+  skillDescription: "\uC11C\uBD80\uC758\uCD1D\uC7A1\uC774\uC758 \uC0F7\uAC74\uC774
+    \uACC4\uC0B0\uC624\uB958\uB85C \uC801\uB4E4\uC744 \uAD00\uD1B5\uD558\uBA70 \uBC1C\uC0AC\uC18D\uB3C4\uAC00
+    \uB300\uD3ED \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  skillImage: {fileID: 0}
+  skillCharacterImage: {fileID: 21300000, guid: ee402ee980241a84faaf66b83bd49f21, type: 3}
+  skillLevel: 0

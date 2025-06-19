@@ -19,7 +19,6 @@ public class BazookaBullet : Bullet
     {
         monsterColls = null;
         monsterColls = Physics.OverlapSphere(transform.position, exploseRadius, monsterLayer);
-        Debug.Log(monsterColls.Length);
         if (monsterColls.Length > 0)
         {
             foreach (Collider monster in monsterColls)

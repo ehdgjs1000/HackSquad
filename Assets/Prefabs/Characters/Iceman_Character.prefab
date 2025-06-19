@@ -266,9 +266,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8870210602765959087}
   - component: {fileID: 5252365188892202971}
+  - component: {fileID: 3891278100387399118}
   - component: {fileID: 1416556942910317333}
   - component: {fileID: 2591806524729269031}
-  - component: {fileID: 3891278100387399118}
   m_Layer: 0
   m_Name: Iceman_Character
   m_TagString: Untagged
@@ -307,7 +307,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 91f52eb9dc2235b4a981669ff9d296ca, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -316,6 +316,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3891278100387399118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046878463364114994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c0f12ead5179f4a97d941bdb30d8f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: "\uB0C9\uB3D9\uACE0"
+  bulletSpawnPos: {fileID: 3406184851800015762}
+  bulletGo: {fileID: 8779237644067456212, guid: d1b0e2e16d8b3b84ab982e8ef565ccb5, type: 3}
+  muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
+  attackRandom: 0
+  characterSkills:
+  - {fileID: 11400000, guid: 6ef1c0d0717d5344c910010dd2c9f1ef, type: 2}
+  - {fileID: 11400000, guid: 1c34794439da16140b11f45a2faef6c9, type: 2}
+  - {fileID: 11400000, guid: 788715512c0513047ada781d7a1a5c36, type: 2}
+  finalSkill: {fileID: 11400000, guid: 9f486c2f13f55b641b032cf0d4acf16b, type: 2}
+  attackRange: 20
+  fireRate: 2
+  maxBullet: 2
+  reloadingTime: 3
+  damage: 2
+  isMoving: 0
+  monsterLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  finalSkillTs: {fileID: 3525250646898701901, guid: 8617bfeae268af247a501124d761a93e, type: 3}
+  finalSkillTime: 6
 --- !u!135 &1416556942910317333
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -364,36 +397,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
---- !u!114 &3891278100387399118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046878463364114994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c0f12ead5179f4a97d941bdb30d8f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: "\uB0C9\uB3D9\uACE0"
-  attackRange: 15
-  fireRate: 2
-  bulletSpawnPos: {fileID: 3406184851800015762}
-  bulletGo: {fileID: 8779237644067456212, guid: d1b0e2e16d8b3b84ab982e8ef565ccb5, type: 3}
-  muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
-  maxBullet: 2
-  reloadingTime: 4
-  attackRandom: 0
-  characterSkills:
-  - {fileID: 11400000, guid: 6ef1c0d0717d5344c910010dd2c9f1ef, type: 2}
-  - {fileID: 11400000, guid: 1c34794439da16140b11f45a2faef6c9, type: 2}
-  - {fileID: 11400000, guid: 788715512c0513047ada781d7a1a5c36, type: 2}
-  damage: 1
-  isMoving: 0
-  monsterLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &1104571853736192972
 GameObject:
   m_ObjectHideFlags: 0

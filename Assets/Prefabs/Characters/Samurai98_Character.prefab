@@ -1369,7 +1369,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 52f4231b0b0c1a846bbaf5f0dfdf2e7b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -1391,23 +1391,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uC0AC\uBB34\uB77C\uC77498"
-  attackRange: 5
-  fireRate: 0.667
   bulletSpawnPos: {fileID: 438582962504984047}
   bulletGo: {fileID: 6219019435635073176, guid: 17f30515fa21f494182a1073e6479d11, type: 3}
   muzzleFlash: {fileID: 1525029902450385051, guid: 0358748320912694885c1e979f39345b, type: 3}
-  maxBullet: 10
-  reloadingTime: 3
   attackRandom: 0
   characterSkills:
   - {fileID: 11400000, guid: 09ddf674b86e1f2419d5daef04ad26f6, type: 2}
   - {fileID: 11400000, guid: f0aa609e6a28a70439a00f996505af91, type: 2}
   - {fileID: 11400000, guid: f4878e9426e30384ea119ebdd9b4350b, type: 2}
-  damage: 1
+  finalSkill: {fileID: 11400000, guid: 90e184a6f01f3a6458a4ce2b93e3624e, type: 2}
+  attackRange: 20
+  fireRate: 0.5
+  maxBullet: 10
+  reloadingTime: 3
+  damage: 3
   isMoving: 0
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
+  samuraiFinalBulletGO: {fileID: 6219019435635073176, guid: 8f057a6471bfa5f44a23b152121bc6f3, type: 3}
+  isFinalSkillUpgrade: 0
 --- !u!135 &7965974700410864029
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -34459,6 +34459,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iceGround: {fileID: 3525250646898701901, guid: 035c8734ee61a2a4b8d1af3d66b73866, type: 3}
+  slowAmount: 0.2
+  damage: 1
 --- !u!198 &6844920005667795733
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -273,6 +273,12 @@ MonoBehaviour:
   bulletSpeed: 20
   damagePopUpTr: {fileID: 4453229395328416960, guid: f89fa60e57839544d9d1d446af99bea3, type: 3}
   onHitVFX: {fileID: 5588441662099315286, guid: 404c1bbf258eb614eae8f32e09aa83fe, type: 3}
+  monsterLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  exploseRadius: 0
+  exploseTs: {fileID: 0}
+  isFinalBullet: 0
 --- !u!1001 &9140465561965878892
 PrefabInstance:
   m_ObjectHideFlags: 0

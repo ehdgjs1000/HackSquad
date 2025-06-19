@@ -947,9 +947,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8068061203105749922}
   - component: {fileID: 7154043646201508765}
+  - component: {fileID: 5077355716773800604}
   - component: {fileID: 921015031830571002}
   - component: {fileID: 882996371590751563}
-  - component: {fileID: 5077355716773800604}
   m_Layer: 0
   m_Name: Pistol_Character
   m_TagString: Untagged
@@ -988,7 +988,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 18b5ab25172d10a408e73d305fca858d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -997,6 +997,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5077355716773800604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569675016110974154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8e16ea90f647b40926297ad27a8cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: "\uCCAD\uB450"
+  bulletSpawnPos: {fileID: 8474824960076498502}
+  bulletGo: {fileID: 6219019435635073176, guid: 452cd4b795a3d064f84d111a43fdd92e, type: 3}
+  muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
+  attackRandom: 0
+  characterSkills:
+  - {fileID: 11400000, guid: 1565552b9ca34f24fbbbbd30f6e84de7, type: 2}
+  - {fileID: 11400000, guid: 9447898812de3014b9e4100c120ee0cb, type: 2}
+  - {fileID: 11400000, guid: bbe81d8cbe58349469cbadc4cf7e8385, type: 2}
+  finalSkill: {fileID: 11400000, guid: abd8b092223962448bb272e252f2807e, type: 2}
+  attackRange: 20
+  fireRate: 0.5
+  maxBullet: 7
+  reloadingTime: 3
+  damage: 1.3
+  isMoving: 0
+  monsterLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  maxRandomDegree: 8
+  penetrateCount: 0
 --- !u!54 &921015031830571002
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1045,37 +1078,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &5077355716773800604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5569675016110974154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee8e16ea90f647b40926297ad27a8cd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: "\uCCAD\uB450"
-  bulletSpawnPos: {fileID: 8474824960076498502}
-  bulletGo: {fileID: 6219019435635073176, guid: 452cd4b795a3d064f84d111a43fdd92e, type: 3}
-  muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
-  attackRandom: 0
-  characterSkills:
-  - {fileID: 11400000, guid: 1565552b9ca34f24fbbbbd30f6e84de7, type: 2}
-  - {fileID: 11400000, guid: 9447898812de3014b9e4100c120ee0cb, type: 2}
-  - {fileID: 11400000, guid: bbe81d8cbe58349469cbadc4cf7e8385, type: 2}
-  attackRange: 15
-  fireRate: 0.5
-  maxBullet: 7
-  reloadingTime: 3
-  damage: 1
-  isMoving: 0
-  monsterLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  maxRandomDegree: 8
 --- !u!1 &5588869547950762279
 GameObject:
   m_ObjectHideFlags: 0

@@ -82,7 +82,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 9d5f2790edd46fe49bf14ac8c893fe7c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3dd51a95349007343bad64b1daf45a28, type: 2}
   - {fileID: 11400000, guid: 38c3aa5d2e1be4f45935b9450d1da4a3, type: 2}
   - {fileID: 11400000, guid: 17e307dc3d063eb479e58797c04f3675, type: 2}
+  finalSkill: {fileID: 11400000, guid: 956e7dd7688cbb94ab55e6a87b6a0e41, type: 2}
   attackRange: 20
   fireRate: 0.2
   maxBullet: 25

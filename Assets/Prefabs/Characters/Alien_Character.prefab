@@ -1295,9 +1295,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6905164467203063}
   - component: {fileID: 5341888443763620168}
+  - component: {fileID: 1484280763057746414}
   - component: {fileID: 8418941107210238570}
   - component: {fileID: 4274846799345873304}
-  - component: {fileID: 1484280763057746414}
   m_Layer: 0
   m_Name: Alien_Character
   m_TagString: Untagged
@@ -1336,7 +1336,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 8e1ae494d9f8f0f45aec0abc0e5fb3db, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -1345,6 +1345,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1484280763057746414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6192336581468143728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd1a4a000902db47aeea64e6d2544ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: "\uC5D0\uC77C\uB9AC\uC5B8"
+  bulletSpawnPos: {fileID: 4138299533850575641}
+  bulletGo: {fileID: 5627696518775099638, guid: 6e19186c425546840baabfaf7ea829f8, type: 3}
+  muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
+  attackRandom: 1
+  characterSkills:
+  - {fileID: 11400000, guid: 8a61f80965c8fcb4a935c8fc2975bf82, type: 2}
+  - {fileID: 11400000, guid: b056eaf15b356114e8bee4c8cfef28f6, type: 2}
+  - {fileID: 11400000, guid: 673d1a79bd7129c49b3a9ff3768d3c49, type: 2}
+  finalSkill: {fileID: 11400000, guid: 0f663ebe9f0d2ac49ae944e28fa746b3, type: 2}
+  attackRange: 20
+  fireRate: 0.2
+  maxBullet: 10
+  reloadingTime: 3
+  damage: 1
+  isMoving: 0
+  monsterLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!54 &8418941107210238570
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1393,36 +1424,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &1484280763057746414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6192336581468143728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dd1a4a000902db47aeea64e6d2544ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: "\uC5D0\uC77C\uB9AC\uC5B8"
-  attackRange: 20
-  fireRate: 0.2
-  bulletSpawnPos: {fileID: 4138299533850575641}
-  bulletGo: {fileID: 5627696518775099638, guid: 6e19186c425546840baabfaf7ea829f8, type: 3}
-  muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
-  maxBullet: 10
-  reloadingTime: 3
-  attackRandom: 1
-  characterSkills:
-  - {fileID: 11400000, guid: 8a61f80965c8fcb4a935c8fc2975bf82, type: 2}
-  - {fileID: 11400000, guid: b056eaf15b356114e8bee4c8cfef28f6, type: 2}
-  - {fileID: 11400000, guid: 673d1a79bd7129c49b3a9ff3768d3c49, type: 2}
-  damage: 1
-  isMoving: 0
-  monsterLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &6595040481052323429
 GameObject:
   m_ObjectHideFlags: 0

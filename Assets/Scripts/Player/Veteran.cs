@@ -4,7 +4,13 @@ using UnityEngine;
 public class Veteran : PlayerCtrl
 {
     [SerializeField] float maxRandomDegree;
-
+    public int penetrateCount;
+    protected override void Awake()
+    {
+        base.Awake();
+        penetrateCount = 0;
+        maxRandomDegree = 10;
+    }
     public void FixMaxRandomDegree(float _amount)
     {
         maxRandomDegree += _amount;
@@ -25,7 +31,7 @@ public class Veteran : PlayerCtrl
         Quaternion rotation = Quaternion.LookRotation(transform.right);
         GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
         bullet.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, randomDegree);
-        bullet.GetComponent<Bullet>().SetBulletInfo(damage,0);
+        bullet.GetComponent<Bullet>().SetBulletInfo(damage,penetrateCount);
 
         if (nowBullet <= 0) StartCoroutine(Reloading());
         yield return null;

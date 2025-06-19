@@ -30,7 +30,7 @@ public class IceGround : MonoBehaviour
             foreach(Collider col in monsterColls)
             {
                 col.GetComponent<MonsterCtrl>().GetAttack(iceDamage);
-                col.GetComponent<MonsterCtrl>().GetSlow(slowAmount);
+                StartCoroutine(col.GetComponent<MonsterCtrl>().GetSlow(slowAmount));
                 DamagePopUp.Create(new Vector3(col.transform.position.x,
                     col.transform.position.y + 2.0f, col.transform.position.z), iceDamage);
             }

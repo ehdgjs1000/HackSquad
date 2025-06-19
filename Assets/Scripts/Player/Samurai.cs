@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Samurai : PlayerCtrl
 {
+    [SerializeField] GameObject samuraiFinalBulletGO;
+    public bool isFinalSkillUpgrade;
     protected override void Attack(MonsterCtrl enemy)
     {
         fireRate = tempFireRate;
@@ -13,10 +15,19 @@ public class Samurai : PlayerCtrl
 
     protected override IEnumerator Shoot()
     {
-        nowBullet--;
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
-        GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
-        bullet.GetComponent<Bullet>().SetBulletInfo(damage,10);
+        if (isFinalSkillUpgrade)
+        {
+            GameObject bullet = Instantiate(samuraiFinalBulletGO, bulletSpawnPos.position, transform.localRotation);
+            bullet.GetComponent<Bullet>().SetBulletInfo(damage, 10);
+            bullet.GetComponent<SamuraiBullet>().isFinalBullet = true;
+        }
+        else
+        {
+            nowBullet--;
+            GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
+            bullet.GetComponent<Bullet>().SetBulletInfo(damage, 10);
+        }
 
         if (nowBullet <= 0) StartCoroutine(Reloading());
 

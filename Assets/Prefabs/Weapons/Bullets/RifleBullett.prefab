@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   criticalChange: 10
-  bulletDestroyTime: 0.6
+  bulletDestroyTime: 3
   bulletSpeed: 50
   damagePopUpTr: {fileID: 4453229395328416960, guid: f89fa60e57839544d9d1d446af99bea3, type: 3}
   onHitVFX: {fileID: 7249675442437269305, guid: dd2b1ac4a32ca184683f15984f30d88f, type: 3}

@@ -1467,7 +1467,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 91f52eb9dc2235b4a981669ff9d296ca, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -1537,19 +1537,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uAE38\uB9AC\uC288\uD2B8"
-  attackRange: 30
-  fireRate: 1
   bulletSpawnPos: {fileID: 6838033074797343544}
   bulletGo: {fileID: 6219019435635073176, guid: d9d62d240b153d241ab4ccbca8a4b945, type: 3}
   muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
-  maxBullet: 10
-  reloadingTime: 2
   attackRandom: 0
   characterSkills:
   - {fileID: 11400000, guid: 8b4d969a88746d14d88ebf796096416a, type: 2}
   - {fileID: 11400000, guid: 1e3a2839be4a94d4a81101117de2e65b, type: 2}
   - {fileID: 11400000, guid: 6730f5e6aff93a240b8846f156f21392, type: 2}
-  damage: 2
+  finalSkill: {fileID: 11400000, guid: 523e86890834bd24fa7c9f09704eb010, type: 2}
+  attackRange: 20
+  fireRate: 2
+  maxBullet: 10
+  reloadingTime: 2
+  damage: 10
   isMoving: 0
   monsterLayer:
     serializedVersion: 2

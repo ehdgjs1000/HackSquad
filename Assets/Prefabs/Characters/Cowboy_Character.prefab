@@ -1333,24 +1333,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uC11C\uBD80\uC758\uCD1D\uC7A1\uC774"
-  attackRange: 15
-  fireRate: 0.5
   bulletSpawnPos: {fileID: 5906901562998750478}
   bulletGo: {fileID: 6219019435635073176, guid: 98ad289b6ac301b49ade0cbaf5721f44, type: 3}
   muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
-  maxBullet: 100
-  reloadingTime: 1
   attackRandom: 0
   characterSkills:
   - {fileID: 11400000, guid: b7faada89841eb449b11e0187815574a, type: 2}
   - {fileID: 11400000, guid: 6d81d5cce69b43e49bb711d754751425, type: 2}
   - {fileID: 11400000, guid: f455a488923fbd8418841f5bfdcda703, type: 2}
-  damage: 1
+  finalSkill: {fileID: 11400000, guid: 0bcc826d86453fa42a103d72410cc803, type: 2}
+  attackRange: 20
+  fireRate: 1
+  maxBullet: 7
+  reloadingTime: 3
+  damage: 2.5
   isMoving: 0
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
   shotGunDegree: 20
+  shotGunBulletSkillLevel: 0
+  penetrateCount: 0
 --- !u!135 &8178868555563967007
 SphereCollider:
   m_ObjectHideFlags: 0
