@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class LobbyManager : MonoBehaviour
     int gemAmount;
     int goldAmount;
     int eneryAmount;
+
+    [SerializeField] GameObject[] chapterSet;
 
     private void Awake()
     {
@@ -32,7 +35,14 @@ public class LobbyManager : MonoBehaviour
         goldAmount = 10000;
         eneryAmount = 10000;
     }
-
+    public void ChapterBtnClick(int _num)
+    {
+        for (int a = 0; a < chapterSet.Length; a++)
+        {
+            if (a == _num) chapterSet[a].transform.DOScale(new Vector3(1,1,1),0.0f);
+            else chapterSet[a].transform.DOScale(new Vector3(0,0,0), 0.0f);
+        }
+    }
 
 
 

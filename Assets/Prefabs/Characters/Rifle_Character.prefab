@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 746254689061656689}
   - component: {fileID: 8762134276807466766}
+  - component: {fileID: -3958057603261992363}
   - component: {fileID: 2359848337617631033}
   - component: {fileID: 7782557324181817926}
   - component: {fileID: 5869665392982007803}
@@ -91,6 +92,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-3958057603261992363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517485432205214629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448674a8c79d63848943093935bc7ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroProfileImage: {fileID: 21300000, guid: 33934deff0c1a4d44aa9cdf1d3f41efa, type: 3}
+  heroGrade: 1
 --- !u!135 &2359848337617631033
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -171,6 +186,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   maxRandomDegree: 10
+  penetrateCount: 0
 --- !u!1 &1817925976543717375
 GameObject:
   m_ObjectHideFlags: 0

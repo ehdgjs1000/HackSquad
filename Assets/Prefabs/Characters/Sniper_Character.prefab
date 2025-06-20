@@ -1426,6 +1426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2800583379450180120}
   - component: {fileID: 2775969460164274919}
+  - component: {fileID: 2009763838488006354}
   - component: {fileID: 7433037871242573569}
   - component: {fileID: 5381026613823512338}
   - component: {fileID: 6881518829996260452}
@@ -1476,6 +1477,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2009763838488006354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6617296349683140436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448674a8c79d63848943093935bc7ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroProfileImage: {fileID: 21300000, guid: dfc7046f75d4c264fa5cc8ae38f0f8b6, type: 3}
 --- !u!135 &7433037871242573569
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1537,6 +1551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uAE38\uB9AC\uC288\uD2B8"
+  grade: 0
   bulletSpawnPos: {fileID: 6838033074797343544}
   bulletGo: {fileID: 6219019435635073176, guid: d9d62d240b153d241ab4ccbca8a4b945, type: 3}
   muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}

@@ -947,6 +947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8068061203105749922}
   - component: {fileID: 7154043646201508765}
+  - component: {fileID: -4306123531805097124}
   - component: {fileID: 5077355716773800604}
   - component: {fileID: 921015031830571002}
   - component: {fileID: 882996371590751563}
@@ -997,6 +998,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4306123531805097124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569675016110974154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448674a8c79d63848943093935bc7ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroProfileImage: {fileID: 21300000, guid: 4fa43e86dcc1bca478364965d6f759b8, type: 3}
 --- !u!114 &5077355716773800604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,6 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uCCAD\uB450"
+  grade: 0
   bulletSpawnPos: {fileID: 8474824960076498502}
   bulletGo: {fileID: 6219019435635073176, guid: 452cd4b795a3d064f84d111a43fdd92e, type: 3}
   muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
