@@ -14,11 +14,18 @@ public abstract class PlayerCtrl : MonoBehaviour
     [SerializeField] bool attackRandom;
     public SkillData[] characterSkills;
     public SkillData finalSkill;
-    public float attackRange;
-    public float fireRate;
-    public int maxBullet;
-    public float reloadingTime;
-    public float damage;
+    //init Data
+    public float initAttackRange;
+    public float initFireRate;
+    public int initMaxBullet;
+    public float initReloadingTime;
+    public float initDamage;
+
+    protected float attackRange;
+    protected float fireRate;
+    protected int maxBullet;
+    protected float reloadingTime;
+    protected float damage;
     protected int nowBullet;
     protected float tempFireRate;
     protected bool isReloading = false;
@@ -42,8 +49,22 @@ public abstract class PlayerCtrl : MonoBehaviour
         fireRate -= Time.deltaTime;
         CheckMonster();
     }
+    public void UpgradeStats(int type, float amount)
+    {
+        if (type == 0) damage *= amount;
+        else if (type == 1) fireRate *= amount;
+        else if (type == 2) maxBullet += (int)amount;
+        else if (type == 3) reloadingTime *= amount;
+        else if (type == 4) attackRange *= amount;
+    }
     private void InitCharacterStats()
     {
+        attackRange = initAttackRange;
+        fireRate = initFireRate;
+        maxBullet = initMaxBullet;
+        reloadingTime = initReloadingTime;
+        damage = initDamage;
+
         nowBullet = maxBullet;
         tempFireRate = fireRate;
         fireRate = 0;

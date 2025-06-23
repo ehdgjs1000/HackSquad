@@ -1276,7 +1276,7 @@ GameObject:
   - component: {fileID: 2518935678540099135}
   m_Layer: 6
   m_Name: Cowboy_Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,6 +1334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroProfileImage: {fileID: 21300000, guid: f60d357b58d82394caf463e3cc3fc602, type: 3}
+  heroLevel: 0
   heroGrade: 1
 --- !u!114 &2572919331884939278
 MonoBehaviour:
@@ -1357,11 +1358,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6d81d5cce69b43e49bb711d754751425, type: 2}
   - {fileID: 11400000, guid: f455a488923fbd8418841f5bfdcda703, type: 2}
   finalSkill: {fileID: 11400000, guid: 0bcc826d86453fa42a103d72410cc803, type: 2}
-  attackRange: 20
-  fireRate: 1
-  maxBullet: 7
-  reloadingTime: 3
-  damage: 2.5
+  initAttackRange: 20
+  initFireRate: 1
+  initMaxBullet: 7
+  initReloadingTime: 3
+  initDamage: 2.5
   isMoving: 0
   monsterLayer:
     serializedVersion: 2

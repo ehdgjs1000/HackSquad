@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
+
     [SerializeField] TextMeshProUGUI gemText;
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI energyText;
@@ -19,7 +21,6 @@ public class MainManager : MonoBehaviour
     }
     private void Start()
     {
-        
         UpdateMainData();
     }
     //계정 계좌 정보 동기화(로비로부터 가져옴)
@@ -38,6 +39,8 @@ public class MainManager : MonoBehaviour
     }
     public void GameStartOnClick()
     {
-
+        //다음 씬으로 고른 Hero 정보 넘기기
+        ChangeScene.instance.SetHeros();
+        SceneManager.LoadScene("GameScene");
     }
 }

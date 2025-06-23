@@ -14,18 +14,32 @@ public class HeroSetManager : MonoBehaviour
     }
     private void Start()
     {
-        UpdateSquad();
+       
+    }
+    public void ChooseHero(int _pos, GameObject heroGO)
+    {
+        squadCount++;
+        squadHeros[_pos].GetComponent<SquadHero>().hero = heroGO;
+        SquadInfoUpdate();
+    }
+    private void SquadInfoUpdate()
+    {
+        for (int a = 0; a < 4; a++)
+        {
+            if (squadHeros[a].GetComponent<SquadHero>().hero != null)
+            {
+                squadHeros[a].GetComponent<SquadHero>().UpdateHeroInfo();
+            }
+            
+        }
+    }
+    public GameObject ReturnHeroInfo(int _pos)
+    {
+        return squadHeros[_pos];
     }
     public void OpenHeroDetail()
     {
         heroDetailPanel.SetActive(true);
-    }
-    public void UpdateSquad() //상단 스쿼드 정보 update (squadCount만큼만 등록)
-    {
-        for (int a = 0; a < squadCount; a++)
-        {
-
-        }
     }
 
 }

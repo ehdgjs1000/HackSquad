@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     //In Game Data
     [SerializeField] Skill[] upgradeSkills;
+    //[SerializeField] GameObject[] heroGos;
+    [SerializeField] Transform[] heroPos;
     public PlayerCtrl[] players;
 
     private void Awake()
@@ -31,7 +33,20 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
+        SetHeros();
         InitSkillInfo();
+    }
+    private void SetHeros()
+    {
+        for (int a = 0; a < 4; a++)
+        {
+            if (ChangeScene.instance.heros[a] != null)
+            {
+                players[a] = ChangeScene.instance.heros[a].GetComponent<PlayerCtrl>();
+                PlayerCtrl hero = Instantiate(players[a], heroPos[a].position, Quaternion.identity);
+            }
+        }
+
     }
     //게임 시작시 초기 스킬들을 저장해둠
     private void InitSkillInfo() 
@@ -39,12 +54,16 @@ public class GameManager : MonoBehaviour
         int skillCount = 0;
         for (int a = 0; a < players.Length; a++)
         {
-            for(int b = 0; b < 3; b++)
+            if (players[a] != null)
             {
-                SkillManager.instance.skillDatas[skillCount] = players[a].characterSkills[b];
-                skillCount++;
+                for (int b = 0; b < 3; b++)
+                {
+                    SkillManager.instance.skillDatas[skillCount] = players[a].characterSkills[b];
+                    skillCount++;
+                }
+                SkillManager.instance.finalSkill[a] = players[a].finalSkill;
             }
-            SkillManager.instance.finalSkill[a] = players[a].finalSkill;
+            
         }
         ResetSkillLevel();
     }
