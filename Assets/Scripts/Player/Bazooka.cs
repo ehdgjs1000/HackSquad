@@ -49,7 +49,6 @@ public class Bazooka : PlayerCtrl
     }
     IEnumerator BazookaFinalSkill()
     {
-        Debug.Log("바주카 궁극기");
         finalSkillTime = tempFinalSkillTime;
         //비행기 지나가기
         Instantiate(plane, new Vector3(22,9,0), Quaternion.Euler(0,-90,0));

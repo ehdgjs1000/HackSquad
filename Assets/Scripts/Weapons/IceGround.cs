@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class IceGround : MonoBehaviour
 {
-    float attackTerm = 0.3f;
+    float attackTerm = 0.5f;
     float tempAttackTerm;
     [SerializeField] float iceRadius;
     [SerializeField] LayerMask monsterLayer;

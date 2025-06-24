@@ -19638,7 +19638,7 @@ MonoBehaviour:
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
-  attackTerm: 0.2
+  attackTerm: 0.5
   damage: 1
   tempAttackTerm: 0
 --- !u!1 &7067059861002664775

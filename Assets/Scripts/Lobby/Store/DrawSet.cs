@@ -49,7 +49,10 @@ public class DrawSet : MonoBehaviour
             {
                 draw10Heros[i].SetHero(RandomReturnHero());
                 draw10Heros[i].InfoUpdate();
-                draw10Heros[i].gameObject.transform.DOScale(new Vector3(0.4f,0.4f,0.4f), 0);
+                draw10Heros[i].gameObject.transform.DOScale(new Vector3(0.4f, 0.4f, 0.4f), 0.0f);
+            }
+            for (int i = 0; i < 10; i++)
+            {
                 if(i == 0 ) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(0,710,0), cardMoveTime);
                 else if(i == 1) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(350, 600, 0), cardMoveTime);
                 else if (i == 2) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(350, 200, 0), cardMoveTime);

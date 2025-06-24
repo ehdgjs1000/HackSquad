@@ -177,7 +177,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 38c3aa5d2e1be4f45935b9450d1da4a3, type: 2}
   - {fileID: 11400000, guid: 17e307dc3d063eb479e58797c04f3675, type: 2}
   finalSkill: {fileID: 11400000, guid: 956e7dd7688cbb94ab55e6a87b6a0e41, type: 2}
-  initAttackRange: 20
+  initAttackRange: 8
   initFireRate: 0.2
   initMaxBullet: 25
   initReloadingTime: 2.5

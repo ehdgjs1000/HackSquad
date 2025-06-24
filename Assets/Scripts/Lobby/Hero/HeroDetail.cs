@@ -23,7 +23,22 @@ public class HeroDetail : MonoBehaviour
         PlayerCtrl hero = heroGo.GetComponent<PlayerCtrl>();
         HeroInfo heroInfo = heroGo.GetComponent<HeroInfo>();
         heroNameText.text = hero.characterName;
-        heroGradeText.text = heroInfo.ReturnHeroGrade().ToString()+"등급";
+        if (heroInfo.ReturnHeroGrade() == 0)
+        {
+            heroGradeText.text = "일반등급";
+        }
+        else if (heroInfo.ReturnHeroGrade() == 1)
+        {
+            heroGradeText.text = "스페셜등급";
+        }
+        else if (heroInfo.ReturnHeroGrade() == 2)
+        {
+            heroGradeText.text = "에픽등급";
+        }
+        else if (heroInfo.ReturnHeroGrade() == 3)
+        {
+            heroGradeText.text = "레전드등급";
+        }
         heroLevelText.text = heroInfo.ReturnHeroLevel().ToString();
         float dps = (1 / hero.initFireRate) * hero.initDamage;
         heroDpsText.text = dps.ToString();

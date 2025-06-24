@@ -20,11 +20,11 @@ public class SkillManager : MonoBehaviour
         Debug.Log("ResetSkillLevel");
         for (int a = 0; a < skillDatas.Length; a++)
         {
-            skillDatas[a].skillLevel = 0;
+            if(skillDatas[a] != null) skillDatas[a].skillLevel = 0;
         }
         for (int a = 0; a < finalSkill.Length; a++)
         {
-            finalSkill[a].skillLevel = 0;
+            if (finalSkill[a] != null) finalSkill[a].skillLevel = 0;
         }
     }
 

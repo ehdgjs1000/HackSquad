@@ -1383,11 +1383,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b056eaf15b356114e8bee4c8cfef28f6, type: 2}
   - {fileID: 11400000, guid: 673d1a79bd7129c49b3a9ff3768d3c49, type: 2}
   finalSkill: {fileID: 11400000, guid: 0f663ebe9f0d2ac49ae944e28fa746b3, type: 2}
-  initAttackRange: 20
+  initAttackRange: 8
   initFireRate: 0.2
   initMaxBullet: 10
   initReloadingTime: 3
-  initDamage: 1
+  initDamage: 2
   isMoving: 0
   monsterLayer:
     serializedVersion: 2

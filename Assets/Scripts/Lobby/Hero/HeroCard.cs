@@ -31,7 +31,7 @@ public class HeroCard : MonoBehaviour
         if(canUpgrade) upgradeIcon.gameObject.SetActive(true);
         else upgradeIcon.gameObject.SetActive(false);
         if (heroLevel > 0) noHeroBg.SetActive(false);
-        int heroGrade = heroLevel = heroPrefab.GetComponent<HeroInfo>().ReturnHeroGrade();
+        int heroGrade = heroPrefab.GetComponent<HeroInfo>().ReturnHeroGrade();
         Color color;
         if(heroGrade == 0)
         {

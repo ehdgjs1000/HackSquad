@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -8,10 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     //Level System
-    float hp = 100;
+    public float hp = 100;
     [SerializeField] int level;
     float nowExp;
     float needExp = 100.0f;
+    bool isGameOver = false;
 
     //UI
     [SerializeField] Image hpImage;
@@ -34,7 +36,12 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         SetHeros();
+        UpdateUI();
         InitSkillInfo();
+    }
+    public void GetExp(float _gainExp)
+    {
+        nowExp += _gainExp;
     }
     private void SetHeros()
     {
@@ -75,11 +82,20 @@ public class GameManager : MonoBehaviour
     {
         hpImage.fillAmount = hp / 100;
         expImage.fillAmount = nowExp / needExp;
-        levelText.text = level.ToString() + "레 벨";
+        levelText.text = level.ToString() + "레벨";
     }
-    private void GameOver()
+    public void GetDamage(float _damage)
     {
+        hp -= _damage;
+        UpdateUI();
+        if (hp <= 0.0f && !isGameOver) StartCoroutine(GameOver());
+    }
+    IEnumerator GameOver()
+    {
+        isGameOver = true;
         ResetSkillLevel();
+
+        yield return null;
     }
     private void ResetSkillLevel()
     {
@@ -97,7 +113,6 @@ public class GameManager : MonoBehaviour
         {
             upgradeSkills[a].SkillChoose();
         }
-
         UpdateUI();
     }
 
