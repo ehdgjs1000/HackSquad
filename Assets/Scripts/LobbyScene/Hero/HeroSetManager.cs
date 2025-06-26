@@ -17,12 +17,18 @@ public class HeroSetManager : MonoBehaviour
     }
     private void Start()
     {
-       UpdateTopInfo();
+        UpdateInfo();
+        SquadInfoUpdate();
     }
-    public void UpdateTopInfo()
+    public void UpdateInfo()
     {
+        for (int i =0; i < PreviewManager.instance.heroCards.Length; i++)
+        {
+            PreviewManager.instance.heroCards[i].UpdateHeroCard();
+        }
         goldText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
         gemText.text = BackEndGameData.Instance.UserGameData.gem.ToString();
+        SquadInfoUpdate();
     }
     public void ChooseHero(int _pos, GameObject heroGO)
     {
@@ -32,6 +38,17 @@ public class HeroSetManager : MonoBehaviour
     }
     private void SquadInfoUpdate()
     {
+        for (int a = 0; a < 4; a++)
+        {
+            if(BackEndGameData.Instance.UserHeroData.heroChooseNum[a] != 99)
+            {
+                squadHeros[a].GetComponent<SquadHero>().hero =
+                PreviewManager.instance.heroGos[BackEndGameData.Instance.UserHeroData.heroChooseNum[a]];
+            }
+            
+        }
+
+        //SquadHero에 hero가 등록되어 있을 경우 Info Update
         for (int a = 0; a < 4; a++)
         {
             if (squadHeros[a].GetComponent<SquadHero>().hero != null)

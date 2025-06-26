@@ -5,6 +5,7 @@ public abstract class PlayerCtrl : MonoBehaviour
 {
     public static PlayerCtrl instance;
     protected Animator _animator;
+    HeroInfo heroInfo;
 
     public string characterName;
     //About Fight Mode
@@ -20,6 +21,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     public int initMaxBullet;
     public float initReloadingTime;
     public float initDamage;
+    public float initHp;
 
     protected float attackRange;
     protected float fireRate;
@@ -28,6 +30,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     protected float damage;
     protected int nowBullet;
     protected float tempFireRate;
+    protected float hp;
     protected bool isReloading = false;
 
     public bool isMoving = false;
@@ -41,6 +44,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     {
         if (instance == null) instance = this;
         _animator = GetComponent<Animator>();
+        heroInfo = GetComponent<HeroInfo>();
 
         InitCharacterStats();
     }
@@ -59,15 +63,21 @@ public abstract class PlayerCtrl : MonoBehaviour
     }
     private void InitCharacterStats()
     {
+        int heroNum = heroInfo.ReturnHeroNum();
         attackRange = initAttackRange;
         fireRate = initFireRate;
         maxBullet = initMaxBullet;
         reloadingTime = initReloadingTime;
-        damage = initDamage;
-
+        damage = initDamage * Mathf.Pow(1.5f, BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]);
+        hp = initHp + 5* BackEndGameData.Instance.UserHeroData.heroLevel[heroNum];
+         
         nowBullet = maxBullet;
         tempFireRate = fireRate;
         fireRate = 0;
+    }
+    public float ReturnInitHp()
+    {
+        return initHp;
     }
     private void CheckMonster()
     {

@@ -6,7 +6,7 @@ using DG.Tweening;
 public class HeroCard : MonoBehaviour
 {
     [SerializeField] GameObject heroPrefab;
-
+    
     //UI
     [SerializeField] Image heroImage;
     [SerializeField] TextMeshProUGUI heroLevelText;
@@ -15,6 +15,7 @@ public class HeroCard : MonoBehaviour
     [SerializeField] GameObject upgradeIcon;
     bool canUpgrade;
     int heroLevel;
+    int heroCount;
     [SerializeField] HeroDetail heroDetail;
 
 
@@ -22,16 +23,33 @@ public class HeroCard : MonoBehaviour
     {
         UpdateHeroCard();
     }
-    private void UpdateHeroCard()
+    public void UpdateHeroCard()
     {
         CheckUpgrade();
-        heroImage.sprite = heroPrefab.GetComponent<HeroInfo>().ReturnHeroProfile();
-        heroLevel = heroPrefab.GetComponent<HeroInfo>().ReturnHeroLevel();
+
+        HeroInfo hero = heroPrefab.GetComponent<HeroInfo>();
+        hero.UpdateHeroInfo();
+        heroImage.sprite = hero.ReturnHeroProfile();
+        heroCount = hero.ReturnHeroCount();
+        heroLevel = hero.ReturnHeroLevel();
+        //보유 히어로가 없을경우 배경 처리
+        if (heroLevel == 0 && heroCount == 0) noHeroBg.gameObject.SetActive(true);
+        else noHeroBg.gameObject.SetActive(false);
         heroLevelText.text = heroLevel.ToString() + "레벨";
-        if(canUpgrade) upgradeIcon.gameObject.SetActive(true);
+
+        if (heroCount >= Mathf.Pow(2, heroLevel)) canUpgrade = true;
+        else canUpgrade = false;
+
+        if(canUpgrade)
+        {
+            upgradeIcon.gameObject.SetActive(true);
+            StartCoroutine(upgradeIcon.GetComponent<IconAnim>().PlayIconAnim());
+            
+        }
         else upgradeIcon.gameObject.SetActive(false);
+
         if (heroLevel > 0) noHeroBg.SetActive(false);
-        int heroGrade = heroPrefab.GetComponent<HeroInfo>().ReturnHeroGrade();
+        int heroGrade = hero.ReturnHeroGrade();
         Color color;
         if(heroGrade == 0)
         {
@@ -62,7 +80,7 @@ public class HeroCard : MonoBehaviour
     public void HeroBtnOnClick()
     {
         heroDetail.gameObject.SetActive(true);
-        heroDetail.SetHero(heroPrefab);
+        heroDetail.SetHero(heroPrefab, canUpgrade);
         heroDetail.HeroDetailUpdate();
     }
 

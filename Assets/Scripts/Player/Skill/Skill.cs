@@ -12,6 +12,7 @@ public class Skill : MonoBehaviour
     [SerializeField] TextMeshProUGUI skillDescText;
     [SerializeField] Image skillCharacterProfileImage;
     [SerializeField] Image skillImage;
+    [SerializeField] Image skillBg;
     int skillId;
     int skillCharacterNum;
 
@@ -22,6 +23,19 @@ public class Skill : MonoBehaviour
         skillImage.sprite = skill.skillImage;
         skillCharacterProfileImage.sprite = skill.skillCharacterImage;
         skillId = skill.ID;
+
+        Color color;
+        if(skill.ID % 10 == 9)
+        {
+            ColorUtility.TryParseHtmlString("#D63421", out color);
+            skillBg.color = color;
+        }
+        else
+        {
+            ColorUtility.TryParseHtmlString("#51BF20", out color);
+            skillBg.color = color;
+        }
+        
         //skillCharacterProfileImage = skill;
     }
     public void SkillChoose()
@@ -34,6 +48,7 @@ public class Skill : MonoBehaviour
     {
         UpgradeSkill();
         skill.skillLevel++;
+        GameManager.instance.GameSpeed(1.0f);
         upgradePanel.transform.DOScale(Vector3.zero,0.1f);
     }
     private void UpgradeSkill()

@@ -8,13 +8,17 @@ public class SquadHero : MonoBehaviour
     [SerializeField] Image heroImage;
     [SerializeField] TextMeshProUGUI heroLevelText;
     [SerializeField] Image bgImage;
-    
+    [SerializeField] GameObject upgradeIcon;
+    [SerializeField] int squadNum;
+    bool canUpgrade = false;
     public void SquadHeroBtnClick()
     {
         if(hero != null)
         {
             hero = null;
             HeroSetManager.instance.squadCount--;
+            BackEndGameData.Instance.UserHeroData.heroChooseNum[squadNum] = 99;
+            BackEndGameData.Instance.GameDataUpdate();
         }
         UpdateHeroInfo();
     }
@@ -53,7 +57,15 @@ public class SquadHero : MonoBehaviour
             heroLevelText.text = "";
             bgImage.color = Color.white;
         }
-        
+
+        if (canUpgrade)
+        {
+            upgradeIcon.SetActive(true);
+        }
+        else
+        {
+            upgradeIcon.SetActive(false);
+        }
 
         
     }

@@ -44,7 +44,7 @@ public class MonsterCtrl : MonoBehaviour
                 MoveToTarget();
             }
         }
-        AttackCheck();
+        if(!isDie) AttackCheck();
         attackTerm -= Time.deltaTime;
     }
     public IEnumerator GetStun(float _stunTime)
@@ -107,8 +107,6 @@ public class MonsterCtrl : MonoBehaviour
     }
     IEnumerator Attack()
     {
-        Debug.Log("Attack");
-        
         isAttacking = true;
         attackTerm = tempAttackTerm;
         //_animator.SetTrigger("Attack");

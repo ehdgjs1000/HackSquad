@@ -18,7 +18,7 @@ public class DrawSet : MonoBehaviour
     [SerializeField] DrawHeroGo draw1Hero;
     [SerializeField] DrawHeroGo[] draw10Heros;
 
-    float cardMoveTime = 0.5f;
+    float cardMoveTime = 0.3f;
     bool canExit = false;
     [SerializeField] GameObject exitText;
 
@@ -52,6 +52,7 @@ public class DrawSet : MonoBehaviour
             draw1Hero.InfoUpdate();
             draw1Hero.gameObject.transform.DOScale(Vector3.one, 1.0f);
             BackEndGameData.Instance.GameDataUpdate();
+            PreviewManager.instance.HeroInfoUpdate();
         }
         else
         {
@@ -74,7 +75,7 @@ public class DrawSet : MonoBehaviour
                 else if (i == 7) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(-350, -200, 0), cardMoveTime);
                 else if (i == 8) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(-350, 200, 0), cardMoveTime);
                 else if (i == 9) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(-350, 600, 0), cardMoveTime);
-                yield return new WaitForSeconds(0.6f);
+                yield return new WaitForSeconds(0.4f);
             }
         }
         //BackEndGameData.Instance.GameDataUpdate();

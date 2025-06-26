@@ -36,8 +36,6 @@ public class MonsterSpawner : MonoBehaviour
     {
         curSpawnDelay = 0;
         int monsterType = 0; ;
-        Debug.Log("Spawn");
-        Debug.Log(spawnList[spawnIndex].monsterType);
         switch (spawnList[spawnIndex].monsterType)
         {
             case "0":
@@ -82,7 +80,6 @@ public class MonsterSpawner : MonoBehaviour
         while (stringReader != null)
         {
             string line = stringReader.ReadLine();
-            Debug.Log(line);
             if (line == null) break;
 
             Spawn spawnData = new Spawn();

@@ -41,8 +41,14 @@ public class LobbyManager : MonoBehaviour
             if (a == _num) chapterSet[a].transform.DOScale(new Vector3(1,1,1),0.0f);
             else chapterSet[a].transform.DOScale(new Vector3(0,0,0), 0.0f);
         }
+        if(_num == 1)
+        {
+            //HeroCard Update / HeroInfo Update
+            PreviewManager.instance.HeroInfoUpdate();
+        }
+
         MainManager.instance.UpdateMainUI();
-        HeroSetManager.instance.UpdateTopInfo();
+        HeroSetManager.instance.UpdateInfo();
     }
 
 

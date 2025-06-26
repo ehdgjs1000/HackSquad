@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
 
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     //Level System
-    public float hp = 100;
+    float hp = 0;
     [SerializeField] int level;
     float nowExp;
     float needExp = 100.0f;
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image expImage;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] GameObject upgradePanel;
-
+    [SerializeField] GameObject gameOverSet;
     //In Game Data
     [SerializeField] Skill[] upgradeSkills;
     //[SerializeField] GameObject[] heroGos;
@@ -45,12 +46,14 @@ public class GameManager : MonoBehaviour
     }
     private void SetHeros()
     {
+        hp = 0;
         for (int a = 0; a < 4; a++)
         {
             if (ChangeScene.instance.heros[a] != null)
             {
                 players[a] = ChangeScene.instance.heros[a].GetComponent<PlayerCtrl>();
                 PlayerCtrl hero = Instantiate(players[a], heroPos[a].position, Quaternion.identity);
+                hp += hero.ReturnInitHp();
             }
         }
 
@@ -94,26 +97,45 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         ResetSkillLevel();
+        GameOverManager.instance.SetReward();
+
+        if (hp <= 0) GameOverManager.instance.isWin = false;
+        else GameOverManager.instance.isWin = true;
+
+        StartCoroutine(GameOverManager.instance.GameOver());
+        gameOverSet.SetActive(true);
+        gameOverSet.transform.DOScale(Vector3.one, 0.2f);
+        GameSpeed(0.0f);
 
         yield return null;
+    }
+    public void GameExitOnClicl()
+    {
+        GameSpeed(1);
+        SceneManager.LoadScene("LobbyScene");
     }
     private void ResetSkillLevel()
     {
         SkillManager.instance.ResetSkillLevel();
     }
-
+    public void GameSpeed(float _speed)
+    {
+        Time.timeScale = _speed;
+    }
     public void LevelUp()
     {
         print("Level Up");
         level++;
         nowExp -= needExp;
         needExp *= 1.2f;
-        upgradePanel.transform.DOScale(Vector3.one, 0.1f);
+        upgradePanel.transform.DOScale(Vector3.one, 0f);
         for (int a = 0; a < upgradeSkills.Length; a++)
         {
             upgradeSkills[a].SkillChoose();
         }
         UpdateUI();
+
+        GameSpeed(0.0f);
     }
 
 }

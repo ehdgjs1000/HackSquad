@@ -330,9 +330,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroProfileImage: {fileID: 21300000, guid: 2570f08631a3240428b8c8f1fd10ffd8, type: 3}
-  heroLevel: 0
   heroGrade: 3
   heroNum: 4
+  heroLevel: 0
+  heroCount: 0
 --- !u!114 &3891278100387399118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +361,7 @@ MonoBehaviour:
   initMaxBullet: 2
   initReloadingTime: 3
   initDamage: 4
+  initHp: 20
   isMoving: 0
   monsterLayer:
     serializedVersion: 2

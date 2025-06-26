@@ -21,7 +21,7 @@ public class MainManager : MonoBehaviour
     //GameLevelDatas
     [SerializeField] TextMeshProUGUI gameLevelText;
     [SerializeField] TextMeshProUGUI highestWaveText;
-    string[] gameLevelName = new string[] {"null스테이지" ,"스테이지이름"};
+    string[] gameLevelName = new string[] {"null스테이지" ,"1스테이지이름"};
     int gameLevel = 1;  
     int highestWave = 0;
 
@@ -49,14 +49,18 @@ public class MainManager : MonoBehaviour
     }
     public void GameStartOnClick()
     {
-        //다음 씬으로 고른 Hero 정보 넘기기
-        ChangeScene.instance.SetHeros();
+        if (HeroSetManager.instance.squadCount > 0)
+        {
+            //다음 씬으로 고른 Hero 정보 넘기기
+            ChangeScene.instance.SetHeros();
 
-        //SceneManager.LoadScene("GameScene");
+            //SceneManager.LoadScene("GameScene");
 
-        string scene = "Chapter" + gameLevel;
-        SceneManager.LoadScene("TestSceneA");
-        SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+            string scene = "Chapter" + gameLevel;
+            SceneManager.LoadScene("InGameCommon");
+            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+        }
+        
 
     }
 }

@@ -41,7 +41,7 @@ public class Jester : PlayerCtrl
         else
         {
             bullet = Instantiate(finalBullet, new Vector3(monster.transform.position.x,
-            monster.transform.position.y + 0.05f,
+            monster.transform.position.y + 0.3f,
             monster.transform.position.z), Quaternion.identity);
             bullet.GetComponent<JesterBullet>().damage = damage;
             bullet.GetComponent<JesterBullet>().attackTerm = poisionTerm /0.5f;

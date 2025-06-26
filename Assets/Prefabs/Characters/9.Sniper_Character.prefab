@@ -1490,9 +1490,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroProfileImage: {fileID: 21300000, guid: dfc7046f75d4c264fa5cc8ae38f0f8b6, type: 3}
-  heroLevel: 0
   heroGrade: 0
   heroNum: 9
+  heroLevel: 0
+  heroCount: 0
 --- !u!135 &7433037871242573569
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1568,6 +1569,7 @@ MonoBehaviour:
   initMaxBullet: 10
   initReloadingTime: 2
   initDamage: 10
+  initHp: 20
   isMoving: 0
   monsterLayer:
     serializedVersion: 2
