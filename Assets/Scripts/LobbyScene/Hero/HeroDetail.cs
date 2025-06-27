@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class HeroDetail : MonoBehaviour
 {
-    GameObject heroGo;
+    public GameObject heroGo;
     HeroInfo heroInfo;
     int heroNum;
     [SerializeField] TextMeshProUGUI heroNameText;
@@ -20,6 +20,7 @@ public class HeroDetail : MonoBehaviour
     [SerializeField] TextMeshProUGUI nowHeroAmountText;
     [SerializeField] PreviewManager previewManager;
     [SerializeField] Image bgImage;
+    [SerializeField] Button upgradeBtn;
     bool canUpgrade;
     int heroLevel;
     int[] needGold = new int[] {1000,2000,4000,8000,16000,32000,64000,128000,256000};
@@ -75,9 +76,24 @@ public class HeroDetail : MonoBehaviour
             BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]);
         if (canUpgrade)
         {
+            ColorUtility.TryParseHtmlString("#FFE500", out color);
+            upgradeBtn.GetComponent<Image>().color = color;
+
             ColorUtility.TryParseHtmlString("#6BFF28", out color);
-            needHeroAmountText.color = color;
-            needGoldText.color = color;
+            nowHeroAmountText.color = color;
+            nowGoldText.color = color;
+        }
+        if (BackEndGameData.Instance.UserGameData.gold <= needGold[heroLevel])
+        {
+            ColorUtility.TryParseHtmlString("#545454", out color);
+            upgradeBtn.GetComponent<Image>().color = color;
+            nowGoldText.color = Color.red;
+        }
+        else if (BackEndGameData.Instance.UserHeroData.heroCount[heroNum] <= needHeroConut[heroLevel])
+        {
+            ColorUtility.TryParseHtmlString("#545454", out color);
+            upgradeBtn.GetComponent<Image>().color = color;
+            nowHeroAmountText.color = Color.red;
         }
 
         float dps = (1 / hero.initFireRate) * heroDamge;
@@ -102,6 +118,12 @@ public class HeroDetail : MonoBehaviour
         {
             //Upgrade Hero
             UpgradeHero();
+        }else if (BackEndGameData.Instance.UserGameData.gold <= needGold[heroLevel])
+        {
+            PopUpMessageBase.instance.SetMessage("골드가 충분하지 않습니다");
+        }else if (BackEndGameData.Instance.UserHeroData.heroCount[heroNum] >= needHeroConut[heroLevel])
+        {
+            PopUpMessageBase.instance.SetMessage("영웅 갯수가 충분하지 않습니다");
         }
 
         HeroDetailUpdate();
@@ -128,7 +150,11 @@ public class HeroDetail : MonoBehaviour
             {
                 if (HeroSetManager.instance.ReturnHeroInfo(a).GetComponent<SquadHero>().hero != null &&
                     HeroSetManager.instance.ReturnHeroInfo(a).GetComponent<SquadHero>().hero.GetComponent<HeroInfo>().ReturnHeroNum() == 
-                    heroGo.GetComponent<HeroInfo>().ReturnHeroNum()) return;
+                    heroGo.GetComponent<HeroInfo>().ReturnHeroNum())
+                {
+                    PopUpMessageBase.instance.SetMessage("이미 등록된 핵쟁이입니다");
+                    return;
+                }
             }
             //히어로 등록
             for (int a = 0; a < 4; a++)
@@ -143,6 +169,14 @@ public class HeroDetail : MonoBehaviour
             }
             BackEndGameData.Instance.GameDataUpdate();
             this.gameObject.SetActive(false);
+        }
+        else if(HeroSetManager.instance.squadCount >= 4)
+        {
+            PopUpMessageBase.instance.SetMessage("스쿼드가 가득 찼습니다");
+        }
+        else if (heroLevel <= 0)
+        {
+            PopUpMessageBase.instance.SetMessage("핵쟁이가 0레벨 입니다");
         }
     }
 

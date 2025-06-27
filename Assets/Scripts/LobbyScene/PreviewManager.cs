@@ -5,6 +5,7 @@ public class PreviewManager : MonoBehaviour
 {
     public static PreviewManager instance;
 
+    public GameObject[] heroInGameGos;
     public GameObject[] heroGos;
     public HeroCard[] heroCards;
 

@@ -54,13 +54,12 @@ public class MainManager : MonoBehaviour
             //다음 씬으로 고른 Hero 정보 넘기기
             ChangeScene.instance.SetHeros();
 
-            //SceneManager.LoadScene("GameScene");
-
             string scene = "Chapter" + gameLevel;
             SceneManager.LoadScene("InGameCommon");
             SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+        }else if (HeroSetManager.instance.squadCount <= 0)
+        {
+            PopUpMessageBase.instance.SetMessage("스쿼드에 핵쟁이를 등록해주세요");
         }
-        
-
     }
 }

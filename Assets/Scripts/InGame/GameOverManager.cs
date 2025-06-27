@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class GameOverManager : MonoBehaviour
@@ -36,6 +37,11 @@ public class GameOverManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         canExit = true;
         gameOverText.gameObject.SetActive(true);
+    }
+    public void ExitLobbyOnClick()
+    {
+        SceneManager.LoadScene("LobbyScene");
+
     }
     private void RewardUpdate()
     {

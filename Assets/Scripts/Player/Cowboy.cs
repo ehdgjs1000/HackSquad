@@ -10,7 +10,7 @@ public class Cowboy : PlayerCtrl
     {
         base.Awake();
         penetrateCount = 0;
-        shotGunBulletSkillLevel = 1;
+        shotGunBulletSkillLevel = 0;
     }
     protected override void Attack(MonsterCtrl enemy)
     {

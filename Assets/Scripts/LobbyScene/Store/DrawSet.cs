@@ -29,11 +29,15 @@ public class DrawSet : MonoBehaviour
             BackEndGameData.Instance.UserGameData.gem -= 100;
             StartCoroutine(DrawHeros(drawNum));
         }
-        else if(drawNum == 10 && BackEndGameData.Instance.UserGameData.gem >= 900)
+        else PopUpMessageBase.instance.SetMessage("크리스탈이 충분하지 않습니다");
+
+        if (drawNum == 10 && BackEndGameData.Instance.UserGameData.gem >= 900)
         {
             BackEndGameData.Instance.UserGameData.gem -= 900;
             StartCoroutine(DrawHeros(drawNum));
         }
+        else PopUpMessageBase.instance.SetMessage("크리스탈이 충분하지 않습니다");
+
         StoreManager.instance.UpdateMainUI();
     }
     IEnumerator DrawHeros(int drawNum)

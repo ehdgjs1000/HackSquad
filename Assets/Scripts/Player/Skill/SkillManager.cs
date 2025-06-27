@@ -17,7 +17,6 @@ public class SkillManager : MonoBehaviour
     }
     public void ResetSkillLevel()
     {
-        Debug.Log("ResetSkillLevel");
         for (int a = 0; a < skillDatas.Length; a++)
         {
             if(skillDatas[a] != null) skillDatas[a].skillLevel = 0;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class HeroSetManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class HeroSetManager : MonoBehaviour
     [SerializeField] GameObject heroDetailPanel;
 
     public int squadCount = 0;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -18,7 +20,7 @@ public class HeroSetManager : MonoBehaviour
     private void Start()
     {
         UpdateInfo();
-        SquadInfoUpdate();
+        StartCoroutine(InitSquadInfo());
     }
     public void UpdateInfo()
     {
@@ -34,20 +36,27 @@ public class HeroSetManager : MonoBehaviour
     {
         squadCount++;
         squadHeros[_pos].GetComponent<SquadHero>().hero = heroGO;
+        BackEndGameData.Instance.GameDataUpdate();
+        SquadInfoUpdate();
+    }
+    IEnumerator InitSquadInfo()
+    {
+        yield return new WaitForSeconds(0.2f);
         SquadInfoUpdate();
     }
     private void SquadInfoUpdate()
     {
+        squadCount = 0;
         for (int a = 0; a < 4; a++)
         {
             if(BackEndGameData.Instance.UserHeroData.heroChooseNum[a] != 99)
             {
                 squadHeros[a].GetComponent<SquadHero>().hero =
-                PreviewManager.instance.heroGos[BackEndGameData.Instance.UserHeroData.heroChooseNum[a]];
+                PreviewManager.instance.heroInGameGos[BackEndGameData.Instance.UserHeroData.heroChooseNum[a]];
+                squadCount++;
             }
             
         }
-
         //SquadHero에 hero가 등록되어 있을 경우 Info Update
         for (int a = 0; a < 4; a++)
         {

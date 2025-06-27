@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MonsterSpawner : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MonsterSpawner : MonoBehaviour
 
     List<Spawn> spawnList;
     int spawnIndex = 0;
+    int spawnPosNum = 0;
     bool canSpawn = true;
     float nextSpawnDelay;
     float curSpawnDelay = 0.0f;
@@ -32,6 +34,13 @@ public class MonsterSpawner : MonoBehaviour
         }
         
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 12);
+
+    }
+
     private void SpawnMonster()
     {
         curSpawnDelay = 0;
@@ -57,7 +66,7 @@ public class MonsterSpawner : MonoBehaviour
                 monsterType = 5;
                 break;
         }
-        Instantiate(monsters[monsterType], monsterSpawnPoses[spawnIndex].position, Quaternion.identity);
+        Instantiate(monsters[monsterType], monsterSpawnPoses[spawnList[spawnIndex].spawnPos].position, Quaternion.identity);
 
         spawnIndex++;
         if (spawnIndex == spawnList.Count)
@@ -73,7 +82,8 @@ public class MonsterSpawner : MonoBehaviour
         spawnIndex = 0;
         canSpawn = false;
 
-        //추후 chpater이름 바꾸기 동적으로
+        //씬 이름의 Text파일을 폴더에서 읽어옴
+        //TextAsset textFile = Resources.Load(SceneManager.GetActiveScene().name) as TextAsset;
         TextAsset textFile = Resources.Load("Chapter1") as TextAsset;
         StringReader stringReader = new StringReader(textFile.text);
 

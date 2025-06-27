@@ -156,7 +156,7 @@ MonoBehaviour:
   bulletSpeed: 20
   damagePopUpTr: {fileID: 4453229395328416960, guid: f89fa60e57839544d9d1d446af99bea3, type: 3}
   onHitVFX: {fileID: 7705123086510269973, guid: b355d17f9289dd243a93589771a21f47, type: 3}
-  exploseRadius: 10
+  exploseRadius: 1.5
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128

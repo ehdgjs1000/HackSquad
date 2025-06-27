@@ -8,6 +8,7 @@ public class StoreManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI gemText;
     [SerializeField] TextMeshProUGUI goldText;
+    [SerializeField] DrawBtnCtrl[] drawBtns;
 
     private void Awake()
     {
@@ -18,6 +19,10 @@ public class StoreManager : MonoBehaviour
     {
         gemText.text = BackEndGameData.Instance.UserGameData.gem.ToString();
         goldText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
+        for (int i = 0; i <drawBtns.Length; i++)
+        {
+            drawBtns[i].UpdateDrawBtn();
+        }
     }
 
 }

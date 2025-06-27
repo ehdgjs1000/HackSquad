@@ -95,7 +95,7 @@ public class BackEndGameData
             {"HeroChoose1", userHeroData.heroChooseNum[0]},
             {"HeroChoose2", userHeroData.heroChooseNum[1]},
             {"HeroChoose3", userHeroData.heroChooseNum[2]},
-            {"HeroChoose4", userHeroData.heroChooseNum[3]}
+            {"HeroChoose4", userHeroData.heroChooseNum[3]},
         };
 
         Backend.GameData.Insert("HERO_DATA", param, callback =>
@@ -213,7 +213,6 @@ public class BackEndGameData
                         userHeroData.heroChooseNum[1] = int.Parse(gameHeroDataJson[0]["HeroChoose2"].ToString());
                         userHeroData.heroChooseNum[2] = int.Parse(gameHeroDataJson[0]["HeroChoose3"].ToString());
                         userHeroData.heroChooseNum[3] = int.Parse(gameHeroDataJson[0]["HeroChoose4"].ToString());
-
                     }
                 }
                 catch (System.Exception e)
@@ -313,7 +312,7 @@ public class BackEndGameData
             {"HeroChoose1", userHeroData.heroChooseNum[0] },
             {"HeroChoose2", userHeroData.heroChooseNum[1] },
             {"HeroChoose3", userHeroData.heroChooseNum[2] },
-            {"HeroChoose4", userHeroData.heroChooseNum[3] }
+            {"HeroChoose4", userHeroData.heroChooseNum[3] },
         };
 
         if (string.IsNullOrEmpty(gameHeroDataRawInData))

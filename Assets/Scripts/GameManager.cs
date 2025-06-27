@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     //Level System
-    float hp = 0;
+    float hp = 100;
     [SerializeField] int level;
     float nowExp;
     float needExp = 100.0f;
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     }
     private void SetHeros()
     {
-        hp = 0;
+        hp = 100;
         for (int a = 0; a < 4; a++)
         {
             if (ChangeScene.instance.heros[a] != null)
@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
                 hp += hero.ReturnInitHp();
             }
         }
-
     }
     //게임 시작시 초기 스킬들을 저장해둠
     private void InitSkillInfo() 
@@ -97,15 +96,17 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         ResetSkillLevel();
+        gameOverSet.SetActive(true);
+
         GameOverManager.instance.SetReward();
 
         if (hp <= 0) GameOverManager.instance.isWin = false;
         else GameOverManager.instance.isWin = true;
 
         StartCoroutine(GameOverManager.instance.GameOver());
-        gameOverSet.SetActive(true);
+        
         gameOverSet.transform.DOScale(Vector3.one, 0.2f);
-        GameSpeed(0.0f);
+        //GameSpeed(0.0f);
 
         yield return null;
     }
@@ -136,6 +137,10 @@ public class GameManager : MonoBehaviour
         UpdateUI();
 
         GameSpeed(0.0f);
+    }
+    public void DieOnClick()
+    {
+        StartCoroutine(GameOver());
     }
 
 }
