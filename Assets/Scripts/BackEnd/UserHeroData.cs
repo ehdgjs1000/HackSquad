@@ -9,10 +9,12 @@ public class UserHeroData
     {
         for (int i = 0; i < heroLevel.Length; i++)
         {
-            heroLevel[i] = 0;
+            if(i == 3 || i == 6 || i == 9) heroLevel[i] = 1;
+            else heroLevel[i] = 0;
             heroCount[i] = 0;
+
         }
-        foreach (int i in heroChooseNum) heroChooseNum[i] = 99;
+        for (int i = 0; i < heroChooseNum.Length; i++) heroChooseNum[i] = 99;
     }
 
 

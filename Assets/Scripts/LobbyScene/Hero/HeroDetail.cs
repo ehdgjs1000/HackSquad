@@ -83,13 +83,13 @@ public class HeroDetail : MonoBehaviour
             nowHeroAmountText.color = color;
             nowGoldText.color = color;
         }
-        if (BackEndGameData.Instance.UserGameData.gold <= needGold[heroLevel])
+        if (BackEndGameData.Instance.UserGameData.gold < needGold[heroLevel])
         {
             ColorUtility.TryParseHtmlString("#545454", out color);
             upgradeBtn.GetComponent<Image>().color = color;
             nowGoldText.color = Color.red;
         }
-        else if (BackEndGameData.Instance.UserHeroData.heroCount[heroNum] <= needHeroConut[heroLevel])
+        else if (BackEndGameData.Instance.UserHeroData.heroCount[heroNum] < needHeroConut[heroLevel])
         {
             ColorUtility.TryParseHtmlString("#545454", out color);
             upgradeBtn.GetComponent<Image>().color = color;

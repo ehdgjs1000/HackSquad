@@ -14,6 +14,7 @@ public class Bazooka : PlayerCtrl
     private void Start()
     {
         tempFinalSkillTime = finalSkillTime;
+        exploseRadius = 3;
     }
     protected override void Update()
     {

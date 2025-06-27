@@ -140,7 +140,7 @@ MonoBehaviour:
   heroProfileImage: {fileID: 21300000, guid: 3aabc4da3ca437041b3fd2d41f34f033, type: 3}
   heroGrade: 3
   heroNum: 1
-  heroLevel: 0
+  heroLevel: 1
   heroCount: 0
 --- !u!114 &4208636807303334144
 MonoBehaviour:
@@ -177,7 +177,7 @@ MonoBehaviour:
   finalSkillGO: {fileID: 6845791643628858721, guid: b70a9de85ded1a24c96f36e418a30f3f, type: 3}
   plane: {fileID: 1499464776196500, guid: acaaf9ebbaefe2744b8efca7ac70d859, type: 3}
   finalSkillTime: 5
-  exploseRadius: 26.62
+  exploseRadius: 3
   canUseFinalSkill: 0
 --- !u!54 &6896667776085871785
 Rigidbody:

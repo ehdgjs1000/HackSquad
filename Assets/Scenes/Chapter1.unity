@@ -707,7 +707,7 @@ GameObject:
   m_Component:
   - component: {fileID: 658111771}
   m_Layer: 0
-  m_Name: Pos0 (13)
+  m_Name: PosLeftCenter13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -973,7 +973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 924205452}
   m_Layer: 0
-  m_Name: Pos0 (33)
+  m_Name: PosRightDCenter33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1004,7 +1004,7 @@ GameObject:
   m_Component:
   - component: {fileID: 935995419}
   m_Layer: 0
-  m_Name: Pos0 (4)
+  m_Name: PosRightCenter4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1570,7 +1570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1492993438}
   m_Layer: 0
-  m_Name: Pos0 (23)
+  m_Name: PosLeftDCenter23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -39,14 +39,19 @@ public class SkillManager : MonoBehaviour
     {
         int randomSkillNum = Random.Range(0, skillDatas.Length);
         skillCharacterNum = (randomSkillNum + 1) / 4;
-        if (skillDatas[randomSkillNum].skillLevel == 3 || skillDatas[randomSkillNum] == null)
-        {
-            NormalSkillChoose();
-        }
+        if (skillDatas[randomSkillNum] == null) NormalSkillChoose();
         else
         {
-            choosedSkill = skillDatas[randomSkillNum];
+            if (skillDatas[randomSkillNum].skillLevel == 3)
+            {
+                NormalSkillChoose();
+            }
+            else
+            {
+                choosedSkill = skillDatas[randomSkillNum];
+            }
         }
+        
     }
     private void FinalSkillChoose()
     {

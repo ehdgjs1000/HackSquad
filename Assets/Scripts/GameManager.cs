@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     float nowExp;
     float needExp = 100.0f;
     bool isGameOver = false;
+    public int heroCount;
 
     //UI
     [SerializeField] Image hpImage;
@@ -28,6 +29,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform[] heroPos;
     public PlayerCtrl[] players;
 
+    [SerializeField] Image gamePlayTimeProgress;
+    [SerializeField] TextMeshProUGUI gamePlayTimeText;
+    int min = 0;
+    float sec = 0;
+
     private void Awake()
     {
         instance = this;
@@ -39,6 +45,21 @@ public class GameManager : MonoBehaviour
         SetHeros();
         UpdateUI();
         InitSkillInfo();
+    }
+    private void Update()
+    {
+        sec += Time.deltaTime;
+        GamePlayProgressUpdate();
+    }
+    private void GamePlayProgressUpdate()
+    {
+        if (sec >= 60.0f)
+        {
+            sec -= 60;
+            min++;
+        }
+        gamePlayTimeProgress.fillAmount = ((sec + min*60) / 600);
+        gamePlayTimeText.text = min.ToString() + ":" + sec.ToString("F0");
     }
     public void GetExp(float _gainExp)
     {
@@ -54,6 +75,7 @@ public class GameManager : MonoBehaviour
                 players[a] = ChangeScene.instance.heros[a].GetComponent<PlayerCtrl>();
                 PlayerCtrl hero = Instantiate(players[a], heroPos[a].position, Quaternion.identity);
                 hp += hero.ReturnInitHp();
+                heroCount++;
             }
         }
     }
