@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public float needExp = 50.0f;
     bool isGameOver = false;
     public int heroCount;
+    float expRatio = 1.15f;
 
     //UI
     [SerializeField] Image hpImage;
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Image gamePlayTimeProgress;
     [SerializeField] TextMeshProUGUI gamePlayTimeText;
-    int min = 0;
+    public int min = 0;
     float sec = 0;
 
     private void Awake()
@@ -153,7 +154,7 @@ public class GameManager : MonoBehaviour
         print("Level Up");
         level++;
         nowExp -= needExp;
-        needExp *= 1.3f;
+        needExp *= expRatio;
 
         // 스킬 고를 수 있는 최대 갯수
         if(level < heroCount * 7)

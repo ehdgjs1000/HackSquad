@@ -40,8 +40,30 @@ public class MonsterSpawner : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, 12);
 
     }
-
     private void SpawnMonster()
+    {
+        curSpawnDelay = 0;
+        nextSpawnDelay = Random.Range(2.5f, 3.5f);
+
+        int stage = (GameManager.instance.min/2)+1;
+        int spawnMonsterCount = Random.Range(stage, stage+3);
+        Debug.Log("Stage : " +stage + "/SpawnMonsterConut : " + spawnMonsterCount);
+
+        //추후 몬스터 index 넣기
+        for (int i = 0; i < spawnMonsterCount; i++)
+        {
+            int randomSapwnPos = Random.Range(0, monsterSpawnPoses.Length);
+            Instantiate(monsters[0], monsterSpawnPoses[randomSapwnPos].position, Quaternion.identity);
+        }
+    }
+
+
+
+
+
+
+
+    /*private void SpawnMonster()
     {
         curSpawnDelay = 0;
         int monsterType = 0; ;
@@ -75,7 +97,7 @@ public class MonsterSpawner : MonoBehaviour
             return;
         }
         nextSpawnDelay = spawnList[spawnIndex].sapwnDelay;
-    }
+    }*/
     private void ReadSpawnFile()
     {
         spawnList.Clear();

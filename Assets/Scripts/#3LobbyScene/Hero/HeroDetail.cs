@@ -21,6 +21,9 @@ public class HeroDetail : MonoBehaviour
     [SerializeField] PreviewManager previewManager;
     [SerializeField] Image bgImage;
     [SerializeField] Button upgradeBtn;
+    [SerializeField] TextMeshProUGUI skillName;
+    [SerializeField] TextMeshProUGUI skillDesc;
+    [SerializeField] Image skillImage;
     bool canUpgrade;
     int heroLevel;
     int[] needGold = new int[] {1000,2000,4000,8000,16000,32000,64000,128000,256000};
@@ -67,6 +70,7 @@ public class HeroDetail : MonoBehaviour
         heroLevel = heroInfo.ReturnHeroLevel();
 
         //UI Update
+        SkillUiUpdate();
         heroLevelText.text = heroLevel.ToString() + "·¹º§";
         needGoldText.text = needGold[heroLevel].ToString();
         needHeroAmountText.text = needHeroConut[heroLevel].ToString();
@@ -109,6 +113,15 @@ public class HeroDetail : MonoBehaviour
     {
         canUpgrade = _canUpgrade;
         heroGo = _hero;
+    }
+    private void SkillUiUpdate()
+    {
+        PlayerCtrl playerCtrl = heroGo.GetComponent<PlayerCtrl>();
+        SkillData finalSkill = playerCtrl.finalSkill;
+
+        skillImage.sprite = finalSkill.skillImage;
+        skillName.text = finalSkill.skillName;
+        skillDesc.text = finalSkill.skillDescription;
     }
     public void HeroLevelUpOnClick()
     {

@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 133}
+  m_AnchoredPosition: {x: 0, y: 105}
   m_SizeDelta: {x: 290, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &946535748036865577
@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 7312320416799209938}
   - component: {fileID: 2665934598510571287}
   - component: {fileID: 5909351301285041959}
+  - component: {fileID: 3752553425210810240}
   m_Layer: 5
   m_Name: Skill
   m_TagString: Untagged
@@ -369,6 +370,22 @@ MonoBehaviour:
   skillCharacterProfileImage: {fileID: 6896465346127171108}
   skillImage: {fileID: 5120231687568972130}
   skillBg: {fileID: 7312320416799209938}
+  skillId: 0
+  skillCharacterNum: 0
+--- !u!114 &3752553425210810240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412694183233228635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 20
+  image: {fileID: 7312320416799209938}
 --- !u!1 &2307297460452073862
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 33}
+  m_AnchoredPosition: {x: 0, y: 16}
   m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2350857153004107089
