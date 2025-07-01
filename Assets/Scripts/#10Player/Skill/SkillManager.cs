@@ -44,7 +44,7 @@ public class SkillManager : MonoBehaviour
         int randomSkillNum = Random.Range(0, skillDatas.Length);
 
         //4를 현재 character 수로 변경
-        skillCharacterNum = randomSkillNum / characterCount;
+        skillCharacterNum = randomSkillNum / 3;
         if (skillDatas[randomSkillNum] == null) NormalSkillChoose();
         else
         {

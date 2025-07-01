@@ -55,12 +55,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     }
     public void UpgradeStats(int type, float amount)
     {
-        if (type == 0)
-        {
-            Debug.Log(damage);
-            damage *= amount;
-            Debug.Log(damage);
-        }
+        if (type == 0) damage *= amount;
         else if (type == 1) fireRate *= amount;
         else if (type == 2) maxBullet += (int)amount;
         else if (type == 3) reloadingTime *= amount;
@@ -73,7 +68,7 @@ public abstract class PlayerCtrl : MonoBehaviour
         fireRate = initFireRate;
         maxBullet = initMaxBullet;
         reloadingTime = initReloadingTime;
-        damage = initDamage * Mathf.Pow(1.5f, BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]);
+        damage = initDamage * Mathf.Pow(1.5f, BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]);    
         hp = initHp + 5* BackEndGameData.Instance.UserHeroData.heroLevel[heroNum];
          
         nowBullet = maxBullet;

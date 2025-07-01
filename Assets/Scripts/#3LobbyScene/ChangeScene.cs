@@ -3,6 +3,7 @@ using UnityEngine;
 public class ChangeScene : MonoBehaviour
 {
     public static ChangeScene instance;
+    public string chapterName;
     public GameObject[] heros = new GameObject[4];
 
     private void Awake()

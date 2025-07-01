@@ -21,7 +21,7 @@ public class MainManager : MonoBehaviour
     //GameLevelDatas
     [SerializeField] TextMeshProUGUI gameLevelText;
     [SerializeField] TextMeshProUGUI highestWaveText;
-    string[] gameLevelName = new string[] {"null스테이지" ,"1스테이지이름"};
+    string[] gameLevelName = new string[] {"null스테이지" ,"따뜻한 안방"};
     int gameLevel = 1;  
     int highestWave = 0;
 
@@ -53,6 +53,7 @@ public class MainManager : MonoBehaviour
         {
             //다음 씬으로 고른 Hero 정보 넘기기
             ChangeScene.instance.SetHeros();
+            ChangeScene.instance.chapterName = gameLevelName[gameLevel];
 
             string scene = "Chapter" + gameLevel;
             SceneManager.LoadScene("InGameCommon");

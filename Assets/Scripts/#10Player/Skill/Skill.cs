@@ -53,7 +53,7 @@ public class Skill : MonoBehaviour
     }
     private void UpgradeSkill()
     {
-        if (skillId == 101) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0,1.3f);
+        if (skillId == 101) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 102) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.8f);
         else if (skillId == 103) GameManager.instance.players[skillCharacterNum].GetComponent<Cowboy>().shotGunBulletSkillLevel++;
         else if (skillId == 201) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
@@ -83,14 +83,16 @@ public class Skill : MonoBehaviour
         else if (skillId == 1001) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 1002) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 5);
         else if (skillId == 1003) GameManager.instance.players[skillCharacterNum].GetComponent<Veteran>().FixMaxRandomDegree(-3);
-        else if (skillId == 1101) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0,1.3f);
+        else if (skillId == 1101) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 1102) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 1);
         else if (skillId == 1103) GameManager.instance.players[skillCharacterNum].GetComponent<Jester>().PoisionTermUpgrade();
+        else if (skillId == 1201) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
+        else if (skillId == 1202) GameManager.instance.players[skillCharacterNum].GetComponent<Robot>().attackCount++;
+        else if (skillId == 1203) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.9f);
 
-        Debug.Log(GameManager.instance.players[skillCharacterNum].gameObject.name + " : SkillID = " + skillId + 
-            "SKillcharacterNum = " + skillCharacterNum);
+        Debug.Log(GameManager.instance.players[skillCharacterNum]+ ": " +skillCharacterNum+"¹ø");
         //Final Skill
-        if(skillId == 109)
+        if (skillId == 109)
         {
             GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.5f);
             GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.7f);
@@ -137,6 +139,9 @@ public class Skill : MonoBehaviour
         }else if (skillId == 1109)
         {
             GameManager.instance.players[skillCharacterNum].GetComponent<Jester>().UpgradeFinalSkill();
+        }else if (skillId == 1209)
+        {
+
         }
 
     }

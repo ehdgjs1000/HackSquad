@@ -9,6 +9,7 @@ public class MonsterCtrl : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float hp;
     [SerializeField] float exp;
+    [SerializeField] int gold;
     bool canMove = true;
     Animator _animator;
     Collider monsterColl;
@@ -92,6 +93,7 @@ public class MonsterCtrl : MonoBehaviour
    IEnumerator Die()
     {
         isDie = true;
+        GameManager.instance.getGold += gold;
         monsterColl.enabled = false;
         GameManager.instance.GetExp(exp);
         //_animator.SetTrigger("Die");

@@ -8,6 +8,7 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [SerializeField] MonsterSpawner monsterSpawner;
 
     //Level System
     float hp = 100;
@@ -17,13 +18,15 @@ public class GameManager : MonoBehaviour
     bool isGameOver = false;
     public int heroCount;
     float expRatio = 1.15f;
-
+    float gameSpeed = 1.0f;
+    [SerializeField] TextMeshProUGUI gameSpeedText;
     //UI
     [SerializeField] Image hpImage;
     [SerializeField] Image expImage;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] GameObject upgradePanel;
     [SerializeField] GameObject gameOverSet;
+    [SerializeField] BossImage bossImage;
     //In Game Data
     [SerializeField] Skill[] upgradeSkills;
     //[SerializeField] GameObject[] heroGos;
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI gamePlayTimeText;
     public int min = 0;
     float sec = 0;
+    public int getGold = 0;
 
     private void Awake()
     {
@@ -52,6 +56,23 @@ public class GameManager : MonoBehaviour
         sec += Time.deltaTime;
         GamePlayProgressUpdate();
     }
+    public void GameSpeedOnClick()
+    {
+        if (gameSpeed == 1.0f) gameSpeed = 1.5f;
+        else if (gameSpeed == 1.5f) gameSpeed = 2.0f;
+        else if (gameSpeed == 2.0f) gameSpeed = 1.0f;
+        GameSpeed(gameSpeed);
+    }
+    IEnumerator SpawnBoss()
+    {
+        bossImage.gameObject.SetActive(true);
+        monsterSpawner.canSpawn = false;
+        StartCoroutine(bossImage.BossImageFade());
+        yield return new WaitForSeconds(5.0f);
+        
+        //보스 스폰
+
+    }
     private void GamePlayProgressUpdate()
     {
         if (sec >= 60.0f)
@@ -61,6 +82,10 @@ public class GameManager : MonoBehaviour
         }
         gamePlayTimeProgress.fillAmount = ((sec + min*60) / 600);
         gamePlayTimeText.text = min.ToString() + ":" + sec.ToString("F0");
+
+        //5분 10분 보스 스폰
+        //StartCoroutine(SpawnBoss());
+
     }
     public void GetExp(float _gainExp)
     {
@@ -102,10 +127,6 @@ public class GameManager : MonoBehaviour
         }
         ResetSkillLevel();
     }
-    public void UpdateGameSpeed(int _speed)
-    {
-        Time.timeScale = _speed;
-    }
     private void UpdateUI()
     {
         hpImage.fillAmount = hp / 100;
@@ -136,9 +157,11 @@ public class GameManager : MonoBehaviour
 
         yield return null;
     }
-    public void GameExitOnClicl()
+    public void GameExitOnClick()
     {
         GameSpeed(1);
+        BackEndGameData.Instance.UserGameData.gold += getGold;
+        BackEndGameData.Instance.GameDataUpdate();
         SceneManager.LoadScene("LobbyScene");
     }
     private void ResetSkillLevel()
@@ -148,10 +171,10 @@ public class GameManager : MonoBehaviour
     public void GameSpeed(float _speed)
     {
         Time.timeScale = _speed;
+        gameSpeedText.text = gameSpeed.ToString() + "x";
     }
     public void LevelUp()
     {
-        print("Level Up");
         level++;
         nowExp -= needExp;
         needExp *= expRatio;
@@ -159,7 +182,8 @@ public class GameManager : MonoBehaviour
         // 스킬 고를 수 있는 최대 갯수
         if(level < heroCount * 7)
         {
-            upgradePanel.transform.DOScale(Vector3.one, 0f);
+            upgradePanel.transform.localScale = Vector3.one;
+            //upgradePanel.transform.DOScale(Vector3.one, 0f);
             for (int a = 0; a < upgradeSkills.Length; a++)
             {
                 upgradeSkills[a].SkillChoose();

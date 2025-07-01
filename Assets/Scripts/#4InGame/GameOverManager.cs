@@ -40,8 +40,10 @@ public class GameOverManager : MonoBehaviour
     }
     public void ExitLobbyOnClick()
     {
+        Time.timeScale = 1.0f;
+        BackEndGameData.Instance.UserGameData.gold += GameManager.instance.getGold;
+        BackEndGameData.Instance.GameDataUpdate();
         SceneManager.LoadScene("LobbyScene");
-
     }
     private void RewardUpdate()
     {
