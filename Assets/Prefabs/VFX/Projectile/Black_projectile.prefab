@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5294434938954069135}
   - component: {fileID: 5294434938954069232}
   m_Layer: 0
-  m_Name: FX_Shoot_12_projectile
+  m_Name: Black_projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

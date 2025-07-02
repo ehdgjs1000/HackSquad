@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448674a8c79d63848943093935bc7ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroProfileImage: {fileID: 21300000, guid: ae1950d4284dd4844951aec5c4e4a163, type: 3}
+  heroProfileImage: {fileID: 21300000, guid: 5facf6487f32fbf4a9e81db4f4b87a77, type: 3}
   heroGrade: 3
   heroNum: 0
   heroLevel: 0

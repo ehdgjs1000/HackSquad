@@ -28,6 +28,10 @@ public class BackEndGameData
     private UserHeroData userHeroData = new UserHeroData();
     public UserHeroData UserHeroData => userHeroData;
     private string gameHeroDataRawInData = string.Empty;
+
+    private UserQuestData userQuestData = new UserQuestData();
+    public UserQuestData UserQuestData => userQuestData;
+    private string gameQuestDataRawInData = string.Empty;
     
     /// <summary>
     /// 뒤끝 콘솔 테이블에 새로운 유저 정보 추가
@@ -36,6 +40,7 @@ public class BackEndGameData
     {
         GameUserDataInsert();
         GameHeroDataInsert();
+        GameQuestDataInsert();
     }
     public void GameUserDataInsert()
     {
@@ -113,6 +118,62 @@ public class BackEndGameData
         });
 
     }
+    public void GameQuestDataInsert()
+    {
+        userQuestData.Reset();
+
+        Param param = new Param()
+        {
+            {"dailyClearAmount", userQuestData.dailyClearAmount },
+            {"weeklyClearAmount", userQuestData.weeklyClearAmount },
+
+            {"quest1Progress", userQuestData.questProgress[0] },
+            {"quest2Progress", userQuestData.questProgress[1] },
+            {"quest3Progress", userQuestData.questProgress[2] },
+            {"quest4Progress", userQuestData.questProgress[3] },
+            {"quest5Progress", userQuestData.questProgress[4] },
+            {"quest6Progress", userQuestData.questProgress[5] },
+            {"quest7Progress", userQuestData.questProgress[6] },
+            {"quest8Progress", userQuestData.questProgress[7] },
+            {"quest9Progress", userQuestData.questProgress[8] },
+            {"quest10Progress", userQuestData.questProgress[9] },
+
+            {"daily1Cleared", userQuestData.dailyCleared[0] },
+            {"daily2Cleared", userQuestData.dailyCleared[1] },
+            {"daily3Cleared", userQuestData.dailyCleared[2] },
+            {"daily4Cleared", userQuestData.dailyCleared[3] },
+            {"daily5Cleared", userQuestData.dailyCleared[4] },
+            {"daily6Cleared", userQuestData.dailyCleared[5] },
+            {"daily7Cleared", userQuestData.dailyCleared[6] },
+            {"daily8Cleared", userQuestData.dailyCleared[7] },
+            {"daily9Cleared", userQuestData.dailyCleared[8] },
+            {"daily10Cleared", userQuestData.dailyCleared[9] },
+
+            {"dailyReward1Recieved", userQuestData.dailyRewardRecieved[0] },
+            {"dailyReward2Recieved", userQuestData.dailyRewardRecieved[1] },
+            {"dailyReward3Recieved", userQuestData.dailyRewardRecieved[2] },
+            {"dailyReward4Recieved", userQuestData.dailyRewardRecieved[3] },
+            {"dailyReward5Recieved", userQuestData.dailyRewardRecieved[4] },
+
+            {"weeklyReward1Recieved", userQuestData.weeklyRewardRecieved[0] },
+            {"weeklyReward2Recieved", userQuestData.weeklyRewardRecieved[1] },
+            {"weeklyReward3Recieved", userQuestData.weeklyRewardRecieved[2] },
+            {"weeklyReward4Recieved", userQuestData.weeklyRewardRecieved[3] },
+            {"weeklyReward5Recieved", userQuestData.weeklyRewardRecieved[4] },
+        };
+
+        Backend.GameData.Insert("QUEST_DATA", param, callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                gameQuestDataRawInData = callback.GetInDate();
+            }
+            else
+            {
+                Debug.LogError("퀘스트정보 삽입에 실패했습니다.");
+            }
+        });
+    }
 
     /// <summary>
     /// 뒤끝 콜솔 테이블에서 유저 정보를 불러올떄 호출
@@ -121,6 +182,7 @@ public class BackEndGameData
     {
         GameUserDataLoad();
         GameHeroDataLoad();
+        GameQuestDataLoad();
     }
     public void GameUserDataLoad()
     {
@@ -233,11 +295,86 @@ public class BackEndGameData
 
         });
     }
+    public void GameQuestDataLoad()
+    {
+        Backend.GameData.GetMyData("QUEST_DATA", new Where(), callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                //Debug.Log($"게임 정보 데이터 불러오기에 성공했습니다. : {callback}");
+
+                try
+                {
+                    LitJson.JsonData gameQuestDataJson = callback.FlattenRows();
+
+                    if (gameQuestDataJson.Count <= 0)
+                    {
+                        Debug.LogWarning("데이터가 존재하지 않습니다.");
+                    }
+                    else
+                    {
+                        //불러온 게임 정보의 고유 값
+                        gameQuestDataRawInData = gameQuestDataJson[0]["inDate"].ToString();
+
+                        //불러온 게임 정보를 userGameData 변수에 저장
+                        userQuestData.dailyClearAmount = float.Parse(gameQuestDataJson[0]["dailyClearAmount"].ToString());
+                        userQuestData.weeklyClearAmount = float.Parse(gameQuestDataJson[0]["weeklyClearAmount"].ToString());
+
+                        userQuestData.questProgress[0] = float.Parse(gameQuestDataJson[0]["quest1Progress"].ToString());
+                        userQuestData.questProgress[1] = float.Parse(gameQuestDataJson[0]["quest2Progress"].ToString());
+                        userQuestData.questProgress[2] = float.Parse(gameQuestDataJson[0]["quest3Progress"].ToString());
+                        userQuestData.questProgress[3] = float.Parse(gameQuestDataJson[0]["quest4Progress"].ToString());
+                        userQuestData.questProgress[4] = float.Parse(gameQuestDataJson[0]["quest5Progress"].ToString());
+                        userQuestData.questProgress[5] = float.Parse(gameQuestDataJson[0]["quest6Progress"].ToString());
+                        userQuestData.questProgress[6] = float.Parse(gameQuestDataJson[0]["quest7Progress"].ToString());
+                        userQuestData.questProgress[7] = float.Parse(gameQuestDataJson[0]["quest8Progress"].ToString());
+                        userQuestData.questProgress[8] = float.Parse(gameQuestDataJson[0]["quest9Progress"].ToString());
+                        userQuestData.questProgress[9] = float.Parse(gameQuestDataJson[0]["quest10Progress"].ToString());
+
+                        userQuestData.dailyCleared[0] = bool.Parse(gameQuestDataJson[0]["daily1Cleared"].ToString());
+                        userQuestData.dailyCleared[1] = bool.Parse(gameQuestDataJson[0]["daily2Cleared"].ToString());
+                        userQuestData.dailyCleared[2] = bool.Parse(gameQuestDataJson[0]["daily3Cleared"].ToString());
+                        userQuestData.dailyCleared[3] = bool.Parse(gameQuestDataJson[0]["daily4Cleared"].ToString());
+                        userQuestData.dailyCleared[4] = bool.Parse(gameQuestDataJson[0]["daily5Cleared"].ToString());
+                        userQuestData.dailyCleared[5] = bool.Parse(gameQuestDataJson[0]["daily6Cleared"].ToString());
+                        userQuestData.dailyCleared[6] = bool.Parse(gameQuestDataJson[0]["daily7Cleared"].ToString());
+                        userQuestData.dailyCleared[7] = bool.Parse(gameQuestDataJson[0]["daily8Cleared"].ToString());
+                        userQuestData.dailyCleared[8] = bool.Parse(gameQuestDataJson[0]["daily9Cleared"].ToString());
+                        userQuestData.dailyCleared[9] = bool.Parse(gameQuestDataJson[0]["daily10Cleared"].ToString());
+
+                        userQuestData.dailyRewardRecieved[0] = bool.Parse(gameQuestDataJson[0]["dailyReward1Recieved"].ToString());
+                        userQuestData.dailyRewardRecieved[1] = bool.Parse(gameQuestDataJson[0]["dailyReward2Recieved"].ToString());
+                        userQuestData.dailyRewardRecieved[2] = bool.Parse(gameQuestDataJson[0]["dailyReward3Recieved"].ToString());
+                        userQuestData.dailyRewardRecieved[3] = bool.Parse(gameQuestDataJson[0]["dailyReward4Recieved"].ToString());
+                        userQuestData.dailyRewardRecieved[4] = bool.Parse(gameQuestDataJson[0]["dailyReward5Recieved"].ToString());
+
+                        userQuestData.weeklyRewardRecieved[0] = bool.Parse(gameQuestDataJson[0]["weeklyReward1Recieved"].ToString());
+                        userQuestData.weeklyRewardRecieved[1] = bool.Parse(gameQuestDataJson[0]["weeklyReward2Recieved"].ToString());
+                        userQuestData.weeklyRewardRecieved[2] = bool.Parse(gameQuestDataJson[0]["weeklyReward3Recieved"].ToString());
+                        userQuestData.weeklyRewardRecieved[3] = bool.Parse(gameQuestDataJson[0]["weeklyReward4Recieved"].ToString());
+                        userQuestData.weeklyRewardRecieved[4] = bool.Parse(gameQuestDataJson[0]["weeklyReward5Recieved"].ToString());
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    userQuestData.Reset();
+                    Debug.LogError(e);
+                }
+            }
+            else // 실패했을 때
+            {
+                Debug.LogError($"퀘스트 정보 데이터 불러오기에 실패했습니다. : {callback}");
+            }
+
+
+        });
+    }
 
     public void GameDataUpdate(UnityAction action = null)
     {
         GameUserDataUpdate();
         GameHeroDataUpdate();
+        GameQuestDataUpdate();
     }
     /// <summary>
     /// 뒤끝 콘솔 테이블에 있는 유저 데이터 갱신
@@ -340,6 +477,75 @@ public class BackEndGameData
                     }
                 });
         }
+    }
+    public void GameQuestDataUpdate(UnityAction action = null)
+    {
+        if (userQuestData == null)
+        {
+            Debug.LogError("서버에서 다운받거나 새로 삽입한 데이터가 존재하지 않습니다.");
+            return;
+        }
+
+        Param param = new Param()
+        {
+            {"dailyClearAmount", userQuestData.dailyClearAmount },
+            {"weeklyClearAmount", userQuestData.weeklyClearAmount },
+
+            {"quest1Progress", userQuestData.questProgress[0] },
+            {"quest2Progress", userQuestData.questProgress[1] },
+            {"quest3Progress", userQuestData.questProgress[2] },
+            {"quest4Progress", userQuestData.questProgress[3] },
+            {"quest5Progress", userQuestData.questProgress[4] },
+            {"quest6Progress", userQuestData.questProgress[5] },
+            {"quest7Progress", userQuestData.questProgress[6] },
+            {"quest8Progress", userQuestData.questProgress[7] },
+            {"quest9Progress", userQuestData.questProgress[8] },
+            {"quest10Progress", userQuestData.questProgress[9] },
+
+            {"daily1Cleared", userQuestData.dailyCleared[0] },
+            {"daily2Cleared", userQuestData.dailyCleared[1] },
+            {"daily3Cleared", userQuestData.dailyCleared[2] },
+            {"daily4Cleared", userQuestData.dailyCleared[3] },
+            {"daily5Cleared", userQuestData.dailyCleared[4] },
+            {"daily6Cleared", userQuestData.dailyCleared[5] },
+            {"daily7Cleared", userQuestData.dailyCleared[6] },
+            {"daily8Cleared", userQuestData.dailyCleared[7] },
+            {"daily9Cleared", userQuestData.dailyCleared[8] },
+            {"daily10Cleared", userQuestData.dailyCleared[9] },
+
+            {"dailyReward1Recieved", userQuestData.dailyRewardRecieved[0] },
+            {"dailyReward2Recieved", userQuestData.dailyRewardRecieved[1] },
+            {"dailyReward3Recieved", userQuestData.dailyRewardRecieved[2] },
+            {"dailyReward4Recieved", userQuestData.dailyRewardRecieved[3] },
+            {"dailyReward5Recieved", userQuestData.dailyRewardRecieved[4] },
+
+            {"weeklyReward1Recieved", userQuestData.weeklyRewardRecieved[0] },
+            {"weeklyReward2Recieved", userQuestData.weeklyRewardRecieved[1] },
+            {"weeklyReward3Recieved", userQuestData.weeklyRewardRecieved[2] },
+            {"weeklyReward4Recieved", userQuestData.weeklyRewardRecieved[3] },
+            {"weeklyReward5Recieved", userQuestData.weeklyRewardRecieved[4] },
+        };
+
+        if (string.IsNullOrEmpty(gameQuestDataRawInData))
+        {
+            Debug.LogError("유저의 inDate 정보가 없어 Update에 실패했습니다.");
+        }
+        else
+        {
+            Backend.GameData.UpdateV2("QUEST_DATA", gameQuestDataRawInData, Backend.UserInDate, param,
+                callback =>
+                {
+                    if (callback.IsSuccess())
+                    {
+                        //action?.Invoke();
+                    }
+                    else
+                    {
+                        Debug.LogError("게임 정보 데이터 수정에 실패했습니다 : " + callback);
+                    }
+                });
+        }
+
     }
 
 }

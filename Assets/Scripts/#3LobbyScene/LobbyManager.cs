@@ -36,7 +36,6 @@ public class LobbyManager : MonoBehaviour
 
     public void ChapterBtnClick(int _num)
     {
-        Debug.Log(_num);
         for (int a = 0; a < chapterSet.Length; a++)
         {
             if (a == _num) chapterSet[a].transform.DOScale(new Vector3(1,1,1),0.0f);

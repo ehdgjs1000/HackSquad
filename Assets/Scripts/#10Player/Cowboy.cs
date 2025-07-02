@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 public class Cowboy : PlayerCtrl
 {
@@ -16,7 +17,7 @@ public class Cowboy : PlayerCtrl
     {
         fireRate = tempFireRate;
 
-        _animator.SetBool("isAttacking",true);
+        _animator.SetTrigger("isAttacking");
         StartCoroutine(Shoot());
     }
     protected override IEnumerator Shoot()
@@ -25,9 +26,9 @@ public class Cowboy : PlayerCtrl
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
 
         Quaternion rotation = Quaternion.LookRotation(transform.right);
-        GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
-        GameObject a = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
-        GameObject b = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
+        GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.rotation);
+        GameObject a = Instantiate(bulletGo, bulletSpawnPos.position, transform.rotation);
+        GameObject b = Instantiate(bulletGo, bulletSpawnPos.position, transform.rotation);
         a.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 20.0f);
         b.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, -20.0f);
         bullet.GetComponent<Bullet>().SetBulletInfo(damage, penetrateCount);
@@ -35,8 +36,8 @@ public class Cowboy : PlayerCtrl
         b.GetComponent<Bullet>().SetBulletInfo(damage, penetrateCount);
         if(shotGunBulletSkillLevel >= 1)
         {
-            GameObject c = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
-            GameObject d = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
+            GameObject c = Instantiate(bulletGo, bulletSpawnPos.position, transform.rotation);
+            GameObject d = Instantiate(bulletGo, bulletSpawnPos.position, transform.rotation);
             c.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 10.0f);
             d.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, -10.0f);
             c.GetComponent<Bullet>().SetBulletInfo(damage, penetrateCount);
@@ -44,8 +45,8 @@ public class Cowboy : PlayerCtrl
         }
         if (shotGunBulletSkillLevel >= 2)
         {
-            GameObject e = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
-            GameObject f = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
+            GameObject e = Instantiate(bulletGo, bulletSpawnPos.position, transform.rotation);
+            GameObject f = Instantiate(bulletGo, bulletSpawnPos.position, transform.rotation);
             e.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 30.0f);
             f.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, -30.0f);
             e.GetComponent<Bullet>().SetBulletInfo(damage, penetrateCount);
@@ -53,8 +54,8 @@ public class Cowboy : PlayerCtrl
         }
         if (shotGunBulletSkillLevel == 3)
         {
-            GameObject g = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
-            GameObject h = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
+            GameObject g = Instantiate(bulletGo, bulletSpawnPos.position, transform.rotation);
+            GameObject h = Instantiate(bulletGo, bulletSpawnPos.position, transform.rotation);
             g.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 40.0f);
             h.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, -40.0f);
             g.GetComponent<Bullet>().SetBulletInfo(damage, penetrateCount);

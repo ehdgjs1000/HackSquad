@@ -48,7 +48,7 @@ public class Skill : MonoBehaviour
     {
         UpgradeSkill();
         skill.skillLevel++;
-        GameManager.instance.GameSpeed(1.0f);
+        GameManager.instance.GameSpeed(GameManager.instance.gameSpeed);
         upgradePanel.transform.DOScale(Vector3.zero,0.1f);
     }
     private void UpgradeSkill()

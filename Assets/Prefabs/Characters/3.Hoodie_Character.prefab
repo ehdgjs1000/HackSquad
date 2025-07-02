@@ -943,7 +943,7 @@ GameObject:
   - component: {fileID: 9090479627545394449}
   - component: {fileID: 9000382271829281518}
   - component: {fileID: 6748874326459106738}
-  - component: {fileID: 3062619899618605329}
+  - component: {fileID: 4399933469497272321}
   - component: {fileID: 4252793518877113192}
   - component: {fileID: 1250319279907255037}
   m_Layer: 6
@@ -1010,7 +1010,7 @@ MonoBehaviour:
   heroNum: 3
   heroLevel: 0
   heroCount: 0
---- !u!114 &3062619899618605329
+--- !u!114 &4399933469497272321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5719529357021677878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee8e16ea90f647b40926297ad27a8cd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 747d97394bbe70542b53c1f47d8cb809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uAE40\uC2B9\uAE30"
@@ -1043,7 +1043,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   maxRandomDegree: 8
+  finalSkillTime: 8
   penetrateCount: 0
+  isFinalSkill: 0
 --- !u!135 &4252793518877113192
 SphereCollider:
   m_ObjectHideFlags: 0

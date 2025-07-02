@@ -271,7 +271,7 @@ MonoBehaviour:
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
-  maxRandomDegree: 25
+  maxRandomDegree: 45
   penetrateCount: 0
 --- !u!54 &3156002366613036789
 Rigidbody:

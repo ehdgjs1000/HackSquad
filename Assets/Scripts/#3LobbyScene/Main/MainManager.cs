@@ -35,6 +35,10 @@ public class MainManager : MonoBehaviour
     {
 
     }
+    public void QuestBtnOnClick()
+    {
+        QuestManager.instance.UpdateQuestUI();
+    }
     public void UpdateMainUI()
     {
         //상단 정보

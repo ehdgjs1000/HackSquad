@@ -22,7 +22,7 @@ public class Login : LoginBase
         inputFieldPW.onValueChanged.AddListener(
      (word) => inputFieldPW.text = Regex.Replace(word, @"[^0-9a-zA-Z]", ""));
 
-        //MainTainLogIn();
+        MainTainLogIn();
     }
     public void LoginOnClick()
     {

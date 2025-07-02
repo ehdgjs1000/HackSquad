@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     bool isGameOver = false;
     public int heroCount;
     float expRatio = 1.15f;
-    float gameSpeed = 1.0f;
+    public float gameSpeed = 1.0f;
     [SerializeField] TextMeshProUGUI gameSpeedText;
     //UI
     [SerializeField] Image hpImage;
@@ -59,8 +59,8 @@ public class GameManager : MonoBehaviour
     public void GameSpeedOnClick()
     {
         if (gameSpeed == 1.0f) gameSpeed = 1.5f;
-        else if (gameSpeed == 1.5f) gameSpeed = 2.0f;
-        else if (gameSpeed == 2.0f) gameSpeed = 1.0f;
+        else if (gameSpeed == 1.5f) gameSpeed = 5.0f;
+        else if (gameSpeed == 5.0f) gameSpeed = 1.0f;
         GameSpeed(gameSpeed);
     }
     IEnumerator SpawnBoss()
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
         needExp *= expRatio;
 
         // 스킬 고를 수 있는 최대 갯수
-        if(level < heroCount * 7)
+        if(level < heroCount * 10)
         {
             upgradePanel.transform.localScale = Vector3.one;
             //upgradePanel.transform.DOScale(Vector3.one, 0f);
@@ -188,10 +188,9 @@ public class GameManager : MonoBehaviour
             {
                 upgradeSkills[a].SkillChoose();
             }
+            GameSpeed(0.0f);
         }
         UpdateUI();
-
-        GameSpeed(0.0f);
     }
     public void DieOnClick()
     {

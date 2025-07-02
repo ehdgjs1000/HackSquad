@@ -40,10 +40,10 @@ public class MonsterSpawner : MonoBehaviour
     private void SpawnMonster()
     {
         curSpawnDelay = 0;
-        nextSpawnDelay = Random.Range(2.5f, 3.5f);
+        nextSpawnDelay = Random.Range(2f, 3f);
 
-        int stage = (GameManager.instance.min/2)+1;
-        int spawnMonsterCount = Random.Range(stage, stage+3);
+        int stage = GameManager.instance.min;
+        int spawnMonsterCount = Random.Range(stage+3, stage+5);
 
         //추후 몬스터 index 넣기
         for (int i = 0; i < spawnMonsterCount; i++)

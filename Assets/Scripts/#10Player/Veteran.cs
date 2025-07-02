@@ -9,7 +9,7 @@ public class Veteran : PlayerCtrl
     {
         base.Awake();
         penetrateCount = 0;
-        maxRandomDegree = 10;
+        maxRandomDegree = 20;
     }
     public void FixMaxRandomDegree(float _amount)
     {
