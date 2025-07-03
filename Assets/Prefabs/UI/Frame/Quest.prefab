@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.85809225, b: 0.042452812, a: 1}
+  m_Color: {r: 0.24985527, g: 1, b: 0.043137252, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1084,6 +1084,7 @@ GameObject:
   - component: {fileID: 1235219552715380427}
   - component: {fileID: 3355475239630518552}
   - component: {fileID: 8993952457892470916}
+  - component: {fileID: 7361151498682951794}
   m_Layer: 5
   m_Name: Quest
   m_TagString: Untagged
@@ -1163,6 +1164,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 19
   image: {fileID: 3355475239630518552}
+--- !u!114 &7361151498682951794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115073078838735928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11936ce257adedb4b866f071fa142b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressImage: {fileID: 5658221345634553609}
+  clearAmountText: {fileID: 7526102812895866331}
+  rewardAmountText: {fileID: 3772543664689783368}
+  targetAmount: 1
+  clearAmount: 0
+  rewardAmount: 10
+  questNum: 0
 --- !u!1 &7318046515365055064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,7 +1223,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 915, y: 105}
+  m_SizeDelta: {x: 915, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2995252552349468019
 CanvasRenderer:

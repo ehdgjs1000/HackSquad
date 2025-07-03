@@ -19,6 +19,7 @@ public class SquadHero : MonoBehaviour
             HeroSetManager.instance.squadCount--;
             BackEndGameData.Instance.UserHeroData.heroChooseNum[squadNum] = 99;
             BackEndGameData.Instance.GameDataUpdate();
+            this.gameObject.SetActive(false);
         }
         UpdateHeroInfo();
     }

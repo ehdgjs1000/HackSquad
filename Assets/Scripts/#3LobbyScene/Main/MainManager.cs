@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using BackEnd;
 
 public class MainManager : MonoBehaviour
 {
@@ -31,9 +33,19 @@ public class MainManager : MonoBehaviour
         instance = this;
         user.GetUserInfoFromBackEnd();
     }
-    private void Start()
+    private void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Backend.Utils.GetServerTime(callback =>
+            {
+                string serverTime = callback.GetFlattenJSON()["utcTime"].ToString();
+                DateTime parsedDate = DateTime.Parse(serverTime);
+                Debug.Log(serverTime + " : " + parsedDate);
+                Debug.Log(DateTime.Now);
+                Debug.Log(DateTime.UtcNow);
+            });
+        }
     }
     public void QuestBtnOnClick()
     {
@@ -55,9 +67,12 @@ public class MainManager : MonoBehaviour
     {
         if (HeroSetManager.instance.squadCount > 0)
         {
+
             //다음 씬으로 고른 Hero 정보 넘기기
             ChangeScene.instance.SetHeros();
             ChangeScene.instance.chapterName = gameLevelName[gameLevel];
+            BackEndGameData.Instance.UserQuestData.questProgress[1]++;
+            BackEndGameData.Instance.GameDataUpdate();
 
             string scene = "Chapter" + gameLevel;
             SceneManager.LoadScene("InGameCommon");

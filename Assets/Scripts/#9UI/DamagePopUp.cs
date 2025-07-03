@@ -29,7 +29,7 @@ public class DamagePopUp : MonoBehaviour
     }
     IEnumerator FadeDamage()
     {
-        this.transform.DOScale(new Vector3(1.1f,1.1f,1.1f), 0.4f);
+        this.transform.DOScale(new Vector3(0.7f,0.7f,0.7f), 0.4f);
         yield return new WaitForSeconds(0.4f);
         this.transform.DOScale(Vector3.zero, 0.3f);
     }

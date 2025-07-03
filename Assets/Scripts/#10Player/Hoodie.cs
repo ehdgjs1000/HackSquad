@@ -18,13 +18,17 @@ public class Hoodie : PlayerCtrl
     {
         base.Update();
         finalSkillTime -= Time.deltaTime;
-        if (finalSkillTime <= 0.0f) UseFinalSkill();
+        if (finalSkillTime <= 0.0f && isFinalSkill) UseFinalSkill();
     }
     protected override void Attack(MonsterCtrl enemy)
     {
         fireRate = tempFireRate;
         _animator.SetBool("isAttacking", true);
         StartCoroutine(Shoot());
+    }
+    public void FixMaxRandomDegree(float degree)
+    {
+        maxRandomDegree += degree;
     }
     private void UseFinalSkill()
     {

@@ -62,7 +62,12 @@ public class HeroSetManager : MonoBehaviour
         {
             if (squadHeros[a].GetComponent<SquadHero>().hero != null)
             {
+                squadHeros[a].SetActive(true);
                 squadHeros[a].GetComponent<SquadHero>().UpdateHeroInfo();
+            }
+            else
+            {
+                squadHeros[a].SetActive(false);
             }
             
         }

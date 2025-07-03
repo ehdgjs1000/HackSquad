@@ -18,7 +18,7 @@ public class QuestManager : MonoBehaviour
     public bool[] dailyCleard = new bool[10];
     [SerializeField] Image[] weeklyClearBg = new Image[5];
     [SerializeField] Image[] dailyClearBg = new Image[5];
-    [SerializeField] Image[] dailyQuestClearBtn;
+    [SerializeField] Quest[] questGOs;
 
     //중앙 일일퀘스트
 
@@ -70,6 +70,12 @@ public class QuestManager : MonoBehaviour
             else weeklyClearBg[i].gameObject.SetActive(true);
             if (!isDailyRecieved[i]) dailyClearBg[i].gameObject.SetActive(false);
             else dailyClearBg[i].gameObject.SetActive(true);
+        }
+
+        //퀘스트 GO UI업데이트
+        for (int i =0; i < questGOs.Length; i++)
+        {
+            questGOs[i].UpdateUI();
         }
 
         MainManager.instance.UpdateMainUI();

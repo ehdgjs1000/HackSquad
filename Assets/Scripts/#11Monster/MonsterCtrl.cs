@@ -94,6 +94,7 @@ public class MonsterCtrl : MonoBehaviour
     {
         isDie = true;
         GameManager.instance.getGold += gold;
+        GameManager.instance.killMonsterCount++;
         monsterColl.enabled = false;
         GameManager.instance.GetExp(exp);
         //_animator.SetTrigger("Die");

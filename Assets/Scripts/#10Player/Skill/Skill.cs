@@ -76,7 +76,7 @@ public class Skill : MonoBehaviour
         else if (skillId == 703) GameManager.instance.players[skillCharacterNum].GetComponent<Alien>().StunSkillUpgrade();
         else if (skillId == 801) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 802) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 5);
-        else if (skillId == 803) GameManager.instance.players[skillCharacterNum].GetComponent<Veteran>().FixMaxRandomDegree(-3);
+        else if (skillId == 803) GameManager.instance.players[skillCharacterNum].GetComponent<Hoodie>().FixMaxRandomDegree(-3);
         else if (skillId == 901) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 902) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 5);
         else if (skillId == 903) GameManager.instance.players[skillCharacterNum].GetComponent<Veteran>().FixMaxRandomDegree(-3);

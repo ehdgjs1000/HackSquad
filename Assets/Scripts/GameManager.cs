@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject upgradePanel;
     [SerializeField] GameObject gameOverSet;
     [SerializeField] BossImage bossImage;
-    //In Game Data
+    [SerializeField] TextMeshProUGUI goldText;
+    //In Game Data 
     [SerializeField] Skill[] upgradeSkills;
     //[SerializeField] GameObject[] heroGos;
     [SerializeField] Transform[] heroPos;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     public int min = 0;
     float sec = 0;
     public int getGold = 0;
+    public int killMonsterCount = 0;
 
     private void Awake()
     {
@@ -129,6 +131,7 @@ public class GameManager : MonoBehaviour
     }
     private void UpdateUI()
     {
+        goldText.text = getGold.ToString();
         hpImage.fillAmount = hp / 100;
         expImage.fillAmount = nowExp / needExp;
         levelText.text = level.ToString() + "레벨";
@@ -160,6 +163,7 @@ public class GameManager : MonoBehaviour
     public void GameExitOnClick()
     {
         GameSpeed(1);
+        BackEndGameData.Instance.UserQuestData.questProgress[6] += killMonsterCount;
         BackEndGameData.Instance.UserGameData.gold += getGold;
         BackEndGameData.Instance.GameDataUpdate();
         SceneManager.LoadScene("LobbyScene");
@@ -179,8 +183,13 @@ public class GameManager : MonoBehaviour
         nowExp -= needExp;
         needExp *= expRatio;
 
+        SkillChoose();
+        UpdateUI();
+    }
+    public void SkillChoose()
+    {
         // 스킬 고를 수 있는 최대 갯수
-        if(level < heroCount * 10)
+        if (level < heroCount * 10)
         {
             upgradePanel.transform.localScale = Vector3.one;
             //upgradePanel.transform.DOScale(Vector3.one, 0f);
@@ -190,7 +199,6 @@ public class GameManager : MonoBehaviour
             }
             GameSpeed(0.0f);
         }
-        UpdateUI();
     }
     public void DieOnClick()
     {
