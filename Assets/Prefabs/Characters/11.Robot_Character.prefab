@@ -1065,11 +1065,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448674a8c79d63848943093935bc7ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroProfileImage: {fileID: 21300000, guid: 83e827390bff16c4ab11f5c3f9388388, type: 3}
+  heroProfileImage: {fileID: 21300000, guid: e2c729aa6cbca414bbb8bafde2555382, type: 3}
   heroGrade: 3
   heroNum: 11
-  heroLevel: 1
-  heroCount: 1
+  heroLevel: 0
+  heroCount: 0
 --- !u!114 &7865869705215328634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1102,6 +1102,7 @@ MonoBehaviour:
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
+  attackCount: 0
 --- !u!54 &2699482456285542743
 Rigidbody:
   m_ObjectHideFlags: 0

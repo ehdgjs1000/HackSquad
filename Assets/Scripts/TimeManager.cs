@@ -49,14 +49,14 @@ public class TimeManager : MonoBehaviour
             // 老老 府悸 眉农
             if (now >= nextDailyResetTime)
             {
-                DailyReset();
+                StartCoroutine(DailyReset());
                 ScheduleNextDailyReset();
             }
 
             // 林埃 府悸 眉农
             if (now >= nextWeeklyResetTime)
             {
-                WeeklyReset();
+                StartCoroutine(WeeklyReset());
                 ScheduleNextWeeklyReset();
             }
 
@@ -68,18 +68,20 @@ public class TimeManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
-    private void DailyReset()
+    IEnumerator DailyReset()
     {
         Debug.Log("Daily Reset");
         BackEndGameData.Instance.UserQuestData.ResetDaily();
         BackEndGameData.Instance.GameDataUpdate();
+        yield return new WaitForSeconds(2f);
         QuestManager.instance.UpdateQuestUI();
     }
-    private void WeeklyReset()
+    IEnumerator WeeklyReset()
     {
         Debug.Log("Weekly Reset");
         BackEndGameData.Instance.UserQuestData.ResetWeekly();
         BackEndGameData.Instance.GameDataUpdate();
+        yield return new WaitForSeconds(2f);
         QuestManager.instance.UpdateQuestUI();
     }
     private void TimeUI(TimeSpan remainDaily, TimeSpan remainWeekly)
