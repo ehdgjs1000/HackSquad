@@ -49,7 +49,11 @@ public class MonsterSpawner : MonoBehaviour
         for (int i = 0; i < spawnMonsterCount; i++)
         {
             int randomSapwnPos = Random.Range(0, monsterSpawnPoses.Length);
+            //몬스터 type 랜덤하게 넣기
             Instantiate(monsters[0], monsterSpawnPoses[randomSapwnPos].position, Quaternion.identity);
+            Instantiate(monsters[0].GetComponent<MonsterCtrl>().summonVFX,
+                new Vector3(monsterSpawnPoses[randomSapwnPos].position.x, monsterSpawnPoses[randomSapwnPos].position.y + 0.2f, monsterSpawnPoses[randomSapwnPos].position.z),
+                Quaternion.identity);
         }
     }
 

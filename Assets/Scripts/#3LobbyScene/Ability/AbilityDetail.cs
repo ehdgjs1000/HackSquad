@@ -1,0 +1,56 @@
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class AbilityDetail : MonoBehaviour
+{
+    public Ability ability;
+
+    [SerializeField] Image abilityBG;
+    [SerializeField] TextMeshProUGUI abilityNameText;
+    [SerializeField] Image abilityImage;
+    [SerializeField] TextMeshProUGUI abilityLevelText;
+    [SerializeField] TextMeshProUGUI abilityDescText;
+    int abilityGrade;
+
+    public void UpdateUI(Ability _ability)
+    {
+        ability = _ability;
+
+        abilityNameText.text = ability.abilityName;
+        abilityLevelText.text = "Lv." + ability.abilityLevel.ToString();
+        abilityImage.sprite = ability.abilitySprite;
+        if (ability.abilityId == 0) abilityDescText.text = "공격력 " + 2 * ability.abilityLevel + "% 증가";
+        else if (ability.abilityId == 1) abilityDescText.text = "파티체력 " + 2 * ability.abilityLevel + " 증가";
+        else if (ability.abilityId == 2) abilityDescText.text = "에너지 " + 1 * ability.abilityLevel + " 증가";
+        else if (ability.abilityId == 3) abilityDescText.text = "공격력 " + 5 * ability.abilityLevel + "% 증가";
+        else if (ability.abilityId == 4) abilityDescText.text = "파티체력 " + 5 * ability.abilityLevel + " 증가";
+        else if (ability.abilityId == 5) abilityDescText.text = "받는 피해 " + 1 * ability.abilityLevel + " 감소";
+        else if (ability.abilityId == 6) abilityDescText.text = "공격력 " + 10 * ability.abilityLevel + "% 증가";
+        else if (ability.abilityId == 7) abilityDescText.text = "파티체력 " + 10 * ability.abilityLevel + " 증가";
+        else if (ability.abilityId == 8) abilityDescText.text = "받는피해 " + 3 * ability.abilityLevel + " 감소";
+        else if (ability.abilityId == 9) abilityDescText.text = "최대 에너지 " + 1 * ability.abilityLevel + " 증가";
+        else if (ability.abilityId == 10) abilityDescText.text = "무료 스킬 리롤 횟수 " + 1 * ability.abilityLevel + "개 증가";
+        else if (ability.abilityId == 11) abilityDescText.text = "사망 시 체력 " + 5 * ability.abilityLevel + "%로 부활";
+
+
+        Color color;
+        if (abilityGrade == 0)
+        {
+            ColorUtility.TryParseHtmlString("#4CFF4F", out color);
+            abilityBG.color = color;
+        }
+        else if (abilityGrade == 1)
+        {
+            ColorUtility.TryParseHtmlString("#6387F6", out color);
+            abilityBG.color = color;
+        }
+        else if (abilityGrade == 2)
+        {
+            ColorUtility.TryParseHtmlString("#FFE031", out color);
+            abilityBG.color = color;
+        }
+    }
+
+}
+

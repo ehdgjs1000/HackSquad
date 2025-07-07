@@ -49,6 +49,7 @@ public class LobbyManager : MonoBehaviour
 
         MainManager.instance.UpdateMainUI();
         HeroSetManager.instance.UpdateInfo();
+        AbilityManager.instance.UpdateUI();
     }
 
 

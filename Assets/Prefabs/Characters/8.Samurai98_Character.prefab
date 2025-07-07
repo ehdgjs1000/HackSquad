@@ -1396,6 +1396,7 @@ MonoBehaviour:
   heroNum: 8
   heroLevel: 0
   heroCount: 0
+  heroJob: "\uB9C8\uBC95\uD615"
 --- !u!114 &2786384566587779167
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,6 +32,10 @@ public class BackEndGameData
     private UserQuestData userQuestData = new UserQuestData();
     public UserQuestData UserQuestData => userQuestData;
     private string gameQuestDataRawInData = string.Empty;
+
+    private UserAbilityData userAbilityData = new UserAbilityData();
+    public UserAbilityData UserAbilityData => userAbilityData;
+    private string gameAbilityDataRawInData = string.Empty;
     
     /// <summary>
     /// 뒤끝 콘솔 테이블에 새로운 유저 정보 추가
@@ -41,6 +45,7 @@ public class BackEndGameData
         GameUserDataInsert();
         GameHeroDataInsert();
         GameQuestDataInsert();
+        GameAbilityDataInsert();
     }
     public void GameUserDataInsert()
     {
@@ -174,6 +179,39 @@ public class BackEndGameData
             }
         });
     }
+    public void GameAbilityDataInsert()
+    {
+        userAbilityData.Reset();
+
+        Param param = new Param()
+        {
+            {"ability0Level", userAbilityData.abilityLevel[0]},
+            {"ability1Level", userAbilityData.abilityLevel[1]},
+            {"ability2Level", userAbilityData.abilityLevel[2]},
+            {"ability3Level", userAbilityData.abilityLevel[3]},
+            {"ability4Level", userAbilityData.abilityLevel[4]},
+            {"ability5Level", userAbilityData.abilityLevel[5]},
+            {"ability6Level", userAbilityData.abilityLevel[6]},
+            {"ability7Level", userAbilityData.abilityLevel[7]},
+            {"ability8Level", userAbilityData.abilityLevel[8]},
+            {"ability9Level", userAbilityData.abilityLevel[9]},
+            {"ability10Level", userAbilityData.abilityLevel[10]},
+            {"ability11Level", userAbilityData.abilityLevel[11]},
+
+        };
+
+        Backend.GameData.Insert("ABILITY_DATA", param, callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                gameAbilityDataRawInData = callback.GetInDate();
+            }
+            else
+            {
+                Debug.LogError("어빌리티 정보 삽입에 실패했습니다.");
+            }
+        });
+    }
 
     /// <summary>
     /// 뒤끝 콜솔 테이블에서 유저 정보를 불러올떄 호출
@@ -183,6 +221,7 @@ public class BackEndGameData
         GameUserDataLoad();
         GameHeroDataLoad();
         GameQuestDataLoad();
+        GameAbilityDataLoad();
     }
     public void GameUserDataLoad()
     {
@@ -369,12 +408,60 @@ public class BackEndGameData
 
         });
     }
+    public void GameAbilityDataLoad()
+    {
+        Backend.GameData.GetMyData("ABILITY_DATA", new Where(), callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                //Debug.Log($"게임 정보 데이터 불러오기에 성공했습니다. : {callback}");
+
+                try
+                {
+                    LitJson.JsonData gameAbilityDataJson = callback.FlattenRows();
+
+                    if (gameAbilityDataJson.Count <= 0)
+                    {
+                        Debug.LogWarning("데이터가 존재하지 않습니다.");
+                    }
+                    else
+                    {
+                        //불러온 게임 정보의 고유 값
+                        gameAbilityDataRawInData = gameAbilityDataJson[0]["inDate"].ToString();
+
+                        userAbilityData.abilityLevel[0] = int.Parse(gameAbilityDataJson[0]["ability0Level"].ToString());
+                        userAbilityData.abilityLevel[1] = int.Parse(gameAbilityDataJson[0]["ability1Level"].ToString());
+                        userAbilityData.abilityLevel[2] = int.Parse(gameAbilityDataJson[0]["ability2Level"].ToString());
+                        userAbilityData.abilityLevel[3] = int.Parse(gameAbilityDataJson[0]["ability3Level"].ToString());
+                        userAbilityData.abilityLevel[4] = int.Parse(gameAbilityDataJson[0]["ability4Level"].ToString());
+                        userAbilityData.abilityLevel[5] = int.Parse(gameAbilityDataJson[0]["ability5Level"].ToString());
+                        userAbilityData.abilityLevel[6] = int.Parse(gameAbilityDataJson[0]["ability6Level"].ToString());
+                        userAbilityData.abilityLevel[7] = int.Parse(gameAbilityDataJson[0]["ability7Level"].ToString());
+                        userAbilityData.abilityLevel[8] = int.Parse(gameAbilityDataJson[0]["ability8Level"].ToString());
+                        userAbilityData.abilityLevel[9] = int.Parse(gameAbilityDataJson[0]["ability9Level"].ToString());
+                        userAbilityData.abilityLevel[10] = int.Parse(gameAbilityDataJson[0]["ability10Level"].ToString());
+                        userAbilityData.abilityLevel[11] = int.Parse(gameAbilityDataJson[0]["ability11Level"].ToString());
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    userAbilityData.Reset();
+                    Debug.LogError(e);
+                }
+            }
+            else // 실패했을 때
+            {
+                Debug.LogError($"어빌리티 정보 데이터 불러오기에 실패했습니다. : {callback}");
+            }
+        });
+    }
 
     public void GameDataUpdate(UnityAction action = null)
     {
         GameUserDataUpdate();
         GameHeroDataUpdate();
         GameQuestDataUpdate();
+        GameAbilityDataUpdate();
     }
     /// <summary>
     /// 뒤끝 콘솔 테이블에 있는 유저 데이터 갱신
@@ -533,6 +620,52 @@ public class BackEndGameData
         else
         {
             Backend.GameData.UpdateV2("QUEST_DATA", gameQuestDataRawInData, Backend.UserInDate, param,
+                callback =>
+                {
+                    if (callback.IsSuccess())
+                    {
+                        //action?.Invoke();
+                    }
+                    else
+                    {
+                        Debug.LogError("게임 정보 데이터 수정에 실패했습니다 : " + callback);
+                    }
+                });
+        }
+
+    }
+    public void GameAbilityDataUpdate(UnityAction action = null)
+    {
+        if (userAbilityData == null)
+        {
+            Debug.LogError("서버에서 다운받거나 새로 삽입한 데이터가 존재하지 않습니다.");
+            return;
+        }
+
+        Param param = new Param()
+        {
+            {"ability0Level", userAbilityData.abilityLevel[0] },
+            {"ability1Level", userAbilityData.abilityLevel[1] },
+            {"ability2Level", userAbilityData.abilityLevel[2] },
+            {"ability3Level", userAbilityData.abilityLevel[3] },
+            {"ability4Level", userAbilityData.abilityLevel[4] },
+            {"ability5Level", userAbilityData.abilityLevel[5] },
+            {"ability6Level", userAbilityData.abilityLevel[6] },
+            {"ability7Level", userAbilityData.abilityLevel[7] },
+            {"ability8Level", userAbilityData.abilityLevel[8] },
+            {"ability9Level", userAbilityData.abilityLevel[9] },
+            {"ability10Level", userAbilityData.abilityLevel[10] },
+            {"ability11Level", userAbilityData.abilityLevel[11] },
+
+        };
+
+        if (string.IsNullOrEmpty(gameAbilityDataRawInData))
+        {
+            Debug.LogError("유저의 inDate 정보가 없어 Update에 실패했습니다.");
+        }
+        else
+        {
+            Backend.GameData.UpdateV2("ABILITY_DATA", gameAbilityDataRawInData, Backend.UserInDate, param,
                 callback =>
                 {
                     if (callback.IsSuccess())

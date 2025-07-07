@@ -1015,6 +1015,7 @@ MonoBehaviour:
   heroNum: 6
   heroLevel: 0
   heroCount: 0
+  heroJob: "\uACF5\uACA9\uD615"
 --- !u!114 &5077355716773800604
 MonoBehaviour:
   m_ObjectHideFlags: 0

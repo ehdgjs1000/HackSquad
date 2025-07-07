@@ -27,6 +27,8 @@ public class MonsterCtrl : MonoBehaviour
     [SerializeField] float attackRange;
     [SerializeField] float attackTerm;
     float tempAttackTerm;
+
+    public Transform summonVFX;
      
  
     private void Awake()

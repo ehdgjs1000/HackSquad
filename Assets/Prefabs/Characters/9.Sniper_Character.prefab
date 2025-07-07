@@ -1494,6 +1494,7 @@ MonoBehaviour:
   heroNum: 9
   heroLevel: 1
   heroCount: 0
+  heroJob: "\uACF5\uACA9\uD615"
 --- !u!135 &7433037871242573569
 SphereCollider:
   m_ObjectHideFlags: 0

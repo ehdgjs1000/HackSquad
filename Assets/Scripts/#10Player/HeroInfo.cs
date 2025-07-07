@@ -8,6 +8,7 @@ public class HeroInfo : MonoBehaviour
     [SerializeField] int heroNum;
     public int heroLevel;
     public int heroCount;
+    public string heroJob;
 
     private void Start()
     {

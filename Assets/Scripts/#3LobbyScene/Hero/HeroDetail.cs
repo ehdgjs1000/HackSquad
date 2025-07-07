@@ -10,6 +10,7 @@ public class HeroDetail : MonoBehaviour
     int heroNum;
     [SerializeField] TextMeshProUGUI heroNameText;
     [SerializeField] TextMeshProUGUI heroGradeText;
+    [SerializeField] TextMeshProUGUI heroJobText;
     [SerializeField] TextMeshProUGUI heroLevelText;
     [SerializeField] TextMeshProUGUI heroDpsText;
     [SerializeField] TextMeshProUGUI heroPowerText;
@@ -38,6 +39,7 @@ public class HeroDetail : MonoBehaviour
         heroInfo = heroGo.GetComponent<HeroInfo>();
         heroNum = heroInfo.ReturnHeroNum();
         heroNameText.text = hero.characterName;
+        heroJobText.text = heroInfo.heroJob;
         Color color;
         if (heroInfo.ReturnHeroGrade() == 0)
         {
