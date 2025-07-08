@@ -21,6 +21,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] Quest[] questGOs;
 
     //Áß¾Ó ÀÏÀÏÄù½ºÆ®
+    public RewardPanel rewardPanel;
 
     private void Awake()
     {

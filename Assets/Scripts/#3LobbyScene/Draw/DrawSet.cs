@@ -43,7 +43,7 @@ public class DrawSet : MonoBehaviour
         }else if(drawNum == 10 && BackEndGameData.Instance.UserGameData.gem < 900)
             PopUpMessageBase.instance.SetMessage("크리스탈이 충분하지 않습니다");
 
-        StoreManager.instance.UpdateMainUI();
+        DrawManager.instance.UpdateMainUI();
     }
     IEnumerator DrawHeros(int drawNum)
     {

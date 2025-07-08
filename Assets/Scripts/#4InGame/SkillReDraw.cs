@@ -11,7 +11,7 @@ public class SkillReDraw : MonoBehaviour
 
     private void Awake()
     {
-        redrawCount = 1;
+        redrawCount = BackEndGameData.Instance.UserAbilityData.abilityLevel[10];
     }
     private void Start()
     {
@@ -30,7 +30,6 @@ public class SkillReDraw : MonoBehaviour
             videoImage.gameObject.SetActive(true);
             redrawCountText.gameObject.SetActive(false);
         }
-        
     }
     public void ReDrawSkillOnClick()
     {

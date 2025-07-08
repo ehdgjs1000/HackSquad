@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] MonsterSpawner monsterSpawner;
 
     //Level System
+    float initHp = 0;
     float hp = 100;
     [SerializeField] int level;
     public float nowExp;
@@ -34,12 +35,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform[] heroPos;
     public PlayerCtrl[] players;
 
+    [SerializeField] private GameObject damagePopUpTr;
     [SerializeField] Image gamePlayTimeProgress;
     [SerializeField] TextMeshProUGUI gamePlayTimeText;
     public int min = 0;
     float sec = 0;
     public int getGold = 0;
     public int killMonsterCount = 0;
+    int rebornCount = 0;
+    float rebornAmount = 0;
 
     private void Awake()
     {
@@ -95,8 +99,22 @@ public class GameManager : MonoBehaviour
         UpdateUI();
         if (nowExp >= needExp) LevelUp();
     }
+    private void Reborn()
+    {
+        rebornCount--;
+        hp = initHp * (rebornAmount/100);
+        UpdateUI();
+    }
     private void SetHeros()
     {
+        //부활 횟수
+        if (BackEndGameData.Instance.UserAbilityData.abilityLevel[11] != 0)
+        {
+            rebornCount = 1;
+            rebornAmount = (BackEndGameData.Instance.UserAbilityData.abilityLevel[11] * 5.0f);
+        }
+
+
         hp = 100;
         for (int a = 0; a < 4; a++)
         {
@@ -109,6 +127,12 @@ public class GameManager : MonoBehaviour
                 heroCount++;
             }
         }
+        //Ability 체력 적용
+        hp += BackEndGameData.Instance.UserAbilityData.abilityLevel[1] * 2;
+        hp += BackEndGameData.Instance.UserAbilityData.abilityLevel[4] * 4;
+        hp += BackEndGameData.Instance.UserAbilityData.abilityLevel[7] * 10;
+
+        initHp = hp;
     }
     //게임 시작시 초기 스킬들을 저장해둠
     private void InitSkillInfo() 
@@ -138,9 +162,29 @@ public class GameManager : MonoBehaviour
     }
     public void GetDamage(float _damage)
     {
-        hp -= _damage;
+        _damage -= (BackEndGameData.Instance.UserAbilityData.abilityLevel[5]) +
+            (BackEndGameData.Instance.UserAbilityData.abilityLevel[8] * 3);
+        if(_damage >= 0)
+        {
+            hp -= _damage;
+        }
+        else
+        {
+            hp -= 1;
+        }
+
+        damagePopUpTr.GetComponentInChildren<TextMeshPro>().color = Color.red;
+        DamagePopUp.Create(new Vector3(transform.position.x,
+                    transform.position.y + 2.0f, transform.position.z), _damage);
         UpdateUI();
-        if (hp <= 0.0f && !isGameOver) StartCoroutine(GameOver());
+        if (hp <= 0.0f && !isGameOver)
+        {
+            //부활이 가능할 경우 부활
+            if(rebornCount >= 1)
+            {
+                Reborn();
+            }else StartCoroutine(GameOver());
+        }
     }
     IEnumerator GameOver()
     {

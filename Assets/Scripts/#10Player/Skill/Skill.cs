@@ -126,8 +126,9 @@ public class Skill : MonoBehaviour
         }
         else if (skillId == 809)
         {
-
-        }else if (skillId == 909)
+            GameManager.instance.players[skillCharacterNum].GetComponent<Hoodie>().isFinalSkill = true;
+        }
+        else if (skillId == 909)
         {
             GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.5f);
             GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 2.0f);

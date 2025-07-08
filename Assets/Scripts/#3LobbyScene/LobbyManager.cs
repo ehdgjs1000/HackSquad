@@ -26,7 +26,7 @@ public class LobbyManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         MainManager.instance.UpdateMainUI();
-        StoreManager.instance.UpdateMainUI();
+        DrawManager.instance.UpdateMainUI();
     }
     public void UpdateGameData()
     {
@@ -50,6 +50,7 @@ public class LobbyManager : MonoBehaviour
         MainManager.instance.UpdateMainUI();
         HeroSetManager.instance.UpdateInfo();
         AbilityManager.instance.UpdateUI();
+        StoreManager.instance.UpdateUI();
     }
 
 
