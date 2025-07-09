@@ -47,10 +47,15 @@ public class LobbyManager : MonoBehaviour
             PreviewManager.instance.HeroInfoUpdate();
         }
 
+        UpdateUIAll();
+    }
+    public void UpdateUIAll()
+    {
         MainManager.instance.UpdateMainUI();
         HeroSetManager.instance.UpdateInfo();
         AbilityManager.instance.UpdateUI();
         StoreManager.instance.UpdateUI();
+        DrawManager.instance.UpdateMainUI();
     }
 
 

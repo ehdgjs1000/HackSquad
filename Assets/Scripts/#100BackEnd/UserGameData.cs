@@ -7,6 +7,8 @@ public class UserGameData
     public int gold;
     public int gem;
     public int energy;
+    public float highestChapter;
+    public float highestRewardChapter;
 
     public void Reset()
     {
@@ -15,6 +17,8 @@ public class UserGameData
         gold = 1000;
         gem = 300;
         energy = 30;
+        highestChapter = 0;
+        highestRewardChapter = -1;
     }
 
 

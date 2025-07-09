@@ -19,7 +19,7 @@ public class Samurai : PlayerCtrl
         if (isFinalSkillUpgrade)
         {
             GameObject bullet = Instantiate(samuraiFinalBulletGO, bulletSpawnPos.position, transform.localRotation);
-            bullet.GetComponent<Bullet>().SetBulletInfo(damage, 10);
+            bullet.GetComponent<Bullet>().SetBulletInfo(damage*1.2f, 10);
             bullet.GetComponent<SamuraiBullet>().isFinalBullet = true;
         }
         else

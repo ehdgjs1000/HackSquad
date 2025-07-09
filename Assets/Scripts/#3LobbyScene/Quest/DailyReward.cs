@@ -28,6 +28,7 @@ public class DailyReward : MonoBehaviour
             //보상 제공
             RewardDaily();
             QuestManager.instance.rewardPanel.UpdateRewardUI(goldAmount,gemAmount);
+            QuestManager.instance.UpdateQuestUI();
             MainManager.instance.UpdateMainUI();
             BackEndGameData.Instance.GameDataUpdate();
         }

@@ -22,16 +22,24 @@ public class GameOverManager : MonoBehaviour
     }
     public IEnumerator GameOver()
     {
+        canExit = false;
         gameWinImage.transform.localScale = Vector3.zero;
         gameDefeatImage.transform.localScale = Vector3.zero;
         RewardUpdate();
+        //gamemanager min이 10분일떄 추가
         if (isWin)
         {
             gameWinImage.transform.DOScale(Vector3.one, 0.5f);
+
+            BackEndGameData.Instance.UserGameData.highestChapter = (GameManager.instance.gameLevel * 2) - 1;
         }
         else
         {
             gameDefeatImage.transform.DOScale(Vector3.one, 0.5f);
+            if(GameManager.instance.min/5 == 1)
+            {
+                BackEndGameData.Instance.UserGameData.highestChapter = (GameManager.instance.gameLevel * 2) - -2;
+            }
         }
 
         yield return new WaitForSeconds(2.0f);
@@ -41,9 +49,14 @@ public class GameOverManager : MonoBehaviour
     public void ExitLobbyOnClick()
     {
         Time.timeScale = 1.0f;
-        BackEndGameData.Instance.UserGameData.gold += GameManager.instance.getGold;
-        BackEndGameData.Instance.GameDataUpdate();
-        SceneManager.LoadScene("LobbyScene");
+        if (canExit)
+        {
+            BackEndGameData.Instance.UserGameData.gold += GameManager.instance.getGold;
+            BackEndGameData.Instance.GameDataUpdate();
+            SceneManager.LoadScene("LobbyScene");
+        }
+        
+        
     }
     private void RewardUpdate()
     {

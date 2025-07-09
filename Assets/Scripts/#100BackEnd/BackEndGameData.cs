@@ -57,7 +57,9 @@ public class BackEndGameData
             {"exp", userGameData.exp },
             {"gold", userGameData.gold },
             {"gem", userGameData.gem },
-            {"energy", userGameData.energy }
+            {"energy", userGameData.energy },
+            {"highestChapter", userGameData.highestChapter },
+            {"highestRewardChapter", userGameData.highestRewardChapter },
         };
 
         Backend.GameData.Insert("USER_DATA", param, callback =>
@@ -249,6 +251,8 @@ public class BackEndGameData
                         userGameData.gold = int.Parse(gameDataJson[0]["gold"].ToString());
                         userGameData.gem = int.Parse(gameDataJson[0]["gem"].ToString());
                         userGameData.energy = int.Parse(gameDataJson[0]["energy"].ToString());
+                        userGameData.highestChapter = float.Parse(gameDataJson[0]["highestChapter"].ToString());
+                        userGameData.highestRewardChapter = float.Parse(gameDataJson[0]["highestRewardChapter"].ToString());
 
                         onGameDataLoadEvent?.Invoke();
                     }
@@ -480,7 +484,9 @@ public class BackEndGameData
             {"exp", userGameData.exp },
             {"gold", userGameData.gold },
             {"gem", userGameData.gem },
-            {"energy", userGameData.energy }
+            {"energy", userGameData.energy },
+            {"highestChapter", userGameData.highestChapter },
+            {"highestRewardChapter", userGameData.highestRewardChapter },
         };
 
         if (string.IsNullOrEmpty(gameUserDataRawInData))

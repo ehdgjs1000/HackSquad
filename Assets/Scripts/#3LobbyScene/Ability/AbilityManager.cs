@@ -1,15 +1,18 @@
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class AbilityManager : MonoBehaviour
 {
     public static AbilityManager instance;
 
     [SerializeField] AbilityDetail abilityDetail;
+    [SerializeField] Transform abilityDrawCard;
     [SerializeField] TextMeshProUGUI goldAmountText;
     [SerializeField] TextMeshProUGUI abilityCostText;
     [SerializeField] Ability[] abilities;
 
+    float canExitDraw = 1.0f;
     int abilityLevel = 0;
     int abilityCost = 0;
     private void Awake()
@@ -19,6 +22,10 @@ public class AbilityManager : MonoBehaviour
     private void Start()
     {
         UpdateUI();
+    }
+    private void Update()
+    {
+        canExitDraw -= Time.deltaTime;
     }
     public void UpdateUI()
     {
@@ -41,6 +48,10 @@ public class AbilityManager : MonoBehaviour
             BackEndGameData.Instance.UserGameData.gold -= abilityCost;
             BackEndGameData.Instance.GameDataUpdate();
             UpdateUI();
+        }
+        else
+        {
+            PopUpMessageBase.instance.SetMessage("골드가 충분하지 않습니다.");
         }
     }
     private void DrawAbility()
@@ -66,14 +77,26 @@ public class AbilityManager : MonoBehaviour
         
         //AbilityDetail에 띄우기
         UpdateUI();
-        OpenAbilityDetail(choosedAbility);
         BackEndGameData.Instance.UserAbilityData.abilityLevel[ranNum]++;
+        OpenAbilityDetail(choosedAbility);
         BackEndGameData.Instance.GameDataUpdate();
     }
     public void OpenAbilityDetail(Ability _ability)
     {
+        canExitDraw = 1.1f;
         abilityDetail.gameObject.SetActive(true);
         abilityDetail.UpdateUI(_ability);
+        abilityDrawCard.DOScale(Vector3.one, 1.0f);
+        abilityDrawCard.DOLocalMoveY(0,1.0f);
+    }
+    public void ExitDrawCard()
+    {
+        if (canExitDraw <= 0.0f)
+        {
+            abilityDrawCard.DOScale(Vector3.zero, 0);
+            abilityDrawCard.DOLocalMoveY(-1500, 0f);
+            abilityDetail.gameObject.SetActive(false);
+        }
     }
 
 

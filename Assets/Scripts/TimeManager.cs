@@ -71,9 +71,9 @@ public class TimeManager : MonoBehaviour
     IEnumerator DailyReset()
     {
         Debug.Log("Daily Reset");
+        yield return new WaitForSeconds(3f);
         BackEndGameData.Instance.UserQuestData.ResetDaily();
         BackEndGameData.Instance.GameDataUpdate();
-        yield return new WaitForSeconds(2f);
         QuestManager.instance.UpdateQuestUI();
     }
     IEnumerator WeeklyReset()

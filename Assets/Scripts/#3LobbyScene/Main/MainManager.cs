@@ -23,15 +23,21 @@ public class MainManager : MonoBehaviour
     //GameLevelDatas
     [SerializeField] TextMeshProUGUI gameLevelText;
     [SerializeField] TextMeshProUGUI highestWaveText;
-    string[] gameLevelName = new string[] {"null스테이지" ,"따뜻한 안방"};
+    string[] gameLevelName = new string[] {"null스테이지" ,"따뜻한 안방","거실"};
     int gameLevel = 1;  
     int highestWave = 0;
 
+    //ChapterClear
+    [SerializeField] ChapterClear chapterClear;
 
     private void Awake()
     {
         instance = this;
         user.GetUserInfoFromBackEnd();
+    }
+    private void Start()
+    {
+        UpdateMainUI();
     }
     private void Update()
     {
@@ -47,6 +53,11 @@ public class MainManager : MonoBehaviour
             });
         }
     }
+    public void ChapterOnClick()
+    {
+        chapterClear.gameObject.SetActive(true);
+        chapterClear.UpdateRecentReward();
+    }
     public void QuestBtnOnClick()
     {
         QuestManager.instance.UpdateQuestUI();
@@ -59,6 +70,7 @@ public class MainManager : MonoBehaviour
         energyText.text = BackEndGameData.Instance.UserGameData.energy.ToString();
 
         //게임 레벨
+        gameLevel = (int)((BackEndGameData.Instance.UserGameData.highestChapter+1) / 2) + 1;
         gameLevelText.text = gameLevel.ToString()+". " +gameLevelName[gameLevel];
         highestWaveText.text = "최대 웨이브 <color=red>" + highestWave.ToString()+"/20</color>";
 

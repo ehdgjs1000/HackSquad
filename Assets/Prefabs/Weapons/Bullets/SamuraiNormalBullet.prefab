@@ -269,7 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   criticalChange: 20
-  bulletDestroyTime: 2
+  bulletDestroyTime: 4
   bulletSpeed: 20
   damagePopUpTr: {fileID: 4453229395328416960, guid: f89fa60e57839544d9d1d446af99bea3, type: 3}
   onHitVFX: {fileID: 5588441662099315286, guid: 404c1bbf258eb614eae8f32e09aa83fe, type: 3}
@@ -287,6 +287,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8111049874153064828}
     m_Modifications:
+    - target: {fileID: 35003943, guid: 8ae075570cff8c34685f56c7c293fb28, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389102164, guid: 8ae075570cff8c34685f56c7c293fb28, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032492220547324261, guid: 8ae075570cff8c34685f56c7c293fb28, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1032492221252452500, guid: 8ae075570cff8c34685f56c7c293fb28, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
@@ -337,6 +349,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1032492221252452500, guid: 8ae075570cff8c34685f56c7c293fb28, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032492221252452501, guid: 8ae075570cff8c34685f56c7c293fb28, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032492221252452501, guid: 8ae075570cff8c34685f56c7c293fb28, type: 3}
+      propertyPath: prewarm
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1032492221252452501, guid: 8ae075570cff8c34685f56c7c293fb28, type: 3}

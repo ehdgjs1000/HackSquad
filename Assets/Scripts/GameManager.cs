@@ -11,11 +11,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] MonsterSpawner monsterSpawner;
 
     //Level System
+    public int gameLevel;
     float initHp = 0;
     float hp = 100;
     [SerializeField] int level;
-    public float nowExp;
-    public float needExp = 50.0f;
+    float nowExp;
+    float needExp = 50.0f;
     bool isGameOver = false;
     public int heroCount;
     float expRatio = 1.15f;
@@ -77,7 +78,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
         
         //보스 스폰
-
     }
     private void GamePlayProgressUpdate()
     {
@@ -183,7 +183,8 @@ public class GameManager : MonoBehaviour
             if(rebornCount >= 1)
             {
                 Reborn();
-            }else StartCoroutine(GameOver());
+            }
+            else StartCoroutine(GameOver());
         }
     }
     IEnumerator GameOver()
@@ -194,8 +195,14 @@ public class GameManager : MonoBehaviour
 
         GameOverManager.instance.SetReward();
 
-        if (hp <= 0) GameOverManager.instance.isWin = false;
-        else GameOverManager.instance.isWin = true;
+        if (hp <= 0)
+        {
+            GameOverManager.instance.isWin = false;
+        }
+        else
+        {
+            GameOverManager.instance.isWin = true;
+        }
 
         StartCoroutine(GameOverManager.instance.GameOver());
         
