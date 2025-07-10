@@ -9844,7 +9844,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -14658,12 +14658,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1f5ec0d72bbc94383e22f66075b878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  attackRadius: 0
-  attackTerm: 0
   damage: 1
+  stunTime: 0
 --- !u!1 &6110789885532804200
 GameObject:
   m_ObjectHideFlags: 0

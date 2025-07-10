@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using BackEnd;
+using DG.Tweening;
 
 public class MainManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class MainManager : MonoBehaviour
 
     //ChapterClear
     [SerializeField] ChapterClear chapterClear;
+    [SerializeField] QuestManager questManager;
 
     private void Awake()
     {

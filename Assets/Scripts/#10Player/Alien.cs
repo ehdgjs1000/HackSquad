@@ -43,8 +43,13 @@ public class Alien : PlayerCtrl
         {
             MonsterCtrl monsterF = co.GetComponent<MonsterCtrl>();
             monsterF.GetAttack(damage);
-            GameObject bullet = Instantiate(bulletGo, monsterF.transform.position, Quaternion.identity);
+
+            GameObject bullet = PoolManager.instance.MakeObj("alienBullet");
             bullet.GetComponent<AilenBullet>().SetBulletInfo(damage, stunTime);
+            bullet.transform.position = monster.transform.position;
+            bullet.transform.rotation = Quaternion.identity;
+            StartCoroutine(PoolManager.instance.DeActive(1.0f, bullet));
+
             DamagePopUp.Create(new Vector3(monsterF.transform.position.x,
                         monsterF.transform.position.y + 2.0f, monsterF.transform.position.z), damage);
         }
@@ -54,8 +59,13 @@ public class Alien : PlayerCtrl
     {
         nowBullet--;
         monster.GetAttack(damage);
-        GameObject bullet = Instantiate(bulletGo, monster.transform.position, Quaternion.identity);
+
+        GameObject bullet = PoolManager.instance.MakeObj("alienBullet");
         bullet.GetComponent<AilenBullet>().SetBulletInfo(damage, stunTime);
+        bullet.transform.position = monster.transform.position;
+        bullet.transform.rotation = Quaternion.identity;
+        StartCoroutine(PoolManager.instance.DeActive(1.0f, bullet));
+
         DamagePopUp.Create(new Vector3(monster.transform.position.x,
                     monster.transform.position.y + 2.0f, monster.transform.position.z), damage);
 

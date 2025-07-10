@@ -12,7 +12,8 @@ public class BazookaBullet : Bullet
         if(bulletDestroyTime <= 0.2f)
         {
             Explose();
-            Destroy(this.gameObject);
+            StartCoroutine(PoolManager.instance.DeActive(0.0f, this.gameObject));
+            // Destroy(this.gameObject);
         }
     }
     private void Explose()

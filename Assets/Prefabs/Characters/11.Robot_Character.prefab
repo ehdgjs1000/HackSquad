@@ -1070,6 +1070,7 @@ MonoBehaviour:
   heroNum: 11
   heroLevel: 0
   heroCount: 0
+  heroJob: 
 --- !u!114 &7865869705215328634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1102,7 +1103,8 @@ MonoBehaviour:
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
-  attackCount: 0
+  attackCount: 1
+  isFinalSkill: 0
 --- !u!54 &2699482456285542743
 Rigidbody:
   m_ObjectHideFlags: 0

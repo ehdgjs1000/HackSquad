@@ -29,7 +29,8 @@ public class Veteran : PlayerCtrl
 
         float randomDegree = Random.Range(-maxRandomDegree, maxRandomDegree);
         Quaternion rotation = Quaternion.LookRotation(transform.right);
-        GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
+        GameObject bullet = PoolManager.instance.MakeObj("veteranBullet");
+        bullet.transform.position = bulletSpawnPos.position;
         bullet.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, randomDegree);
         bullet.GetComponent<Bullet>().SetBulletInfo(damage,penetrateCount);
 

@@ -17,6 +17,7 @@ public class IceLight : MonoBehaviour
         Transform bullet = Instantiate(iceGround, transform.position,Quaternion.identity);
         bullet.GetComponent<IceGround>().iceDamage = damage;
         bullet.GetComponent<IceGround>().slowAmount = slowAmount;
+
         yield return null;
     }
     

@@ -13,6 +13,8 @@ public class MonsterCtrl : MonoBehaviour
     bool canMove = true;
     Animator _animator;
     Collider monsterColl;
+    float initHp;
+
 
     //BattleInfo
     Collider[] playerColl = new Collider[4];
@@ -36,6 +38,7 @@ public class MonsterCtrl : MonoBehaviour
         _animator = GetComponent<Animator>();
         monsterColl = GetComponent<Collider>();
         tempAttackTerm = attackTerm;
+        initHp = hp;
     }
     private void Update()
     {
@@ -49,6 +52,16 @@ public class MonsterCtrl : MonoBehaviour
         }
         if(!isDie) AttackCheck();
         attackTerm -= Time.deltaTime;
+    }
+    public void InitMonster()
+    {
+        isDie = false;
+        canMove = true;
+        isSlow = false;
+        isAttacking = false;
+        monsterColl.enabled = true;
+
+        hp = initHp;
     }
     public IEnumerator GetStun(float _stunTime)
     {
@@ -101,7 +114,8 @@ public class MonsterCtrl : MonoBehaviour
         GameManager.instance.GetExp(exp);
         //_animator.SetTrigger("Die");
         yield return new WaitForSeconds(4.0f);
-        Destroy(this.gameObject);
+        StartCoroutine(PoolManager.instance.DeActive(0, this.gameObject));
+        //Destroy(this.gameObject);
     }
     private void AttackCheck()
     {

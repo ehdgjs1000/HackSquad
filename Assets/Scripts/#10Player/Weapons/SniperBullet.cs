@@ -5,7 +5,6 @@ public class SniperBullet : Bullet
     private void Start()
     {
         InitBullet();
-        Destroy(gameObject,bulletDestroyTime);
     }
     private void InitBullet()
     {

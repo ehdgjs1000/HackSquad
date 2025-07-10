@@ -17,7 +17,6 @@ public class RobotBullet : MonoBehaviour
     {
         monsterColls = null;
         yield return new WaitForSeconds(attackDelay);
-
         monsterColls = Physics.OverlapSphere(this.transform.position, radius, monsterLayer);
         if(monsterColls.Length >=0)
         {
@@ -29,9 +28,7 @@ public class RobotBullet : MonoBehaviour
             }
 
         }
-        yield return new WaitForSeconds(0.8f);
-        Destroy(this.gameObject);
-
+        StartCoroutine(PoolManager.instance.DeActive(0.8f, this.gameObject));
     }
 
 }

@@ -25,7 +25,10 @@ public class Samurai : PlayerCtrl
         else
         {
             nowBullet--;
-            GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
+            GameObject bullet = PoolManager.instance.MakeObj("samuraiBullet");
+            bullet.transform.position = bulletSpawnPos.position;
+            bullet.transform.rotation = transform.localRotation;
+
             bullet.GetComponent<Bullet>().SetBulletInfo(damage, 10);
         }
 

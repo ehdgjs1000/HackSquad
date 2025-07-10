@@ -32,16 +32,19 @@ public class Jester : PlayerCtrl
         nowBullet--;
         if (!isFinalSkill)
         {
-            bullet = Instantiate(bulletGo, new Vector3(monster.transform.position.x,
+            bullet = PoolManager.instance.MakeObj("jesterBullet");
+            bullet.transform.position = new Vector3(monster.transform.position.x,
             monster.transform.position.y + 0.05f,
-            monster.transform.position.z), Quaternion.identity);
+            monster.transform.position.z);
+            bullet.transform.rotation = Quaternion.identity;
             bullet.GetComponent<JesterBullet>().damage = damage;
             bullet.GetComponent<JesterBullet>().attackTerm = poisionTerm;
+            StartCoroutine(PoolManager.instance.DeActive(6.0f, bullet));
         }
         else
         {
             bullet = Instantiate(finalBullet, new Vector3(monster.transform.position.x,
-            monster.transform.position.y + 0.3f,
+            monster.transform.position.y + 0.05f,
             monster.transform.position.z), Quaternion.identity);
             bullet.GetComponent<JesterBullet>().damage = damage;
             bullet.GetComponent<JesterBullet>().attackTerm = poisionTerm /0.5f;

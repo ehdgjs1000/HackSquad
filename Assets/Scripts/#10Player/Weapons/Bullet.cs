@@ -5,7 +5,8 @@ public abstract class Bullet : MonoBehaviour
 {
     public float damage;
     public float criticalChange = 10.0f;
-    [SerializeField] protected float bulletDestroyTime;
+    public float bulletDestroyTime;
+    float initBulletDestroyTime;
     [SerializeField] float bulletSpeed;
     protected int penetrateCount = 0;
     protected bool canPenetrate = false;
@@ -13,9 +14,10 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] private GameObject damagePopUpTr;
     [SerializeField] private Transform onHitVFX;
 
-    private void Start()
+    private void Awake()
     {
-       Destroy(this.gameObject, bulletDestroyTime);
+        initBulletDestroyTime = bulletDestroyTime;
+        //StartCoroutine(PoolManager.instance.DeActive(bulletDestroyTime, this.gameObject));
     }
     private void FixedUpdate()
     {
@@ -24,6 +26,8 @@ public abstract class Bullet : MonoBehaviour
 
     public void SetBulletInfo(float dmg, int _penetrateCount)
     {
+        bulletDestroyTime = initBulletDestroyTime;
+        StartCoroutine(PoolManager.instance.DeActive(bulletDestroyTime, this.gameObject));
         damage = dmg;
         penetrateCount = _penetrateCount;
     }
@@ -61,8 +65,8 @@ public abstract class Bullet : MonoBehaviour
                 penetrateCount--;
                 if (penetrateCount <= 0)
                 {
-                    //StartCoroutine(ObjectPool.instance.DeActive(0.0f, this.gameObject));
-                    Destroy(this.gameObject);
+                    StartCoroutine(PoolManager.instance.DeActive(0.0f, this.gameObject));
+                    //Destroy(this.gameObject);
                 }
 
             }

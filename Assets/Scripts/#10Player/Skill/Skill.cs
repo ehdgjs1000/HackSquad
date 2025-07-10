@@ -89,8 +89,6 @@ public class Skill : MonoBehaviour
         else if (skillId == 1201) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 1202) GameManager.instance.players[skillCharacterNum].GetComponent<Robot>().attackCount++;
         else if (skillId == 1203) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.9f);
-
-        Debug.Log(GameManager.instance.players[skillCharacterNum]+ ": " +skillCharacterNum+"¹ø");
         //Final Skill
         if (skillId == 109)
         {
@@ -142,7 +140,7 @@ public class Skill : MonoBehaviour
             GameManager.instance.players[skillCharacterNum].GetComponent<Jester>().UpgradeFinalSkill();
         }else if (skillId == 1209)
         {
-
+            GameManager.instance.players[skillCharacterNum].GetComponent<Robot>().isFinalSkill = true;
         }
 
     }

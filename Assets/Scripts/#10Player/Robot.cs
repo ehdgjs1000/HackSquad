@@ -5,12 +5,12 @@ public class Robot : PlayerCtrl
 {
     MonsterCtrl monster;
     public int attackCount;
-    bool isFinalSkill = false;
+    public bool isFinalSkill = false;
     protected override void Attack(MonsterCtrl enemy)
     {
         if (enemy != null)
         {
-            if (!finalSkill)
+            if (!isFinalSkill)
             {
                 fireRate = tempFireRate;
                 monster = enemy;
@@ -32,10 +32,12 @@ public class Robot : PlayerCtrl
 
     protected override IEnumerator Shoot()
     {
+        Debug.Log("shoot");
         //Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
         Vector3 monsterPos = monster.transform.position;
-        GameObject bullet = Instantiate(bulletGo, new Vector3(monsterPos.x, monsterPos.y+0.25f, monsterPos.z), 
-            Quaternion.identity);
+        GameObject bullet = PoolManager.instance.MakeObj("robotBullet");
+        bullet.transform.position = new Vector3(monsterPos.x, monsterPos.y + 0.25f, monsterPos.z);
+        bullet.transform.rotation = Quaternion.identity;
         bullet.GetComponent<RobotBullet>().damage = damage;
         yield return null;
 

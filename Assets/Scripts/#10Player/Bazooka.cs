@@ -40,9 +40,13 @@ public class Bazooka : PlayerCtrl
     {
         nowBullet--;
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
-        GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
+
+        GameObject bullet = PoolManager.instance.MakeObj("bazookaBullet");
+        bullet.transform.position = bulletSpawnPos.transform.position;
+        bullet.transform.rotation = transform.localRotation;
         bullet.GetComponent<BazookaBullet>().SetBulletInfo(damage,0);
         bullet.GetComponent<BazookaBullet>().exploseRadius = exploseRadius;
+        StartCoroutine(PoolManager.instance.DeActive(1.0f, bullet));
 
         if (nowBullet <= 0) StartCoroutine(Reloading());
 

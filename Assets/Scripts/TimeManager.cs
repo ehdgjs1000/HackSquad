@@ -71,18 +71,18 @@ public class TimeManager : MonoBehaviour
     IEnumerator DailyReset()
     {
         Debug.Log("Daily Reset");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         BackEndGameData.Instance.UserQuestData.ResetDaily();
         BackEndGameData.Instance.GameDataUpdate();
-        QuestManager.instance.UpdateQuestUI();
+        //QuestManager.instance.UpdateQuestUI();
     }
     IEnumerator WeeklyReset()
     {
         Debug.Log("Weekly Reset");
         BackEndGameData.Instance.UserQuestData.ResetWeekly();
         BackEndGameData.Instance.GameDataUpdate();
-        yield return new WaitForSeconds(2f);
-        QuestManager.instance.UpdateQuestUI();
+        yield return new WaitForSeconds(1f);
+        //QuestManager.instance.UpdateQuestUI();
     }
     private void TimeUI(TimeSpan remainDaily, TimeSpan remainWeekly)
     {
