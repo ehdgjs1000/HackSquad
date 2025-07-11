@@ -14,6 +14,8 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] private GameObject damagePopUpTr;
     [SerializeField] private Transform onHitVFX;
 
+    Color color;
+
     private void Awake()
     {
         initBulletDestroyTime = bulletDestroyTime;
@@ -58,9 +60,10 @@ public abstract class Bullet : MonoBehaviour
                 OnHit();
                 OnHitVFX(this.transform.position);
 
+                ColorUtility.TryParseHtmlString("#FF8600", out color);
                 //Damage PopUp
                 DamagePopUp.Create(new Vector3(co.transform.position.x,
-                    co.transform.position.y + 2.0f, co.transform.position.z), damage);
+                    co.transform.position.y + 2.0f, co.transform.position.z), damage, color);
 
                 penetrateCount--;
                 if (penetrateCount <= 0)

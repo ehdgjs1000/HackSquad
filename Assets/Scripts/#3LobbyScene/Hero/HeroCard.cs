@@ -17,6 +17,9 @@ public class HeroCard : MonoBehaviour
     int heroLevel;
     int heroCount;
     [SerializeField] HeroDetail heroDetail;
+    [SerializeField] Image heroTypeBg;
+    [SerializeField] Image heroTypeImage;
+    string heroType;
 
 
     private void Start()
@@ -32,6 +35,7 @@ public class HeroCard : MonoBehaviour
         heroImage.sprite = hero.ReturnHeroProfile();
         heroCount = hero.ReturnHeroCount();
         heroLevel = hero.ReturnHeroLevel();
+        heroType = hero.ReturnHeroType();
         //보유 히어로가 없을경우 배경 처리
         if (heroLevel == 0 && heroCount == 0) noHeroBg.gameObject.SetActive(true);
         else noHeroBg.gameObject.SetActive(false);
@@ -70,6 +74,24 @@ public class HeroCard : MonoBehaviour
             ColorUtility.TryParseHtmlString("#EEFF37", out color);
             heroBg.color = color;
         }
+
+        //영웅 직업
+        if (heroType == "공격형")
+        {
+            ColorUtility.TryParseHtmlString("#FD0000", out color);
+            heroTypeBg.color = color;
+        }
+        else if (heroType == "마법형")
+        {
+            ColorUtility.TryParseHtmlString("#0074FF", out color);
+            heroTypeBg.color = color;
+        }
+        else if (heroType == "악마형")
+        {
+            heroTypeBg.color = Color.black;
+        }
+        heroTypeImage.sprite = hero.ReturnHeroTypeImage();
+
     }
     //업그레이드가 가능한지 체크
     private void CheckUpgrade()

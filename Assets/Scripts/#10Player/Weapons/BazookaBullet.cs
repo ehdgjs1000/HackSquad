@@ -20,13 +20,15 @@ public class BazookaBullet : Bullet
     {
         monsterColls = null;
         monsterColls = Physics.OverlapSphere(transform.position, exploseRadius, monsterLayer);
+        Color color;
         if (monsterColls.Length > 0)
         {
             foreach (Collider monster in monsterColls)
             {
                 monster.GetComponent<MonsterCtrl>().GetAttack(damage);
+                ColorUtility.TryParseHtmlString("#E800FF", out color);
                 DamagePopUp.Create(new Vector3(monster.transform.position.x,
-                    monster.transform.position.y + 2.0f, monster.transform.position.z), damage);
+                    monster.transform.position.y + 2.0f, monster.transform.position.z), damage, color);
             }
 
         }

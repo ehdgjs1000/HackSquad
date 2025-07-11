@@ -8,6 +8,8 @@ public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] monsters;
     [SerializeField] Transform[] monsterSpawnPoses;
+    [SerializeField] GameObject[] bossGO;
+    int bossLevel = 0;
 
 
     List<Spawn> spawnList;
@@ -20,7 +22,8 @@ public class MonsterSpawner : MonoBehaviour
 
     private void Awake()
     {
-        spawnList = new List<Spawn>();    
+        spawnList = new List<Spawn>();
+        bossLevel = 0;
     }
     private void Update()
     {
@@ -30,6 +33,11 @@ public class MonsterSpawner : MonoBehaviour
             SpawnMonster();
         }
         
+    }
+    public void SpawnBoss()
+    {
+        GameObject monster = Instantiate(bossGO[bossLevel], monsterSpawnPoses[8].position,Quaternion.identity);
+        bossLevel++;
     }
     private void SpawnMonster()
     {

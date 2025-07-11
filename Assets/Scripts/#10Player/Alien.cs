@@ -50,8 +50,10 @@ public class Alien : PlayerCtrl
             bullet.transform.rotation = Quaternion.identity;
             StartCoroutine(PoolManager.instance.DeActive(1.0f, bullet));
 
+            Color color;
+            ColorUtility.TryParseHtmlString("#5B4A00", out color);
             DamagePopUp.Create(new Vector3(monsterF.transform.position.x,
-                        monsterF.transform.position.y + 2.0f, monsterF.transform.position.z), damage);
+                        monsterF.transform.position.y + 2.0f, monsterF.transform.position.z), damage, color);
         }
         yield return null;
     }
@@ -59,15 +61,17 @@ public class Alien : PlayerCtrl
     {
         nowBullet--;
         monster.GetAttack(damage);
-
+        
         GameObject bullet = PoolManager.instance.MakeObj("alienBullet");
         bullet.GetComponent<AilenBullet>().SetBulletInfo(damage, stunTime);
         bullet.transform.position = monster.transform.position;
         bullet.transform.rotation = Quaternion.identity;
         StartCoroutine(PoolManager.instance.DeActive(1.0f, bullet));
 
+        Color color;
+        ColorUtility.TryParseHtmlString("#5B4A00", out color);
         DamagePopUp.Create(new Vector3(monster.transform.position.x,
-                    monster.transform.position.y + 2.0f, monster.transform.position.z), damage);
+                    monster.transform.position.y + 2.0f, monster.transform.position.z), damage, color);
 
         if (nowBullet <= 0) StartCoroutine(Reloading());
         yield return null;

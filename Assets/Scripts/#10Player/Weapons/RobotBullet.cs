@@ -24,7 +24,7 @@ public class RobotBullet : MonoBehaviour
             {
                 monsters.GetComponent<MonsterCtrl>().GetAttack(damage);
                 DamagePopUp.Create(new Vector3(monsters.transform.position.x,
-                   monsters.transform.position.y + 2.0f, monsters.transform.position.z), damage);
+                   monsters.transform.position.y + 2.0f, monsters.transform.position.z), damage, Color.blue);
             }
 
         }

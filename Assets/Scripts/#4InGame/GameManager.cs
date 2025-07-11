@@ -8,7 +8,7 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] MonsterSpawner monsterSpawner;
+    MonsterSpawner monsterSpawner;
 
     //Level System
     public int gameLevel;
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     //[SerializeField] GameObject[] heroGos;
     [SerializeField] Transform[] heroPos;
     public PlayerCtrl[] players;
+    public bool isBossMode = false;
 
     [SerializeField] private GameObject damagePopUpTr;
     [SerializeField] Image gamePlayTimeProgress;
@@ -54,14 +55,23 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
+        monsterSpawner = GameObject.Find("MonsterSpawner").GetComponent<MonsterSpawner>();
         SetHeros();
         UpdateUI();
         InitSkillInfo();
     }
     private void Update()
     {
-        sec += Time.deltaTime;
-        GamePlayProgressUpdate();
+        if (!isBossMode)
+        {
+            sec += Time.deltaTime;
+            GamePlayProgressUpdate();
+            if(min >= 10 && sec >= 1.0f)
+            {
+                GameOver();
+            }
+        }
+        
     }
     public void GameSpeedOnClick()
     {
@@ -70,14 +80,22 @@ public class GameManager : MonoBehaviour
         else if (gameSpeed == 5.0f) gameSpeed = 1.0f;
         GameSpeed(gameSpeed);
     }
+    public void IsBossDie()
+    {
+        isBossMode = false;
+        monsterSpawner.canSpawn = true;
+        sec += 5.0f;
+    }
     IEnumerator SpawnBoss()
     {
+        isBossMode = true;
         bossImage.gameObject.SetActive(true);
         monsterSpawner.canSpawn = false;
         StartCoroutine(bossImage.BossImageFade());
         yield return new WaitForSeconds(5.0f);
-        
+
         //보스 스폰
+        monsterSpawner.SpawnBoss();
     }
     private void GamePlayProgressUpdate()
     {
@@ -90,7 +108,11 @@ public class GameManager : MonoBehaviour
         gamePlayTimeText.text = min.ToString() + ":" + sec.ToString("F0");
 
         //5분 10분 보스 스폰
-        //StartCoroutine(SpawnBoss());
+        if((min == 5 && sec <= 1.0f) || min == 10)
+        {
+            StartCoroutine(SpawnBoss());
+        }
+
 
     }
     public void GetExp(float _gainExp)
@@ -175,7 +197,7 @@ public class GameManager : MonoBehaviour
 
         damagePopUpTr.GetComponentInChildren<TextMeshPro>().color = Color.red;
         DamagePopUp.Create(new Vector3(transform.position.x,
-                    transform.position.y + 2.0f, transform.position.z), _damage);
+                    transform.position.y + 2.0f, transform.position.z), _damage, Color.red);
         UpdateUI();
         if (hp <= 0.0f && !isGameOver)
         {
@@ -236,6 +258,15 @@ public class GameManager : MonoBehaviour
 
         SkillChoose();
         UpdateUI();
+    }
+    public void BossLevelUp()
+    {
+        int levelUpAmount = Random.Range(1,3);
+        for (int i = 0; i <= levelUpAmount; i++)
+        {
+            SkillChoose();
+            UpdateUI();
+        }
     }
     public void SkillChoose()
     {

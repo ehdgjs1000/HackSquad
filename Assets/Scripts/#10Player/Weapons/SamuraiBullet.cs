@@ -28,7 +28,7 @@ public class SamuraiBullet : Bullet
             {
                 co.GetComponent<MonsterCtrl>().GetAttack(damage);
                 DamagePopUp.Create(new Vector3(co.transform.position.x,
-                   co.transform.position.y + 2.0f, co.transform.position.z), damage);
+                   co.transform.position.y + 2.0f, co.transform.position.z), damage, Color.red);
                 Instantiate(exploseTs, co.transform.position, Quaternion.identity);
             }
         }

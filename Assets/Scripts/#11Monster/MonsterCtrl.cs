@@ -9,7 +9,7 @@ public class MonsterCtrl : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float hp;
     [SerializeField] float exp;
-    [SerializeField] int gold;
+    [SerializeField] protected int gold;
     bool canMove = true;
     Animator _animator;
     Collider monsterColl;
@@ -42,7 +42,6 @@ public class MonsterCtrl : MonoBehaviour
     }
     private void Update()
     {
-        
         if(!isDie && !isAttacking)
         {
             if (canMove)
@@ -105,7 +104,7 @@ public class MonsterCtrl : MonoBehaviour
         }
             
     }
-   IEnumerator Die()
+    protected virtual IEnumerator Die()
     {
         isDie = true;
         GameManager.instance.getGold += gold;

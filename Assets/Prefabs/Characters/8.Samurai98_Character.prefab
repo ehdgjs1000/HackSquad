@@ -1394,6 +1394,7 @@ MonoBehaviour:
   heroProfileImage: {fileID: 21300000, guid: 7812c0ec194ff0047a4ba87e41054f08, type: 3}
   heroGrade: 2
   heroNum: 8
+  heroTypeSprite: {fileID: 21300000, guid: 6038af874f20a904e8f4a9ff1e8f62e9, type: 3}
   heroLevel: 0
   heroCount: 0
   heroJob: "\uB9C8\uBC95\uD615"

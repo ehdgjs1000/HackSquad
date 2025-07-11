@@ -1361,9 +1361,10 @@ MonoBehaviour:
   heroProfileImage: {fileID: 21300000, guid: 5facf6487f32fbf4a9e81db4f4b87a77, type: 3}
   heroGrade: 3
   heroNum: 0
+  heroTypeSprite: {fileID: 21300000, guid: b016aeb3e3aee754caf1235a612d545e, type: 3}
   heroLevel: 0
   heroCount: 0
-  heroJob: "\uC678\uAC8C\uD615"
+  heroJob: "\uC678\uACC4\uD615"
 --- !u!114 &1484280763057746414
 MonoBehaviour:
   m_ObjectHideFlags: 0

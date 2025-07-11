@@ -71,10 +71,13 @@ public class TimeManager : MonoBehaviour
     IEnumerator DailyReset()
     {
         Debug.Log("Daily Reset");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        //매일 리셋해야 하는 것 넣기
         BackEndGameData.Instance.UserQuestData.ResetDaily();
+
+
+
         BackEndGameData.Instance.GameDataUpdate();
-        //QuestManager.instance.UpdateQuestUI();
     }
     IEnumerator WeeklyReset()
     {

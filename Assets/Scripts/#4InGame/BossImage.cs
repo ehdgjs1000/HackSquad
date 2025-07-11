@@ -5,7 +5,7 @@ using DG.Tweening;
 public class BossImage : MonoBehaviour
 {
     [SerializeField] Vector3 fadeAmount;
-    float fadeDuration = 0.9f;
+    float fadeDuration = 0.5f;
     Image bossImage;
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class BossImage : MonoBehaviour
             bossImage.transform.DOScale(Vector3.one, fadeDuration);
             yield return new WaitForSeconds(fadeDuration);
         }
-        this.gameObject.SetActive(false);
+        bossImage.transform.DOScale(Vector3.zero, 0);
     }
 
 

@@ -6,6 +6,7 @@ public class HeroInfo : MonoBehaviour
     [SerializeField] Sprite heroProfileImage;
     [SerializeField] int heroGrade; // 0 = normal / 1 = Special / 2 = Epic / 3 = Legendary
     [SerializeField] int heroNum;
+    [SerializeField] Sprite heroTypeSprite;
     public int heroLevel;
     public int heroCount;
     public string heroJob;
@@ -21,6 +22,14 @@ public class HeroInfo : MonoBehaviour
     }
 
 
+    public Sprite ReturnHeroTypeImage()
+    {
+        return heroTypeSprite;
+    }
+    public string ReturnHeroType()
+    {
+        return heroJob;
+    }
     public int ReturnHeroCount()
     {
         return heroCount;
