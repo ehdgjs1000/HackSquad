@@ -5,15 +5,13 @@ using DG.Tweening;
 public class LobbyManager : MonoBehaviour
 {
     public static LobbyManager instance;
-    int level;
-    float exp;
 
     [SerializeField] GameObject[] chapterSet;
+    [SerializeField] GameObject levelUpPanel;
 
     private void Awake()
     {
         BackEndGameData.Instance.GameDataLoad();
-        BackEndGameData.Instance.onGameDataLoadEvent.AddListener(UpdateGameData);
         if (instance == null) instance = this;
     }
     private void Start()
@@ -21,17 +19,21 @@ public class LobbyManager : MonoBehaviour
         StartCoroutine(InitUI());
     }
 
-    //서버 연결 시간 기다리기 위해서 0.1초 제공
+    public void LevelUp()
+    {
+        levelUpPanel.SetActive(true);
+        levelUpPanel.GetComponent<LevelUp>().LevelUpUpdate();
+
+        UpdateUIAll();
+    }
+
     IEnumerator InitUI()
     {
         yield return new WaitForSeconds(0.1f);
+        BackEndGameData.Instance.GameDataUpdate();
         MainManager.instance.UpdateMainUI();
         DrawManager.instance.UpdateMainUI();
-    }
-    public void UpdateGameData()
-    {
-        level = BackEndGameData.Instance.UserGameData.level;
-        exp = BackEndGameData.Instance.UserGameData.exp;
+        yield return null;
     }
 
     public void ChapterBtnClick(int _num)

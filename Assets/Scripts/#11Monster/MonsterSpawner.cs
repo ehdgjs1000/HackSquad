@@ -50,7 +50,7 @@ public class MonsterSpawner : MonoBehaviour
         //추후 몬스터 index 넣기
         for (int i = 0; i < spawnMonsterCount; i++)
         {
-            int randomSapwnPos = Random.Range(0, monsterSpawnPoses.Length);
+            int randomSapwnPos = Random.Range(0, monsterSpawnPoses.Length-1);
             int ranMonster = Random.Range(0,5);
             string monsterType = "monster" + ranMonster;
             

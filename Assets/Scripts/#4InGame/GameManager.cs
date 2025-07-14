@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     bool isGameOver = false;
     public int heroCount;
     float expRatio = 1.15f;
+    public float userExp = 0;
     public float gameSpeed = 1.0f;
     [SerializeField] TextMeshProUGUI gameSpeedText;
     //UI
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         monsterSpawner = GameObject.Find("MonsterSpawner").GetComponent<MonsterSpawner>();
+        userExp = 0;
         SetHeros();
         UpdateUI();
         InitSkillInfo();
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour
             GamePlayProgressUpdate();
             if(min >= 10 && sec >= 1.0f)
             {
-                GameOver();
+                StartCoroutine(GameOver());
             }
         }
         
@@ -215,8 +217,6 @@ public class GameManager : MonoBehaviour
         ResetSkillLevel();
         gameOverSet.SetActive(true);
 
-        GameOverManager.instance.SetReward();
-
         if (hp <= 0)
         {
             GameOverManager.instance.isWin = false;
@@ -233,14 +233,7 @@ public class GameManager : MonoBehaviour
 
         yield return null;
     }
-    public void GameExitOnClick()
-    {
-        GameSpeed(1);
-        BackEndGameData.Instance.UserQuestData.questProgress[6] += killMonsterCount;
-        BackEndGameData.Instance.UserGameData.gold += getGold;
-        BackEndGameData.Instance.GameDataUpdate();
-        SceneManager.LoadScene("LobbyScene");
-    }
+
     private void ResetSkillLevel()
     {
         SkillManager.instance.ResetSkillLevel();

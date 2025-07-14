@@ -12,6 +12,10 @@ public class SweepReward : MonoBehaviour
     [SerializeField] Sprite rewardSprite;
     [SerializeField] int rewardCount;
 
+    public void Setting(float _amount)
+    {
+        rewardText.text = _amount.ToString();
+    }
     public void RewardAnimation()
     {
         StartCoroutine(StartAnim());

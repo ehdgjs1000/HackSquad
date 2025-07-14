@@ -2,39 +2,84 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class SweepManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI goldSweepText;
     [SerializeField] TextMeshProUGUI expSweepText;
     [SerializeField] TextMeshProUGUI leftVideoText, leftFastText;
+    [SerializeField] ResultPanel resultPanel;
+    [SerializeField] SweepReward[] rewards;
+    [SerializeField] TextMeshProUGUI rewardTimeText;
 
     float goldSweepAount;
     float expSweepAount;
+
+    DateTime recentSweepTime;
 
     private void Start()
     {
         UpdateUI();
     }
-    private void UpdateUI()
+    public void UpdateUI()
     {
+        Timer();
         float highestChapter = BackEndGameData.Instance.UserGameData.highestChapter;
-        goldSweepText.text = (100 * (Mathf.Pow(1.1f,highestChapter))).ToString("F0") + "/시간";
-        expSweepText.text = (150 * (Mathf.Pow(1.1f, highestChapter))).ToString("F0") + "/시간";
+        goldSweepText.text = (66 * (Mathf.Pow(1.1f,highestChapter))).ToString("F0") + "/시간";
+        expSweepText.text = (99 * (Mathf.Pow(1.1f, highestChapter))).ToString("F0") + "/시간";
+
+        DateTime now = DateTime.Now;
+        int time = (int)(now - recentSweepTime).TotalMinutes / 60;
+        if ((now - recentSweepTime).TotalMinutes / 60 > 0)
+        {
+            if (time > 6) time = 6;
+            rewards[0].gameObject.SetActive(true);
+            rewards[1].gameObject.SetActive(true);
+            rewards[0].Setting(66 * (Mathf.Pow(1.1f, highestChapter)) * time);
+            rewards[1].Setting(99 * (Mathf.Pow(1.1f, highestChapter)) * time);
+            rewardTimeText.text = time.ToString()+"시간 소탕 보상";
+        }
+        
 
         //잔여량 표시하기
-        leftVideoText.text = "잔여:" + BackEndGameData.Instance.ToString();
+        //leftVideoText.text = "잔여:" + BackEndGameData.Instance.ToString();
+        LobbyManager.instance.UpdateUIAll();
     }
-    public void ResetSweep()
+    private void Timer()
     {
-
-
-        UpdateUI();
+        if (PlayerPrefs.HasKey("recentSweepTime"))
+        {
+            recentSweepTime = DateTime.ParseExact(PlayerPrefs.GetString("recentSweepTime"), "yyyy-MM-dd HH:mm:ss", null);
+        }
+        else
+        {
+            recentSweepTime = DateTime.Now;
+            PlayerPrefs.SetString("recentSweepTime", recentSweepTime.ToString("yyyy-MM-dd HH:mm:ss"));
+        }
     }
     //소탕
     public void SweepOnClick()
     {
+        DateTime now = DateTime.Now;
+        //시간에 따른 보상 지급
+        int time = (int)(now - recentSweepTime).TotalMinutes / 60;
+        Debug.Log(time);
+        if ((now - recentSweepTime).TotalMinutes / 60 > 0)
+        {
 
+            if (time > 6) time = 6;
+            //보상 획득 가능
+            float highestChapter = BackEndGameData.Instance.UserGameData.highestChapter;
+            goldSweepAount = 66 * (Mathf.Pow(1.1f, highestChapter)) * time;
+            expSweepAount = 99 * (Mathf.Pow(1.1f, highestChapter)) * time;
+            BackEndGameData.Instance.UserGameData.gold += (int)goldSweepAount;
+            BackEndGameData.Instance.UserGameData.exp += (int)expSweepAount;
+
+            //보상 받을 후 시간 초기화
+            PlayerPrefs.SetString("recentSweepTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            BackEndGameData.Instance.GameDataUpdate();
+        }
 
         UpdateUI();
     }
@@ -44,11 +89,14 @@ public class SweepManager : MonoBehaviour
 
         //보상 제공
         float highestChapter = BackEndGameData.Instance.UserGameData.highestChapter;
-        goldSweepAount = 100 * (Mathf.Pow(1.1f, highestChapter));
-        expSweepAount = 150 * (Mathf.Pow(1.1f, highestChapter));
+        goldSweepAount = 6*66 * (Mathf.Pow(1.1f, highestChapter));
+        expSweepAount = 6*99 * (Mathf.Pow(1.1f, highestChapter));
         BackEndGameData.Instance.UserGameData.gold += Mathf.FloorToInt(goldSweepAount);
+        BackEndGameData.Instance.UserGameData.exp += Mathf.FloorToInt(expSweepAount);
 
         BackEndGameData.Instance.GameDataUpdate();
+        UpdateUI();
+        OpenResultPanel(goldSweepAount, expSweepAount);
     }
     //빠른 소탕
     public void FastSweepOnClick()
@@ -60,14 +108,20 @@ public class SweepManager : MonoBehaviour
 
             //보상 제공 적용
             float highestChapter = BackEndGameData.Instance.UserGameData.highestChapter;
-            goldSweepAount = 100 * (Mathf.Pow(1.1f, highestChapter));
-            expSweepAount = 150 * (Mathf.Pow(1.1f, highestChapter));
+            goldSweepAount = 6 * 66 * (Mathf.Pow(1.1f, highestChapter));
+            expSweepAount = 6 * 99 * (Mathf.Pow(1.1f, highestChapter));
             BackEndGameData.Instance.UserGameData.gold += Mathf.FloorToInt(goldSweepAount);
+            BackEndGameData.Instance.UserGameData.exp += Mathf.FloorToInt(expSweepAount);
 
             BackEndGameData.Instance.GameDataUpdate();
         }
         
         UpdateUI();
+        OpenResultPanel(goldSweepAount, expSweepAount);
     }
-
+    private void OpenResultPanel(float _goldAmount, float _expAmount)
+    {
+        resultPanel.gameObject.SetActive(true);
+        StartCoroutine(resultPanel.UpdateUI(_goldAmount, _expAmount));
+    }
 }

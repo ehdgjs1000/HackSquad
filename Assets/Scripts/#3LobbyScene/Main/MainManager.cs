@@ -15,6 +15,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemText;
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI energyText;
+    [SerializeField] TextMeshProUGUI levelText;
 
     //GameData
     int gem;
@@ -31,6 +32,7 @@ public class MainManager : MonoBehaviour
     //ChapterClear
     [SerializeField] ChapterClear chapterClear;
     [SerializeField] QuestManager questManager;
+    [SerializeField] SweepManager sweepManager;
 
     private void Awake()
     {
@@ -64,12 +66,18 @@ public class MainManager : MonoBehaviour
     {
         QuestManager.instance.UpdateQuestUI();
     }
+    public void SweepOnClick()
+    {
+        sweepManager.gameObject.SetActive(true);
+        sweepManager.UpdateUI();
+    }
     public void UpdateMainUI()
     {
         //상단 정보
         gemText.text = BackEndGameData.Instance.UserGameData.gem.ToString();
         goldText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
         energyText.text = BackEndGameData.Instance.UserGameData.energy.ToString();
+        levelText.text = BackEndGameData.Instance.UserGameData.level.ToString();
 
         //게임 레벨
         gameLevel = (int)((BackEndGameData.Instance.UserGameData.highestChapter+1) / 2) + 1;

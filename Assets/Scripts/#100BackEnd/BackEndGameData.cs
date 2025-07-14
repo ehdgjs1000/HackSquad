@@ -224,6 +224,7 @@ public class BackEndGameData
         GameHeroDataLoad();
         GameQuestDataLoad();
         GameAbilityDataLoad();
+        Debug.Log("GameDataLoad EXP : " + UserGameData.exp);
     }
     public void GameUserDataLoad()
     {
@@ -466,6 +467,8 @@ public class BackEndGameData
         GameHeroDataUpdate();
         GameQuestDataUpdate();
         GameAbilityDataUpdate();
+        if(LobbyManager.instance != null) CheckLevelUp();
+        Debug.Log("GameDataUpdate EXP : " + userGameData.exp);
     }
     /// <summary>
     /// 뒤끝 콘솔 테이블에 있는 유저 데이터 갱신
@@ -687,4 +690,16 @@ public class BackEndGameData
 
     }
 
+    private void CheckLevelUp()
+    {
+        if(UserGameData.exp >= 1000 * Mathf.Pow(1.2f, UserGameData.level + 1))
+        {
+            Debug.Log("LevelUp");
+            UserGameData.exp -= 1000 * Mathf.Pow(1.2f, UserGameData.level + 1);
+            UserGameData.level++;
+            GameDataUpdate();
+            //Todo : 보상 UI 띄우기
+            LobbyManager.instance.LevelUp();
+        }
+    }
 }

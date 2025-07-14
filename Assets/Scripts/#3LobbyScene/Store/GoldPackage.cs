@@ -34,7 +34,9 @@ public class GoldPackage : MonoBehaviour
     }
     public void BuyGoldOnClick()
     {
-        if(BackEndGameData.Instance.UserGameData.gem >= costAmount)
+        BuyCheck.instance.UpdateUI("gold", goldAmount, costAmount);
+        Debug.Log(costAmount);
+        /*if(BackEndGameData.Instance.UserGameData.gem >= costAmount)
         {
             Debug.Log("BuyGold :" + goldAmount );
             BackEndGameData.Instance.UserGameData.gem -= costAmount;
@@ -42,7 +44,7 @@ public class GoldPackage : MonoBehaviour
             BackEndGameData.Instance.GameDataUpdate();
             StoreManager.instance.UpdateUI();
         }
-        else PopUpMessageBase.instance.SetMessage(" 다이아가 충분하지 않습니다");
+        else PopUpMessageBase.instance.SetMessage(" 다이아가 충분하지 않습니다");*/
     }
     public void BuyGemOnClick()
     {

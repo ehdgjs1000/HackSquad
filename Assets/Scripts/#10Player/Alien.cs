@@ -46,7 +46,7 @@ public class Alien : PlayerCtrl
 
             GameObject bullet = PoolManager.instance.MakeObj("alienBullet");
             bullet.GetComponent<AilenBullet>().SetBulletInfo(damage, stunTime);
-            bullet.transform.position = monster.transform.position;
+            bullet.transform.position = monsterF.transform.position;
             bullet.transform.rotation = Quaternion.identity;
             StartCoroutine(PoolManager.instance.DeActive(1.0f, bullet));
 

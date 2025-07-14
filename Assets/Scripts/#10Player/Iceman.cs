@@ -31,7 +31,7 @@ public class Iceman : PlayerCtrl
         finalSkillTime = tempFinalSkillTime;
         yield return new WaitForSeconds(0.1f);
         Instantiate(finalSkillTs, transform.position, Quaternion.identity);
-        finalSkillTs.GetComponent<IceGround>().iceDamage = damage * 1.5f;
+        finalSkillTs.GetComponent<IceGround>().iceDamage = damage * 0.7f;
         finalSkillTs.GetComponent<IceGround>().slowAmount = 1;
     }
     public void UpgradeFinalSkill()
