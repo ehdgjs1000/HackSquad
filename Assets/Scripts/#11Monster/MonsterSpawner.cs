@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] monsters;
+    //[SerializeField] GameObject[] monsters;
     [SerializeField] Transform[] monsterSpawnPoses;
     [SerializeField] GameObject[] bossGO;
     int bossLevel = 0;
@@ -51,15 +51,18 @@ public class MonsterSpawner : MonoBehaviour
         for (int i = 0; i < spawnMonsterCount; i++)
         {
             int randomSapwnPos = Random.Range(0, monsterSpawnPoses.Length-1);
-            int ranMonster = Random.Range(0,5);
+            int ranMonster = Random.Range(1,6);
             string monsterType = "monster" + ranMonster;
-            
+
             //몬스터 Pool 재사용
-            GameObject monster = PoolManager.instance.MakeObj("monster1");
+            //몬스터 다양화 하기
+            GameObject monster = PoolManager.instance.MakeObj(monsterType);
+
+
             monster.transform.position = monsterSpawnPoses[randomSapwnPos].position;
             monster.GetComponent<MonsterCtrl>().InitMonster();
 
-            Instantiate(monsters[0].GetComponent<MonsterCtrl>().summonVFX,
+            Instantiate(monster.GetComponent<MonsterCtrl>().summonVFX,
                 new Vector3(monsterSpawnPoses[randomSapwnPos].position.x, monsterSpawnPoses[randomSapwnPos].position.y + 0.2f, monsterSpawnPoses[randomSapwnPos].position.z),
                 Quaternion.identity);
         }

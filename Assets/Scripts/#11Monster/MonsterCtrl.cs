@@ -88,10 +88,12 @@ public class MonsterCtrl : MonoBehaviour
 
             transform.rotation = Quaternion.Lerp(transform.rotation, lookTarget, 0.25f);
             isMoving = true;
+            _animator.SetBool("isMoving", true);
         }
         else
         {
             isMoving = false;
+            _animator.SetBool("isMoving", false);
         }
     }
     public void GetAttack(float _dmg)
@@ -112,7 +114,7 @@ public class MonsterCtrl : MonoBehaviour
         GameManager.instance.killMonsterCount++;
         monsterColl.enabled = false;
         GameManager.instance.GetExp(exp);
-        //_animator.SetTrigger("Die");
+        _animator.SetTrigger("Die");
         yield return new WaitForSeconds(4.0f);
         StartCoroutine(PoolManager.instance.DeActive(0, this.gameObject));
         //Destroy(this.gameObject);
@@ -133,7 +135,7 @@ public class MonsterCtrl : MonoBehaviour
     {
         isAttacking = true;
         attackTerm = tempAttackTerm;
-        //_animator.SetTrigger("Attack");
+        _animator.SetTrigger("Attack");
         yield return new WaitForSeconds(attackDelay);
         GameManager.instance.GetDamage(damage);
     }

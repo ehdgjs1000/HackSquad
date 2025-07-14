@@ -39,6 +39,7 @@ public class Alien : PlayerCtrl
         fireRate = tempFireRate;
         aMonsterColls = null;
         aMonsterColls = Physics.OverlapSphere(transform.position, radius, monsterLayer);
+        damage = damage * 0.15f;
         foreach (Collider co in aMonsterColls)
         {
             MonsterCtrl monsterF = co.GetComponent<MonsterCtrl>();
