@@ -4,17 +4,17 @@ using UnityEngine;
 public class MonsterCtrl : MonoBehaviour
 {
     //Stats
-    [SerializeField] float attackDelay;
-    [SerializeField] float damage;
+    [SerializeField] protected  float attackDelay;
+    [SerializeField] protected  float damage;
     [SerializeField] float speed;
     [SerializeField] float hp;
     [SerializeField] float exp;
     [SerializeField] protected int gold;
     bool canMove = true;
-    Animator _animator;
+    protected  Animator _animator;
     Collider monsterColl;
     float initHp;
-
+    SpawnEffect spawnEffect;
 
     //BattleInfo
     Collider[] playerColl = new Collider[4];
@@ -24,11 +24,11 @@ public class MonsterCtrl : MonoBehaviour
     bool isMoving = false;
     bool isSlow = false;
     public bool isDie = false;
-    bool isAttacking = false;
+    protected bool isAttacking = false;
     float slowAmount;
-    [SerializeField] float attackRange;
-    [SerializeField] float attackTerm;
-    float tempAttackTerm;
+    [SerializeField] protected  float attackRange;
+    [SerializeField] protected  float attackTerm;
+    protected float tempAttackTerm;
 
     public Transform summonVFX;
      
@@ -37,6 +37,7 @@ public class MonsterCtrl : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         monsterColl = GetComponent<Collider>();
+        spawnEffect = GetComponent<SpawnEffect>();
         tempAttackTerm = attackTerm;
         initHp = hp;
     }
@@ -60,7 +61,11 @@ public class MonsterCtrl : MonoBehaviour
         isAttacking = false;
         monsterColl.enabled = true;
 
-        hp = initHp;
+        hp = initHp * Mathf.Pow(1.1f, GameManager.instance.min);
+    }
+    public void DoFade()
+    {
+        spawnEffect.StartFade();
     }
     public IEnumerator GetStun(float _stunTime)
     {
@@ -131,7 +136,7 @@ public class MonsterCtrl : MonoBehaviour
             if (attackTerm <= 0.0f) StartCoroutine(Attack());
         }
     }
-    IEnumerator Attack()
+    protected virtual IEnumerator Attack()
     {
         isAttacking = true;
         attackTerm = tempAttackTerm;

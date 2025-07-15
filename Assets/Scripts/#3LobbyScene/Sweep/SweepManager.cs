@@ -78,7 +78,9 @@ public class SweepManager : MonoBehaviour
 
             //보상 받을 후 시간 초기화
             PlayerPrefs.SetString("recentSweepTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            BackEndGameData.Instance.UserQuestData.questProgress[5]++;
             BackEndGameData.Instance.GameDataUpdate();
+            OpenResultPanel(goldSweepAount, expSweepAount);
         }
 
         UpdateUI();
@@ -93,6 +95,7 @@ public class SweepManager : MonoBehaviour
         expSweepAount = 6*99 * (Mathf.Pow(1.1f, highestChapter));
         BackEndGameData.Instance.UserGameData.gold += Mathf.FloorToInt(goldSweepAount);
         BackEndGameData.Instance.UserGameData.exp += Mathf.FloorToInt(expSweepAount);
+        BackEndGameData.Instance.UserQuestData.questProgress[5]++;
 
         BackEndGameData.Instance.GameDataUpdate();
         UpdateUI();
@@ -112,6 +115,7 @@ public class SweepManager : MonoBehaviour
             expSweepAount = 6 * 99 * (Mathf.Pow(1.1f, highestChapter));
             BackEndGameData.Instance.UserGameData.gold += Mathf.FloorToInt(goldSweepAount);
             BackEndGameData.Instance.UserGameData.exp += Mathf.FloorToInt(expSweepAount);
+            BackEndGameData.Instance.UserQuestData.questProgress[5]++;
 
             BackEndGameData.Instance.GameDataUpdate();
         }

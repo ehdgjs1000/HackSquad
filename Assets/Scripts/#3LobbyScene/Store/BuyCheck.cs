@@ -45,6 +45,7 @@ public class BuyCheck : MonoBehaviour
                     Debug.Log("BuyGold :" + buyAmount);
                     BackEndGameData.Instance.UserGameData.gem -= cost;
                     BackEndGameData.Instance.UserGameData.gold += buyAmount;
+                    BackEndGameData.Instance.UserQuestData.questProgress[3] += cost;
                     BackEndGameData.Instance.GameDataUpdate();
                     StoreManager.instance.UpdateUI();
                     this.transform.DOScale(Vector3.zero, 0.15f);

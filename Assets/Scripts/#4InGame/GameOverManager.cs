@@ -15,6 +15,7 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI gameOverText;
     bool canExit = false;
     public bool isWin = false;
+    int killMonsterCount = 0;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class GameOverManager : MonoBehaviour
     public IEnumerator GameOver()
     {
         canExit = false;
+        BackEndGameData.Instance.UserQuestData.questProgress[6] += GameManager.instance.killMonsterCount;
         gameWinImage.transform.localScale = Vector3.zero;
         gameDefeatImage.transform.localScale = Vector3.zero;
         //gamemanager min이 10분일떄 추가

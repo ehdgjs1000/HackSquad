@@ -133,7 +133,6 @@ public class Skill : MonoBehaviour
         }
         else if (skillId == 1009)
         {
-            Debug.Log(skillCharacterNum);
             GameManager.instance.players[skillCharacterNum].GetComponent<Veteran>().penetrateCount = 10;
         }else if (skillId == 1109)
         {

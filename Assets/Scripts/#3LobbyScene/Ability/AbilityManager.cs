@@ -11,6 +11,7 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI goldAmountText;
     [SerializeField] TextMeshProUGUI abilityCostText;
     [SerializeField] Ability[] abilities;
+    [SerializeField] TextMeshProUGUI abilityLevelText;
 
     float canExitDraw = 1.0f;
     int abilityLevel = 0;
@@ -29,6 +30,12 @@ public class AbilityManager : MonoBehaviour
     }
     public void UpdateUI()
     {
+        abilityLevel = 0;
+        for (int i = 0; i < BackEndGameData.Instance.UserAbilityData.abilityLevel.Length; i++)
+        {
+            if (BackEndGameData.Instance.UserAbilityData.abilityLevel[i] > 0) abilityLevel++;
+        }
+        abilityLevelText.text = "Lv." + abilityLevel.ToString();
         goldAmountText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
 
         abilityCost = 10000 + (abilityLevel * 1000);
@@ -46,6 +53,7 @@ public class AbilityManager : MonoBehaviour
             //´É·Â »Ì±â
             DrawAbility();
             BackEndGameData.Instance.UserGameData.gold -= abilityCost;
+            BackEndGameData.Instance.UserQuestData.questProgress[2] += abilityCost;
             BackEndGameData.Instance.GameDataUpdate();
             UpdateUI();
         }

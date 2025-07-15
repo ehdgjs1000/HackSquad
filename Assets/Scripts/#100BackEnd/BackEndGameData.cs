@@ -224,7 +224,6 @@ public class BackEndGameData
         GameHeroDataLoad();
         GameQuestDataLoad();
         GameAbilityDataLoad();
-        Debug.Log("GameDataLoad EXP : " + UserGameData.exp);
     }
     public void GameUserDataLoad()
     {
@@ -468,7 +467,6 @@ public class BackEndGameData
         GameQuestDataUpdate();
         GameAbilityDataUpdate();
         if(LobbyManager.instance != null) CheckLevelUp();
-        Debug.Log("GameDataUpdate EXP : " + userGameData.exp);
     }
     /// <summary>
     /// 뒤끝 콘솔 테이블에 있는 유저 데이터 갱신
