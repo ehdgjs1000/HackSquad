@@ -37,7 +37,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     
     //Monster
     [SerializeField] protected LayerMask monsterLayer;
-    private Collider[] monsterColls;
+    public Collider[] monsterColls;
 
 
     protected virtual void Awake()
@@ -95,7 +95,16 @@ public abstract class PlayerCtrl : MonoBehaviour
                 {
                     if (!attackRandom)
                     {
-                        GameObject enemyGO = FindClosestTarget(monsterColls).gameObject;
+                        GameObject enemyGO = null;
+                        if (monsterColls.Length > 1)
+                        {
+                            enemyGO = FindClosestTarget(monsterColls).gameObject;
+                        }
+                        else if(monsterColls.Length == 1)
+                        {
+                            enemyGO = monsterColls[0].gameObject;
+                        }
+                        
                         this.transform.LookAt(enemyGO.transform.position);
                         MonsterCtrl enemy = enemyGO.GetComponent<MonsterCtrl>();
                         //공격

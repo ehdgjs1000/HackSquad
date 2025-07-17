@@ -23,6 +23,7 @@ public class GameOverManager : MonoBehaviour
     }
     public IEnumerator GameOver()
     {
+        Debug.Log("GameOVer");
         canExit = false;
         BackEndGameData.Instance.UserQuestData.questProgress[6] += GameManager.instance.killMonsterCount;
         gameWinImage.transform.localScale = Vector3.zero;
@@ -32,15 +33,22 @@ public class GameOverManager : MonoBehaviour
         {
             gameWinImage.transform.DOScale(Vector3.one, 0.5f);
 
+            Debug.Log(GameManager.instance.gameLevel);
             BackEndGameData.Instance.UserGameData.highestChapter = (GameManager.instance.gameLevel * 2) - 1;
+            Debug.Log(BackEndGameData.Instance.UserGameData.highestChapter);
         }
         else
         {
+            
             gameDefeatImage.transform.DOScale(Vector3.one, 0.5f);
             if(GameManager.instance.min/5 == 1)
             {
-                BackEndGameData.Instance.UserGameData.highestChapter = (GameManager.instance.gameLevel * 2) - -2;
+                Debug.Log(GameManager.instance.gameLevel);
+                BackEndGameData.Instance.UserGameData.highestChapter = 
+                    (GameManager.instance.gameLevel * 2) -2;
+                Debug.Log(BackEndGameData.Instance.UserGameData.highestChapter);
             }
+            
         }
         BackEndGameData.Instance.UserGameData.gold += GameManager.instance.getGold;
         BackEndGameData.Instance.UserGameData.exp += GameManager.instance.userExp;

@@ -64,8 +64,7 @@ public class SweepManager : MonoBehaviour
         DateTime now = DateTime.Now;
         //시간에 따른 보상 지급
         int time = (int)(now - recentSweepTime).TotalMinutes / 60;
-        Debug.Log(time);
-        if ((now - recentSweepTime).TotalMinutes / 60 > 0)
+        if (time > 0)
         {
 
             if (time > 6) time = 6;

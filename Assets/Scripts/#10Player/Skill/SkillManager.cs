@@ -4,6 +4,7 @@ public class SkillManager : MonoBehaviour
 {
     public static SkillManager instance;
 
+    public int[] choosedSkillID = new int[3];
     public SkillData[] skillDatas;
     public SkillData[] finalSkill;
     int skillCharacterNum = 0;
@@ -31,10 +32,10 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public SkillData SkillChoose()
+    public SkillData SkillChoose(int _order)
     {
         int skillType = Random.Range(0, 10);
-        if (skillType < 5) FinalSkillChoose();
+        if (skillType < 5) FinalSkillChoose(_order);
         else NormalSkillChoose();
 
         return choosedSkill;
@@ -57,9 +58,20 @@ public class SkillManager : MonoBehaviour
                 choosedSkill = skillDatas[randomSkillNum];
             }
         }
+        //고른 스킬의 ID와 skillmanager의 이미 고른 스킬 ID 비교
+        for (int i = 0; i < 3; i++)
+        {
+            //이미 고른 스킬일 경우
+            if(choosedSkillID[i] == randomSkillNum)
+            {
+                NormalSkillChoose();
+                break;
+            }
+        }
+
         
     }
-    private void FinalSkillChoose()
+    private void FinalSkillChoose(int _order)
     {
         int randomSkillNum = Random.Range(0, GameManager.instance.heroCount);
         skillCharacterNum = randomSkillNum;
@@ -69,16 +81,7 @@ public class SkillManager : MonoBehaviour
             if(skillDatas[randomSkillNum*3+i].skillLevel == 3) masterSkillCount++;
         }
         if (masterSkillCount >= 2 && finalSkill[randomSkillNum].skillLevel == 0) choosedSkill = finalSkill[randomSkillNum];
-        else SkillChoose();
-
-        /*if (skillDatas[randomSkillNum*3].skillLevel == 3 &&
-            skillDatas[randomSkillNum*3 + 1].skillLevel == 3 &&
-            skillDatas[randomSkillNum*3 + 2].skillLevel == 3)
-        {
-            if (finalSkill[randomSkillNum].skillLevel == 1) SkillChoose();
-            else choosedSkill = finalSkill[randomSkillNum];
-        }
-        else SkillChoose();*/
+        else SkillChoose(_order);
     }
     public int ReturnSkillCharacterNum()
     {

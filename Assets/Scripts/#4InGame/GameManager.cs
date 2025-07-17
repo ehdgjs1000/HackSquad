@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
     private void UpdateUI()
     {
         goldText.text = getGold.ToString();
-        hpImage.fillAmount = hp / 100;
+        hpImage.fillAmount = hp / initHp;
         expImage.fillAmount = nowExp / needExp;
         levelText.text = level.ToString() + "·¹º§";
     }
@@ -229,7 +229,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GameOverManager.instance.GameOver());
         
         gameOverSet.transform.DOScale(Vector3.one, 0.2f);
-        //GameSpeed(0.0f);
 
         yield return null;
     }

@@ -65,7 +65,7 @@ public class MonsterCtrl : MonoBehaviour
     }
     public void DoFade()
     {
-        spawnEffect.StartFade();
+        if(spawnEffect != null) spawnEffect.StartFade();
     }
     public IEnumerator GetStun(float _stunTime)
     {

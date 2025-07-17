@@ -6,6 +6,7 @@ using DG.Tweening;
 public class Skill : MonoBehaviour
 {
     public SkillData skill;
+    [SerializeField] int skillOrder;
     [SerializeField] GameObject upgradePanel;
 
     [SerializeField] TextMeshProUGUI skillNameText;
@@ -40,7 +41,7 @@ public class Skill : MonoBehaviour
     }
     public void SkillChoose()
     {
-        skill = SkillManager.instance.SkillChoose();
+        skill = SkillManager.instance.SkillChoose(skillOrder);
         skillCharacterNum = SkillManager.instance.ReturnSkillCharacterNum();
         SkillUpdate();
     }
