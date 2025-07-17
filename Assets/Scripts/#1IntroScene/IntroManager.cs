@@ -4,10 +4,13 @@ using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using BackEnd;
 public class IntroManager : MonoBehaviour
 {
     [SerializeField] private Image progressImage;
     [SerializeField] TextMeshProUGUI progressTimeText;
+    [SerializeField] Button loginBtn;
+    [SerializeField] GameObject progressGo;
     float progressTime = 1;
 
     bool isLoadingEnd = false;
@@ -48,6 +51,7 @@ public class IntroManager : MonoBehaviour
             yield return null;
         }
         action?.Invoke();
+        LoginBtnActive();
     }
     public void NextSceneOnClick()
     {
@@ -55,6 +59,56 @@ public class IntroManager : MonoBehaviour
         {
             SceneManager.LoadScene("LoginScene");
         }
+    }
+    public void LoginBtnOnClick()
+    {
+        MainTainLogIn();
+    }
+    private void LoginBtnActive()
+    {
+        progressGo.SetActive(false);
+        loginBtn.gameObject.SetActive(true);
+    }
+    public void MainTainLogIn()
+    {
+        string mainTainID = PlayerPrefs.GetString("ID");
+        string mainTainPW = PlayerPrefs.GetString("PW");
+        if (mainTainID != null && mainTainPW != null) ResponceToLogin(mainTainID, mainTainPW);
+    }
+    private void ResponceToLogin(string ID, string PW)
+    {
+        Backend.BMember.CustomLogin(ID, PW, callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                PlayerPrefs.SetString("ID", ID);
+                PlayerPrefs.SetString("PW", PW);
+
+                SceneManager.LoadScene("LobbyScene");
+            }
+            else //로그인 실패
+            {
+                loginBtn.interactable = true;
+                string message = string.Empty;
+                switch (int.Parse(callback.GetStatusCode()))
+                {
+                    case 401: //존재하지 않는 계정
+                        message = callback.GetMessage().Contains("customId") ? "존재하지 않는 아이디 입니다." : "잘못된 비밀번호 입니다.";
+                        break;
+                    case 403: //유저or디바이스 차단
+                        message = callback.GetMessage().Contains("user") ? "차단당한 유저입니다" : "차단당한 디바이스 입니다.";
+                        break;
+                    case 410: //탈퇴 진행중
+                        message = "탈퇴가 진행중인 유저입니다.";
+                        break;
+                    default:
+                        message = callback.GetMessage();
+                        break;
+                }
+                SceneManager.LoadScene("LoginScene");
+
+            }
+        });
     }
 
 }
