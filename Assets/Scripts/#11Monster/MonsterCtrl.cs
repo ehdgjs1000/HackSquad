@@ -134,8 +134,10 @@ public class MonsterCtrl : MonoBehaviour
             GameObject playerGO = FindClosestTarget(playerColl).gameObject;
             this.transform.LookAt(playerGO.transform.position);
             if (attackTerm <= 0.0f) StartCoroutine(Attack());
+            
         }
     }
+     
     protected virtual IEnumerator Attack()
     {
         isAttacking = true;

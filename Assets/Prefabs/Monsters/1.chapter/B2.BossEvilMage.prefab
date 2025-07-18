@@ -1463,7 +1463,7 @@ GameObject:
   - component: {fileID: 1522032188776786317}
   - component: {fileID: 5446557522027724719}
   m_Layer: 7
-  m_Name: 2.BossEvilMage
+  m_Name: B2.BossEvilMage
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   attackDelay: 0.3
   damage: 10
   speed: 1
-  hp: 1200
+  hp: 2000
   exp: 100
   gold: 200
   playerLayer:

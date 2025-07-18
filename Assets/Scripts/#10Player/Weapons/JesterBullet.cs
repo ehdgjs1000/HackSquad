@@ -28,7 +28,8 @@ public class JesterBullet : MonoBehaviour
         {
             foreach(Collider co in monsterColls)
             {
-                co.GetComponent<MonsterCtrl>().GetAttack(damage);
+                if(co.GetComponent<MonsterCtrl>() != null) co.GetComponent<MonsterCtrl>().GetAttack(damage);
+                else if(co.GetComponent<BossMonsterCtrl>() != null) co.GetComponent<BossMonsterCtrl>().GetAttack(damage);
                 DamagePopUp.Create(new Vector3(co.transform.position.x,
                     co.transform.position.y + 2.0f, co.transform.position.z), damage, Color.green);
             }

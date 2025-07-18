@@ -25,7 +25,9 @@ public class BazookaBullet : Bullet
         {
             foreach (Collider monster in monsterColls)
             {
-                monster.GetComponent<MonsterCtrl>().GetAttack(damage);
+                if(monster.GetComponent<MonsterCtrl>() != null) monster.GetComponent<MonsterCtrl>().GetAttack(damage);
+                else if(monster.GetComponent<BossMonsterCtrl>() !=null) monster.GetComponent<BossMonsterCtrl>().GetAttack(damage);
+
                 ColorUtility.TryParseHtmlString("#E800FF", out color);
                 DamagePopUp.Create(new Vector3(monster.transform.position.x,
                     monster.transform.position.y + 2.0f, monster.transform.position.z), damage, color);

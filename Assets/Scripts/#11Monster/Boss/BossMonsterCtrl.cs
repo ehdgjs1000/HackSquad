@@ -110,6 +110,7 @@ public class BossMonsterCtrl : MonoBehaviour
     }
     protected virtual IEnumerator Die()
     {
+        isDie = true;
         monsterColl.enabled = false;
         _animator.SetTrigger("Die");
         GameManager.instance.IsBossDie();

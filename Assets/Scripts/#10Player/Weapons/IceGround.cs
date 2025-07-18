@@ -30,8 +30,16 @@ public class IceGround : MonoBehaviour
         {
             foreach(Collider col in monsterColls)
             {
-                col.GetComponent<MonsterCtrl>().GetAttack(iceDamage);
-                StartCoroutine(col.GetComponent<MonsterCtrl>().GetSlow(slowAmount));
+                if(col.GetComponent<MonsterCtrl>() != null)
+                {
+                    col.GetComponent<MonsterCtrl>().GetAttack(iceDamage);
+                    StartCoroutine(col.GetComponent<MonsterCtrl>().GetSlow(slowAmount));
+                }
+                else if (col.GetComponent<BossMonsterCtrl>() != null)
+                {
+                    col.GetComponent<BossMonsterCtrl>().GetAttack(iceDamage);
+                }
+
                 ColorUtility.TryParseHtmlString("#24E9F8", out color);
                 DamagePopUp.Create(new Vector3(col.transform.position.x,
                     col.transform.position.y + 2.0f, col.transform.position.z), iceDamage, color);

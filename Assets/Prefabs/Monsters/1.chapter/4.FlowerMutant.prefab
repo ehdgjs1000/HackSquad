@@ -852,6 +852,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d91c070fbbfa40cb987f8eb7140ff641, type: 2}
+  - {fileID: 2100000, guid: 702dc684652a3c34ca4698ab3e154e1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1338,6 +1339,7 @@ GameObject:
   - component: {fileID: 3582760764885391613}
   - component: {fileID: 9218735753212916978}
   - component: {fileID: 7858946171372096520}
+  - component: {fileID: 8446982266012891990}
   m_Layer: 7
   m_Name: 4.FlowerMutant
   m_TagString: Monster
@@ -1430,6 +1432,23 @@ MonoBehaviour:
   attackRange: 2
   attackTerm: 1
   summonVFX: {fileID: 5885065744576850680, guid: 5b0614d0b0fe497428ae4c0b034323a8, type: 3}
+--- !u!114 &8446982266012891990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807546796849834935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee5731808a99a34fb09e0d8d8d3a5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 3741107132728458756}
+  mtrlOrg: {fileID: 2100000, guid: 55c75a509fdd4540aecd4870e31229cb, type: 2}
+  matrlDissolve: {fileID: 2100000, guid: 702dc684652a3c34ca4698ab3e154e1e, type: 2}
+  fadeTime: 1
+  value: 0
 --- !u!1 &6840439335818693800
 GameObject:
   m_ObjectHideFlags: 0

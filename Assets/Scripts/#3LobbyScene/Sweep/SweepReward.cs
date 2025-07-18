@@ -14,7 +14,7 @@ public class SweepReward : MonoBehaviour
 
     public void Setting(float _amount)
     {
-        rewardText.text = _amount.ToString();
+        rewardText.text = _amount.ToString("F0");
     }
     public void RewardAnimation()
     {

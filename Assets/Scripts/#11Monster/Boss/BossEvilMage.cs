@@ -10,8 +10,8 @@ public class BossEvilMage : BossMonsterCtrl
         _animator.SetTrigger("Attack");
         attackTerm = tempAttackTerm;
         yield return new WaitForSeconds(0.3f);
-        Instantiate(magicVFX.gameObject, magicSpawnPos.position, Quaternion.identity);
-        magicVFX.SetUp(damage);
+        GameObject bullet = Instantiate(magicVFX.gameObject, magicSpawnPos.position, Quaternion.identity);
+        bullet.GetComponent<EvilMageProjectile>().SetUp(damage);
     }
 
 }
