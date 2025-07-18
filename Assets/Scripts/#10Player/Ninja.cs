@@ -3,19 +3,37 @@ using UnityEngine;
 
 public class Ninja : PlayerCtrl
 {
+    public int shootCount = 1;
+    public bool isFinalSkill = false;
 
     protected override void Attack(MonsterCtrl enemy)
     {
-        fireRate = tempFireRate;
         _animator.SetBool("isAttacking", true);
-        StartCoroutine(Shoot());
+        if(!isFinalSkill) StartCoroutine(Shoot());
+        else StartCoroutine(FinalSkill());
+    }
+    IEnumerator FinalSkill()
+    {
+        attackRandom = true;
+        GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
+        bullet.GetComponent<Bullet>().SetBulletInfo(damage*0.7f, 10);
+        fireRate = 0.33f;
+        yield return null;
     }
     protected override IEnumerator Shoot()
     {
-        //Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
-        GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
-        bullet.GetComponent<Bullet>().SetBulletInfo(damage, 10);
+        fireRate = 10.0f;
+        for (int i = 0; i < shootCount; i++)
+        {
+            GameObject bullet = PoolManager.instance.MakeObj("ninjaBullet");
+            bullet.transform.position = bulletSpawnPos.position;
+            bullet.transform.rotation = transform.localRotation;
+            bullet.GetComponent<Bullet>().SetBulletInfo(damage, 10);
+            yield return new WaitForSeconds(0.5f);
+        }
 
+        fireRate = tempFireRate;
+        _animator.SetBool("isAttacking", false);
         if (nowBullet <= 0) StartCoroutine(Reloading());
         yield return null;
     }

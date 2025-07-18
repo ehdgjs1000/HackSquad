@@ -1,8 +1,8 @@
 [System.Serializable]
 public class UserHeroData
 {
-    public int[] heroLevel = new int[12];
-    public int[] heroCount = new int[12];
+    public int[] heroLevel = new int[13];
+    public int[] heroCount = new int[13];
     public int[] heroChooseNum = new int[4] {99,99,99,99};
 
     public void Reset()

@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2908339992961300445}
   - component: {fileID: 2224469341235000843}
   m_Layer: 0
-  m_Name: Ninja_Character
+  m_Name: 12.Ninja_Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ Animator:
   m_GameObject: {fileID: 372498094334279770}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9f078227c6f09b54392514bfaa25c741, type: 3}
-  m_Controller: {fileID: 9100000, guid: 929e8f9e7ac31b746a6d22e441959d8a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8e1ae494d9f8f0f45aec0abc0e5fb3db, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -103,11 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448674a8c79d63848943093935bc7ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroProfileImage: {fileID: 0}
+  heroProfileImage: {fileID: 21300000, guid: 747a1ac32682bc64987a3c9b2e7ede83, type: 3}
   heroGrade: 3
   heroNum: 12
+  heroTypeSprite: {fileID: 21300000, guid: 6038af874f20a904e8f4a9ff1e8f62e9, type: 3}
   heroLevel: 0
   heroCount: 0
+  heroJob: "\uB9C8\uBC95\uD615"
 --- !u!114 &2224469341235000843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,11 +124,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: "\uD37C\uD50C \uC2E4\uD53C\uB4DC"
   bulletSpawnPos: {fileID: 6153475263817484962}
-  bulletGo: {fileID: 0}
+  bulletGo: {fileID: 6882116249847192011, guid: c4b2ddd78a478394da66879a43e7af99, type: 3}
   muzzleFlash: {fileID: 0}
   attackRandom: 0
-  characterSkills: []
-  finalSkill: {fileID: 0}
+  characterSkills:
+  - {fileID: 11400000, guid: 40a839c54c3c4544886b09476b0548f8, type: 2}
+  - {fileID: 11400000, guid: 9770183788b05864c8f228622e96d110, type: 2}
+  - {fileID: 11400000, guid: 45e4b9752320202499d78502f33a5cec, type: 2}
+  finalSkill: {fileID: 11400000, guid: ecb9a2f571b251a4f9a22f6b7f6e4ce5, type: 2}
   initAttackRange: 20
   initFireRate: 0.8
   initMaxBullet: 99
@@ -137,6 +142,9 @@ MonoBehaviour:
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
+  monsterColls: []
+  shootCount: 1
+  isFinalSkill: 0
 --- !u!1 &472693388172126998
 GameObject:
   m_ObjectHideFlags: 0

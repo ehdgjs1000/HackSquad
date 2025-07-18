@@ -488,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6192336581468143728, guid: 2dc10aa56056d8340a4747c0d99d172b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -615,18 +615,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ninja_Character
       objectReference: {fileID: 0}
-    - target: {fileID: 372498094334279770, guid: c1946d774079d0e4ca53b183ce9aa91b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2224469341235000843, guid: c1946d774079d0e4ca53b183ce9aa91b, type: 3}
       propertyPath: bulletGo
       value: 
-      objectReference: {fileID: 7502850378401618596, guid: 03da9be4955bf44459be97d94312578d, type: 3}
+      objectReference: {fileID: 6882116249847192011, guid: c4b2ddd78a478394da66879a43e7af99, type: 3}
     - target: {fileID: 2224469341235000843, guid: c1946d774079d0e4ca53b183ce9aa91b, type: 3}
       propertyPath: finalSkill
       value: 
       objectReference: {fileID: 11400000, guid: ecb9a2f571b251a4f9a22f6b7f6e4ce5, type: 2}
+    - target: {fileID: 2224469341235000843, guid: c1946d774079d0e4ca53b183ce9aa91b, type: 3}
+      propertyPath: initDamage
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224469341235000843, guid: c1946d774079d0e4ca53b183ce9aa91b, type: 3}
+      propertyPath: initFireRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224469341235000843, guid: c1946d774079d0e4ca53b183ce9aa91b, type: 3}
+      propertyPath: initMaxBullet
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224469341235000843, guid: c1946d774079d0e4ca53b183ce9aa91b, type: 3}
+      propertyPath: initReloadingTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2224469341235000843, guid: c1946d774079d0e4ca53b183ce9aa91b, type: 3}
       propertyPath: characterSkills.Array.size
       value: 3

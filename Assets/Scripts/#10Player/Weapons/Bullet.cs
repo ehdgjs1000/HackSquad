@@ -81,6 +81,6 @@ public abstract class Bullet : MonoBehaviour
     }
     private void OnHitVFX(Vector3 _pos)
     {
-        Instantiate(onHitVFX, _pos, Quaternion.identity);
+        if(onHitVFX != null ) Instantiate(onHitVFX, _pos, Quaternion.identity);
     }
 }

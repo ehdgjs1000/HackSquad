@@ -12,7 +12,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     [SerializeField] protected Transform bulletSpawnPos;
     [SerializeField] protected GameObject bulletGo;
     [SerializeField] protected Transform muzzleFlash;
-    [SerializeField] bool attackRandom;
+    [SerializeField] protected bool attackRandom;
     public SkillData[] characterSkills;
     public SkillData finalSkill;
     //init Data
@@ -68,12 +68,11 @@ public abstract class PlayerCtrl : MonoBehaviour
         fireRate = initFireRate;
         maxBullet = initMaxBullet;
         reloadingTime = initReloadingTime;
+
         damage = initDamage * Mathf.Pow(1.5f, BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]) *
             (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[0]*0.02f) *
             (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[3] * 0.05f) *
             (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[6] * 0.1f); 
-        
-
         hp = initHp + 5* BackEndGameData.Instance.UserHeroData.heroLevel[heroNum];
          
         nowBullet = maxBullet;

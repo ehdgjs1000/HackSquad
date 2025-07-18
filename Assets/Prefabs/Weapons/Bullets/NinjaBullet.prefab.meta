@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 03da9be4955bf44459be97d94312578d
+guid: c4b2ddd78a478394da66879a43e7af99
 PrefabImporter:
   externalObjects: {}
   userData: 
@@ -7,8 +7,8 @@ PrefabImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 302142
-  packageName: VFX Graph - Kikoken
-  packageVersion: 1.1
-  assetPath: Assets/TwoUncleVFX/_Effect/_Prefab/Kikoken (3).prefab
-  uploadId: 760011
+  productId: 309498
+  packageName: Free Slash VFX
+  packageVersion: 1.0
+  assetPath: Assets/Free Slash VFX/Prefabs/Projectiles/Slash Projectile VFX Fire.prefab
+  uploadId: 738318
