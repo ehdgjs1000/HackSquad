@@ -153,6 +153,8 @@ public class HeroDetail : MonoBehaviour
         BackEndGameData.Instance.UserQuestData.questProgress[2] += needGold[heroLevel];
         BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]++;
         BackEndGameData.Instance.UserHeroData.heroCount[heroNum] -= needHeroConut[heroLevel];
+        BackEndGameData.Instance.UserQuestData.repeatQuest[6] += needGold[heroLevel];
+        BackEndGameData.Instance.UserQuestData.repeatQuest[8] ++;
 
         heroInfo.UpdateHeroInfo();
         HeroSetManager.instance.UpdateInfo();

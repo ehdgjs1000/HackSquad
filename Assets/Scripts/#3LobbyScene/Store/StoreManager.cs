@@ -21,7 +21,7 @@ public class StoreManager : MonoBehaviour
     public void UpdateUI()
     {
         goldAmountText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
-        gemAmountText.text = BackEndGameData.Instance.UserGameData.gem.ToString();
+        gemAmountText.text = BackEndGameData.Instance.UserGameData.gem.ToString(); 
     }
     public void StoreTypeOnClick(int num)
     {

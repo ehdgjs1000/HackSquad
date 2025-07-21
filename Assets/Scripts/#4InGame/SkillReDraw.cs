@@ -41,7 +41,7 @@ public class SkillReDraw : MonoBehaviour
         else
         {
             //광고 보고 스킬리롤
-            
+            GameManager.instance.SkillChoose();
         }
         UpdateUI();
     }

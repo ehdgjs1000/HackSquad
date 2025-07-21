@@ -17,6 +17,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI energyText;
     [SerializeField] TextMeshProUGUI levelText;
 
+    [SerializeField] GameObject midGameClearSet;
     //GameData
     int gem;
     int gold;
@@ -84,6 +85,9 @@ public class MainManager : MonoBehaviour
         gameLevel = (int)((BackEndGameData.Instance.UserGameData.highestChapter+1) / 2) + 1;
         gameLevelText.text = gameLevel.ToString()+". " +gameLevelName[gameLevel];
         highestWaveText.text = "최대 웨이브 <color=red>" + highestWave.ToString()+"/20</color>";
+
+        if (gameLevel > 1) midGameClearSet.SetActive(true);
+        else midGameClearSet.SetActive(false);
 
     }
     public void GameStartOnClick()

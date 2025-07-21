@@ -19,9 +19,16 @@ public class QuestManager : MonoBehaviour
     [SerializeField] Image[] weeklyClearBg = new Image[5];
     [SerializeField] Image[] dailyClearBg = new Image[5];
     [SerializeField] Quest[] questGOs;
+    [SerializeField] RepeatQuest[] repeatGOs;
+    [SerializeField] TextMeshProUGUI questNameText;
+    [SerializeField] TextMeshProUGUI timerText;
 
     //중앙 일일퀘스트
     public RewardPanel rewardPanel;
+
+    //하단 버튼
+    [SerializeField] Button dailyBtn, repeatBtn;
+    [SerializeField] GameObject dailySet, repeatSet;
 
     private void Awake()
     {
@@ -30,6 +37,16 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         UpdateQuestUI();
+        //ColorBlock cb = dailyBtn.colors;
+        //dailyBtn.targetGraphic.color = cb.selectedColor;
+    }
+    private void Update()
+    {
+        UpdateTimerUI();
+    }
+    private void UpdateTimerUI()
+    {
+        timerText.text = TimeManager.instance.dailyStr;
     }
     //다음날 넘어가면 퀘스트 초기화
     public void ResetQuest()
@@ -42,6 +59,18 @@ public class QuestManager : MonoBehaviour
             isDailyRecieved[i] = false;
         }
         for (int i = 0; i < 10; i++) dailyCleard[i] = false;
+    }
+    public void DailyBtnOnClick()
+    {
+        dailySet.transform.localScale = Vector3.one;
+        repeatSet.transform.localScale = Vector3.zero;
+        questNameText.text = "일일 퀘스트";
+    }
+    public void RepeatBtnOnClick()
+    {
+        dailySet.transform.localScale = Vector3.zero;
+        repeatSet.transform.localScale = Vector3.one;
+        questNameText.text = "반복 퀘스트";
     }
     public void UpdateQuestUI()
     {
@@ -77,6 +106,10 @@ public class QuestManager : MonoBehaviour
         for (int i =0; i < questGOs.Length; i++)
         {
             questGOs[i].UpdateUI();
+        }
+        for (int i = 0; i < repeatGOs.Length; i++)
+        {
+            repeatGOs[i].UpdateUI();
         }
 
         MainManager.instance.UpdateMainUI();

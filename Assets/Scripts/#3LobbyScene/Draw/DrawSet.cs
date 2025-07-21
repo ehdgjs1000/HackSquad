@@ -29,6 +29,8 @@ public class DrawSet : MonoBehaviour
             BackEndGameData.Instance.UserGameData.gem -= 100;
             BackEndGameData.Instance.UserQuestData.questProgress[3] += 100;
             BackEndGameData.Instance.UserQuestData.questProgress[4]++;
+            BackEndGameData.Instance.UserQuestData.repeatQuest[5]++;
+            BackEndGameData.Instance.UserQuestData.repeatQuest[7] += 100;
             StartCoroutine(DrawHeros(drawNum));
         }
         else if(drawNum == 1 && BackEndGameData.Instance.UserGameData.gem < 100) PopUpMessageBase.instance.SetMessage("크리스탈이 충분하지 않습니다");
@@ -39,6 +41,8 @@ public class DrawSet : MonoBehaviour
             BackEndGameData.Instance.UserGameData.gem -= 900;
             BackEndGameData.Instance.UserQuestData.questProgress[3] += 900;
             BackEndGameData.Instance.UserQuestData.questProgress[4] += 9;
+            BackEndGameData.Instance.UserQuestData.repeatQuest[5]+=9;
+            BackEndGameData.Instance.UserQuestData.repeatQuest[7] += 900;
             StartCoroutine(DrawHeros(drawNum));
         }else if(drawNum == 10 && BackEndGameData.Instance.UserGameData.gem < 900)
             PopUpMessageBase.instance.SetMessage("크리스탈이 충분하지 않습니다");

@@ -8,6 +8,8 @@ public class UserQuestData
     public bool[] dailyRewardRecieved = new bool[5];
     public bool[] weeklyRewardRecieved = new bool[5];
 
+    public int[] repeatQuest = new int[10];
+
     public void Reset()
     {
         dailyClearAmount = 0;
@@ -22,6 +24,10 @@ public class UserQuestData
         {
             dailyRewardRecieved[i] = false;
             weeklyRewardRecieved[i] = false;
+        }
+        for (int i = 0; i<repeatQuest.Length; i++)
+        {
+            repeatQuest[i] = 0;
         }
     }
     public void ResetDaily()

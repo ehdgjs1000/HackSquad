@@ -273,6 +273,7 @@ MonoBehaviour:
   bulletSpeed: 50
   damagePopUpTr: {fileID: 4453229395328416960, guid: f89fa60e57839544d9d1d446af99bea3, type: 3}
   onHitVFX: {fileID: 7249675442437269305, guid: dd2b1ac4a32ca184683f15984f30d88f, type: 3}
+  damageColor: {r: 1, g: 0, b: 0.76640606, a: 1}
 --- !u!1001 &7235069901788186065
 PrefabInstance:
   m_ObjectHideFlags: 0

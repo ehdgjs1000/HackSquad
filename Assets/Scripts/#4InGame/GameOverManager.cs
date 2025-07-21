@@ -17,15 +17,25 @@ public class GameOverManager : MonoBehaviour
     public bool isWin = false;
     int killMonsterCount = 0;
 
+    [SerializeField] TextMeshProUGUI goldRewardText;
+    [SerializeField] TextMeshProUGUI expRewardText;
+
     private void Awake()
     {
         if(instance == null) instance = this;
+    }
+    public void UpdateRewardUI()
+    {
+        goldRewardText.text = GameManager.instance.getGold.ToString();
+        expRewardText.text = GameManager.instance.userExp.ToString();
     }
     public IEnumerator GameOver()
     {
         Debug.Log("GameOVer");
         canExit = false;
+        UpdateRewardUI();
         BackEndGameData.Instance.UserQuestData.questProgress[6] += GameManager.instance.killMonsterCount;
+        BackEndGameData.Instance.UserQuestData.repeatQuest[4] += GameManager.instance.killMonsterCount;
         gameWinImage.transform.localScale = Vector3.zero;
         gameDefeatImage.transform.localScale = Vector3.zero;
         //gamemanager min이 10분일떄 추가
@@ -56,6 +66,7 @@ public class GameOverManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         canExit = true;
         gameOverText.gameObject.SetActive(true);
+        Time.timeScale = 0.0f;
     }
     public void ExitLobbyOnClick()
     {

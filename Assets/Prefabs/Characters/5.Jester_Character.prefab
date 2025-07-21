@@ -164,6 +164,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d93ad338b3faff44a617e640968afef, type: 2}
   - {fileID: 11400000, guid: 49a4dba4a3062244c85f05977f2711a3, type: 2}
   finalSkill: {fileID: 11400000, guid: 08c5c0d82c267a34b95a88c150b60172, type: 2}
+  damageColor: {r: 0.0029814949, g: 0.6320754, b: 0.0066521433, a: 0}
   initAttackRange: 8
   initFireRate: 3
   initMaxBullet: 2

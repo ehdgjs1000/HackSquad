@@ -1192,11 +1192,11 @@ MonoBehaviour:
   - {fileID: 6219019435635073176, guid: f4e2974f7496edb43a30936e647dd9fc, type: 3}
   - {fileID: 3279424396251989313, guid: 0c680a40429a270439f64aa829655d01, type: 3}
   - {fileID: 6882116249847192011, guid: c4b2ddd78a478394da66879a43e7af99, type: 3}
-  monster1Prefab: {fileID: 5342755383331244327, guid: 36e1171ee294b50469a9c6ba114ed022, type: 3}
-  monster2Prefab: {fileID: 4181047949033373777, guid: acb0f31438330f04d9ed222101684662, type: 3}
-  monster3Prefab: {fileID: 6807546796849834935, guid: 53bd05f6e3ea04b45a3d7ac315a97fb0, type: 3}
-  monster4Prefab: {fileID: 504477847055164333, guid: 9329ccc6dbf8a8845b77152a4150f7cd, type: 3}
-  monster5Prefab: {fileID: 1493030365813126898, guid: ee7a7b57be759484fa741acb2b279bc8, type: 3}
+  monster1Prefab: {fileID: 6807546796849834935, guid: 96ab8d3b57a6c024fb27a75d65226e8c, type: 3}
+  monster2Prefab: {fileID: 504477847055164333, guid: eb1cd739bb7c24345807ace95fb26624, type: 3}
+  monster3Prefab: {fileID: 3972709158309067180, guid: a325d33190dcbdb4f95a104e59cd9db4, type: 3}
+  monster4Prefab: {fileID: 1493030365813126898, guid: a7a5853ddc888df4d995c85130f6d6f6, type: 3}
+  monster5Prefab: {fileID: 5379945438976772044, guid: c989e8e4227170d4bb9b5354f3b09c61, type: 3}
 --- !u!1 &598981999
 GameObject:
   m_ObjectHideFlags: 0

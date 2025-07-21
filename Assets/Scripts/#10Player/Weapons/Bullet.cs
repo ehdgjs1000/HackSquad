@@ -13,6 +13,7 @@ public abstract class Bullet : MonoBehaviour
 
     [SerializeField] private GameObject damagePopUpTr;
     [SerializeField] private Transform onHitVFX;
+    [SerializeField] protected Color damageColor;
 
     Color color;
 
@@ -42,14 +43,10 @@ public abstract class Bullet : MonoBehaviour
             {
                 //크리티컬 적용
                 float ranCriticalChance = Random.Range(0.0f, 100.0f);
+                damagePopUpTr.GetComponentInChildren<TextMeshPro>().color = damageColor;
                 if (ranCriticalChance <= criticalChange)
                 {
                     damage *= 1.5f;
-                    damagePopUpTr.GetComponentInChildren<TextMeshPro>().color = Color.red;
-                }
-                else
-                {
-                    damagePopUpTr.GetComponentInChildren<TextMeshPro>().color = Color.blue;
                 }
 
                 //Enemy 데미지 적용
@@ -66,7 +63,7 @@ public abstract class Bullet : MonoBehaviour
                 ColorUtility.TryParseHtmlString("#FF8600", out color);
                 //Damage PopUp
                 DamagePopUp.Create(new Vector3(co.transform.position.x,
-                    co.transform.position.y + 2.0f, co.transform.position.z), damage, color);
+                    co.transform.position.y + 2.0f, co.transform.position.z), damage, damageColor);
 
                 penetrateCount--;
                 if (penetrateCount <= 0)

@@ -101,7 +101,7 @@ public class BossMonsterCtrl : MonoBehaviour
     public void GetAttack(float _dmg)
     {
         hp -= _dmg;
-        if (hp <= 0.0f)
+        if (hp <= 0.0f && !isDie)
         {
             StopAllCoroutines();
             StartCoroutine(Die());
@@ -111,8 +111,9 @@ public class BossMonsterCtrl : MonoBehaviour
     protected virtual IEnumerator Die()
     {
         isDie = true;
-        monsterColl.enabled = false;
+        
         _animator.SetTrigger("Die");
+        monsterColl.enabled = false;
         GameManager.instance.IsBossDie();
         GameManager.instance.getGold += gold;
         GameManager.instance.BossLevelUp();
@@ -133,7 +134,6 @@ public class BossMonsterCtrl : MonoBehaviour
     }
     protected virtual IEnumerator Attack()
     {
-        Debug.Log("BaseAttack");
         isAttacking = true;
         attackTerm = tempAttackTerm;
         _animator.SetTrigger("Attack");

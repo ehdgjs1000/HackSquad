@@ -14642,6 +14642,7 @@ MonoBehaviour:
   bulletSpeed: 30
   damagePopUpTr: {fileID: 4453229395328416960, guid: f89fa60e57839544d9d1d446af99bea3, type: 3}
   onHitVFX: {fileID: 0}
+  damageColor: {r: 0.97573817, g: 1, b: 0.09019607, a: 1}
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128

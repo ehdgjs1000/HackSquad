@@ -169,6 +169,17 @@ public class BackEndGameData
             {"weeklyReward3Recieved", userQuestData.weeklyRewardRecieved[2] },
             {"weeklyReward4Recieved", userQuestData.weeklyRewardRecieved[3] },
             {"weeklyReward5Recieved", userQuestData.weeklyRewardRecieved[4] },
+
+            {"repeatQuest0", userQuestData.repeatQuest[0] },
+            {"repeatQuest1", userQuestData.repeatQuest[1] },
+            {"repeatQuest2", userQuestData.repeatQuest[2] },
+            {"repeatQuest3", userQuestData.repeatQuest[3] },
+            {"repeatQuest4", userQuestData.repeatQuest[4] },
+            {"repeatQuest5", userQuestData.repeatQuest[5] },
+            {"repeatQuest6", userQuestData.repeatQuest[6] },
+            {"repeatQuest7", userQuestData.repeatQuest[7] },
+            {"repeatQuest8", userQuestData.repeatQuest[8] },
+            {"repeatQuest9", userQuestData.repeatQuest[9] },
         };
 
         Backend.GameData.Insert("QUEST_DATA", param, callback =>
@@ -401,6 +412,17 @@ public class BackEndGameData
                         userQuestData.weeklyRewardRecieved[2] = bool.Parse(gameQuestDataJson[0]["weeklyReward3Recieved"].ToString());
                         userQuestData.weeklyRewardRecieved[3] = bool.Parse(gameQuestDataJson[0]["weeklyReward4Recieved"].ToString());
                         userQuestData.weeklyRewardRecieved[4] = bool.Parse(gameQuestDataJson[0]["weeklyReward5Recieved"].ToString());
+
+                        userQuestData.repeatQuest[0] = int.Parse(gameQuestDataJson[0]["repeatQuest0"].ToString());
+                        userQuestData.repeatQuest[1] = int.Parse(gameQuestDataJson[0]["repeatQuest1"].ToString());
+                        userQuestData.repeatQuest[2] = int.Parse(gameQuestDataJson[0]["repeatQuest2"].ToString());
+                        userQuestData.repeatQuest[3] = int.Parse(gameQuestDataJson[0]["repeatQuest3"].ToString());
+                        userQuestData.repeatQuest[4] = int.Parse(gameQuestDataJson[0]["repeatQuest4"].ToString());
+                        userQuestData.repeatQuest[5] = int.Parse(gameQuestDataJson[0]["repeatQuest5"].ToString());
+                        userQuestData.repeatQuest[6] = int.Parse(gameQuestDataJson[0]["repeatQuest6"].ToString());
+                        userQuestData.repeatQuest[7] = int.Parse(gameQuestDataJson[0]["repeatQuest7"].ToString());
+                        userQuestData.repeatQuest[8] = int.Parse(gameQuestDataJson[0]["repeatQuest8"].ToString());
+                        userQuestData.repeatQuest[9] = int.Parse(gameQuestDataJson[0]["repeatQuest9"].ToString());
                     }
                 }
                 catch (System.Exception e)
@@ -625,6 +647,17 @@ public class BackEndGameData
             {"weeklyReward3Recieved", userQuestData.weeklyRewardRecieved[2] },
             {"weeklyReward4Recieved", userQuestData.weeklyRewardRecieved[3] },
             {"weeklyReward5Recieved", userQuestData.weeklyRewardRecieved[4] },
+
+            {"repeatQuest0",userQuestData.repeatQuest[0] },
+            {"repeatQuest1",userQuestData.repeatQuest[1] },
+            {"repeatQuest2",userQuestData.repeatQuest[2] },
+            {"repeatQuest3",userQuestData.repeatQuest[3] },
+            {"repeatQuest4",userQuestData.repeatQuest[4] },
+            {"repeatQuest5",userQuestData.repeatQuest[5] },
+            {"repeatQuest6",userQuestData.repeatQuest[6] },
+            {"repeatQuest7",userQuestData.repeatQuest[7] },
+            {"repeatQuest8",userQuestData.repeatQuest[8] },
+            {"repeatQuest9",userQuestData.repeatQuest[9] },
         };
 
         if (string.IsNullOrEmpty(gameQuestDataRawInData))

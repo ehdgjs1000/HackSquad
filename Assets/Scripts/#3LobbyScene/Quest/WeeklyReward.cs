@@ -18,7 +18,7 @@ public class WeeklyReward : MonoBehaviour
     {
         targetPointText.text = targetPoint.ToString();
     }
-    public void DailyRewardOnClick()
+    public void WeeklyRewardOnClick()
     {
         //서버연동된 수치가 더 높은경우
         Debug.Log(BackEndGameData.Instance.UserQuestData.weeklyClearAmount + " : " + targetPoint);
@@ -31,10 +31,13 @@ public class WeeklyReward : MonoBehaviour
             //보상 제공
             RewardDaily();
 
+            QuestManager.instance.rewardPanel.UpdateRewardUI(goldAmount, gemAmount);
+            MainManager.instance.UpdateMainUI();
             QuestManager.instance.UpdateQuestUI();
             BackEndGameData.Instance.GameDataUpdate();
         }
     }
+
     private void RewardDaily()
     {
         BackEndGameData.Instance.UserGameData.gem += gemAmount;

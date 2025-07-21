@@ -61,7 +61,7 @@ public class MonsterCtrl : MonoBehaviour
         isAttacking = false;
         monsterColl.enabled = true;
 
-        hp = initHp * Mathf.Pow(1.1f, GameManager.instance.min);
+        hp = initHp * Mathf.Pow(1.05f, GameManager.instance.min);
     }
     public void DoFade()
     {
@@ -104,7 +104,7 @@ public class MonsterCtrl : MonoBehaviour
     public void GetAttack(float _dmg)
     {
         hp -= _dmg;
-        if (hp <= 0.0f)
+        if (hp <= 0.0f && !isDie)
         {
             StopAllCoroutines();
             StartCoroutine(Die());
@@ -114,12 +114,12 @@ public class MonsterCtrl : MonoBehaviour
     protected virtual IEnumerator Die()
     {
         isDie = true;
+        _animator.SetTrigger("Die");
         GameManager.instance.getGold += gold;
         GameManager.instance.userExp += 0.5f;
         GameManager.instance.killMonsterCount++;
         monsterColl.enabled = false;
         GameManager.instance.GetExp(exp);
-        _animator.SetTrigger("Die");
         yield return new WaitForSeconds(4.0f);
         StartCoroutine(PoolManager.instance.DeActive(0, this.gameObject));
         //Destroy(this.gameObject);

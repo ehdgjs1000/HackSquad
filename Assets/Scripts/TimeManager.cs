@@ -5,9 +5,21 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    public static TimeManager instance; 
+
     DateTime nextDailyResetTime;
     DateTime nextWeeklyResetTime;
 
+    public string dailyStr;
+    public string weeklyStr;
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
         SetResetTime();
@@ -74,7 +86,7 @@ public class TimeManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         //매일 리셋해야 하는 것 넣기
         BackEndGameData.Instance.UserQuestData.ResetDaily();
-
+        PlayerPrefs.SetInt("FreePackage", 0);
 
 
         BackEndGameData.Instance.GameDataUpdate();
@@ -90,14 +102,14 @@ public class TimeManager : MonoBehaviour
     private void TimeUI(TimeSpan remainDaily, TimeSpan remainWeekly)
     {
         // 일일 타이머 표시 (HH시MM분SS초)
-        string dailyStr = string.Format("{0:D2}시{1:D2}분{2:D2}초",
+        dailyStr = string.Format("{0:D2}시간{1:D2}분{2:D2}초",
             (int)remainDaily.TotalHours, remainDaily.Minutes, remainDaily.Seconds);
 
         // 주간 타이머 표시 (D일 HH시MM분 또는 HH시MM분SS초)
-        string weeklyStr;
+        //string weeklyStr;
         if (remainWeekly.Days > 0)
         {
-            weeklyStr = string.Format("{0}일 {1:D2}시{2:D2}분",
+            weeklyStr = string.Format("{0}일 {1:D2}시간 {2:D2}분",
                 remainWeekly.Days, remainWeekly.Hours, remainWeekly.Minutes);
         }
         else
@@ -105,7 +117,5 @@ public class TimeManager : MonoBehaviour
             weeklyStr = string.Format("{0:D2}시{1:D2}분{2:D2}초",
                 (int)remainWeekly.TotalHours, remainWeekly.Minutes, remainWeekly.Seconds);
         }
-
-        //UIManager.Instance.questUIHandler.SetUITimer(dailyStr, weeklyStr);
     }
 }

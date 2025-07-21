@@ -358,6 +358,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c34794439da16140b11f45a2faef6c9, type: 2}
   - {fileID: 11400000, guid: 788715512c0513047ada781d7a1a5c36, type: 2}
   finalSkill: {fileID: 11400000, guid: 9f486c2f13f55b641b032cf0d4acf16b, type: 2}
+  damageColor: {r: 0.6023496, g: 0.61154085, b: 0.9056604, a: 0}
   initAttackRange: 8
   initFireRate: 2
   initMaxBullet: 2
@@ -368,6 +369,7 @@ MonoBehaviour:
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
+  monsterColls: []
   finalSkillTs: {fileID: 3525250646898701901, guid: 8617bfeae268af247a501124d761a93e, type: 3}
   finalSkillTime: 6
 --- !u!135 &1416556942910317333

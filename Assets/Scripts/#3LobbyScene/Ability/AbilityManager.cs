@@ -38,7 +38,7 @@ public class AbilityManager : MonoBehaviour
         abilityLevelText.text = "Lv." + abilityLevel.ToString();
         goldAmountText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
 
-        abilityCost = 10000 + (abilityLevel * 1000);
+        abilityCost = 5000 + (abilityLevel * 500);
         abilityCostText.text = abilityCost.ToString();
 
         for (int i = 0; i < abilities.Length; i++)
@@ -54,6 +54,8 @@ public class AbilityManager : MonoBehaviour
             DrawAbility();
             BackEndGameData.Instance.UserGameData.gold -= abilityCost;
             BackEndGameData.Instance.UserQuestData.questProgress[2] += abilityCost;
+            BackEndGameData.Instance.UserQuestData.repeatQuest[1]++;
+            BackEndGameData.Instance.UserQuestData.repeatQuest[6]+= abilityCost;
             BackEndGameData.Instance.GameDataUpdate();
             UpdateUI();
         }
