@@ -25,9 +25,10 @@ public class StoreManager : MonoBehaviour
     }
     public void StoreTypeOnClick(int num)
     {
+        SoundManager.instance.BtnClickPlay();
         for (int i = 0; i < 3; i++)
         {
-            SoundManager.instance.BtnClickPlay();
+            
             if (i == num)storeGOs[i].SetActive(true);
             else storeGOs[i].SetActive(false);
         }

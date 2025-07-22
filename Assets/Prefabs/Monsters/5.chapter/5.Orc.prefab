@@ -1302,7 +1302,7 @@ MonoBehaviour:
   attackDelay: 0.2
   damage: 10
   speed: 1.2
-  hp: 200
+  hp: 100
   exp: 6
   gold: 3
   playerLayer:
@@ -1493,7 +1493,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 26d05c1a860151342a34c6dbc3dd6416, type: 2}
+  - {fileID: 2100000, guid: d91c070fbbfa40cb987f8eb7140ff641, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

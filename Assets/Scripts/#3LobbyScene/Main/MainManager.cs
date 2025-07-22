@@ -27,7 +27,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI gameLevelText;
     [SerializeField] TextMeshProUGUI highestWaveText;
     string[] gameLevelName = new string[] {"null스테이지" ,"따뜻한 안방","냄새나는 주방", "축축한 화장실",
-    "나른한 컴퓨터실", "책상 위에서"};
+    "나른한 컴퓨터실", "책상 위에서", "빛을 잃은 컴퓨터","4막"};
     int gameLevel = 1;  
     int highestWave = 0;
 

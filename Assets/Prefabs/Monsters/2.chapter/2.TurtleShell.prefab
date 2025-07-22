@@ -190,7 +190,7 @@ MonoBehaviour:
   attackDelay: 0.2
   damage: 5
   speed: 1.3
-  hp: 18
+  hp: 15.6
   exp: 4
   gold: 1
   playerLayer:

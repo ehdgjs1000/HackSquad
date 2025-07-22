@@ -24,10 +24,11 @@ public class DrawSet : MonoBehaviour
     
     //Audio
     [SerializeField] AudioClip drawClip;
+    [SerializeField] AudioClip drawCharacterClip;
 
     public void DrawCardOnClick(int drawNum)
     {
-        SoundManager.instance.BtnClickPlay();
+        SoundManager.instance.PlaySound(drawCharacterClip);
         if (drawNum == 1 && BackEndGameData.Instance.UserGameData.gem >= 100)
         {
             BackEndGameData.Instance.UserGameData.gem -= 100;

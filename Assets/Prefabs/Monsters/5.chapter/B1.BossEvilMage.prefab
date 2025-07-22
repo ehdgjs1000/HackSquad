@@ -280,7 +280,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34120ee33a42466281b0e38604cb49c0, type: 2}
+  - {fileID: 2100000, guid: 8b468189b8154acaa64ff172c8425c5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   attackDelay: 0.3
   damage: 10
   speed: 1
-  hp: 3200
+  hp: 3350
   exp: 100
   gold: 200
   playerLayer:

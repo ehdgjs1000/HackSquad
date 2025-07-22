@@ -20,6 +20,7 @@ public class AbilityDetail : MonoBehaviour
         abilityNameText.text = ability.abilityName;
         abilityLevelText.text = "Lv." + ability.abilityLevel.ToString();
         abilityImage.sprite = ability.abilitySprite;
+        abilityGrade = ability.abilityGrade;
         float nextAbilityLevel = ability.abilityLevel +1;
         if (ability.abilityId == 0) abilityDescText.text = "공격력 " + 2 * nextAbilityLevel + "% 증가";
         else if (ability.abilityId == 1) abilityDescText.text = "파티체력 " + 2 * nextAbilityLevel + " 증가";

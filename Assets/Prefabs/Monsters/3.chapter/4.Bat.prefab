@@ -193,8 +193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDelay: 0.2
   damage: 5
-  speed: 2
-  hp: 27
+  speed: 2.3
+  hp: 25.5
   exp: 6
   gold: 2
   playerLayer:
