@@ -21,7 +21,7 @@ public class IconAnim : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         iconTs.DOLocalMoveY(156.0f, 1.0f);
         yield return new WaitForSeconds(1.0f);
-        StartCoroutine(PlayIconAnim());
+        if(this.gameObject.activeSelf) StartCoroutine(PlayIconAnim());
     }
     
 }

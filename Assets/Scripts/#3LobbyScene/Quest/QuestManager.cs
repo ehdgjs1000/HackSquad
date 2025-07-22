@@ -62,12 +62,14 @@ public class QuestManager : MonoBehaviour
     }
     public void DailyBtnOnClick()
     {
+        SoundManager.instance.BtnClickPlay();
         dailySet.transform.localScale = Vector3.one;
         repeatSet.transform.localScale = Vector3.zero;
         questNameText.text = "일일 퀘스트";
     }
     public void RepeatBtnOnClick()
     {
+        SoundManager.instance.BtnClickPlay();
         dailySet.transform.localScale = Vector3.zero;
         repeatSet.transform.localScale = Vector3.one;
         questNameText.text = "반복 퀘스트";

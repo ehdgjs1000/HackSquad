@@ -19,6 +19,7 @@ public class GameOverManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI goldRewardText;
     [SerializeField] TextMeshProUGUI expRewardText;
+    [SerializeField] AudioClip gameLoseClip, gameWinClip;
 
     private void Awake()
     {
@@ -41,9 +42,9 @@ public class GameOverManager : MonoBehaviour
         //gamemanager min이 10분일떄 추가
         if (isWin)
         {
+            SoundManager.instance.PlaySound(gameWinClip);
             gameWinImage.transform.DOScale(Vector3.one, 0.5f);
 
-            Debug.Log(GameManager.instance.gameLevel);
             BackEndGameData.Instance.UserGameData.highestChapter = (GameManager.instance.gameLevel * 2) - 1;
             Debug.Log(BackEndGameData.Instance.UserGameData.highestChapter);
         }
@@ -51,12 +52,11 @@ public class GameOverManager : MonoBehaviour
         {
             
             gameDefeatImage.transform.DOScale(Vector3.one, 0.5f);
-            if(GameManager.instance.min/5 == 1)
+            SoundManager.instance.PlaySound(gameLoseClip);
+            if (GameManager.instance.min/5 == 1)
             {
-                Debug.Log(GameManager.instance.gameLevel);
                 BackEndGameData.Instance.UserGameData.highestChapter = 
                     (GameManager.instance.gameLevel * 2) -2;
-                Debug.Log(BackEndGameData.Instance.UserGameData.highestChapter);
             }
             
         }

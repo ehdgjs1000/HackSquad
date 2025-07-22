@@ -273,6 +273,10 @@ public class GameManager : MonoBehaviour
             }
             GameSpeed(0.0f);
         }
+        else
+        {
+            getGold += 100;
+        }
     }
     public void DieOnClick()
     {

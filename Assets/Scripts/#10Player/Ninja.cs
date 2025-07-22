@@ -15,6 +15,7 @@ public class Ninja : PlayerCtrl
     IEnumerator FinalSkill()
     {
         attackRandom = true;
+        SoundManager.instance.PlaySound(weaponFireClip);
         GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
         bullet.GetComponent<Bullet>().SetBulletInfo(damage*0.7f, 10);
         fireRate = 0.33f;
@@ -26,6 +27,7 @@ public class Ninja : PlayerCtrl
         for (int i = 0; i < shootCount; i++)
         {
             GameObject bullet = PoolManager.instance.MakeObj("ninjaBullet");
+            SoundManager.instance.PlaySound(weaponFireClip);
             bullet.transform.position = bulletSpawnPos.position;
             bullet.transform.rotation = transform.localRotation;
             bullet.GetComponent<Bullet>().SetBulletInfo(damage, 10);

@@ -1372,6 +1372,8 @@ MonoBehaviour:
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
+  monsterColls: []
+  weaponFireClip: {fileID: 8300000, guid: 31faf2dc06f26554da5e02c75603e081, type: 3}
   shotGunDegree: 20
   shotGunBulletSkillLevel: 0
   penetrateCount: 0

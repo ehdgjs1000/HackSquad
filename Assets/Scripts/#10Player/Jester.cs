@@ -19,7 +19,7 @@ public class Jester : PlayerCtrl
     }
     protected override void Attack(MonsterCtrl enemy)
     {
-        fireRate = tempFireRate;
+        
 
         monster = enemy;
         _animator.SetBool("isAttacking", true);
@@ -30,8 +30,10 @@ public class Jester : PlayerCtrl
     {
         GameObject bullet;
         nowBullet--;
+        SoundManager.instance.PlaySound(weaponFireClip);
         if (!isFinalSkill)
         {
+            fireRate = tempFireRate;
             bullet = PoolManager.instance.MakeObj("jesterBullet");
             bullet.transform.position = new Vector3(monster.transform.position.x,
             monster.transform.position.y + 0.05f,
@@ -43,14 +45,11 @@ public class Jester : PlayerCtrl
         }
         else
         {
-            bullet = Instantiate(finalBullet, new Vector3(monster.transform.position.x,
-            monster.transform.position.y + 0.05f,
-            monster.transform.position.z), Quaternion.identity);
-            bullet.GetComponent<JesterBullet>().damage = damage;
+            fireRate = tempFireRate * 1.5f;
+            bullet = Instantiate(finalBullet, new Vector3(0.0f,0.05f,0.0f), Quaternion.identity);
+            bullet.GetComponent<JesterBullet>().damage = damage/3;
             bullet.GetComponent<JesterBullet>().attackTerm = poisionTerm /0.5f;
         }
-        
-        
 
         if (nowBullet <= 0) StartCoroutine(Reloading());
         yield return null;

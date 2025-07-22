@@ -41,6 +41,7 @@ public class RepeatQuest : MonoBehaviour
         if (BackEndGameData.Instance.UserQuestData.repeatQuest[questNum] >= targetAmount)
         {
             //클리어 가능
+            SoundManager.instance.BtnClickPlay();
             BackEndGameData.Instance.UserQuestData.repeatQuest[questNum] -= targetAmount;
             BackEndGameData.Instance.UserGameData.gem += 20;
 

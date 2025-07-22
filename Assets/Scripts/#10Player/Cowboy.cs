@@ -24,6 +24,7 @@ public class Cowboy : PlayerCtrl
     {
         nowBullet--;
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
+        SoundManager.instance.PlaySound(weaponFireClip);
 
         Quaternion rotation = Quaternion.LookRotation(transform.right);
 

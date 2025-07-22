@@ -26,6 +26,7 @@ public class Veteran : PlayerCtrl
     {
         nowBullet--;
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
+        SoundManager.instance.PlaySound(weaponFireClip);
 
         float randomDegree = Random.Range(-maxRandomDegree, maxRandomDegree);
         Quaternion rotation = Quaternion.LookRotation(transform.right);

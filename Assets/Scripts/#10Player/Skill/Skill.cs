@@ -17,6 +17,8 @@ public class Skill : MonoBehaviour
     public int skillId;
     public int skillCharacterNum;
 
+    [SerializeField] AudioClip skillUpgradeClip;
+
     private void SkillUpdate()
     {
         skillNameText.text = skill.skillName + "\n" + "Lv." + skill.skillLevel;
@@ -49,6 +51,7 @@ public class Skill : MonoBehaviour
     {
         UpgradeSkill();
         skill.skillLevel++;
+        SoundManager.instance.PlaySound(skillUpgradeClip);
         GameManager.instance.GameSpeed(GameManager.instance.gameSpeed);
         upgradePanel.transform.DOScale(Vector3.zero,0.1f);
     }

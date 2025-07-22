@@ -1420,7 +1420,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f0aa609e6a28a70439a00f996505af91, type: 2}
   - {fileID: 11400000, guid: f4878e9426e30384ea119ebdd9b4350b, type: 2}
   finalSkill: {fileID: 11400000, guid: 90e184a6f01f3a6458a4ce2b93e3624e, type: 2}
-  damageColor: {r: 1, g: 0.1462264, b: 0.1462264, a: 0}
   initAttackRange: 8
   initFireRate: 0.5
   initMaxBullet: 10
@@ -1432,6 +1431,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   monsterColls: []
+  weaponFireClip: {fileID: 8300000, guid: 402e61ee2cad0734e8b71831f3539350, type: 3}
   samuraiFinalBulletGO: {fileID: 6219019435635073176, guid: 8f057a6471bfa5f44a23b152121bc6f3, type: 3}
   isFinalSkillUpgrade: 0
 --- !u!135 &7965974700410864029

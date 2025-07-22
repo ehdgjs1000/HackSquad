@@ -61,15 +61,18 @@ public class MainManager : MonoBehaviour
     }
     public void ChapterOnClick()
     {
+        SoundManager.instance.BtnClickPlay();
         chapterClear.gameObject.SetActive(true);
         chapterClear.UpdateRecentReward();
     }
     public void QuestBtnOnClick()
     {
+        SoundManager.instance.BtnClickPlay();
         QuestManager.instance.UpdateQuestUI();
     }
     public void SweepOnClick()
     {
+        SoundManager.instance.BtnClickPlay();
         sweepManager.gameObject.SetActive(true);
         sweepManager.UpdateUI();
     }
@@ -94,7 +97,7 @@ public class MainManager : MonoBehaviour
     {
         if (HeroSetManager.instance.squadCount > 0)
         {
-
+            SoundManager.instance.BtnClickPlay();
             //다음 씬으로 고른 Hero 정보 넘기기
             ChangeScene.instance.SetHeros();
             ChangeScene.instance.chapterName = gameLevelName[gameLevel];
@@ -106,6 +109,7 @@ public class MainManager : MonoBehaviour
             SceneManager.LoadScene(scene, LoadSceneMode.Additive);
         }else if (HeroSetManager.instance.squadCount <= 0)
         {
+            SoundManager.instance.ErrorClipPlay();
             PopUpMessageBase.instance.SetMessage("스쿼드에 핵쟁이를 등록해주세요");
         }
     }

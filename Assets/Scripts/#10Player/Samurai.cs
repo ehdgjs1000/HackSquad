@@ -16,6 +16,7 @@ public class Samurai : PlayerCtrl
     protected override IEnumerator Shoot()
     {
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
+        SoundManager.instance.PlaySound(weaponFireClip);
         if (isFinalSkillUpgrade)
         {
             GameObject bullet = Instantiate(samuraiFinalBulletGO, bulletSpawnPos.position, transform.localRotation);

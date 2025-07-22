@@ -8,6 +8,7 @@ public class ChapterClear : MonoBehaviour
     [SerializeField] ChapterReward[] chapterRewards;
     [SerializeField] ScrollRect scrollRect;
     [SerializeField] Button receiveBtn;
+    [SerializeField] AudioClip chapterRecieveClip;
 
     public float highestChapter;
     public float highestRewardChapter;
@@ -53,7 +54,11 @@ public class ChapterClear : MonoBehaviour
             BackEndGameData.Instance.UserGameData.highestChapter)
         {
             //보상 제공
-            Debug.Log("Recieve");
+            if(BackEndGameData.Instance.UserGameData.highestRewardChapter == -1)
+            {
+                BackEndGameData.Instance.UserGameData.highestRewardChapter = 0;
+            } 
+            SoundManager.instance.PlaySound(chapterRecieveClip);
             chapterRewards[(int)BackEndGameData.Instance.UserGameData.highestRewardChapter].RewardRecieve();
             BackEndGameData.Instance.UserGameData.highestRewardChapter++;
             UpdateRecentReward();

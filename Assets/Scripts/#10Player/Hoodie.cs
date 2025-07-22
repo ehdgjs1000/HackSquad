@@ -39,6 +39,7 @@ public class Hoodie : PlayerCtrl
     protected override IEnumerator Shoot()
     {
         nowBullet--;
+        SoundManager.instance.PlaySound(weaponFireClip);
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
 
         float randomDegree = Random.Range(-maxRandomDegree, maxRandomDegree);

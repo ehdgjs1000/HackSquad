@@ -12,6 +12,7 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI abilityCostText;
     [SerializeField] Ability[] abilities;
     [SerializeField] TextMeshProUGUI abilityLevelText;
+    [SerializeField] AudioClip drawAbilityClip;
 
     float canExitDraw = 1.0f;
     int abilityLevel = 0;
@@ -48,7 +49,8 @@ public class AbilityManager : MonoBehaviour
     }
     public void DrawAbilityOnClick()
     {
-        if(BackEndGameData.Instance.UserGameData.gold >= abilityCost)
+        SoundManager.instance.BtnClickPlay();
+        if (BackEndGameData.Instance.UserGameData.gold >= abilityCost)
         {
             //´É·Â »Ì±â
             DrawAbility();
@@ -84,8 +86,9 @@ public class AbilityManager : MonoBehaviour
             ranNum = Random.Range(6, 12);
             choosedAbility = abilities[ranNum];
         }
-        
+
         //AbilityDetail¿¡ ¶ç¿ì±â
+        SoundManager.instance.PlaySound(drawAbilityClip);
         UpdateUI();
         BackEndGameData.Instance.UserAbilityData.abilityLevel[ranNum]++;
         OpenAbilityDetail(choosedAbility);

@@ -77,6 +77,7 @@ public class SweepManager : MonoBehaviour
             BackEndGameData.Instance.UserQuestData.repeatQuest[3]++;
 
             //보상 받을 후 시간 초기화
+            SoundManager.instance.BtnClickPlay();
             PlayerPrefs.SetString("recentSweepTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             BackEndGameData.Instance.UserQuestData.questProgress[5]++;
             BackEndGameData.Instance.GameDataUpdate();
@@ -111,6 +112,7 @@ public class SweepManager : MonoBehaviour
             BackEndGameData.Instance.UserGameData.energy -= 15;
 
             //보상 제공 적용
+            SoundManager.instance.BtnClickPlay();
             float highestChapter = BackEndGameData.Instance.UserGameData.highestChapter;
             goldSweepAount = 6 * 66 * (Mathf.Pow(1.1f, highestChapter));
             expSweepAount = 6 * 99 * (Mathf.Pow(1.1f, highestChapter));

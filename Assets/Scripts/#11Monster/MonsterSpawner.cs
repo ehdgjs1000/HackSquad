@@ -9,6 +9,7 @@ public class MonsterSpawner : MonoBehaviour
     //[SerializeField] GameObject[] monsters;
     [SerializeField] Transform[] monsterSpawnPoses;
     [SerializeField] GameObject[] bossGO;
+    [SerializeField] AudioClip gameBGM;
     int bossLevel = 0;
 
 
@@ -19,11 +20,14 @@ public class MonsterSpawner : MonoBehaviour
     float nextSpawnDelay;
     float curSpawnDelay = 0.0f;
     
-
     private void Awake()
     {
         spawnList = new List<Spawn>();
         bossLevel = 0;
+    }
+    private void Start()
+    {
+        SoundManager.instance.PlayBGM(gameBGM);
     }
     private void Update()
     {

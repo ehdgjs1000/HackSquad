@@ -139,7 +139,7 @@ MonoBehaviour:
   heroGrade: 2
   heroNum: 5
   heroTypeSprite: {fileID: 21300000, guid: b016aeb3e3aee754caf1235a612d545e, type: 3}
-  heroLevel: 0
+  heroLevel: 1
   heroCount: 0
   heroJob: "\uC678\uACC4\uD615"
 --- !u!114 &6631523188191314197
@@ -164,18 +164,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d93ad338b3faff44a617e640968afef, type: 2}
   - {fileID: 11400000, guid: 49a4dba4a3062244c85f05977f2711a3, type: 2}
   finalSkill: {fileID: 11400000, guid: 08c5c0d82c267a34b95a88c150b60172, type: 2}
-  damageColor: {r: 0.0029814949, g: 0.6320754, b: 0.0066521433, a: 0}
   initAttackRange: 8
   initFireRate: 3
   initMaxBullet: 2
   initReloadingTime: 3
-  initDamage: 1.5
+  initDamage: 3
   initHp: 20
   isMoving: 0
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
   monsterColls: []
+  weaponFireClip: {fileID: 8300000, guid: eb390fd51e43f4944ac7672fef4d926c, type: 3}
   finalBullet: {fileID: 6108195706035121270, guid: 2ac265a359485f6429d7c6a1ab9edb75, type: 3}
 --- !u!135 &5922995484593701344
 SphereCollider:

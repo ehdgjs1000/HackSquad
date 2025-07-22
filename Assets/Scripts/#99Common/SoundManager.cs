@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public float soundsVolume = 0.5f;
     [SerializeField] private AudioClip btnClickClip;
     [SerializeField] private AudioClip errorClip;
+    [SerializeField] private AudioClip bgmClip;
 
     private void Awake()
     {
@@ -93,6 +94,28 @@ public class SoundManager : MonoBehaviour
         }
         return;
     }
+    public void PlayBGM()
+    {
+        for (int i = 0; i < audioPool.Length; i++)
+        {
+            if (audioPool[i] == null || !audioPool[i].isPlaying)
+            {
+                GameObject go = new GameObject { name = bgmClip.name };
+                audioPool[i] = go.AddComponent<AudioSource>();
+                audioPool[i].transform.position = Camera.main.transform.position;
+                audioPool[i].spatialBlend = 0.0f;
+                
+                audioPool[i].clip = bgmClip;
+                audioPool[i].volume = soundsVolume;
+                audioPool[i].Play();
+                //audioPool[i].PlayOneShot(bgmClip, soundsVolume);
+                audioPool[i].loop = true;
+
+                return;
+            }
+        }
+        return;
+    }
     public void PlayBGM(AudioClip _clip)
     {
         for (int i = 0; i < audioPool.Length; i++)
@@ -103,13 +126,17 @@ public class SoundManager : MonoBehaviour
                 audioPool[i] = go.AddComponent<AudioSource>();
                 audioPool[i].transform.position = Camera.main.transform.position;
                 audioPool[i].spatialBlend = 0.0f;
-                audioPool[i].PlayOneShot(_clip, soundsVolume);
+
+                audioPool[i].clip = _clip;
+                audioPool[i].volume = soundsVolume;
+                audioPool[i].Play();
+                //audioPool[i].PlayOneShot(bgmClip, soundsVolume);
+                audioPool[i].loop = true;
 
                 return;
             }
         }
         return;
     }
-
 
 }

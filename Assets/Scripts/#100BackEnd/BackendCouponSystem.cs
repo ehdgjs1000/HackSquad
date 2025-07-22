@@ -13,6 +13,7 @@ public class BackendCouponSystem : MonoBehaviour
         string couponCode = inputFieldCode.text;
         if (couponCode.Trim().Equals(""))
         {
+            SoundManager.instance.ErrorClipPlay();
             resultText.FadeOut("쿠폰 코드를 입력해주세요");
             return;
         }
@@ -84,6 +85,7 @@ public class BackendCouponSystem : MonoBehaviour
 
             resultText.FadeOut($"쿠폰 사용으로 아이템 {getItems}을 획득했습니다.");
 
+            SoundManager.instance.BtnClickPlay();
             BackEndGameData.Instance.GameDataUpdate();
             MainManager.instance.UpdateMainUI();
         }

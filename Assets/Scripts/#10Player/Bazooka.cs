@@ -5,6 +5,7 @@ public class Bazooka : PlayerCtrl
 {
     [SerializeField] GameObject finalSkillGO;
     [SerializeField] GameObject plane;
+    [SerializeField] AudioClip finalSkillClip, zetClip;
     public float finalSkillTime;
     public float exploseRadius;
     Collider[] bMonsterColls;
@@ -40,6 +41,7 @@ public class Bazooka : PlayerCtrl
     {
         nowBullet--;
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
+        SoundManager.instance.PlaySound(weaponFireClip);
 
         GameObject bullet = PoolManager.instance.MakeObj("bazookaBullet");
         bullet.transform.position = bulletSpawnPos.transform.position;
@@ -54,8 +56,10 @@ public class Bazooka : PlayerCtrl
     }
     IEnumerator BazookaFinalSkill()
     {
+        Debug.Log("Bazookafinal");
         finalSkillTime = tempFinalSkillTime;
         //비행기 지나가기
+        SoundManager.instance.PlaySound(zetClip);
         Instantiate(plane, new Vector3(22,9,0), Quaternion.Euler(0,-90,0));
         yield return new WaitForSeconds(0.8f);
         //랜덤 위치에 Effect 띄우기
@@ -63,13 +67,16 @@ public class Bazooka : PlayerCtrl
         {
             ShowFinalEffect();
         }
-        
+        SoundManager.instance.PlaySound(finalSkillClip);
 
         bMonsterColls = null;
         bMonsterColls = Physics.OverlapSphere(transform.position, finalSkillRadius, monsterLayer);
         foreach (Collider co in bMonsterColls)
         {
-            co.GetComponent<MonsterCtrl>().GetAttack(damage * 3);
+            co.GetComponent<MonsterCtrl>().GetAttack(damage * 2);
+            DamagePopUp.Create(new Vector3(co.transform.position.x,
+                    co.transform.position.y + 2.0f, co.transform.position.z), damage, Color.green);
+
         }
 
         yield return null;

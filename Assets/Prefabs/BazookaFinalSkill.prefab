@@ -980,9 +980,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2879621a1f02374281548525c2a33f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPos: {fileID: 0}
   wingGos: []
-  speed: 100
+  speed: 70
 --- !u!1 &1519795576521016
 GameObject:
   m_ObjectHideFlags: 0

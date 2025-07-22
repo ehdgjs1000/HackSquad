@@ -57,6 +57,7 @@ public class Iceman : PlayerCtrl
     protected override IEnumerator Shoot()
     {
         nowBullet--;
+        SoundManager.instance.PlaySound(weaponFireClip);
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
         GameObject bullet = Instantiate(bulletGo, monster.transform.position, Quaternion.identity);
         bullet.GetComponent<IceLight>().damage = damage;

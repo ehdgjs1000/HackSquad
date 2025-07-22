@@ -62,6 +62,7 @@ public class Alien : PlayerCtrl
     {
         nowBullet--;
         monster.GetAttack(damage);
+        SoundManager.instance.PlaySound(weaponFireClip);
         
         GameObject bullet = PoolManager.instance.MakeObj("alienBullet");
         bullet.GetComponent<AilenBullet>().SetBulletInfo(damage, stunTime);

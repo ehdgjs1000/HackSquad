@@ -32,8 +32,7 @@ public class Robot : PlayerCtrl
 
     protected override IEnumerator Shoot()
     {
-        Debug.Log("shoot");
-        //Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
+        SoundManager.instance.PlaySound(weaponFireClip);
         Vector3 monsterPos = monster.transform.position;
         GameObject bullet = PoolManager.instance.MakeObj("robotBullet");
         bullet.transform.position = new Vector3(monsterPos.x, monsterPos.y + 0.25f, monsterPos.z);

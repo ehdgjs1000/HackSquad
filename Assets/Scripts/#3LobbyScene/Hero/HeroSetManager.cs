@@ -78,6 +78,7 @@ public class HeroSetManager : MonoBehaviour
     }
     public void OpenHeroDetail()
     {
+        SoundManager.instance.BtnClickPlay();
         heroDetailPanel.SetActive(true);
     }
 

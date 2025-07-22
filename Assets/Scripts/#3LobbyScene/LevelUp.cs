@@ -5,6 +5,7 @@ public class LevelUp : MonoBehaviour
 {
     public static LevelUp instance;
 
+    [SerializeField] AudioClip levelUpClip;
     [SerializeField] GameObject levelUpPanel;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] TextMeshProUGUI gemText;
@@ -26,6 +27,7 @@ public class LevelUp : MonoBehaviour
     {
         closeTerm = 1.0f;
         levelUpPanel.transform.localScale = Vector3.one;
+        SoundManager.instance.PlaySound(levelUpClip);
         int level = BackEndGameData.Instance.UserGameData.level;
         levelText.text = "Lv." + level.ToString();
         gemAmount = ((level / 5) + 1) * 50;

@@ -181,7 +181,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 38c3aa5d2e1be4f45935b9450d1da4a3, type: 2}
   - {fileID: 11400000, guid: 17e307dc3d063eb479e58797c04f3675, type: 2}
   finalSkill: {fileID: 11400000, guid: 956e7dd7688cbb94ab55e6a87b6a0e41, type: 2}
-  damageColor: {r: 0.754717, g: 0.35955858, b: 0.68432945, a: 0}
   initAttackRange: 8
   initFireRate: 0.2
   initMaxBullet: 25
@@ -193,6 +192,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   monsterColls: []
+  weaponFireClip: {fileID: 8300000, guid: 8f4ceceef7c95734db087862715b9c82, type: 3}
   maxRandomDegree: 10
   penetrateCount: 0
 --- !u!1 &1817925976543717375

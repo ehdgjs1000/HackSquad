@@ -10,6 +10,7 @@ public class BuyCheck : MonoBehaviour
     [SerializeField] Sprite[] itemSprites; // gold, gem,
     [SerializeField] Image buyItemImage;
     [SerializeField] TextMeshProUGUI buyItemCount;
+    [SerializeField] AudioClip buyClip;
 
     public int buyAmount;
     string buyType;
@@ -49,6 +50,7 @@ public class BuyCheck : MonoBehaviour
                     BackEndGameData.Instance.UserQuestData.repeatQuest[7] += cost;
                     BackEndGameData.Instance.GameDataUpdate();
                     StoreManager.instance.UpdateUI();
+                    SoundManager.instance.PlaySound(buyClip);
                     this.transform.DOScale(Vector3.zero, 0.15f);
                     PopUpMessageBase.instance.SetMessage("골드 구매 완료");
                 }

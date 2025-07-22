@@ -29,6 +29,9 @@ public class HeroDetail : MonoBehaviour
     int heroLevel;
     int[] needGold = new int[] {1000,2000,4000,8000,16000,32000,64000,128000,256000};
     int[] needHeroConut = new int[] { 1,2,4,8,16,32,64,128,256};
+
+    //Audio
+    [SerializeField] AudioClip upgradeClip;
     
     /// <summary>
     /// 히어로 정보를 UI에 동기화
@@ -135,9 +138,11 @@ public class HeroDetail : MonoBehaviour
             UpgradeHero();
         }else if (BackEndGameData.Instance.UserGameData.gold <= needGold[heroLevel])
         {
+            SoundManager.instance.ErrorClipPlay();
             PopUpMessageBase.instance.SetMessage("골드가 충분하지 않습니다");
         }else if (BackEndGameData.Instance.UserHeroData.heroCount[heroNum] >= needHeroConut[heroLevel])
         {
+            SoundManager.instance.ErrorClipPlay();
             PopUpMessageBase.instance.SetMessage("영웅 갯수가 충분하지 않습니다");
         }
 
@@ -145,7 +150,6 @@ public class HeroDetail : MonoBehaviour
     }
     private void UpgradeHero()
     {
-        //TODO : 서버(레벨업 / 갯수 차감 / 골드 차감)
         BackEndGameData.Instance.UserGameData.gold -= needGold[heroLevel];
         //HeroInfo heroInfo = heroGo.GetComponent<HeroInfo>();
         //int heroNum = heroInfo.ReturnHeroNum();
@@ -156,13 +160,15 @@ public class HeroDetail : MonoBehaviour
         BackEndGameData.Instance.UserQuestData.repeatQuest[6] += needGold[heroLevel];
         BackEndGameData.Instance.UserQuestData.repeatQuest[8] ++;
 
+        SoundManager.instance.PlaySound(upgradeClip);
         heroInfo.UpdateHeroInfo();
         HeroSetManager.instance.UpdateInfo();
         BackEndGameData.Instance.GameDataUpdate();
     }
     public void ChooseHeroBtnClick()
     {
-        if(HeroSetManager.instance.squadCount < 4 && heroLevel > 0)
+        SoundManager.instance.BtnClickPlay();
+        if (HeroSetManager.instance.squadCount < 4 && heroLevel > 0)
         {
             // 중복된 히어로 확인
             for (int a = 0; a < 4; a++)
@@ -171,6 +177,7 @@ public class HeroDetail : MonoBehaviour
                     HeroSetManager.instance.ReturnHeroInfo(a).GetComponent<SquadHero>().hero.GetComponent<HeroInfo>().ReturnHeroNum() == 
                     heroGo.GetComponent<HeroInfo>().ReturnHeroNum())
                 {
+                    SoundManager.instance.ErrorClipPlay();
                     PopUpMessageBase.instance.SetMessage("이미 등록된 핵쟁이입니다");
                     return;
                 }
@@ -191,10 +198,12 @@ public class HeroDetail : MonoBehaviour
         }
         else if(HeroSetManager.instance.squadCount >= 4)
         {
+            SoundManager.instance.ErrorClipPlay();
             PopUpMessageBase.instance.SetMessage("스쿼드가 가득 찼습니다");
         }
         else if (heroLevel <= 0)
         {
+            SoundManager.instance.ErrorClipPlay();
             PopUpMessageBase.instance.SetMessage("핵쟁이가 0레벨 입니다");
         }
     }

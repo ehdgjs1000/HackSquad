@@ -39,6 +39,8 @@ public abstract class PlayerCtrl : MonoBehaviour
     [SerializeField] protected LayerMask monsterLayer;
     public Collider[] monsterColls;
 
+    //Sound
+    [SerializeField] protected AudioClip weaponFireClip;
 
     protected virtual void Awake()
     {

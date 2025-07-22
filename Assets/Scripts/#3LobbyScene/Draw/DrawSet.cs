@@ -21,9 +21,13 @@ public class DrawSet : MonoBehaviour
     float cardMoveTime = 0.3f;
     bool canExit = false;
     [SerializeField] GameObject exitText;
+    
+    //Audio
+    [SerializeField] AudioClip drawClip;
 
     public void DrawCardOnClick(int drawNum)
     {
+        SoundManager.instance.BtnClickPlay();
         if (drawNum == 1 && BackEndGameData.Instance.UserGameData.gem >= 100)
         {
             BackEndGameData.Instance.UserGameData.gem -= 100;
@@ -33,7 +37,11 @@ public class DrawSet : MonoBehaviour
             BackEndGameData.Instance.UserQuestData.repeatQuest[7] += 100;
             StartCoroutine(DrawHeros(drawNum));
         }
-        else if(drawNum == 1 && BackEndGameData.Instance.UserGameData.gem < 100) PopUpMessageBase.instance.SetMessage("크리스탈이 충분하지 않습니다");
+        else if(drawNum == 1 && BackEndGameData.Instance.UserGameData.gem < 100)
+        {
+            SoundManager.instance.ErrorClipPlay();
+            PopUpMessageBase.instance.SetMessage("크리스탈이 충분하지 않습니다");
+        } 
 
 
         if (drawNum == 10 && BackEndGameData.Instance.UserGameData.gem >= 900)
@@ -45,7 +53,11 @@ public class DrawSet : MonoBehaviour
             BackEndGameData.Instance.UserQuestData.repeatQuest[7] += 900;
             StartCoroutine(DrawHeros(drawNum));
         }else if(drawNum == 10 && BackEndGameData.Instance.UserGameData.gem < 900)
+        {
+            SoundManager.instance.ErrorClipPlay();
             PopUpMessageBase.instance.SetMessage("크리스탈이 충분하지 않습니다");
+        }
+            
 
         DrawManager.instance.UpdateMainUI();
     }
@@ -61,6 +73,7 @@ public class DrawSet : MonoBehaviour
         mainCamera.transform.position = initCameraPos;
         if (drawNum == 1)
         {
+            SoundManager.instance.PlaySound(drawClip);
             draw1Hero.SetHero(RandomReturnHero());
             draw1Hero.InfoUpdate();
             draw1Hero.gameObject.transform.DOScale(Vector3.one, 1.0f);
@@ -78,7 +91,8 @@ public class DrawSet : MonoBehaviour
             BackEndGameData.Instance.GameDataUpdate();
             for (int i = 0; i < 10; i++)
             {
-                if(i == 0 ) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(0,710,0), cardMoveTime);
+                SoundManager.instance.PlaySound(drawClip);
+                if (i == 0 ) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(0,710,0), cardMoveTime);
                 else if(i == 1) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(350, 600, 0), cardMoveTime);
                 else if (i == 2) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(350, 200, 0), cardMoveTime);
                 else if (i == 3) draw10Heros[i].gameObject.transform.DOLocalMove(new Vector3(350, -200, 0), cardMoveTime);

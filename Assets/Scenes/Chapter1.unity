@@ -189,6 +189,7 @@ MonoBehaviour:
   bossGO:
   - {fileID: 1493030365813126898, guid: a627759444ed3fc4e94070e8f9553001, type: 3}
   - {fileID: 5454006626491569357, guid: 9d01813752ee6134d9baa22f5c0b1034, type: 3}
+  gameBGM: {fileID: 8300000, guid: b00bdca18cf186146bea9aaa3aa17770, type: 3}
   canSpawn: 1
 --- !u!4 &59683640
 Transform:

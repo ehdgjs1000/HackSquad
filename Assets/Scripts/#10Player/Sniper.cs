@@ -14,7 +14,7 @@ public class Sniper : PlayerCtrl
     protected override IEnumerator Shoot()
     {
         nowBullet--;
-
+        SoundManager.instance.PlaySound(weaponFireClip);
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
         GameObject bullet = PoolManager.instance.MakeObj("sniperBullet");
         bullet.transform.position = bulletSpawnPos.position;

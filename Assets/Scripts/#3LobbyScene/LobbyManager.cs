@@ -17,6 +17,7 @@ public class LobbyManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(InitUI());
+        SoundManager.instance.PlayBGM();
     }
 
     public void LevelUp()
@@ -38,6 +39,7 @@ public class LobbyManager : MonoBehaviour
 
     public void ChapterBtnClick(int _num)
     {
+        SoundManager.instance.BtnClickPlay();
         for (int a = 0; a < chapterSet.Length; a++)
         {
             if (a == _num) chapterSet[a].transform.DOScale(new Vector3(1,1,1),0.0f);

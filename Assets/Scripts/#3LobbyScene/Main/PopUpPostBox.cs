@@ -27,7 +27,7 @@ public class PopUpPostBox : MonoBehaviour
             clone.GetComponent<Post>().SetUp(backendPostSystem, this, postDataList[i]);
             postList.Add(clone);
         }
-
+        SoundManager.instance.BtnClickPlay();
         textSystem.SetActive(false);
     }
     public void DestroyPostAll()
@@ -36,13 +36,14 @@ public class PopUpPostBox : MonoBehaviour
         {
             if(post != null) Destroy(post);
         }
-
+        SoundManager.instance.BtnClickPlay();
         postList.Clear();
         textSystem.SetActive(true);
     }
     public void DestroyPost(GameObject post)
     {
         Destroy(this);
+        SoundManager.instance.BtnClickPlay();
         postList.Remove(post);
 
         if (postList.Count == 0)
