@@ -25,6 +25,7 @@ public class PoolManager : MonoBehaviour
     GameObject[] veteranBullets;
     GameObject[] robotBullets;
     GameObject[] ninjaBullet;
+    GameObject[] knightBullet;
     GameObject[] monster1;
     GameObject[] monster2;
     GameObject[] monster3;
@@ -42,7 +43,7 @@ public class PoolManager : MonoBehaviour
         cowboyBullets = new GameObject[50];
         hoodieBullets = new GameObject[20];
         icemanBullets = new GameObject[10];
-        jesterBullets = new GameObject[20];
+        jesterBullets = new GameObject[30];
         pistolBullets = new GameObject[20];
         rifleBullets = new GameObject[10];
         samuraiBullets = new GameObject[20];
@@ -50,6 +51,7 @@ public class PoolManager : MonoBehaviour
         veteranBullets = new GameObject[100];
         robotBullets = new GameObject[50];
         ninjaBullet = new GameObject[20];
+        knightBullet = new GameObject[50];
 
         monster1 = new GameObject[30];
         monster2 = new GameObject[30];
@@ -139,6 +141,12 @@ public class PoolManager : MonoBehaviour
             ninjaBullet[index] = Instantiate(bulletPrefabs[bulletIndex]);
             ninjaBullet[index].SetActive(false);
         }
+        bulletIndex++;
+        for (int index = 0; index < knightBullet.Length; index++)
+        {
+            knightBullet[index] = Instantiate(bulletPrefabs[bulletIndex]);
+            knightBullet[index].SetActive(false);
+        }
 
         //monster pool
         for (int index = 0; index < monster1.Length; index++)
@@ -209,6 +217,9 @@ public class PoolManager : MonoBehaviour
                 break;
             case "ninjaBullet":
                 targetPool = ninjaBullet;
+                break;
+            case "knightBullet":
+                targetPool = knightBullet;
                 break;
             case "monster1":
                 targetPool = monster1;

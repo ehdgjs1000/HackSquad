@@ -34,6 +34,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     protected bool isReloading = false;
 
     public bool isMoving = false;
+    protected int heroNum;
     
     //Monster
     [SerializeField] protected LayerMask monsterLayer;
@@ -65,7 +66,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     }
     private void InitCharacterStats()
     {
-        int heroNum = heroInfo.ReturnHeroNum();
+        heroNum = heroInfo.ReturnHeroNum();
         attackRange = initAttackRange;
         fireRate = initFireRate;
         maxBullet = initMaxBullet;
@@ -80,6 +81,10 @@ public abstract class PlayerCtrl : MonoBehaviour
         nowBullet = maxBullet;
         tempFireRate = fireRate;
         fireRate = 0;
+    }
+    public void AttackRandom()
+    {
+        attackRandom = true;
     }
     public float ReturnInitHp()
     {

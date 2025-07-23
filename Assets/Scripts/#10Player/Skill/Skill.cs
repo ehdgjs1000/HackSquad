@@ -96,6 +96,9 @@ public class Skill : MonoBehaviour
         else if (skillId == 1301) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 1302) GameManager.instance.players[skillCharacterNum].GetComponent<Ninja>().shootCount++;
         else if (skillId == 1303) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.9f);
+        else if (skillId == 1401) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
+        else if (skillId == 1402) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 5);
+        else if (skillId == 1403) GameManager.instance.players[skillCharacterNum].GetComponent<Knight>().HealUpgrade();
         //Final Skill
         if (skillId == 109)
         {
@@ -148,9 +151,13 @@ public class Skill : MonoBehaviour
         {
             GameManager.instance.players[skillCharacterNum].GetComponent<Robot>().isFinalSkill = true;
         }
-        else if (skillId == 1209)
+        else if (skillId == 1309)
         {
             GameManager.instance.players[skillCharacterNum].GetComponent<Ninja>().isFinalSkill = true;
+        }
+        else if (skillId == 1409)
+        {
+            GameManager.instance.players[skillCharacterNum].GetComponent<Knight>().isFinalSkill = true;
         }
 
     }

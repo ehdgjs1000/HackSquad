@@ -5,19 +5,19 @@ public class Ninja : PlayerCtrl
 {
     public int shootCount = 1;
     public bool isFinalSkill = false;
-
     protected override void Attack(MonsterCtrl enemy)
     {
         _animator.SetBool("isAttacking", true);
         if(!isFinalSkill) StartCoroutine(Shoot());
-        else StartCoroutine(FinalSkill());
+        else StartCoroutine(FinalSkill(enemy));
     }
-    IEnumerator FinalSkill()
+    IEnumerator FinalSkill(MonsterCtrl enemy)
     {
         attackRandom = true;
         SoundManager.instance.PlaySound(weaponFireClip);
+        this.transform.LookAt(enemy.transform.position);
         GameObject bullet = Instantiate(bulletGo, bulletSpawnPos.position, transform.localRotation);
-        bullet.GetComponent<Bullet>().SetBulletInfo(damage*0.7f, 10);
+        bullet.GetComponent<Bullet>().SetBulletInfo(damage*0.7f, 5);
         fireRate = 0.33f;
         yield return null;
     }

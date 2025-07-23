@@ -211,6 +211,11 @@ public class GameManager : MonoBehaviour
             else StartCoroutine(GameOver());
         }
     }
+    public void HealHP(float increaseAmount)
+    {
+        initHp += increaseAmount;
+        hp += increaseAmount;
+    }
     IEnumerator GameOver()
     {
         isGameOver = true;

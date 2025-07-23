@@ -189,6 +189,7 @@ MonoBehaviour:
   bossGO:
   - {fileID: 5454006626491569357, guid: 35e1e1e35d75ae54abb1b493b8e600c6, type: 3}
   - {fileID: 1493030365813126898, guid: db3fd8478e22bce43ad25de1b735e8f3, type: 3}
+  gameBGM: {fileID: 0}
   canSpawn: 1
 --- !u!4 &59683640
 Transform:
@@ -1192,6 +1193,7 @@ MonoBehaviour:
   - {fileID: 6219019435635073176, guid: f4e2974f7496edb43a30936e647dd9fc, type: 3}
   - {fileID: 3279424396251989313, guid: 0c680a40429a270439f64aa829655d01, type: 3}
   - {fileID: 6882116249847192011, guid: c4b2ddd78a478394da66879a43e7af99, type: 3}
+  - {fileID: 1259663630142795538, guid: 55b58d3fd9450e048bdf2c0480bc020e, type: 3}
   monster1Prefab: {fileID: 6807546796849834935, guid: 96ab8d3b57a6c024fb27a75d65226e8c, type: 3}
   monster2Prefab: {fileID: 504477847055164333, guid: eb1cd739bb7c24345807ace95fb26624, type: 3}
   monster3Prefab: {fileID: 3972709158309067180, guid: a325d33190dcbdb4f95a104e59cd9db4, type: 3}

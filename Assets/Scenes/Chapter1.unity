@@ -1243,6 +1243,7 @@ MonoBehaviour:
   - {fileID: 6219019435635073176, guid: f4e2974f7496edb43a30936e647dd9fc, type: 3}
   - {fileID: 3279424396251989313, guid: 0c680a40429a270439f64aa829655d01, type: 3}
   - {fileID: 6882116249847192011, guid: c4b2ddd78a478394da66879a43e7af99, type: 3}
+  - {fileID: 1259663630142795538, guid: 55b58d3fd9450e048bdf2c0480bc020e, type: 3}
   monster1Prefab: {fileID: 5342755383331244327, guid: 9a0d90cd526a99a42bd1f3a0f2798b43, type: 3}
   monster2Prefab: {fileID: 693013522474387470, guid: 84d7965078de66940b7ea1421f9419cd, type: 3}
   monster3Prefab: {fileID: 4181047949033373777, guid: fbc383ce8a41d0a42a37076cc9f039da, type: 3}

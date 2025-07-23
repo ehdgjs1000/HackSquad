@@ -21,8 +21,10 @@ public class DamagePopUp : MonoBehaviour
     }
     public static DamagePopUp Create(Vector3 pos, float damage, Color color)
     {
+        float ranX = Random.Range(-0.5f, 0.5f);
+        float ranZ = Random.Range(-0.5f,0.5f);
         Transform damagePopUpTransform = Instantiate(GameAsset.Instance.pfDamagePopUp,
-            pos, Quaternion.identity);
+            new Vector3(pos.x +ranX , pos.y, pos.z + ranZ), Quaternion.identity);
         DamagePopUp damagePopUp = damagePopUpTransform.GetComponent<DamagePopUp>();
         damagePopUp.SetUp(damage, color);        
 

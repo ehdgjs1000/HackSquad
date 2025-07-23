@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using BackEnd;
 using DG.Tweening;
+using System.Collections;
 
 public class MainManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] QuestManager questManager;
     [SerializeField] SweepManager sweepManager;
 
+    [SerializeField] SceneTransition sceneTransition;
     private void Awake()
     {
         instance = this;
@@ -95,22 +97,31 @@ public class MainManager : MonoBehaviour
     }
     public void GameStartOnClick()
     {
-        if (HeroSetManager.instance.squadCount > 0)
+        if (HeroSetManager.instance.squadCount >= 3)
         {
-            SoundManager.instance.BtnClickPlay();
-            //다음 씬으로 고른 Hero 정보 넘기기
-            ChangeScene.instance.SetHeros();
-            ChangeScene.instance.chapterName = gameLevelName[gameLevel];
-            BackEndGameData.Instance.UserQuestData.questProgress[1]++;
-            BackEndGameData.Instance.GameDataUpdate();
-
-            string scene = "Chapter" + gameLevel;
-            SceneManager.LoadScene("InGameCommon");
-            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
-        }else if (HeroSetManager.instance.squadCount <= 0)
+            StartCoroutine(StartGame());
+            
+        }else if (HeroSetManager.instance.squadCount < 3)
         {
             SoundManager.instance.ErrorClipPlay();
-            PopUpMessageBase.instance.SetMessage("스쿼드에 핵쟁이를 등록해주세요");
+            PopUpMessageBase.instance.SetMessage("스쿼드에 핵쟁이를 3명 이상 등록해주세요");
         }
+    }
+    IEnumerator StartGame()
+    {
+        SoundManager.instance.BtnClickPlay();
+        //다음 씬으로 고른 Hero 정보 넘기기
+        ChangeScene.instance.SetHeros();
+        ChangeScene.instance.chapterName = gameLevelName[gameLevel];
+        BackEndGameData.Instance.UserQuestData.questProgress[1]++;
+        BackEndGameData.Instance.GameDataUpdate();
+
+        StartCoroutine(sceneTransition.TransitionCoroutine());
+        yield return new WaitForSeconds(2.0f);
+
+        string scene = "Chapter" + gameLevel;
+        SceneManager.LoadScene("InGameCommon");
+        SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+
     }
 }

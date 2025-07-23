@@ -22,7 +22,7 @@ public class Robot : PlayerCtrl
             }
             else
             {
-                fireRate = 0.2f;
+                fireRate = 0.8f;
                 monster = enemy;
                 _animator.SetBool("isAttacking", true);
                 StartCoroutine(Shoot());
@@ -32,13 +32,15 @@ public class Robot : PlayerCtrl
 
     protected override IEnumerator Shoot()
     {
-        SoundManager.instance.PlaySound(weaponFireClip);
+        
         Vector3 monsterPos = monster.transform.position;
         GameObject bullet = PoolManager.instance.MakeObj("robotBullet");
         bullet.transform.position = new Vector3(monsterPos.x, monsterPos.y + 0.25f, monsterPos.z);
         bullet.transform.rotation = Quaternion.identity;
         bullet.GetComponent<RobotBullet>().damage = damage;
-        yield return null;
+        bullet.GetComponent<RobotBullet>().StartAttack();
+        yield return new WaitForSeconds(0.4f);
+        SoundManager.instance.PlaySound(weaponFireClip);
 
     }
 }

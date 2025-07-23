@@ -90,6 +90,10 @@ public class HeroCard : MonoBehaviour
         {
             heroTypeBg.color = Color.black;
         }
+        else if (heroType == "Ä¡À¯Çü")
+        {
+            heroTypeBg.color = Color.green;
+        }
         heroTypeImage.sprite = hero.ReturnHeroTypeImage();
 
     }

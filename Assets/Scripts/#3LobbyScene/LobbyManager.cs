@@ -61,7 +61,9 @@ public class LobbyManager : MonoBehaviour
         StoreManager.instance.UpdateUI();
         DrawManager.instance.UpdateMainUI();
     }
-
-
+    public void BtnClickPlay()
+    {
+        SoundManager.instance.BtnClickPlay();
+    }
 
 }

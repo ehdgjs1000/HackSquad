@@ -9,7 +9,7 @@ public class RobotBullet : MonoBehaviour
     [SerializeField] LayerMask monsterLayer;
     Collider[] monsterColls;
 
-    private void Start()
+    public void StartAttack()
     {
         StartCoroutine(Attack());
     }
@@ -30,7 +30,7 @@ public class RobotBullet : MonoBehaviour
             }
 
         }
-        StartCoroutine(PoolManager.instance.DeActive(0.8f, this.gameObject));
+        StartCoroutine(PoolManager.instance.DeActive(2.1f, this.gameObject));
     }
 
 }
