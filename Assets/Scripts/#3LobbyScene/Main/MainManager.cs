@@ -19,6 +19,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelText;
 
     [SerializeField] GameObject midGameClearSet;
+    [SerializeField] GameObject energyBuyPanel; 
     //GameData
     int gem;
     int gold;
@@ -61,6 +62,10 @@ public class MainManager : MonoBehaviour
             });
         }
     }
+    public void BuyEnergyOnClick()
+    {
+        energyBuyPanel.SetActive(true);
+    }
     public void ChapterOnClick()
     {
         SoundManager.instance.BtnClickPlay();
@@ -83,7 +88,8 @@ public class MainManager : MonoBehaviour
         //상단 정보
         gemText.text = BackEndGameData.Instance.UserGameData.gem.ToString();
         goldText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
-        energyText.text = BackEndGameData.Instance.UserGameData.energy.ToString();
+        energyText.text = BackEndGameData.Instance.UserGameData.energy.ToString() + "/" + (30+
+            BackEndGameData.Instance.UserAbilityData.abilityLevel[9]);
         levelText.text = BackEndGameData.Instance.UserGameData.level.ToString();
 
         //게임 레벨

@@ -10,8 +10,6 @@ public class ChapterReward : MonoBehaviour
     [SerializeField] TextMeshProUGUI goldAmountText, gemAmountText;
     [SerializeField] int chapterNum;
     [SerializeField] int chapterWaveNum;
-    int rewardNum;
-    bool canClear = false;
 
     [SerializeField] int goldAmount,gemAmount;
     private void Start()

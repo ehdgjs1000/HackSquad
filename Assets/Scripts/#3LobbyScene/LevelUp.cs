@@ -36,6 +36,7 @@ public class LevelUp : MonoBehaviour
         goldText.text = goldAmount.ToString();
         BackEndGameData.Instance.UserGameData.gem += gemAmount;
         BackEndGameData.Instance.UserGameData.gold += goldAmount;
+        BackEndGameData.Instance.UserGameData.energy += 20;
         
         BackEndGameData.Instance.GameDataUpdate();
         LobbyManager.instance.UpdateUIAll();
