@@ -71,7 +71,7 @@ public class EnergyCharger : MonoBehaviour
 
                 Debug.Log(addEnergy);
                 BackEndGameData.Instance.UserGameData.energy += addEnergy;
-                if (BackEndGameData.Instance.UserGameData.energy > (30 +
+                if (BackEndGameData.Instance.UserGameData.energy >= (30 +
             BackEndGameData.Instance.UserAbilityData.abilityLevel[9]))
                     BackEndGameData.Instance.UserGameData.energy = 30 +
             BackEndGameData.Instance.UserAbilityData.abilityLevel[9];
