@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
@@ -13,10 +14,13 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] Ability[] abilities;
     [SerializeField] TextMeshProUGUI abilityLevelText;
     [SerializeField] AudioClip drawAbilityClip;
+    [SerializeField] TextMeshProUGUI remainVideoText;
+    [SerializeField] Button videoBtn;
 
     float canExitDraw = 1.0f;
     int abilityLevel = 0;
     int abilityCost = 0;
+    int remainVideoCount = 3;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -45,6 +49,25 @@ public class AbilityManager : MonoBehaviour
         for (int i = 0; i < abilities.Length; i++)
         {
             abilities[i].UpdateUI();
+        }
+
+        if (PlayerPrefs.HasKey("remainAbilityVideo")) 
+            remainVideoCount = PlayerPrefs.GetInt("remainAbilityVideo");
+        remainVideoText.text = remainVideoCount + "/3";
+        if (remainVideoCount <= 0) videoBtn.image.color = Color.gray;
+    }
+    public void DrawAbilityVideoOnClick()
+    {
+        if (remainVideoCount > 0 )
+        {
+            AdsVideo.instance.ShowVideo();
+            DrawAbility();
+            BackEndGameData.Instance.UserGameData.gold -= abilityCost;
+            BackEndGameData.Instance.UserQuestData.questProgress[2] += abilityCost;
+            BackEndGameData.Instance.UserQuestData.repeatQuest[1]++;
+            BackEndGameData.Instance.UserQuestData.repeatQuest[6] += abilityCost;
+            BackEndGameData.Instance.GameDataUpdate();
+            UpdateUI();
         }
     }
     public void DrawAbilityOnClick()
@@ -89,8 +112,9 @@ public class AbilityManager : MonoBehaviour
 
         //AbilityDetail¿¡ ¶ç¿ì±â
         SoundManager.instance.PlaySound(drawAbilityClip);
-        UpdateUI();
+        
         BackEndGameData.Instance.UserAbilityData.abilityLevel[ranNum]++;
+        UpdateUI();
         OpenAbilityDetail(choosedAbility);
         BackEndGameData.Instance.GameDataUpdate();
     }

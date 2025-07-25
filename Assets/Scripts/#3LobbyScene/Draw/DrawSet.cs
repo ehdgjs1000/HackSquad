@@ -26,6 +26,26 @@ public class DrawSet : MonoBehaviour
     [SerializeField] AudioClip drawClip;
     [SerializeField] AudioClip drawCharacterClip;
 
+    public void DrawVideoOnClick()
+    {
+        if (PlayerPrefs.HasKey("DrawVideo"))
+        {
+            if (PlayerPrefs.GetInt("DrawVideo") > 0)
+            {
+                int remainCount = PlayerPrefs.GetInt("DrawVideo");
+                remainCount--;
+                PlayerPrefs.SetInt("DrawVideo", remainCount);
+                AdsVideo.instance.ShowVideo();
+                StartCoroutine(DrawHeros(1));
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("DrawVideo", 2);
+            AdsVideo.instance.ShowVideo();
+            StartCoroutine(DrawHeros(1));
+        }
+    }
     public void DrawCardOnClick(int drawNum)
     {
         SoundManager.instance.PlaySound(drawCharacterClip);

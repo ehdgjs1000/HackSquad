@@ -12,10 +12,18 @@ public class EnergyBuy : MonoBehaviour
         //광고 시청 후 보상 지급
         if (energyAmount == 5)
         {
+            if(BackEndGameData.Instance.UserGameData.energy < 30 + BackEndGameData.Instance.UserAbilityData.abilityLevel[9])
+            {
+                AdsVideo.instance.EnergyRewardOnClick();
 
-            BackEndGameData.Instance.UserGameData.energy += 5;
-            BackEndGameData.Instance.GameDataUpdate();
-            LobbyManager.instance.UpdateUIAll();
+                BackEndGameData.Instance.UserGameData.energy += 5;
+                BackEndGameData.Instance.GameDataUpdate();
+                LobbyManager.instance.UpdateUIAll();
+            }
+            else
+            {
+                PopUpMessageBase.instance.SetMessage("에너지가 가득찼습니다.");
+            }
         }
         else if(energyAmount == 30)
         {

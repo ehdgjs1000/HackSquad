@@ -17,8 +17,14 @@ public class DrawManager : MonoBehaviour
 
     public void UpdateMainUI()
     {
+        int gold = BackEndGameData.Instance.UserGameData.gold;
         gemText.text = BackEndGameData.Instance.UserGameData.gem.ToString();
-        goldText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
+        
+        if(gold >= 10000)
+        {
+            goldText.text = (gold/1000).ToString() +"K";
+        }else goldText.text = gold.ToString();
+
         for (int i = 0; i <drawBtns.Length; i++)
         {
             drawBtns[i].UpdateDrawBtn();

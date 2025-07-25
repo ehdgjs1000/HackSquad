@@ -89,6 +89,7 @@ public class SweepManager : MonoBehaviour
     public void VideoSweepOnClick()
     {
         //비디오 시청
+        AdsVideo.instance.ShowVideo();
 
         //보상 제공
         float highestChapter = BackEndGameData.Instance.UserGameData.highestChapter;

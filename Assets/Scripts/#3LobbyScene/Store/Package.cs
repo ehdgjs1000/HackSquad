@@ -28,11 +28,6 @@ public class Package : MonoBehaviour
         reward2AmountText.text = reward2Amount.ToString();
         costText.text = cost.ToString()+ "원";
     }
-    public void BuyPackageOnClick()
-    {
-        //IAP 추가하기
-
-    }
 
 
 }
