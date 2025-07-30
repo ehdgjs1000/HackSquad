@@ -26,7 +26,7 @@ public class Bazooka : PlayerCtrl
             StartCoroutine(BazookaFinalSkill());
         }
     }
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
         fireRate = tempFireRate;
 

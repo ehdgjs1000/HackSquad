@@ -5,13 +5,13 @@ public class Ninja : PlayerCtrl
 {
     public int shootCount = 1;
     public bool isFinalSkill = false;
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
         _animator.SetBool("isAttacking", true);
         if(!isFinalSkill) StartCoroutine(Shoot());
         else StartCoroutine(FinalSkill(enemy));
     }
-    IEnumerator FinalSkill(MonsterCtrl enemy)
+    IEnumerator FinalSkill(GameObject enemy)
     {
         attackRandom = true;
         SoundManager.instance.PlaySound(weaponFireClip);

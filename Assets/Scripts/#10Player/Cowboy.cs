@@ -13,7 +13,7 @@ public class Cowboy : PlayerCtrl
         penetrateCount = 0;
         shotGunBulletSkillLevel = 0;
     }
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
         fireRate = tempFireRate;
 

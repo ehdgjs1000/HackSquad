@@ -20,7 +20,7 @@ public class Hoodie : PlayerCtrl
         finalSkillTime -= Time.deltaTime;
         if (finalSkillTime <= 0.0f && isFinalSkill) UseFinalSkill();
     }
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
         fireRate = tempFireRate;
         _animator.SetBool("isAttacking", true);

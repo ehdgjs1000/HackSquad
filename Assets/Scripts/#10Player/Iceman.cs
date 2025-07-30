@@ -10,7 +10,7 @@ public class Iceman : PlayerCtrl
     bool isFinalSkill = false;
     int slowSkillLevel = 0;
     float slowAmount = 0.2f;
-    MonsterCtrl monster;
+    GameObject monster;
 
     protected override void Update()
     {
@@ -43,7 +43,7 @@ public class Iceman : PlayerCtrl
         slowSkillLevel++;
         slowAmount += 0.1f;
     }
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
         if (enemy != null)
         {

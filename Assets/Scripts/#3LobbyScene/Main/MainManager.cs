@@ -19,7 +19,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelText;
 
     [SerializeField] GameObject midGameClearSet;
-    [SerializeField] GameObject energyBuyPanel; 
+    [SerializeField] GameObject energyBuyPanel;
     //GameData
     int gem;
     int gold;
@@ -28,6 +28,8 @@ public class MainManager : MonoBehaviour
     //GameLevelDatas
     [SerializeField] TextMeshProUGUI gameLevelText;
     [SerializeField] TextMeshProUGUI highestWaveText;
+    [SerializeField] Image chapterImage;
+    [SerializeField] Sprite[] chapterSprites;
     string[] gameLevelName = new string[] {"null스테이지" ,"따뜻한 안방","냄새나는 주방", "축축한 화장실",
     "나른한 컴퓨터실", "책상 위에서", "빛을 잃은 컴퓨터","4막"};
     int gameLevel = 1;  
@@ -96,6 +98,7 @@ public class MainManager : MonoBehaviour
         gameLevel = (int)((BackEndGameData.Instance.UserGameData.highestChapter+1) / 2) + 1;
         gameLevelText.text = gameLevel.ToString()+". " +gameLevelName[gameLevel];
         highestWaveText.text = "최대 웨이브 <color=red>" + highestWave.ToString()+"/20</color>";
+        chapterImage.sprite = chapterSprites[gameLevel-1];
 
         if (gameLevel > 1) midGameClearSet.SetActive(true);
         else midGameClearSet.SetActive(false);
@@ -115,19 +118,25 @@ public class MainManager : MonoBehaviour
     }
     IEnumerator StartGame()
     {
-        SoundManager.instance.BtnClickPlay();
-        //다음 씬으로 고른 Hero 정보 넘기기
-        ChangeScene.instance.SetHeros();
-        ChangeScene.instance.chapterName = gameLevelName[gameLevel];
-        BackEndGameData.Instance.UserQuestData.questProgress[1]++;
-        BackEndGameData.Instance.GameDataUpdate();
+        if (BackEndGameData.Instance.UserGameData.energy >= 5)
+        {
+            SoundManager.instance.BtnClickPlay();
+            //다음 씬으로 고른 Hero 정보 넘기기
+            ChangeScene.instance.SetHeros();
+            ChangeScene.instance.chapterName = gameLevelName[gameLevel];
+            BackEndGameData.Instance.UserGameData.energy -= 5;
+            BackEndGameData.Instance.UserQuestData.questProgress[1]++;
+            BackEndGameData.Instance.GameDataUpdate();
 
-        StartCoroutine(sceneTransition.TransitionCoroutine());
-        yield return new WaitForSeconds(2.0f);
+            StartCoroutine(sceneTransition.TransitionCoroutine());
+            yield return new WaitForSeconds(2.0f);
 
-        string scene = "Chapter" + gameLevel;
-        SceneManager.LoadScene("InGameCommon");
-        SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+            string scene = "Chapter" + gameLevel;
+            SceneManager.LoadScene("InGameCommon");
+            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+        }
+        else PopUpMessageBase.instance.SetMessage("에너지가 부족합니다.");
+        
 
     }
 }

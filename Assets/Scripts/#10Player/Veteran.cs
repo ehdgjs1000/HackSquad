@@ -15,7 +15,7 @@ public class Veteran : PlayerCtrl
     {
         maxRandomDegree += _amount;
     }
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
         fireRate = tempFireRate;
         _animator.SetBool("isAttacking", true);

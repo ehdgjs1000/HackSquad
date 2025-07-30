@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Sniper : PlayerCtrl
 {
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
         fireRate = tempFireRate;
 

@@ -28,7 +28,8 @@ public class DrawSet : MonoBehaviour
 
     public void DrawVideoOnClick()
     {
-        if (PlayerPrefs.HasKey("DrawVideo"))
+        Debug.Log("DrawVideoOnClick");
+        if (PlayerPrefs.HasKey("DrawVideo") && AdsVideo.instance.buttonClickTime <= 0.0f)
         {
             if (PlayerPrefs.GetInt("DrawVideo") > 0)
             {
@@ -39,12 +40,13 @@ public class DrawSet : MonoBehaviour
                 StartCoroutine(DrawHeros(1));
             }
         }
-        else
+        else if (AdsVideo.instance.buttonClickTime <= 0.0f)
         {
             PlayerPrefs.SetInt("DrawVideo", 2);
             AdsVideo.instance.ShowVideo();
             StartCoroutine(DrawHeros(1));
         }
+        else PopUpMessageBase.instance.SetMessage("잠시 후 다시 눌러주세요.");
     }
     public void DrawCardOnClick(int drawNum)
     {

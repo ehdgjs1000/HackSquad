@@ -87,7 +87,7 @@ public class TimeManager : MonoBehaviour
         //매일 리셋해야 하는 것 넣기
         BackEndGameData.Instance.UserQuestData.ResetDaily();
         PlayerPrefs.SetInt("FreePackage", 0);
-
+        PlayerPrefs.SetInt("DrawVideo", 3);
 
         BackEndGameData.Instance.GameDataUpdate();
     }

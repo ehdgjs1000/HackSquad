@@ -112,17 +112,17 @@ public abstract class PlayerCtrl : MonoBehaviour
                         }
                         
                         this.transform.LookAt(enemyGO.transform.position);
-                        MonsterCtrl enemy = enemyGO.GetComponent<MonsterCtrl>();
+                        //MonsterCtrl enemy = enemyGO.GetComponent<MonsterCtrl>();
                         //공격
-                        if (fireRate <= 0.0f && !isReloading) Attack(enemy);
+                        if (fireRate <= 0.0f && !isReloading) Attack(enemyGO);
                     }
                     else
                     {
                         int randomMonster = Random.Range(0,monsterColls.Length);
                         GameObject enemyGO = monsterColls[randomMonster].gameObject;
-                        MonsterCtrl enemy = enemyGO.GetComponent<MonsterCtrl>();
+                        //MonsterCtrl enemy = enemyGO.GetComponent<MonsterCtrl>(); 
                         //공격
-                        if (fireRate <= 0.0f && !isReloading) Attack(enemy);
+                        if (fireRate <= 0.0f && !isReloading) Attack(enemyGO);
                     }
                     
                 }
@@ -148,7 +148,7 @@ public abstract class PlayerCtrl : MonoBehaviour
         isReloading = false;
         nowBullet = maxBullet;
     }
-    protected abstract void Attack(MonsterCtrl enemy);
+    protected abstract void Attack(GameObject enemy);
     protected abstract IEnumerator Shoot();
     private Collider FindClosestTarget(Collider[] targets)
     {

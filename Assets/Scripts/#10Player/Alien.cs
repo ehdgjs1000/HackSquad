@@ -6,7 +6,7 @@ public class Alien : PlayerCtrl
     Collider[] aMonsterColls;
     float radius = 20.0f;
 
-    private MonsterCtrl monster;
+    private GameObject monster;
     int stunSkillLevel = 0;
     float stunTime = 0.1f;
     bool isFinalSkill = false;
@@ -19,7 +19,7 @@ public class Alien : PlayerCtrl
         stunSkillLevel++;
         stunTime += 0.1f;
     }
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
         if (!isFinalSkill)
         {
@@ -61,7 +61,8 @@ public class Alien : PlayerCtrl
     protected override IEnumerator Shoot()
     {
         nowBullet--;
-        monster.GetAttack(damage);
+        if(monster.GetComponent<MonsterCtrl>() != null) monster.GetComponent<MonsterCtrl>().GetAttack(damage);
+        else if (monster.GetComponent<BossMonsterCtrl>() != null) monster.GetComponent<BossMonsterCtrl>().GetAttack(damage);
         SoundManager.instance.PlaySound(weaponFireClip);
         
         GameObject bullet = PoolManager.instance.MakeObj("alienBullet");

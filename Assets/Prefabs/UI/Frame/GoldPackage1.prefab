@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.91372555, g: 0.7960785, b: 0, a: 1}
+  m_Color: {r: 0.91372555, g: 0.74509805, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -787,7 +787,7 @@ MonoBehaviour:
   goldAmount: 100
   costAmount: 990
   goldSprite: {fileID: -4080278737599844964, guid: fdd7c39b6deb3f840b5fc0e9cbc6cb00, type: 3}
-  isGem: 1
+  isUserWon: 0
 --- !u!114 &8442572890398987247
 MonoBehaviour:
   m_ObjectHideFlags: 0

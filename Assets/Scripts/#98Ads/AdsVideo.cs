@@ -17,7 +17,7 @@ public class AdsVideo : MonoBehaviour
 
     public static AdsVideo instance;
 
-    private float buttonClickTime = 0.0f;
+    public float buttonClickTime = 0.0f;
     private void Awake()
     {
         if (instance == null)
@@ -66,7 +66,7 @@ public class AdsVideo : MonoBehaviour
         if (buttonClickTime <= 0.0f)
         {
             rewardType = 1;
-            buttonClickTime = 3.0f;
+            buttonClickTime = 20.0f;
             LoadRewardedAd();
         }
         else
@@ -130,7 +130,7 @@ public class AdsVideo : MonoBehaviour
                 }
                 else
                 {
-
+                    Debug.Log("rewardType = 99");
                 }
             });
         }

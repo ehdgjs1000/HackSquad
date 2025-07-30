@@ -5,7 +5,7 @@ public class Samurai : PlayerCtrl
 {
     [SerializeField] GameObject samuraiFinalBulletGO;
     public bool isFinalSkillUpgrade;
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
         fireRate = tempFireRate;
 

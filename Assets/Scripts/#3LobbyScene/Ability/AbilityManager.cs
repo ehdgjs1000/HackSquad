@@ -38,12 +38,12 @@ public class AbilityManager : MonoBehaviour
         abilityLevel = 0;
         for (int i = 0; i < BackEndGameData.Instance.UserAbilityData.abilityLevel.Length; i++)
         {
-            if (BackEndGameData.Instance.UserAbilityData.abilityLevel[i] > 0) abilityLevel++;
+            if (BackEndGameData.Instance.UserAbilityData.abilityLevel[i] > 0) abilityLevel += BackEndGameData.Instance.UserAbilityData.abilityLevel[i];
         }
         abilityLevelText.text = "Lv." + abilityLevel.ToString();
         goldAmountText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
 
-        abilityCost = 5000 + (abilityLevel * 500);
+        abilityCost = 4500 + (abilityLevel * 500);
         abilityCostText.text = abilityCost.ToString();
 
         for (int i = 0; i < abilities.Length; i++)
@@ -58,16 +58,19 @@ public class AbilityManager : MonoBehaviour
     }
     public void DrawAbilityVideoOnClick()
     {
-        if (remainVideoCount > 0 )
+        if (remainVideoCount > 0 && AdsVideo.instance.buttonClickTime <= 0.0f)
         {
             AdsVideo.instance.ShowVideo();
             DrawAbility();
-            BackEndGameData.Instance.UserGameData.gold -= abilityCost;
-            BackEndGameData.Instance.UserQuestData.questProgress[2] += abilityCost;
+            remainVideoCount--;
+            PlayerPrefs.SetInt("remainAbilityVideo",remainVideoCount);
             BackEndGameData.Instance.UserQuestData.repeatQuest[1]++;
-            BackEndGameData.Instance.UserQuestData.repeatQuest[6] += abilityCost;
             BackEndGameData.Instance.GameDataUpdate();
             UpdateUI();
+        }
+        else
+        {
+            PopUpMessageBase.instance.SetMessage("잠시 후 다시 눌러주세요.");
         }
     }
     public void DrawAbilityOnClick()
@@ -76,11 +79,11 @@ public class AbilityManager : MonoBehaviour
         if (BackEndGameData.Instance.UserGameData.gold >= abilityCost)
         {
             //능력 뽑기
-            DrawAbility();
             BackEndGameData.Instance.UserGameData.gold -= abilityCost;
             BackEndGameData.Instance.UserQuestData.questProgress[2] += abilityCost;
             BackEndGameData.Instance.UserQuestData.repeatQuest[1]++;
             BackEndGameData.Instance.UserQuestData.repeatQuest[6]+= abilityCost;
+            DrawAbility();
             BackEndGameData.Instance.GameDataUpdate();
             UpdateUI();
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Jester : PlayerCtrl
 {
-    MonsterCtrl monster;
+    GameObject monster;
     [SerializeField] GameObject finalBullet;
     bool isFinalSkill = false;
     float poisionTerm = 0.3f;
@@ -17,10 +17,8 @@ public class Jester : PlayerCtrl
         poisionLevel++;
         poisionTerm *= 0.9f;
     }
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
-        
-
         monster = enemy;
         _animator.SetBool("isAttacking", true);
         StartCoroutine(Shoot());

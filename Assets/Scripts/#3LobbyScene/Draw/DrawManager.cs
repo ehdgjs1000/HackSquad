@@ -8,7 +8,7 @@ public class DrawManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI gemText;
     [SerializeField] TextMeshProUGUI goldText;
-    [SerializeField] DrawBtnCtrl[] drawBtns;
+    [SerializeField] TextMeshProUGUI drawRemainText;
 
     private void Awake()
     {
@@ -19,16 +19,19 @@ public class DrawManager : MonoBehaviour
     {
         int gold = BackEndGameData.Instance.UserGameData.gold;
         gemText.text = BackEndGameData.Instance.UserGameData.gem.ToString();
-        
-        if(gold >= 10000)
+
+        if (PlayerPrefs.HasKey("DrawVideo"))
+        {
+            int remainVideo = PlayerPrefs.GetInt("DrawVideo");
+            drawRemainText.text = remainVideo + "/3";
+        }
+        else drawRemainText.text = "3/3";
+
+        if (gold >= 10000)
         {
             goldText.text = (gold/1000).ToString() +"K";
         }else goldText.text = gold.ToString();
 
-        for (int i = 0; i <drawBtns.Length; i++)
-        {
-            drawBtns[i].UpdateDrawBtn();
-        }
     }
 
 }

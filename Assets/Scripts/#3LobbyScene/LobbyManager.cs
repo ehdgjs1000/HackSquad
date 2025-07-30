@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class LobbyManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class LobbyManager : MonoBehaviour
 
     [SerializeField] GameObject[] chapterSet;
     [SerializeField] GameObject levelUpPanel;
+    [SerializeField] Button[] bottomButtonSet;
 
     private void Awake()
     {
@@ -39,11 +41,21 @@ public class LobbyManager : MonoBehaviour
 
     public void ChapterBtnClick(int _num)
     {
+        Color color;
         SoundManager.instance.BtnClickPlay();
         for (int a = 0; a < chapterSet.Length; a++)
         {
-            if (a == _num) chapterSet[a].transform.DOScale(new Vector3(1,1,1),0.0f);
-            else chapterSet[a].transform.DOScale(new Vector3(0,0,0), 0.0f);
+            if (a == _num)
+            {
+                chapterSet[a].transform.DOScale(new Vector3(1, 1, 1), 0.0f);
+                ColorUtility.TryParseHtmlString("#FF45EA", out color);
+                bottomButtonSet[a].image.color = color;
+            }
+            else
+            {
+                chapterSet[a].transform.DOScale(new Vector3(0, 0, 0), 0.0f);
+                bottomButtonSet[a].image.color = Color.white;
+            }
         }
         if(_num == 1)
         {

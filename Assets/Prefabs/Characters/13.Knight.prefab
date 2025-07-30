@@ -1518,7 +1518,7 @@ MonoBehaviour:
   heroNum: 13
   heroTypeSprite: {fileID: 21300000, guid: cbce9149234d58c4ba81fb042ff4ef79, type: 3}
   heroLevel: 1
-  heroCount: 0
+  heroCount: 2
   heroJob: "\uCE58\uC720\uD615"
 --- !u!54 &6491079568504179789
 Rigidbody:

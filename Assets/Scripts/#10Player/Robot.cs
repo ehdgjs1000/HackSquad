@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Robot : PlayerCtrl
 {
-    MonsterCtrl monster;
+    GameObject monster;
     public int attackCount;
     public bool isFinalSkill = false;
-    protected override void Attack(MonsterCtrl enemy)
+    protected override void Attack(GameObject enemy)
     {
         if (enemy != null)
         {

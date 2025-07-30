@@ -215,6 +215,7 @@ public class GameManager : MonoBehaviour
     {
         initHp += increaseAmount;
         hp += increaseAmount;
+        UpdateUI();
     }
     IEnumerator GameOver()
     {

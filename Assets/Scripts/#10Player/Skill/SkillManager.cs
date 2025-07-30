@@ -62,14 +62,13 @@ public class SkillManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             //이미 고른 스킬일 경우
+            Debug.Log(choosedSkillID[i] + " : " + randomSkillNum);
             if(choosedSkillID[i] == randomSkillNum)
             {
                 NormalSkillChoose();
                 break;
             }
         }
-
-        
     }
     private void FinalSkillChoose(int _order)
     {
