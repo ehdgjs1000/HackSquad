@@ -11,7 +11,5 @@ public class SkillData : ScriptableObject
     public Sprite skillImage;
     public Sprite skillCharacterImage;
     public int skillLevel;
-
-
-
+    public int skillGrade;
 }

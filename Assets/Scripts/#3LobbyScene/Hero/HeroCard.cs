@@ -19,6 +19,8 @@ public class HeroCard : MonoBehaviour
     [SerializeField] HeroDetail heroDetail;
     [SerializeField] Image heroTypeBg;
     [SerializeField] Image heroTypeImage;
+    [SerializeField] TextMeshProUGUI heroNameText;
+    [SerializeField] Sprite[] heroTypeSprite;
     string heroType;
 
 
@@ -40,6 +42,7 @@ public class HeroCard : MonoBehaviour
         if (heroLevel == 0 && heroCount == 0) noHeroBg.gameObject.SetActive(true);
         else noHeroBg.gameObject.SetActive(false);
         heroLevelText.text = heroLevel.ToString() + "레벨";
+        heroNameText.text = heroPrefab.GetComponent<PlayerCtrl>().characterName;
 
         if (heroCount >= Mathf.Pow(2, heroLevel)) canUpgrade = true;
         else canUpgrade = false;
@@ -79,20 +82,20 @@ public class HeroCard : MonoBehaviour
         if (heroType == "공격형")
         {
             ColorUtility.TryParseHtmlString("#FD0000", out color);
-            heroTypeBg.color = color;
+            heroTypeBg.sprite = heroTypeSprite[0];
+            
         }
         else if (heroType == "마법형")
         {
-            ColorUtility.TryParseHtmlString("#0074FF", out color);
-            heroTypeBg.color = color;
+            heroTypeBg.sprite = heroTypeSprite[1];
         }
         else if (heroType == "악마형")
         {
-            heroTypeBg.color = Color.black;
+            heroTypeBg.sprite = heroTypeSprite[2];
         }
         else if (heroType == "치유형")
         {
-            heroTypeBg.color = Color.green;
+            heroTypeBg.sprite = heroTypeSprite[3];
         }
         heroTypeImage.sprite = hero.ReturnHeroTypeImage();
 

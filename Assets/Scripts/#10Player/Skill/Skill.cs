@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -28,14 +29,30 @@ public class Skill : MonoBehaviour
         skillId = skill.ID;
 
         Color color;
-        if(skill.ID % 10 == 9)
+        if(skill.skillGrade == 0)
         {
-            ColorUtility.TryParseHtmlString("#D63421", out color);
+            ColorUtility.TryParseHtmlString("#2CCF25", out color);
+            skillBg.color = color;
+        }else if (skill.skillGrade == 1)
+        {
+            ColorUtility.TryParseHtmlString("#2C3EB7", out color);
             skillBg.color = color;
         }
-        else
+        else if (skill.skillGrade == 2)
         {
-            ColorUtility.TryParseHtmlString("#51BF20", out color);
+            ColorUtility.TryParseHtmlString("#AB2CB7", out color);
+            skillBg.color = color;
+        }
+        else if (skill.skillGrade == 3)
+        {
+            ColorUtility.TryParseHtmlString("#C3B526", out color);
+            skillBg.color = color;
+        }
+
+        Debug.Log(skill.ID % 10);
+        if (skill.ID % 10 == 9)
+        {
+            ColorUtility.TryParseHtmlString("#D63421", out color);
             skillBg.color = color;
         }
         
@@ -53,8 +70,15 @@ public class Skill : MonoBehaviour
         skill.skillLevel++;
         SoundManager.instance.PlaySound(skillUpgradeClip);
         GameManager.instance.GameSpeed(GameManager.instance.gameSpeed);
-        upgradePanel.transform.DOScale(Vector3.zero,0.1f);
+        StartCoroutine(SkillChooseAnimation());
     }
+    IEnumerator SkillChooseAnimation()
+    {
+        this.transform.DOShakeRotation(1.0f);
+        yield return new WaitForSeconds(0.9f);
+        upgradePanel.transform.DOScale(Vector3.zero, 0.1f);
+    }
+    
     private void UpgradeSkill()
     {
         if (skillId == 101) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
