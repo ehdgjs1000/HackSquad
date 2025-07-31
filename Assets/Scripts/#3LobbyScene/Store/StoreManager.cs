@@ -20,7 +20,12 @@ public class StoreManager : MonoBehaviour
     }
     public void UpdateUI()
     {
-        goldAmountText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
+        int gold = BackEndGameData.Instance.UserGameData.gold;
+        if (gold >= 10000)
+        {
+            goldAmountText.text = (gold / 1000).ToString() + "K";
+        }
+        else goldAmountText.text = gold.ToString();
         gemAmountText.text = BackEndGameData.Instance.UserGameData.gem.ToString(); 
     }
     public void StoreTypeOnClick(int num)

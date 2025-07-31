@@ -36,37 +36,43 @@ public class SkillManager : MonoBehaviour
     {
         int skillType = Random.Range(0, 10);
         if (skillType < 5) FinalSkillChoose(_order);
-        else NormalSkillChoose();
+        else NormalSkillChoose(_order);
 
         return choosedSkill;
     }
-    private void NormalSkillChoose()
+    private void NormalSkillChoose(int _order)
     {
         int randomSkillNum = Random.Range(0, skillDatas.Length);
 
         //4를 현재 character 수로 변경
         skillCharacterNum = randomSkillNum / 3;
-        if (skillDatas[randomSkillNum] == null) NormalSkillChoose();
+        if (skillDatas[randomSkillNum] == null) NormalSkillChoose(_order);
         else
         {
+            //이미 만렙의 스킬일 경우 다시 뽑기
             if (skillDatas[randomSkillNum].skillLevel == 3)
             {
-                NormalSkillChoose();
+                NormalSkillChoose(_order);
             }
             else
             {
                 choosedSkill = skillDatas[randomSkillNum];
+                choosedSkillID[_order] = randomSkillNum;
             }
         }
-        //고른 스킬의 ID와 skillmanager의 이미 고른 스킬 ID 비교
+        //고른 스킬의 ID와 skillmanager의 이미 고른 스킬 index 비교
         for (int i = 0; i < 3; i++)
         {
-            //이미 고른 스킬일 경우
-            if(choosedSkillID[i] == randomSkillNum)
+            if (i != _order)
             {
-                NormalSkillChoose();
-                break;
+                //이미 고른 스킬일 경우
+                if (choosedSkillID[i] == randomSkillNum)
+                {
+                    NormalSkillChoose(_order);
+                    break;
+                }
             }
+            
         }
     }
     private void FinalSkillChoose(int _order)

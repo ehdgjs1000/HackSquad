@@ -49,7 +49,6 @@ public class Skill : MonoBehaviour
             skillBg.color = color;
         }
 
-        Debug.Log(skill.ID % 10);
         if (skill.ID % 10 == 9)
         {
             ColorUtility.TryParseHtmlString("#D63421", out color);
@@ -74,8 +73,8 @@ public class Skill : MonoBehaviour
     }
     IEnumerator SkillChooseAnimation()
     {
-        this.transform.DOShakeRotation(1.0f);
-        yield return new WaitForSeconds(0.9f);
+        this.transform.DOShakeRotation(0.6f);
+        yield return new WaitForSeconds(0.50f);
         upgradePanel.transform.DOScale(Vector3.zero, 0.1f);
     }
     

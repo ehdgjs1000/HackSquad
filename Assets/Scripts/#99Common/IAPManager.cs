@@ -86,33 +86,32 @@ public class IAPManager : MonoBehaviour, IStoreListener
         else if (product.definition.id == package49000)
         {
             PopUpMessageBase.instance.SetMessage("패키지 구매 성공");
-            BackEndGameData.Instance.UserGameData.gold += 100000;
-            BackEndGameData.Instance.UserGameData.gem += 10000;
+            BackEndGameData.Instance.UserGameData.gem += 20000;
         }
         else if (product.definition.id == gem990)
         {
-            PopUpMessageBase.instance.SetMessage("다이아 100개 구매 성공");
-            BackEndGameData.Instance.UserGameData.gem += 100;
+            PopUpMessageBase.instance.SetMessage("다이아 200개 구매 성공");
+            BackEndGameData.Instance.UserGameData.gem += 200;
         }
         else if (product.definition.id == gem4900)
         {
-            PopUpMessageBase.instance.SetMessage("다이아 500개 구매 성공");
-            BackEndGameData.Instance.UserGameData.gem += 500;
+            PopUpMessageBase.instance.SetMessage("다이아 1200개 구매 성공");
+            BackEndGameData.Instance.UserGameData.gem += 1200;
         }
         else if (product.definition.id == gem9900)
         {
-            PopUpMessageBase.instance.SetMessage("다이아 1000개 구매 성공");
-            BackEndGameData.Instance.UserGameData.gem += 1000;
+            PopUpMessageBase.instance.SetMessage("다이아 2500개 구매 성공");
+            BackEndGameData.Instance.UserGameData.gem += 2500;
         }
         else if (product.definition.id == gem49000)
         {
-            PopUpMessageBase.instance.SetMessage("다이아 5000개 구매 성공");
-            BackEndGameData.Instance.UserGameData.gem += 5000;
+            PopUpMessageBase.instance.SetMessage("다이아 20000개 구매 성공");
+            BackEndGameData.Instance.UserGameData.gem += 20000;
         }
         else if (product.definition.id == gem99000)
         {
-            PopUpMessageBase.instance.SetMessage("다이아 10000개 구매 성공");
-            BackEndGameData.Instance.UserGameData.gem += 10000;
+            PopUpMessageBase.instance.SetMessage("다이아 41000개 구매 성공");
+            BackEndGameData.Instance.UserGameData.gem += 41000;
         }
         BackEndGameData.Instance.GameDataUpdate();
         LobbyManager.instance.UpdateUIAll();

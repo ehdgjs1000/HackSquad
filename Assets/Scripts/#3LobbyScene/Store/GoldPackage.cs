@@ -35,8 +35,6 @@ public class GoldPackage : MonoBehaviour
     public void BuyGoldOnClick()
     {
         BuyCheck.instance.UpdateUI("gold", goldAmount, costAmount);
-        Debug.Log(costAmount);
-
     }
     public void BuyGemOnClick()
     {

@@ -28,7 +28,12 @@ public class HeroSetManager : MonoBehaviour
         {
             PreviewManager.instance.heroCards[i].UpdateHeroCard();
         }
-        goldText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
+        int gold = BackEndGameData.Instance.UserGameData.gold;
+        if (gold >= 10000)
+        {
+            goldText.text = (gold / 1000).ToString() + "K";
+        }
+        else goldText.text = gold.ToString();
         gemText.text = BackEndGameData.Instance.UserGameData.gem.ToString();
         SquadInfoUpdate();
     }

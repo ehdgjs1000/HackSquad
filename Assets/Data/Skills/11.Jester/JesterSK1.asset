@@ -19,3 +19,4 @@ MonoBehaviour:
   skillImage: {fileID: 21300000, guid: f2e279a283903554ca348f508976ac65, type: 3}
   skillCharacterImage: {fileID: 21300000, guid: 0def224b247bc3b44b5c5020837e3f36, type: 3}
   skillLevel: 3
+  skillGrade: 2

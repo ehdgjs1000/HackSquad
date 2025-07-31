@@ -41,7 +41,12 @@ public class AbilityManager : MonoBehaviour
             if (BackEndGameData.Instance.UserAbilityData.abilityLevel[i] > 0) abilityLevel += BackEndGameData.Instance.UserAbilityData.abilityLevel[i];
         }
         abilityLevelText.text = "Lv." + abilityLevel.ToString();
-        goldAmountText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
+        int gold = BackEndGameData.Instance.UserGameData.gold;
+        if (gold >= 10000)
+        {
+            goldAmountText.text = (gold / 1000).ToString() + "K";
+        }
+        else goldAmountText.text = gold.ToString();
 
         abilityCost = 4500 + (abilityLevel * 500);
         abilityCostText.text = abilityCost.ToString();

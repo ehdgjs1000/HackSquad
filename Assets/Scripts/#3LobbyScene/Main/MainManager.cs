@@ -41,6 +41,8 @@ public class MainManager : MonoBehaviour
     [SerializeField] SweepManager sweepManager;
 
     [SerializeField] SceneTransition sceneTransition;
+
+    float startBtnclickTerm = 3.0f;
     private void Awake()
     {
         instance = this;
@@ -52,6 +54,7 @@ public class MainManager : MonoBehaviour
     }
     private void Update()
     {
+        if (startBtnclickTerm > 0.0f) startBtnclickTerm -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Backend.Utils.GetServerTime(callback =>
@@ -89,7 +92,12 @@ public class MainManager : MonoBehaviour
     {
         //상단 정보
         gemText.text = BackEndGameData.Instance.UserGameData.gem.ToString();
-        goldText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
+        int gold = BackEndGameData.Instance.UserGameData.gold;
+        if (gold >= 10000)
+        {
+            goldText.text = (gold / 1000).ToString() + "K";
+        }
+        else goldText.text = gold.ToString();
         energyText.text = BackEndGameData.Instance.UserGameData.energy.ToString() + "/" + (30+
             BackEndGameData.Instance.UserAbilityData.abilityLevel[9]);
         levelText.text = BackEndGameData.Instance.UserGameData.level.ToString();
@@ -108,7 +116,11 @@ public class MainManager : MonoBehaviour
     {
         if (HeroSetManager.instance.squadCount >= 3)
         {
-            StartCoroutine(StartGame());
+            if(startBtnclickTerm <= 0.0f)
+            {
+                startBtnclickTerm = 3.0f;
+                StartCoroutine(StartGame());
+            }
             
         }else if (HeroSetManager.instance.squadCount < 3)
         {

@@ -94,8 +94,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 33
+  m_fontSizeBase: 33
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
+  skillOrder: 0
   upgradePanel: {fileID: 0}
   skillNameText: {fileID: 1017554789563613291}
   skillDescText: {fileID: 1893727603673528296}
@@ -372,6 +373,7 @@ MonoBehaviour:
   skillBg: {fileID: 7312320416799209938}
   skillId: 0
   skillCharacterNum: 0
+  skillUpgradeClip: {fileID: 0}
 --- !u!114 &3752553425210810240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,8 +813,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
