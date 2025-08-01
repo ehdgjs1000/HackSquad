@@ -8,7 +8,7 @@ public class SweepManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI goldSweepText;
     [SerializeField] TextMeshProUGUI expSweepText;
-    [SerializeField] TextMeshProUGUI leftVideoText, leftFastText;
+    [SerializeField] TextMeshProUGUI leftVideoText;
     [SerializeField] ResultPanel resultPanel;
     [SerializeField] SweepReward[] rewards;
     [SerializeField] TextMeshProUGUI rewardTimeText;
@@ -38,12 +38,22 @@ public class SweepManager : MonoBehaviour
             rewards[1].gameObject.SetActive(true);
             rewards[0].Setting(66 * (Mathf.Pow(1.1f, highestChapter)) * time);
             rewards[1].Setting(99 * (Mathf.Pow(1.1f, highestChapter)) * time);
-            rewardTimeText.text = time.ToString()+"시간 소탕 보상";
+            rewardTimeText.text = "<color=#FFE100>" + time.ToString() + "</color>" + "시간 소탕 보상";
+            
         }
-        
+
 
         //잔여량 표시하기
-        //leftVideoText.text = "잔여:" + BackEndGameData.Instance.ToString();
+        if (PlayerPrefs.HasKey("sweepLeftVideo"))
+        {
+            int leftVideo = PlayerPrefs.GetInt("sweepLeftVideo");
+            leftVideoText.text = "잔여:" + leftVideo;
+        }
+        else
+        {
+            leftVideoText.text = "잔여:3";
+        }
+        
         LobbyManager.instance.UpdateUIAll();
     }
     private void Timer()
@@ -89,20 +99,31 @@ public class SweepManager : MonoBehaviour
     public void VideoSweepOnClick()
     {
         //비디오 시청
-        AdsVideo.instance.ShowVideo();
+        int leftVideo =  PlayerPrefs.GetInt("sweepLeftVideo");
+        if(leftVideo > 0)
+        {
+            AdsVideo.instance.ShowVideo();
 
-        //보상 제공
-        float highestChapter = BackEndGameData.Instance.UserGameData.highestChapter;
-        goldSweepAount = 6*66 * (Mathf.Pow(1.1f, highestChapter));
-        expSweepAount = 6*99 * (Mathf.Pow(1.1f, highestChapter));
-        BackEndGameData.Instance.UserGameData.gold += Mathf.FloorToInt(goldSweepAount);
-        BackEndGameData.Instance.UserGameData.exp += Mathf.FloorToInt(expSweepAount);
-        BackEndGameData.Instance.UserQuestData.questProgress[5]++;
-        BackEndGameData.Instance.UserQuestData.repeatQuest[0]++;
+            leftVideo--;
+            PlayerPrefs.SetInt("sweepLeftVideo", leftVideo);
+            //보상 제공
+            float highestChapter = BackEndGameData.Instance.UserGameData.highestChapter;
+            goldSweepAount = 6 * 66 * (Mathf.Pow(1.1f, highestChapter));
+            expSweepAount = 6 * 99 * (Mathf.Pow(1.1f, highestChapter));
+            BackEndGameData.Instance.UserGameData.gold += Mathf.FloorToInt(goldSweepAount);
+            BackEndGameData.Instance.UserGameData.exp += Mathf.FloorToInt(expSweepAount);
+            BackEndGameData.Instance.UserQuestData.questProgress[5]++;
+            BackEndGameData.Instance.UserQuestData.repeatQuest[0]++;
 
-        BackEndGameData.Instance.GameDataUpdate();
-        UpdateUI();
-        OpenResultPanel(goldSweepAount, expSweepAount);
+            BackEndGameData.Instance.GameDataUpdate();
+            UpdateUI();
+            OpenResultPanel(goldSweepAount, expSweepAount);
+        }
+        else
+        {
+            PopUpMessageBase.instance.SetMessage("당일 광고를 모두 시청하였습니다");
+        }
+        
     }
     //빠른 소탕
     public void FastSweepOnClick()

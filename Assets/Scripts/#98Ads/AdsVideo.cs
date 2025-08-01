@@ -46,7 +46,6 @@ public class AdsVideo : MonoBehaviour
         {
             PopUpMessageBase.instance.SetMessage("잠시 후 다시 눌러주세요.");
         }
-
     }
     public void ShowVideo()
     {
@@ -102,6 +101,7 @@ public class AdsVideo : MonoBehaviour
 
                 _rewardedAd = ad;
 
+                BackEndGameData.Instance.UserQuestData.questProgress[8]++;
                 ShowRewardedAd();
             });
     }

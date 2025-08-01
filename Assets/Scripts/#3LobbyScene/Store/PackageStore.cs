@@ -30,10 +30,11 @@ public class PackageStore : MonoBehaviour
     }
     public void FreePackageOnClick()
     {
-        if (PlayerPrefs.GetInt("FreePackage") == 0 || !PlayerPrefs.HasKey("FreePackage"))
+        if (PlayerPrefs.GetInt("FreePackage") == 1 || !PlayerPrefs.HasKey("FreePackage"))
         {
             BackEndGameData.Instance.UserGameData.gem += 50;
-            PlayerPrefs.SetInt("FreePackage", 1);
+            PlayerPrefs.SetInt("FreePackage", 0);
+            AdsVideo.instance.ShowVideo();
             BackEndGameData.Instance.GameDataUpdate();
         }
     }

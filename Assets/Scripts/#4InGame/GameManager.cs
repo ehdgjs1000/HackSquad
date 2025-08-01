@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
 
@@ -23,6 +22,7 @@ public class GameManager : MonoBehaviour
     public float userExp = 0;
     public float gameSpeed = 1.0f;
     [SerializeField] TextMeshProUGUI gameSpeedText;
+    [SerializeField] InGameSetting inGameSetting;
     //UI
     [SerializeField] Image hpImage;
     [SerializeField] Image expImage;
@@ -74,6 +74,13 @@ public class GameManager : MonoBehaviour
             }
         }
         
+    }
+    public void SettingOnClick()
+    {
+        Debug.Log("SettingOnClick");
+        Time.timeScale = 0.0f;
+        inGameSetting.gameObject.SetActive(true);
+        inGameSetting.UpdateUI();
     }
     public void GameSpeedOnClick()
     {

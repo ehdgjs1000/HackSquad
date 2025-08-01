@@ -72,7 +72,7 @@ public abstract class PlayerCtrl : MonoBehaviour
         maxBullet = initMaxBullet;
         reloadingTime = initReloadingTime;
 
-        damage = initDamage * Mathf.Pow(1.5f, BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]) *
+        damage = initDamage * Mathf.Pow(1.3f, BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]) *
             (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[0]*0.02f) *
             (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[3] * 0.05f) *
             (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[6] * 0.1f); 

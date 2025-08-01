@@ -22,7 +22,24 @@ public class Ability : MonoBehaviour
     }
     public void UpdateUI()
     {
-        abilityNameText.text = abilityName;
+        if (abilityName.Contains("공격력"))
+        {
+            abilityNameText.text = "<color=#F60000>" + "공격력" + "</color>" + " 증가";
+        }
+        else if (abilityName.Contains("방어력"))
+        {
+            abilityNameText.text = "<color=#0040F5>" + "방어력" + "</color>" + " 증가";
+        }
+        else if (abilityName.Contains("크리티컬"))
+        {
+            abilityNameText.text = "<color=#16E300>" + "크리티컬" + "</color>" + " 확률증가";
+        }
+        else if (abilityName.Contains("에너지"))
+        {
+            abilityNameText.text = "최대" + "<color=#FFE100>" + "에너지" + "</color>" + " 증가";
+        }
+        else abilityNameText.text = abilityName;
+
         abilityLevel = BackEndGameData.Instance.UserAbilityData.abilityLevel[abilityId];
         abilityLevelText.text = "Lv."+ abilityLevel.ToString();
         abilityImage.sprite = abilitySprite;

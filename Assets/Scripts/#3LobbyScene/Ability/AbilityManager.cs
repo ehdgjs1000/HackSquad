@@ -58,7 +58,7 @@ public class AbilityManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("remainAbilityVideo")) 
             remainVideoCount = PlayerPrefs.GetInt("remainAbilityVideo");
-        remainVideoText.text = remainVideoCount + "/3";
+        remainVideoText.text = remainVideoCount + "/1";
         if (remainVideoCount <= 0) videoBtn.image.color = Color.gray;
     }
     public void DrawAbilityVideoOnClick()

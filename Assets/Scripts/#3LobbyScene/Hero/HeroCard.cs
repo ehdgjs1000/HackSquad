@@ -89,7 +89,7 @@ public class HeroCard : MonoBehaviour
         {
             heroTypeBg.sprite = heroTypeSprite[1];
         }
-        else if (heroType == "악마형")
+        else if (heroType == "외계형")
         {
             heroTypeBg.sprite = heroTypeSprite[2];
         }
