@@ -12,6 +12,7 @@ public class Quest : MonoBehaviour
     [SerializeField] float rewardAmount;
     [SerializeField] int questNum;
     Button clearBtn;
+    public bool canRecieve = false;
 
     private void Awake()
     {
@@ -28,9 +29,10 @@ public class Quest : MonoBehaviour
         clearAmountText.text = clearAmount.ToString() +"/"+targetAmount.ToString();
         progressImage.fillAmount = clearAmount / targetAmount;
         rewardAmountText.text = rewardAmount.ToString();
+        QuestManager.instance.AlarmCheck();
         UpdateBtn();
     }
-    private void UpdateBtn()
+    public void UpdateBtn()
     {
         Color color;
         if (BackEndGameData.Instance.UserQuestData.dailyCleared[questNum])
@@ -40,12 +42,14 @@ public class Quest : MonoBehaviour
             BackEndGameData.Instance.UserQuestData.questProgress[questNum] >= targetAmount)
         {
             ColorUtility.TryParseHtmlString("#40FF0B", out color);
+            canRecieve = true;
             clearBtn.image.color = color;
         }
         else if (!BackEndGameData.Instance.UserQuestData.dailyCleared[questNum] &&
            BackEndGameData.Instance.UserQuestData.questProgress[questNum] < targetAmount)
         {
             ColorUtility.TryParseHtmlString("#FFDB0B", out color);
+            canRecieve = false;
             clearBtn.image.color = color;
         }
     }

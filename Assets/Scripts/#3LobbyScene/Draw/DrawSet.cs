@@ -174,21 +174,21 @@ public class DrawSet : MonoBehaviour
     {
         GameObject drawHeroGo = null ;
         float randomProb = Random.Range(0.0f, 100.0f);
-        if(randomProb <= 70.0f)
+        if(randomProb <= 69.0f)
         {
             int ranNum = Random.Range(0,normalHeros.Length);
             drawHeroGo = normalHeros[ranNum];
-        }else if (randomProb > 70.0f && randomProb <= 95.0f)
+        }else if (randomProb > 69.0f && randomProb <= 93.0f)
         {
             int ranNum = Random.Range(0, specialHeros.Length);
             drawHeroGo = specialHeros[ranNum];
         }
-        else if (randomProb > 95.0f && randomProb <= 99.0f)
+        else if (randomProb > 93.0f && randomProb <= 98.0f)
         {
             int ranNum = Random.Range(0, epicHeros.Length);
             drawHeroGo = epicHeros[ranNum];
         }
-        else if (randomProb > 99.0f)
+        else if (randomProb > 98.0f)
         {
             int ranNum = Random.Range(0, legendHeros.Length);
             drawHeroGo = legendHeros[ranNum];

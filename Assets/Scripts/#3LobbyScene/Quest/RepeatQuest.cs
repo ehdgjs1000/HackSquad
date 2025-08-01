@@ -9,6 +9,7 @@ public class RepeatQuest : MonoBehaviour
     [SerializeField] int clearAmount;
     [SerializeField] int questNum;
     Button clearBtn;
+    public bool canRecieve = false;
 
     private void Awake()
     {
@@ -20,19 +21,22 @@ public class RepeatQuest : MonoBehaviour
 
         clearAmountText.text = clearAmount.ToString() + "/" + targetAmount.ToString();
         progressImage.fillAmount = clearAmount / targetAmount;
+        QuestManager.instance.AlarmCheck();
         UpdateBtn();
     }
-    private void UpdateBtn()
+    public void UpdateBtn()
     {
         Color color;
         if (BackEndGameData.Instance.UserQuestData.repeatQuest[questNum] > targetAmount)
         {
             ColorUtility.TryParseHtmlString("#40FF0B", out color);
+            canRecieve = true;
             clearBtn.image.color = color;
         }
         else
         {
             ColorUtility.TryParseHtmlString("#FFDB0B", out color);
+            canRecieve = false;
             clearBtn.image.color = color;
         }
     }

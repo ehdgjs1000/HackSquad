@@ -17,9 +17,9 @@ public class IconAnim : MonoBehaviour
     }
     public IEnumerator PlayIconAnim()
     {
-        iconTs.DOLocalMoveY(150.0f, 1.0f);
+        iconTs.DOLocalMoveY(190.0f, 1.0f);
         yield return new WaitForSeconds(1.0f);
-        iconTs.DOLocalMoveY(156.0f, 1.0f);
+        iconTs.DOLocalMoveY(160.0f, 1.0f);
         yield return new WaitForSeconds(1.0f);
         if(this.gameObject.activeSelf) StartCoroutine(PlayIconAnim());
     }

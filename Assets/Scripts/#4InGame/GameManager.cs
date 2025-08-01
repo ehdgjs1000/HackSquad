@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
         goldText.text = getGold.ToString();
         hpImage.fillAmount = hp / initHp;
         expImage.fillAmount = nowExp / needExp;
-        levelText.text = level.ToString() + "레벨";
+        levelText.text = gameLevel.ToString() + "레벨";
     }
     public void GetDamage(float _damage)
     {

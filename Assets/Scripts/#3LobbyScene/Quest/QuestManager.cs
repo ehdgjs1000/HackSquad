@@ -23,6 +23,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField] RepeatQuest[] repeatGOs;
     [SerializeField] TextMeshProUGUI questNameText;
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] GameObject dailyAlarmGo;
+    [SerializeField] GameObject repeatAlarmGo;
 
     //¡ﬂæ” ¿œ¿œƒ˘Ω∫∆Æ
     public RewardPanel rewardPanel;
@@ -38,12 +40,33 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         UpdateQuestUI();
+        AlarmCheck();
         //ColorBlock cb = dailyBtn.colors;
         //dailyBtn.targetGraphic.color = cb.selectedColor;
     }
     private void Update()
     {
         UpdateTimerUI();
+    }
+    public void AlarmCheck()
+    {
+        bool canRecieve = false;
+        for (int i = 0;  i < questGOs.Length; i++)
+        {
+            questGOs[i].UpdateBtn();
+            if (questGOs[i].canRecieve) canRecieve=true;
+        }
+        if(canRecieve) dailyAlarmGo.SetActive(true);
+        else dailyAlarmGo.SetActive(false);
+
+        bool repeatcanRecieve = false;
+        for (int i = 0; i < repeatGOs.Length; i++)
+        {
+            repeatGOs[i].UpdateBtn();
+            if (repeatGOs[i].canRecieve) repeatcanRecieve = true;
+        }
+        if (repeatcanRecieve) repeatAlarmGo.SetActive(true);
+        else repeatAlarmGo.SetActive(false);
     }
     private void UpdateTimerUI()
     {
