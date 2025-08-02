@@ -35,10 +35,13 @@ public class Quest : MonoBehaviour
     public void UpdateBtn()
     {
         Color color;
+        //클리어 했을경우
         if (BackEndGameData.Instance.UserQuestData.dailyCleared[questNum])
         {
             clearBtn.image.color = Color.gray;
-        }else if (!BackEndGameData.Instance.UserQuestData.dailyCleared[questNum] &&
+            canRecieve = false;
+        }
+        else if (!BackEndGameData.Instance.UserQuestData.dailyCleared[questNum] &&
             BackEndGameData.Instance.UserQuestData.questProgress[questNum] >= targetAmount)
         {
             ColorUtility.TryParseHtmlString("#40FF0B", out color);
@@ -51,6 +54,10 @@ public class Quest : MonoBehaviour
             ColorUtility.TryParseHtmlString("#FFDB0B", out color);
             canRecieve = false;
             clearBtn.image.color = color;
+        }
+        else
+        {
+
         }
     }
     public void QuestClearBtnOnClick()
