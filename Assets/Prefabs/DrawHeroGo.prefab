@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 1209049831018844815}
   - component: {fileID: 1331102071214904027}
   - component: {fileID: 3000152544686774985}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,8 @@ GameObject:
   - component: {fileID: 8703167494934359364}
   - component: {fileID: 7558688572133327172}
   - component: {fileID: 3110855190357148092}
-  m_Layer: 5
+  - component: {fileID: 9208195069442477659}
+  m_Layer: 9
   m_Name: DrawHeroGo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,8 +256,8 @@ RectTransform:
   m_GameObject: {fileID: 2805177387538873645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2314259230044033726}
   - {fileID: 7623153888249309302}
@@ -336,6 +337,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 40
   image: {fileID: 8703167494934359364}
+--- !u!114 &9208195069442477659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2805177387538873645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 07667eab54ff4ce4eb0f8218a281fef3, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &3714978487714324728
 GameObject:
   m_ObjectHideFlags: 0

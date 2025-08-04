@@ -48,7 +48,6 @@ public class ChapterClear : MonoBehaviour
     }
     public void ChapterRewardOnClick()
     {
-        Debug.Log(BackEndGameData.Instance.UserGameData.highestRewardChapter + " <= " + BackEndGameData.Instance.UserGameData.highestChapter);
         //현재 보상 챕터가 수령가능한 챕터보다 높을경우
         if (BackEndGameData.Instance.UserGameData.highestRewardChapter <=
             BackEndGameData.Instance.UserGameData.highestChapter)

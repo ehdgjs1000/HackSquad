@@ -11,7 +11,6 @@ public class SkillManager : MonoBehaviour
     SkillData choosedSkill;
     int characterCount = 0;
 
-
     private void Awake()
     {
         if (instance == null) instance = this;

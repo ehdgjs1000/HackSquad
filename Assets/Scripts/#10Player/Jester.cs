@@ -34,7 +34,7 @@ public class Jester : PlayerCtrl
             fireRate = tempFireRate;
             bullet = PoolManager.instance.MakeObj("jesterBullet");
             bullet.transform.position = new Vector3(monster.transform.position.x,
-            monster.transform.position.y + 0.05f,
+            monster.transform.position.y + 0.3f,
             monster.transform.position.z);
             bullet.transform.rotation = Quaternion.identity;
             bullet.GetComponent<JesterBullet>().damage = damage;

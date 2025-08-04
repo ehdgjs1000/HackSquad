@@ -42,6 +42,7 @@ public class GameOverManager : MonoBehaviour
         //gamemanager min이 10분일떄 추가
         if (isWin)
         {
+            Debug.Log("Win");
             SoundManager.instance.PlaySound(gameWinClip);
             gameWinImage.transform.DOScale(Vector3.one, 0.5f);
 
@@ -50,7 +51,7 @@ public class GameOverManager : MonoBehaviour
         }
         else
         {
-            
+            Debug.Log("Lose");
             gameDefeatImage.transform.DOScale(Vector3.one, 0.5f);
             SoundManager.instance.PlaySound(gameLoseClip);
             if (GameManager.instance.min/5 == 1)
@@ -58,8 +59,8 @@ public class GameOverManager : MonoBehaviour
                 BackEndGameData.Instance.UserGameData.highestChapter = 
                     (GameManager.instance.gameLevel * 2) -2;
             }
-            
         }
+        Debug.Log(BackEndGameData.Instance.UserGameData.highestChapter);
         BackEndGameData.Instance.UserGameData.gold += GameManager.instance.getGold;
         BackEndGameData.Instance.UserGameData.exp += GameManager.instance.userExp;
         BackEndGameData.Instance.GameDataUpdate();

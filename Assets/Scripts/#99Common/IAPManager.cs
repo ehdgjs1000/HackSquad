@@ -7,6 +7,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 {
     IStoreController storeController;
 
+    string startpackage1100 = "startpackage1100";
     string package1100 = "package1100";
     string package3300 = "package3300";
     string package9900 = "package9900";
@@ -26,6 +27,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
     {
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
+        builder.AddProduct(startpackage1100, ProductType.NonConsumable);
         builder.AddProduct(package1100, ProductType.Consumable);
         builder.AddProduct(package3300, ProductType.Consumable);
         builder.AddProduct(package9900, ProductType.Consumable);
@@ -71,7 +73,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
             PopUpMessageBase.instance.SetMessage("패키지 구매 성공");
             BackEndGameData.Instance.UserGameData.gold += 2000;
             BackEndGameData.Instance.UserGameData.gem += 200;
-        }else if (product.definition.id == package3300)
+        } else if (product.definition.id == package3300)
         {
             PopUpMessageBase.instance.SetMessage("패키지 구매 성공");
             BackEndGameData.Instance.UserGameData.gold += 6000;
@@ -112,6 +114,11 @@ public class IAPManager : MonoBehaviour, IStoreListener
         {
             PopUpMessageBase.instance.SetMessage("다이아 41000개 구매 성공");
             BackEndGameData.Instance.UserGameData.gem += 41000;
+        } else if (product.definition.id == startpackage1100)
+        {
+            //첫 결제 패키지 구매
+            PopUpMessageBase.instance.SetMessage("첫 결제 패키지 구매 성공");
+
         }
         BackEndGameData.Instance.GameDataUpdate();
         LobbyManager.instance.UpdateUIAll();

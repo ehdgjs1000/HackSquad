@@ -94,6 +94,8 @@ public class BackEndGameData
             {"Hero12Level", userHeroData.heroLevel[11] },
             {"Hero13Level", userHeroData.heroLevel[12] },
             {"Hero14Level", userHeroData.heroLevel[13] },
+            {"Hero15Level", userHeroData.heroLevel[14] },
+            {"Hero16Level", userHeroData.heroLevel[15] },
 
             {"Hero1Count", userHeroData.heroCount[0] },
             {"Hero2Count", userHeroData.heroCount[1] },
@@ -109,6 +111,8 @@ public class BackEndGameData
             {"Hero12Count", userHeroData.heroCount[11] },
             {"Hero13Count", userHeroData.heroCount[12] },
             {"Hero14Count", userHeroData.heroCount[13] },
+            {"Hero15Count", userHeroData.heroCount[14] },
+            {"Hero16Count", userHeroData.heroCount[15] },
 
             {"HeroChoose1", userHeroData.heroChooseNum[0]},
             {"HeroChoose2", userHeroData.heroChooseNum[1]},
@@ -321,6 +325,8 @@ public class BackEndGameData
                         userHeroData.heroLevel[11] = int.Parse(gameHeroDataJson[0]["Hero12Level"].ToString());
                         userHeroData.heroLevel[12] = int.Parse(gameHeroDataJson[0]["Hero13Level"].ToString());
                         userHeroData.heroLevel[13] = int.Parse(gameHeroDataJson[0]["Hero14Level"].ToString());
+                        userHeroData.heroLevel[14] = int.Parse(gameHeroDataJson[0]["Hero15Level"].ToString());
+                        userHeroData.heroLevel[15] = int.Parse(gameHeroDataJson[0]["Hero16Level"].ToString());
 
                         userHeroData.heroCount[0] = int.Parse(gameHeroDataJson[0]["Hero1Count"].ToString());
                         userHeroData.heroCount[1] = int.Parse(gameHeroDataJson[0]["Hero2Count"].ToString());
@@ -336,6 +342,8 @@ public class BackEndGameData
                         userHeroData.heroCount[11] = int.Parse(gameHeroDataJson[0]["Hero12Count"].ToString());
                         userHeroData.heroCount[12] = int.Parse(gameHeroDataJson[0]["Hero13Count"].ToString());
                         userHeroData.heroCount[13] = int.Parse(gameHeroDataJson[0]["Hero14Count"].ToString());
+                        userHeroData.heroCount[14] = int.Parse(gameHeroDataJson[0]["Hero15Count"].ToString());
+                        userHeroData.heroCount[15] = int.Parse(gameHeroDataJson[0]["Hero16Count"].ToString());
 
                         userHeroData.heroChooseNum[0] = int.Parse(gameHeroDataJson[0]["HeroChoose1"].ToString());
                         userHeroData.heroChooseNum[1] = int.Parse(gameHeroDataJson[0]["HeroChoose2"].ToString());
@@ -565,6 +573,8 @@ public class BackEndGameData
             {"Hero12Level", userHeroData.heroLevel[11] },
             {"Hero13Level", userHeroData.heroLevel[12] },
             {"Hero14Level", userHeroData.heroLevel[13] },
+            {"Hero15Level", userHeroData.heroLevel[14] },
+            {"Hero16Level", userHeroData.heroLevel[15] },
 
             {"Hero1Count", userHeroData.heroCount[0] },
             {"Hero2Count", userHeroData.heroCount[1] },
@@ -580,6 +590,8 @@ public class BackEndGameData
             {"Hero12Count", userHeroData.heroCount[11] },
             {"Hero13Count", userHeroData.heroCount[12] },
             {"Hero14Count", userHeroData.heroCount[13] },
+            {"Hero15Count", userHeroData.heroCount[14] },
+            {"Hero16Count", userHeroData.heroCount[15] },
 
             {"HeroChoose1", userHeroData.heroChooseNum[0] },
             {"HeroChoose2", userHeroData.heroChooseNum[1] },

@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip btnClickClip;
     [SerializeField] private AudioClip errorClip;
     [SerializeField] private AudioClip bgmClip;
+    [SerializeField] private AudioClip recieveClip;
 
     private void Awake()
     {
@@ -75,6 +76,25 @@ public class SoundManager : MonoBehaviour
         }
         return;
     }
+    public void RecieveBtnPlay()
+    {
+        for (int i = 0; i < audioPool.Length; i++)
+        {
+            if (audioPool[i] == null || !audioPool[i].isPlaying)
+            {
+                GameObject go = new GameObject { name = recieveClip.name };
+                audioPool[i] = go.AddComponent<AudioSource>();
+                audioPool[i].transform.position = Camera.main.transform.position;
+                audioPool[i].spatialBlend = 0.0f;
+                audioPool[i].PlayOneShot(btnClickClip, soundsVolume);
+
+
+                StartCoroutine(DestroyAudio(go, recieveClip.length * 3.5f));
+                return;
+            }
+        }
+        return;
+    } 
     public void PlaySound(AudioClip _clip)
     {
         for (int i = 0; i < audioPool.Length; i++)

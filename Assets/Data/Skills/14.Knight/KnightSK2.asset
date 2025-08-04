@@ -16,7 +16,7 @@ MonoBehaviour:
   skillName: "\uCD5C\uB300 \uD0C4\uC57D \uC99D\uAC00"
   skillDescription: "<b><color=red>\uC911\uC138\uC18C\uCD1D\uBCD1</color></b>\uC758
     \uCD5C\uB300\uD0C4\uC57D\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  skillImage: {fileID: 21300000, guid: f04477fb7c5145c43900495fd4521274, type: 3}
+  skillImage: {fileID: 21300000, guid: 4d97607b7987bfa47a2ef6cc1f676128, type: 3}
   skillCharacterImage: {fileID: 21300000, guid: f8f4f3a389ca366448b5ba5513e07352, type: 3}
   skillLevel: 1
   skillGrade: 1

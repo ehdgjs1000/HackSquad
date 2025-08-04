@@ -5,6 +5,7 @@ public class ChangeScene : MonoBehaviour
     public static ChangeScene instance;
     public string chapterName;
     public GameObject[] heros = new GameObject[4];
+    public int gameLevel;
 
     private void Awake()
     {
@@ -18,8 +19,9 @@ public class ChangeScene : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void SetHeros()
+    public void SetHeros(int _gameLevel)
     {
+        gameLevel = _gameLevel;
         for (int a = 0; a < heros.Length; a++)
         {
             heros[a] = HeroSetManager.instance.ReturnHeroInfo(a).GetComponent<SquadHero>().hero;

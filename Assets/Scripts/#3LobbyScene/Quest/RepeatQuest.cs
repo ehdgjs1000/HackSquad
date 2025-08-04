@@ -27,7 +27,7 @@ public class RepeatQuest : MonoBehaviour
     public void UpdateBtn()
     {
         Color color;
-        if (BackEndGameData.Instance.UserQuestData.repeatQuest[questNum] > targetAmount)
+        if (BackEndGameData.Instance.UserQuestData.repeatQuest[questNum] >= targetAmount)
         {
             ColorUtility.TryParseHtmlString("#40FF0B", out color);
             canRecieve = true;

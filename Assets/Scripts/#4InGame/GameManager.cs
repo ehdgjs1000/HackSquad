@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image hpImage;
     [SerializeField] Image expImage;
     [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] TextMeshProUGUI upgradeLevelText;
     [SerializeField] GameObject upgradePanel;
     [SerializeField] GameObject gameOverSet;
     [SerializeField] BossImage bossImage;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         monsterSpawner = GameObject.Find("MonsterSpawner").GetComponent<MonsterSpawner>();
+        gameLevel = ChangeScene.instance.gameLevel;
         userExp = 0;
         SetHeros();
         UpdateUI();
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour
             GamePlayProgressUpdate();
             if(min >= 10 && sec >= 1.0f)
             {
-                StartCoroutine(GameOver());
+                StartCoroutine(GameWin());
             }
         }
         
@@ -93,7 +95,7 @@ public class GameManager : MonoBehaviour
     {
         isBossMode = false;
         monsterSpawner.canSpawn = true;
-        sec += 5.0f;
+        sec += 3.0f;
     }
     IEnumerator SpawnBoss()
     {
@@ -189,7 +191,8 @@ public class GameManager : MonoBehaviour
         goldText.text = getGold.ToString();
         hpImage.fillAmount = hp / initHp;
         expImage.fillAmount = nowExp / needExp;
-        levelText.text = gameLevel.ToString() + "·¹º§";
+        levelText.text = "Lv."+level.ToString();
+        upgradeLevelText.text = "Lv."+level.ToString();
     }
     public void GetDamage(float _damage)
     {
@@ -223,6 +226,19 @@ public class GameManager : MonoBehaviour
         initHp += increaseAmount;
         hp += increaseAmount;
         UpdateUI();
+    }
+    IEnumerator GameWin()
+    {
+        isGameOver = true;
+        ResetSkillLevel();
+        gameOverSet.SetActive(true);
+        GameOverManager.instance.isWin = true;
+
+        StartCoroutine(GameOverManager.instance.GameOver());
+
+        gameOverSet.transform.DOScale(Vector3.one, 0.2f);
+
+        yield return null;
     }
     IEnumerator GameOver()
     {

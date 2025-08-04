@@ -73,10 +73,9 @@ public class AbilityManager : MonoBehaviour
             BackEndGameData.Instance.GameDataUpdate();
             UpdateUI();
         }
-        else
-        {
-            PopUpMessageBase.instance.SetMessage("잠시 후 다시 눌러주세요.");
-        }
+        else if (remainVideoCount >= 0) PopUpMessageBase.instance.SetMessage("어빌리티 무료 뽑기를 모두 사용했습니다.");
+        else PopUpMessageBase.instance.SetMessage("잠시 후 다시 눌러주세요.");
+
     }
     public void DrawAbilityOnClick()
     {

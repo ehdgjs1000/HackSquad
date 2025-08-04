@@ -42,7 +42,7 @@ public class MainManager : MonoBehaviour
 
     [SerializeField] SceneTransition sceneTransition;
 
-    float startBtnclickTerm = 3.0f;
+    float startBtnclickTerm = 1.0f;
     private void Awake()
     {
         instance = this;
@@ -134,7 +134,7 @@ public class MainManager : MonoBehaviour
         {
             SoundManager.instance.BtnClickPlay();
             //다음 씬으로 고른 Hero 정보 넘기기
-            ChangeScene.instance.SetHeros();
+            ChangeScene.instance.SetHeros(gameLevel);
             ChangeScene.instance.chapterName = gameLevelName[gameLevel];
             BackEndGameData.Instance.UserGameData.energy -= 5;
             BackEndGameData.Instance.UserQuestData.questProgress[1]++;

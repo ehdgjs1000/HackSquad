@@ -122,6 +122,12 @@ public class Skill : MonoBehaviour
         else if (skillId == 1401) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 1402) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 5);
         else if (skillId == 1403) GameManager.instance.players[skillCharacterNum].GetComponent<Knight>().HealUpgrade();
+        else if (skillId == 1501) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
+        else if (skillId == 1502) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.9f);
+        else if (skillId == 1503) GameManager.instance.players[skillCharacterNum].GetComponent<Terrorist>().shootCount++;
+        else if (skillId == 1601) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
+        else if (skillId == 1602) GameManager.instance.players[skillCharacterNum].GetComponent<Thunderman>().ThunderSpeedUp();
+        else if (skillId == 1603) GameManager.instance.players[skillCharacterNum].GetComponent<Thunderman>().thunderCount++;
         //Final Skill
         if (skillId == 109)
         {
@@ -181,6 +187,14 @@ public class Skill : MonoBehaviour
         else if (skillId == 1409)
         {
             GameManager.instance.players[skillCharacterNum].GetComponent<Knight>().isFinalSkill = true;
+        }
+        else if (skillId == 1509)
+        {
+            GameManager.instance.players[skillCharacterNum].GetComponent<Terrorist>().UpgradeFinalSkill();
+        }
+        else if (skillId == 1609)
+        {
+            GameManager.instance.players[skillCharacterNum].GetComponent<Thunderman>().UpgradeFinalSkill();
         }
 
     }

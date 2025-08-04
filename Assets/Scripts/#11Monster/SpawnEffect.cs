@@ -13,8 +13,7 @@ public class SpawnEffect : MonoBehaviour
     public float value = 0.0f;
     private void Start()
     {
-        _renderer.material = matrlDissolve;
-        
+        _renderer.material = matrlDissolve; 
     }
     private void Update()
     {

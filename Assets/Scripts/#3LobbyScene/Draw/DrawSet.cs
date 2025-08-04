@@ -55,6 +55,7 @@ public class DrawSet : MonoBehaviour
                 AdsVideo.instance.ShowVideo();
                 StartCoroutine(DrawHeros(1));
             }
+            DrawManager.instance.UpdateMainUI();
         }
         else PopUpMessageBase.instance.SetMessage("잠시 후 다시 눌러주세요.");
     }
