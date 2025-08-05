@@ -481,9 +481,9 @@ MonoBehaviour:
   attackDelay: 0.2
   damage: 5
   speed: 2.5
-  hp: 14
-  exp: 4
-  gold: 2
+  hp: 15.2
+  exp: 3
+  gold: 1
   playerLayer:
     serializedVersion: 2
     m_Bits: 64

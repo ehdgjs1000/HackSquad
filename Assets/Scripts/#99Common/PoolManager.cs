@@ -41,7 +41,7 @@ public class PoolManager : MonoBehaviour
     {
         if (instance == null) instance = this;
 
-        alienBullets = new GameObject[30];
+        alienBullets = new GameObject[50];
         bazookaBullets = new GameObject[10];
         cowboyBullets = new GameObject[50];
         hoodieBullets = new GameObject[20];

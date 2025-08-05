@@ -320,7 +320,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1300126164724325627}
@@ -385,7 +385,7 @@ MonoBehaviour:
   attackDelay: 0.3
   damage: 10
   speed: 1.5
-  hp: 42
+  hp: 36
   exp: 6
   gold: 2
   playerLayer:
@@ -410,7 +410,7 @@ MonoBehaviour:
   _renderer: {fileID: 8906563309612271995}
   mtrlOrg: {fileID: 2100000, guid: 55c75a509fdd4540aecd4870e31229cb, type: 2}
   matrlDissolve: {fileID: 2100000, guid: 702dc684652a3c34ca4698ab3e154e1e, type: 2}
-  fadeTime: 1
+  fadeTime: 3
   value: 0
 --- !u!1 &1529562697945487335
 GameObject:

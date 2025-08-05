@@ -4,7 +4,6 @@ using UnityEngine;
 public class Thunderman : PlayerCtrl
 {
     Collider[] aMonsterColls;
-    float radius = 20.0f;
 
     private GameObject monster;
     public bool isFinalSkill = false;

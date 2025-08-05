@@ -15,7 +15,6 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI gameOverText;
     bool canExit = false;
     public bool isWin = false;
-    int killMonsterCount = 0;
 
     [SerializeField] TextMeshProUGUI goldRewardText;
     [SerializeField] TextMeshProUGUI expRewardText;

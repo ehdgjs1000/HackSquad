@@ -263,7 +263,7 @@ MonoBehaviour:
   bossGO:
   - {fileID: 4527530870830567824, guid: 486fd80c601d2e44f962c20e017f71c0, type: 3}
   - {fileID: 4527530870830567824, guid: c930a69816a6b8745accc04d74f2a71e, type: 3}
-  gameBGM: {fileID: 0}
+  gameBGM: {fileID: 8300000, guid: b00bdca18cf186146bea9aaa3aa17770, type: 3}
   canSpawn: 1
 --- !u!4 &59683640
 Transform:

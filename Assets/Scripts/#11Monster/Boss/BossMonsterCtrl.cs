@@ -20,7 +20,6 @@ public class BossMonsterCtrl : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
     Vector3 targetPos, dir;
     Quaternion lookTarget;
-    bool isMoving = false;
     bool isSlow = false;
     public bool isDie = false;
     protected bool isAttacking = false;
@@ -89,14 +88,9 @@ public class BossMonsterCtrl : MonoBehaviour
             else transform.position += dir.normalized * Time.deltaTime * speed * (1 - slowAmount);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, lookTarget, 0.25f);
-            isMoving = true;
             _animator.SetBool("isMoving", true);
         }
-        else
-        {
-            isMoving = false;
-            _animator.SetBool("isMoving", false);
-        }
+        else _animator.SetBool("isMoving", false);
     }
     public void GetAttack(float _dmg)
     {
@@ -138,7 +132,7 @@ public class BossMonsterCtrl : MonoBehaviour
         attackTerm = tempAttackTerm;
         _animator.SetTrigger("Attack");
         yield return new WaitForSeconds(attackDelay);
-        GameManager.instance.GetDamage(damage);
+        GameManager.instance.GetBossDamage(damage);
     }
     Collider FindClosestTarget(Collider[] targets)
     {

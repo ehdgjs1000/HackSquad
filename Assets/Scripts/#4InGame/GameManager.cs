@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int level;
     float nowExp;
     float needExp = 50.0f;
-    bool isGameOver = false;
+    public bool isGameOver = false;
     public int heroCount;
     float expRatio = 1.15f;
     public float userExp = 0;
@@ -87,7 +87,13 @@ public class GameManager : MonoBehaviour
     public void GameSpeedOnClick()
     {
         if (gameSpeed == 1.0f) gameSpeed = 1.5f;
-        else if (gameSpeed == 1.5f) gameSpeed = 5.0f;
+        else if (gameSpeed == 1.5f && BackEndGameData.Instance.UserCashData.isBuyGameSpeedPackage) 
+        {
+            gameSpeed = 5.0f;
+        }else if(gameSpeed == 1.5f && !BackEndGameData.Instance.UserCashData.isBuyGameSpeedPackage)
+        {
+            gameSpeed = 1.0f;
+        }
         else if (gameSpeed == 5.0f) gameSpeed = 1.0f;
         GameSpeed(gameSpeed);
     }
@@ -194,13 +200,30 @@ public class GameManager : MonoBehaviour
         levelText.text = "Lv."+level.ToString();
         upgradeLevelText.text = "Lv."+level.ToString();
     }
+    public void GetBossDamage(float _damage)
+    {
+        hp -= _damage;
+        damagePopUpTr.GetComponentInChildren<TextMeshPro>().color = Color.red;
+        DamagePopUp.Create(new Vector3(transform.position.x,
+                    transform.position.y + 2.0f, transform.position.z), _damage, Color.red);
+        UpdateUI();
+        if (hp <= 0.0f && !isGameOver)
+        {
+            //부활이 가능할 경우 부활
+            if (rebornCount >= 1)
+            {
+                Reborn();
+            }
+            else StartCoroutine(GameOver());
+        }
+    }
     public void GetDamage(float _damage)
     {
         _damage -= (BackEndGameData.Instance.UserAbilityData.abilityLevel[5]) +
             (BackEndGameData.Instance.UserAbilityData.abilityLevel[8] * 3);
-        if(_damage >= 0)
+        if(_damage  + min>= 0)
         {
-            hp -= _damage;
+            hp -= _damage + min;
         }
         else
         {

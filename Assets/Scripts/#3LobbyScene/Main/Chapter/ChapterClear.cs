@@ -28,7 +28,6 @@ public class ChapterClear : MonoBehaviour
         Color color;
         highestChapter = BackEndGameData.Instance.UserGameData.highestChapter;
         highestRewardChapter = BackEndGameData.Instance.UserGameData.highestRewardChapter;
-        Debug.Log("HighestChapter : " + highestChapter +  " / HighestReward : " + highestRewardChapter);
         float value = (highestRewardChapter * itemSize) / (scrollRect.content.rect.width - veiwSize);
         scrollRect.horizontalNormalizedPosition = value;
 

@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDelay: 0.2
-  damage: 7
+  damage: 4
   speed: 1.6
   hp: 20
   exp: 6
@@ -613,7 +613,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isDie: 0
-  attackRange: 8
+  attackRange: 5
   attackTerm: 1
   summonVFX: {fileID: 5885065744576850680, guid: 5b0614d0b0fe497428ae4c0b034323a8, type: 3}
   dragonFireVfx: {fileID: 5916890302093399832, guid: 535515c80daee424e9e5bf8c2e00c790, type: 3}
@@ -633,7 +633,7 @@ MonoBehaviour:
   _renderer: {fileID: 6994273107832187532}
   mtrlOrg: {fileID: 2100000, guid: 55c75a509fdd4540aecd4870e31229cb, type: 2}
   matrlDissolve: {fileID: 2100000, guid: 702dc684652a3c34ca4698ab3e154e1e, type: 2}
-  fadeTime: 1
+  fadeTime: 2
   value: 0
 --- !u!1 &4030976561034455876
 GameObject:

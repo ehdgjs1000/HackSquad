@@ -1422,8 +1422,8 @@ MonoBehaviour:
   attackDelay: 0.2
   damage: 5
   speed: 0.8
-  hp: 26
-  exp: 5
+  hp: 20.3
+  exp: 4
   gold: 2
   playerLayer:
     serializedVersion: 2
@@ -1447,7 +1447,7 @@ MonoBehaviour:
   _renderer: {fileID: 3741107132728458756}
   mtrlOrg: {fileID: 2100000, guid: 8b468189b8154acaa64ff172c8425c5f, type: 2}
   matrlDissolve: {fileID: 2100000, guid: 702dc684652a3c34ca4698ab3e154e1e, type: 2}
-  fadeTime: 1
+  fadeTime: 1.5
   value: 0
 --- !u!1 &6840439335818693800
 GameObject:

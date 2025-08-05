@@ -391,7 +391,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isDie: 0
-  attackRange: 4
+  attackRange: 3
   attackTerm: 1.5
 --- !u!1 &1529562697945487335
 GameObject:

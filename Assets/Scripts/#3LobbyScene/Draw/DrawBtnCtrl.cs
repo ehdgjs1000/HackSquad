@@ -8,10 +8,8 @@ public class DrawBtnCtrl : MonoBehaviour
 
     public void UpdateDrawBtn()
     {
-        Color color;
         if (BackEndGameData.Instance.UserGameData.gem <= cost)
         {
-            //ColorUtility.TryParseHtmlString("#6BFF28", out color);
             gemText.color = Color.red;
         }
         else gemText.color = Color.white;

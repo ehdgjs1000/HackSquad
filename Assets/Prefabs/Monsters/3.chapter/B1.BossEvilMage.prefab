@@ -1551,7 +1551,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isDie: 0
-  attackRange: 7
+  attackRange: 6.5
   attackTerm: 1.5
   magicSpawnPos: {fileID: 5112515470875909645}
   magicVFX: {fileID: 7833734715354414116, guid: 8ffde717116e5bc488bd4d2019cb83c3, type: 3}

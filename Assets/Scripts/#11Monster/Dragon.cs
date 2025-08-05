@@ -13,7 +13,7 @@ public class Dragon : MonsterCtrl
         bullet.GetComponent<DragonFire>().SetUp(damage);
         attackTerm = tempAttackTerm;
 
-        return null;
+        yield return null;
     }
 
 }

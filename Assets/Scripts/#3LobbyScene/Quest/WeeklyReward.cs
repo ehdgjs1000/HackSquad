@@ -21,8 +21,6 @@ public class WeeklyReward : MonoBehaviour
     public void WeeklyRewardOnClick()
     {
         //서버연동된 수치가 더 높은경우
-        Debug.Log(BackEndGameData.Instance.UserQuestData.weeklyClearAmount + " : " + targetPoint);
-        Debug.Log(BackEndGameData.Instance.UserQuestData.weeklyRewardRecieved[(targetPoint / 100) - 1]);
         if (BackEndGameData.Instance.UserQuestData.weeklyClearAmount >= targetPoint &&
             !BackEndGameData.Instance.UserQuestData.weeklyRewardRecieved[(targetPoint / 100) - 1])
         {

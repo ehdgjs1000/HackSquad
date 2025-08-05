@@ -385,7 +385,7 @@ MonoBehaviour:
   attackDelay: 0.3
   damage: 10
   speed: 1.2
-  hp: 55
+  hp: 46.1
   exp: 6
   gold: 2
   playerLayer:
@@ -408,9 +408,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 8906563309612271995}
-  mtrlOrg: {fileID: 2100000, guid: 47d60f289d473f14db54a59172baee38, type: 2}
+  mtrlOrg: {fileID: 2100000, guid: ca3b0d5f43e5471bacca33179adc4630, type: 2}
   matrlDissolve: {fileID: 2100000, guid: 702dc684652a3c34ca4698ab3e154e1e, type: 2}
-  fadeTime: 1
+  fadeTime: 3
   value: 0
 --- !u!1 &1529562697945487335
 GameObject:

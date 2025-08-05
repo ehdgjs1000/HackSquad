@@ -20,7 +20,7 @@ public class RepeatQuest : MonoBehaviour
         clearAmount = BackEndGameData.Instance.UserQuestData.repeatQuest[questNum];
 
         clearAmountText.text = clearAmount.ToString() + "/" + targetAmount.ToString();
-        progressImage.fillAmount = clearAmount / targetAmount;
+        progressImage.fillAmount = (float)clearAmount / (float)targetAmount;
         QuestManager.instance.AlarmCheck();
         UpdateBtn();
     }

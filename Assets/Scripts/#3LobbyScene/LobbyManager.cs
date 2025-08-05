@@ -11,6 +11,8 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] GameObject levelUpPanel;
     [SerializeField] Button[] bottomButtonSet;
 
+    [SerializeField] AudioClip questClickClip;
+
     private void Awake()
     {
         BackEndGameData.Instance.GameDataLoad();
@@ -22,6 +24,10 @@ public class LobbyManager : MonoBehaviour
         SoundManager.instance.PlayBGM();
     }
 
+    public void QuestClearSoundPlay()
+    {
+        SoundManager.instance.PlaySound(questClickClip);
+    }
     public void LevelUp()
     {
         levelUpPanel.SetActive(true);

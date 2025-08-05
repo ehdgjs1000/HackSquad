@@ -8,6 +8,10 @@ public class EvilMageProjectile : MonoBehaviour
 
     float damage;
 
+    private void Start()
+    {
+        Destroy(this.gameObject, 1.5f);
+    }
     private void FixedUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, speed * Time.deltaTime);
@@ -29,7 +33,6 @@ public class EvilMageProjectile : MonoBehaviour
     {
         if (co.CompareTag("Player"))
         {
-            Debug.Log("Attack");
             StartCoroutine(Attack());
         }
     }

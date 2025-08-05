@@ -134,7 +134,8 @@ public abstract class PlayerCtrl : MonoBehaviour
             }
             else //근처에 몬스터가 없을경우
             {
-                _animator.SetBool("isAttacking", false);
+                //로비 Preview 캐릭터 warning대처
+                if(GameManager.instance != null) _animator.SetBool("isAttacking", false);
             }
         }
     }

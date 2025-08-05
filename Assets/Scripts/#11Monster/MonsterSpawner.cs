@@ -12,17 +12,12 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField] AudioClip gameBGM;
     int bossLevel = 0;
 
-
-    List<Spawn> spawnList;
-    int spawnIndex = 0;
-    int spawnPosNum = 0;
     public bool canSpawn = true;
     float nextSpawnDelay;
     float curSpawnDelay = 0.0f;
     
     private void Awake()
     {
-        spawnList = new List<Spawn>();
         bossLevel = 0;
     }
     private void Start()

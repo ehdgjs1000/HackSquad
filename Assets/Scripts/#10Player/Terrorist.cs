@@ -4,7 +4,6 @@ using UnityEngine;
 public class Terrorist : PlayerCtrl
 {
     Collider[] aMonsterColls;
-    float radius = 20.0f;
 
     private GameObject monster;
     int stunSkillLevel = 0;
@@ -25,6 +24,7 @@ public class Terrorist : PlayerCtrl
         if (!isFinalSkill)
         {
             fireRate = tempFireRate;
+            Debug.Log(fireRate);
             monster = enemy;
             _animator.SetBool("isAttacking", true);
             StartCoroutine(Shoot());
@@ -55,23 +55,27 @@ public class Terrorist : PlayerCtrl
     protected override IEnumerator Shoot()
     {
         nowBullet--;
+        float attackDamage = 0;
         for (int i = 0; i < shootCount; i++)
         {
-            if (monster.GetComponent<MonsterCtrl>() != null) monster.GetComponent<MonsterCtrl>().GetAttack(damage);
-            else if (monster.GetComponent<BossMonsterCtrl>() != null) monster.GetComponent<BossMonsterCtrl>().GetAttack(damage);
+            if (shootCount > 1) attackDamage = damage * 0.7f;
+            else attackDamage = damage;
+
+            if (monster.GetComponent<MonsterCtrl>() != null) monster.GetComponent<MonsterCtrl>().GetAttack(attackDamage);
+            else if (monster.GetComponent<BossMonsterCtrl>() != null) monster.GetComponent<BossMonsterCtrl>().GetAttack(attackDamage);
             SoundManager.instance.PlaySound(weaponFireClip);
 
             GameObject bullet = PoolManager.instance.MakeObj("terroristBullet");
             
             bullet.transform.position = monster.transform.position;
             bullet.transform.rotation = Quaternion.identity;
-            bullet.GetComponent<TerroristBullet>().SetBulletInfo(damage, stunTime);
+            bullet.GetComponent<TerroristBullet>().SetBulletInfo(attackDamage, stunTime);
             StartCoroutine(PoolManager.instance.DeActive(1.0f, bullet));
 
             Color color;
             ColorUtility.TryParseHtmlString("#E7E7E7", out color);
             DamagePopUp.Create(new Vector3(monster.transform.position.x,
-                        monster.transform.position.y + 2.0f, monster.transform.position.z), damage, color);
+                        monster.transform.position.y + 2.0f, monster.transform.position.z), attackDamage, color);
 
             yield return new WaitForSeconds(0.3f);
         }

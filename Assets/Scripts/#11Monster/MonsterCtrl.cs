@@ -21,7 +21,6 @@ public class MonsterCtrl : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
     Vector3 targetPos, dir;
     Quaternion lookTarget;
-    bool isMoving = false;
     bool isSlow = false;
     public bool isDie = false;
     protected bool isAttacking = false;
@@ -92,14 +91,10 @@ public class MonsterCtrl : MonoBehaviour
             else transform.position += dir.normalized * Time.deltaTime * speed * (1-slowAmount) ;
 
             transform.rotation = Quaternion.Lerp(transform.rotation, lookTarget, 0.25f);
-            isMoving = true;
             _animator.SetBool("isMoving", true);
         }
-        else
-        {
-            isMoving = false;
-            _animator.SetBool("isMoving", false);
-        }
+        else _animator.SetBool("isMoving", false);
+
     }
     public void GetAttack(float _dmg)
     {
@@ -114,6 +109,7 @@ public class MonsterCtrl : MonoBehaviour
     protected virtual IEnumerator Die()
     {
         isDie = true;
+        canMove = false;
         _animator.SetTrigger("Die");
         GameManager.instance.getGold += gold;
         GameManager.instance.userExp += 0.5f;
@@ -129,12 +125,11 @@ public class MonsterCtrl : MonoBehaviour
         //공격 구현
         playerColl = null;
         playerColl = Physics.OverlapSphere(transform.position, attackRange, playerLayer);
-        if (playerColl.Length > 0)
+        if (playerColl.Length > 0 && !GameManager.instance.isGameOver)
         {
             GameObject playerGO = FindClosestTarget(playerColl).gameObject;
             this.transform.LookAt(playerGO.transform.position);
             if (attackTerm <= 0.0f) StartCoroutine(Attack());
-            
         }
     }
      

@@ -36,17 +36,26 @@ public class Alien : PlayerCtrl
     }
     IEnumerator UseFinalSkill()
     {
-        fireRate = tempFireRate;
+        fireRate = tempFireRate * 1.5f;
         aMonsterColls = null;
         aMonsterColls = Physics.OverlapSphere(transform.position, radius, monsterLayer);
-        damage = damage * 0.15f;
+        float finalDamage = damage * 0.2f;
         foreach (Collider co in aMonsterColls)
         {
-            MonsterCtrl monsterF = co.GetComponent<MonsterCtrl>();
-            monsterF.GetAttack(damage);
-
+            GameObject monsterF = null;
+            if(co.GetComponent<MonsterCtrl>() != null)
+            {
+                monsterF = co.gameObject;
+                MonsterCtrl monsterC = co.GetComponent<MonsterCtrl>();
+                monsterC.GetAttack(finalDamage);
+            }else if (co. GetComponent<BossMonsterCtrl>() != null)
+            {
+                monsterF = co.gameObject;
+                BossMonsterCtrl monsterB = co.GetComponent<BossMonsterCtrl>();
+                monsterB.GetAttack(finalDamage);
+            }
             GameObject bullet = PoolManager.instance.MakeObj("alienBullet");
-            bullet.GetComponent<AilenBullet>().SetBulletInfo(damage, stunTime);
+            bullet.GetComponent<AilenBullet>().SetBulletInfo(finalDamage, stunTime);
             bullet.transform.position = monsterF.transform.position;
             bullet.transform.rotation = Quaternion.identity;
             StartCoroutine(PoolManager.instance.DeActive(1.0f, bullet));
@@ -54,7 +63,7 @@ public class Alien : PlayerCtrl
             Color color;
             ColorUtility.TryParseHtmlString("#5B4A00", out color);
             DamagePopUp.Create(new Vector3(monsterF.transform.position.x,
-                        monsterF.transform.position.y + 2.0f, monsterF.transform.position.z), damage, color);
+                        monsterF.transform.position.y + 2.0f, monsterF.transform.position.z), finalDamage, color);
         }
         yield return null;
     }

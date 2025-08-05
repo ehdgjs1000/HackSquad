@@ -19,7 +19,7 @@ public class SpawnEffect : MonoBehaviour
     {
         if (isFadeing)
         {
-            value += Time.deltaTime;
+            value += Time.deltaTime * fadeTime;
             _renderer.material.SetFloat("_SplitValue", value);
         }
         if (value >= fadeTime) FadeComplete();

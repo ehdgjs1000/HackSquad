@@ -7,6 +7,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 {
     IStoreController storeController;
 
+    string gamespeed3300 = "gamespeed3300";
     string startpackage1100 = "startpackage1100";
     string package1100 = "package1100";
     string package3300 = "package3300";
@@ -26,7 +27,8 @@ public class IAPManager : MonoBehaviour, IStoreListener
     private void InitIAP()
     {
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
-
+        
+        builder.AddProduct(gamespeed3300, ProductType.NonConsumable);
         builder.AddProduct(startpackage1100, ProductType.NonConsumable);
         builder.AddProduct(package1100, ProductType.Consumable);
         builder.AddProduct(package3300, ProductType.Consumable);
@@ -122,7 +124,11 @@ public class IAPManager : MonoBehaviour, IStoreListener
             BackEndGameData.Instance.UserGameData.gem += 500;
             BackEndGameData.Instance.UserGameData.gold += 10000;
             BackEndGameData.Instance.UserCashData.isBuyFirstPackage = true;
-
+        }else if (product.definition.id == gamespeed3300)
+        {
+            PopUpMessageBase.instance.SetMessage("초보자 패키지 구매 성공");
+            BackEndGameData.Instance.UserGameData.gem += 300;
+            BackEndGameData.Instance.UserCashData.isBuyGameSpeedPackage = true;
         }
         BackEndGameData.Instance.GameDataUpdate();
         LobbyManager.instance.UpdateUIAll();
