@@ -36,6 +36,10 @@ public class BackEndGameData
     private UserAbilityData userAbilityData = new UserAbilityData();
     public UserAbilityData UserAbilityData => userAbilityData;
     private string gameAbilityDataRawInData = string.Empty;
+
+    private UserCashData userCashData = new UserCashData();
+    public UserCashData UserCashData => userCashData;
+    private string gameCashDataRawInData = string.Empty;
     
     /// <summary>
     /// 뒤끝 콘솔 테이블에 새로운 유저 정보 추가
@@ -46,6 +50,7 @@ public class BackEndGameData
         GameHeroDataInsert();
         GameQuestDataInsert();
         GameAbilityDataInsert();
+        GameCashDataInsert();
     }
     public void GameUserDataInsert()
     {
@@ -233,6 +238,29 @@ public class BackEndGameData
             }
         });
     }
+    public void GameCashDataInsert()
+    {
+        userCashData.Reset();
+
+        Param param = new Param()
+        {
+            {"isBuyFirstPackage", userCashData.isBuyFirstPackage},
+            {"isBuyGameSpeedPackage", userCashData.isBuyGameSpeedPackage},
+
+        };
+
+        Backend.GameData.Insert("CASH_DATA", param, callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                gameCashDataRawInData = callback.GetInDate();
+            }
+            else
+            {
+                Debug.LogError("어빌리티 정보 삽입에 실패했습니다.");
+            }
+        });
+    }
 
     /// <summary>
     /// 뒤끝 콜솔 테이블에서 유저 정보를 불러올떄 호출
@@ -243,6 +271,7 @@ public class BackEndGameData
         GameHeroDataLoad();
         GameQuestDataLoad();
         GameAbilityDataLoad();
+        GameCashDataLoad();
     }
     public void GameUserDataLoad()
     {
@@ -498,6 +527,41 @@ public class BackEndGameData
             }
         });
     }
+    public void GameCashDataLoad()
+    {
+        Backend.GameData.GetMyData("CASH_DATA", new Where(), callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                try
+                {
+                    LitJson.JsonData gameCashDataJson = callback.FlattenRows();
+
+                    if (gameCashDataJson.Count <= 0)
+                    {
+                        Debug.LogWarning("데이터가 존재하지 않습니다.");
+                    }
+                    else
+                    {
+                        //불러온 게임 정보의 고유 값
+                        gameCashDataRawInData = gameCashDataJson[0]["inDate"].ToString();
+
+                        userCashData.isBuyFirstPackage = bool.Parse(gameCashDataJson[0]["isBuyFirstPackage"].ToString());
+                        userCashData.isBuyGameSpeedPackage = bool.Parse(gameCashDataJson[0]["isBuyGameSpeedPackage"].ToString());
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    userCashData.Reset();
+                    Debug.LogError(e);
+                }
+            }
+            else // 실패했을 때
+            {
+                Debug.LogError($"어빌리티 정보 데이터 불러오기에 실패했습니다. : {callback}");
+            }
+        });
+    }
 
     public void GameDataUpdate(UnityAction action = null)
     {
@@ -505,7 +569,9 @@ public class BackEndGameData
         GameHeroDataUpdate();
         GameQuestDataUpdate();
         GameAbilityDataUpdate();
-        if(LobbyManager.instance != null) CheckLevelUp();
+        GameCashDataUpdate();
+
+        if (LobbyManager.instance != null) CheckLevelUp();
     }
     /// <summary>
     /// 뒤끝 콘솔 테이블에 있는 유저 데이터 갱신
@@ -744,6 +810,40 @@ public class BackEndGameData
                 });
         }
 
+    }
+    public void GameCashDataUpdate(UnityAction action = null)
+    {
+        if (userCashData == null)
+        {
+            Debug.LogError("서버에서 다운받거나 새로 삽입한 데이터가 존재하지 않습니다.");
+            return;
+        }
+
+        Param param = new Param()
+        {
+            {"isBuyFirstPackage", userCashData.isBuyFirstPackage },
+            {"isBuyGameSpeedPackage", userCashData.isBuyGameSpeedPackage }
+        };
+
+        if (string.IsNullOrEmpty(gameCashDataRawInData))
+        {
+            Debug.LogError("유저의 inDate 정보가 없어 Update에 실패했습니다.");
+        }
+        else
+        {
+            Backend.GameData.UpdateV2("CASH_DATA", gameCashDataRawInData, Backend.UserInDate, param,
+                callback =>
+                {
+                    if (callback.IsSuccess())
+                    {
+                        //action?.Invoke();
+                    }
+                    else
+                    {
+                        Debug.LogError("게임 정보 데이터 수정에 실패했습니다 : " + callback);
+                    }
+                });
+        }
     }
 
     private void CheckLevelUp()

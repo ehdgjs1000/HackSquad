@@ -1258,8 +1258,8 @@ MonoBehaviour:
   - {fileID: 1259663630142795538, guid: 55b58d3fd9450e048bdf2c0480bc020e, type: 3}
   - {fileID: 2604741837775341774, guid: 8c12140448bdc714a9094e627927c1d0, type: 3}
   - {fileID: 6381873565044337167, guid: c4d86f1f384f1364b938112bacf54a28, type: 3}
-  monster1Prefab: {fileID: 5342755383331244327, guid: 0cba77212fc4f6f4bacd07633975a20b, type: 3}
-  monster2Prefab: {fileID: 693013522474387470, guid: 0790d5329e5bc91488637b715ecaec71, type: 3}
+  monster1Prefab: {fileID: 693013522474387470, guid: ac6fedc51d0e98a4e862a1d5204c7d68, type: 3}
+  monster2Prefab: {fileID: 4735800100427854253, guid: 69bb54e9f016e2b4998dda37d0f6559b, type: 3}
   monster3Prefab: {fileID: 4181047949033373777, guid: 4b4f09fe29e41cd4380ff10539afcdea, type: 3}
   monster4Prefab: {fileID: 6807546796849834935, guid: bb9df89ba7970f643afed276f3eb4600, type: 3}
   monster5Prefab: {fileID: 504477847055164333, guid: 3930a7a455229084ea10508052a2fbe3, type: 3}

@@ -118,6 +118,10 @@ public class IAPManager : MonoBehaviour, IStoreListener
         {
             //첫 결제 패키지 구매
             PopUpMessageBase.instance.SetMessage("첫 결제 패키지 구매 성공");
+            BackEndGameData.Instance.UserHeroData.heroCount[4]++;
+            BackEndGameData.Instance.UserGameData.gem += 500;
+            BackEndGameData.Instance.UserGameData.gold += 10000;
+            BackEndGameData.Instance.UserCashData.isBuyFirstPackage = true;
 
         }
         BackEndGameData.Instance.GameDataUpdate();

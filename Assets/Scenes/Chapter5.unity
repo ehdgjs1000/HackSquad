@@ -1196,9 +1196,9 @@ MonoBehaviour:
   - {fileID: 1259663630142795538, guid: 55b58d3fd9450e048bdf2c0480bc020e, type: 3}
   - {fileID: 2604741837775341774, guid: 8c12140448bdc714a9094e627927c1d0, type: 3}
   - {fileID: 6381873565044337167, guid: c4d86f1f384f1364b938112bacf54a28, type: 3}
-  monster1Prefab: {fileID: 6807546796849834935, guid: 96ab8d3b57a6c024fb27a75d65226e8c, type: 3}
+  monster1Prefab: {fileID: 4735800100427854253, guid: 56a766fd096c54a4eafed4694afc356e, type: 3}
   monster2Prefab: {fileID: 504477847055164333, guid: eb1cd739bb7c24345807ace95fb26624, type: 3}
-  monster3Prefab: {fileID: 3972709158309067180, guid: a325d33190dcbdb4f95a104e59cd9db4, type: 3}
+  monster3Prefab: {fileID: 4701395883959241788, guid: 76cf137b00797554cb1398d241ccf638, type: 3}
   monster4Prefab: {fileID: 1493030365813126898, guid: a7a5853ddc888df4d995c85130f6d6f6, type: 3}
   monster5Prefab: {fileID: 5379945438976772044, guid: c989e8e4227170d4bb9b5354f3b09c61, type: 3}
 --- !u!1 &598981999

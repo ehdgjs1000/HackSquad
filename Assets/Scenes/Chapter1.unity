@@ -1247,10 +1247,10 @@ MonoBehaviour:
   - {fileID: 2604741837775341774, guid: 8c12140448bdc714a9094e627927c1d0, type: 3}
   - {fileID: 6381873565044337167, guid: c4d86f1f384f1364b938112bacf54a28, type: 3}
   monster1Prefab: {fileID: 5342755383331244327, guid: 9a0d90cd526a99a42bd1f3a0f2798b43, type: 3}
-  monster2Prefab: {fileID: 693013522474387470, guid: 84d7965078de66940b7ea1421f9419cd, type: 3}
+  monster2Prefab: {fileID: 8603436559300484423, guid: 37f9a3ee6d83ffa43bc2e52a7f879233, type: 3}
   monster3Prefab: {fileID: 4181047949033373777, guid: fbc383ce8a41d0a42a37076cc9f039da, type: 3}
-  monster4Prefab: {fileID: 6807546796849834935, guid: 7b99617a9b0ec2c41bf74b175c88e200, type: 3}
-  monster5Prefab: {fileID: 5342755383331244327, guid: 9a0d90cd526a99a42bd1f3a0f2798b43, type: 3}
+  monster4Prefab: {fileID: 693013522474387470, guid: 84d7965078de66940b7ea1421f9419cd, type: 3}
+  monster5Prefab: {fileID: 6807546796849834935, guid: 7b99617a9b0ec2c41bf74b175c88e200, type: 3}
 --- !u!1 &598981999
 GameObject:
   m_ObjectHideFlags: 0
