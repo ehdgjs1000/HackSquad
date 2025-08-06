@@ -6,9 +6,11 @@ public class JesterBullet : MonoBehaviour
     [SerializeField] float attackRadius;
     [SerializeField] LayerMask monsterLayer;
     public float attackTerm;
-    public float damage;
+    float damage;
     Collider[] monsterColls;
-    public float tempAttackTerm;
+    float tempAttackTerm;
+    public float bulletSize = 1.0f;
+
 
     private void Awake()
     {
@@ -18,6 +20,11 @@ public class JesterBullet : MonoBehaviour
     {
         attackTerm -= Time.deltaTime;
         if (attackTerm <= 0.0f) StartCoroutine(JesterAttack());
+    }
+    public void SetUp(float _damage, float _attackTerm)
+    {
+        damage = _damage;
+        tempAttackTerm = _attackTerm;
     }
     IEnumerator JesterAttack()
     {

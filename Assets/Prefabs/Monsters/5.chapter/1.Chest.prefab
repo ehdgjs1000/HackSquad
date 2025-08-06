@@ -290,7 +290,6 @@ GameObject:
   - component: {fileID: 3647604904556080449}
   - component: {fileID: 6271297750384476259}
   - component: {fileID: 7716256101518221153}
-  - component: {fileID: -8290169378146096070}
   m_Layer: 7
   m_Name: 1.Chest
   m_TagString: Monster
@@ -400,31 +399,6 @@ MonoBehaviour:
   matrlDissolve: {fileID: 2100000, guid: aacb4142fb411dc40912e0a14d0b89c4, type: 2}
   fadeTime: 0.5
   value: 0
---- !u!114 &-8290169378146096070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4735800100427854253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c84a12d07aceefc449839672505e9217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDelay: 0.2
-  damage: 5
-  speed: 0.8
-  hp: 57.5
-  exp: 3
-  gold: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  isDie: 0
-  attackRange: 2
-  attackTerm: 1
-  summonVFX: {fileID: 5885065744576850680, guid: 5b0614d0b0fe497428ae4c0b034323a8, type: 3}
 --- !u!1 &4735800100427854255
 GameObject:
   m_ObjectHideFlags: 0

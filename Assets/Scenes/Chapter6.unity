@@ -187,9 +187,9 @@ MonoBehaviour:
   - {fileID: 711216645}
   - {fileID: 547750004}
   bossGO:
-  - {fileID: 5454006626491569357, guid: 35e1e1e35d75ae54abb1b493b8e600c6, type: 3}
-  - {fileID: 1493030365813126898, guid: db3fd8478e22bce43ad25de1b735e8f3, type: 3}
-  gameBGM: {fileID: 0}
+  - {fileID: 3611285726400744981, guid: a2e2e968d6b76ef4da46ae4cbbe3be94, type: 3}
+  - {fileID: 1493030365813126898, guid: f4a3710f748fe6044930e790bb6c6da5, type: 3}
+  gameBGM: {fileID: 8300000, guid: 24a1cb5fa82f5e641a141c89bafaf945, type: 3}
   canSpawn: 1
 --- !u!4 &59683640
 Transform:
@@ -1151,7 +1151,7 @@ MonoBehaviour:
   - {fileID: 2604741837775341774, guid: 8c12140448bdc714a9094e627927c1d0, type: 3}
   - {fileID: 6381873565044337167, guid: c4d86f1f384f1364b938112bacf54a28, type: 3}
   monster1Prefab: {fileID: 4701395883959241788, guid: 0c1eb3131d111444883bd77d8a4278d0, type: 3}
-  monster2Prefab: {fileID: 3972709158309067180, guid: a503300eec8684a4cbc3c49ae2331df0, type: 3}
+  monster2Prefab: {fileID: 2931905550362880583, guid: 1e707307b1571cc4996b2ec6eb6b891f, type: 3}
   monster3Prefab: {fileID: 87622709017586928, guid: c19edbe74335f034ca31cf802e61daeb, type: 3}
   monster4Prefab: {fileID: 5379945438976772044, guid: f80eff83a31f61945acccbf4687e4965, type: 3}
   monster5Prefab: {fileID: 8397811692824748261, guid: 7c1a8f78bd7687b41968d556a42e734d, type: 3}

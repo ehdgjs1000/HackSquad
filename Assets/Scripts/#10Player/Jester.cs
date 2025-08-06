@@ -8,6 +8,7 @@ public class Jester : PlayerCtrl
     bool isFinalSkill = false;
     float poisionTerm = 0.3f;
     int poisionLevel = 0;
+    float jesterSkillSize = 1.0f;
     public void UpgradeFinalSkill()
     {
         isFinalSkill = true;    
@@ -16,6 +17,10 @@ public class Jester : PlayerCtrl
     {
         poisionLevel++;
         poisionTerm *= 0.9f;
+    }
+    public void UpgradeSkill1()
+    {
+        jesterSkillSize *= 1.15f;
     }
     protected override void Attack(GameObject enemy)
     {
@@ -37,16 +42,15 @@ public class Jester : PlayerCtrl
             monster.transform.position.y + 0.3f,
             monster.transform.position.z);
             bullet.transform.rotation = Quaternion.identity;
-            bullet.GetComponent<JesterBullet>().damage = damage;
-            bullet.GetComponent<JesterBullet>().attackTerm = poisionTerm;
+            bullet.transform.localScale = new Vector3(jesterSkillSize, jesterSkillSize, jesterSkillSize);
+            bullet.GetComponent<JesterBullet>().SetUp(damage, poisionTerm);
             StartCoroutine(PoolManager.instance.DeActive(6.0f, bullet));
         }
         else
         {
             fireRate = tempFireRate * 2f;
             bullet = Instantiate(finalBullet, new Vector3(0.0f,0.05f,0.0f), Quaternion.identity);
-            bullet.GetComponent<JesterBullet>().damage = damage/3;
-            bullet.GetComponent<JesterBullet>().attackTerm = poisionTerm /0.5f;
+            bullet.GetComponent<JesterBullet>().SetUp(damage/3, poisionTerm/0.5f);
         }
 
         if (nowBullet <= 0) StartCoroutine(Reloading());

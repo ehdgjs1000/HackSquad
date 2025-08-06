@@ -59,7 +59,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     public void UpgradeStats(int type, float amount)
     {
         if (type == 0) damage *= amount;
-        else if (type == 1) fireRate *= amount;
+        else if (type == 1) tempFireRate *= amount;
         else if (type == 2) maxBullet += (int)amount;
         else if (type == 3) reloadingTime *= amount;
         else if (type == 4) attackRange *= amount;

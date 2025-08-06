@@ -301,7 +301,6 @@ GameObject:
   - component: {fileID: 5915228668928863603}
   - component: {fileID: 1018095778132113831}
   - component: {fileID: 4104820866020491020}
-  - component: {fileID: 1905900900141005272}
   - component: {fileID: 202395094657241111}
   m_Layer: 7
   m_Name: B1.BossGolem
@@ -370,30 +369,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 2.5, z: 1.3}
   m_Center: {x: 0, y: 1.15, z: 0}
---- !u!114 &1905900900141005272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493030365813126898}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb7ea67ad4164f2489e67f65bf49a4ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDelay: 0.3
-  damage: 10
-  speed: 1
-  hp: 400
-  exp: 100
-  gold: 100
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  isDie: 0
-  attackRange: 4
-  attackTerm: 1.5
 --- !u!114 &202395094657241111
 MonoBehaviour:
   m_ObjectHideFlags: 0

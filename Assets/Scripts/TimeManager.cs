@@ -90,6 +90,7 @@ public class TimeManager : MonoBehaviour
         PlayerPrefs.SetInt("DrawVideo", 3);
         PlayerPrefs.SetInt("remainAbilityVideo", 1); 
         PlayerPrefs.SetInt("sweepLeftVideo", 3);
+        BackEndGameData.Instance.UserGameData.loginCount++;
 
         BackEndGameData.Instance.GameDataUpdate();
     }

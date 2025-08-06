@@ -65,6 +65,7 @@ public class BackEndGameData
             {"energy", userGameData.energy },
             {"highestChapter", userGameData.highestChapter },
             {"highestRewardChapter", userGameData.highestRewardChapter },
+            {"loginCount", userGameData.loginCount},
         };
 
         Backend.GameData.Insert("USER_DATA", param, callback =>
@@ -301,13 +302,15 @@ public class BackEndGameData
                         userGameData.energy = int.Parse(gameDataJson[0]["energy"].ToString());
                         userGameData.highestChapter = float.Parse(gameDataJson[0]["highestChapter"].ToString());
                         userGameData.highestRewardChapter = float.Parse(gameDataJson[0]["highestRewardChapter"].ToString());
+                        userGameData.loginCount = int.Parse(gameDataJson[0]["loginCount"].ToString());
 
                         onGameDataLoadEvent?.Invoke();
                     }
                 }
                 catch (System.Exception e)
                 {
-                    userGameData.Reset();
+                    Application.Quit();
+                    //userGameData.Reset();
                     Debug.LogError(e);
                 }
             }
@@ -383,7 +386,8 @@ public class BackEndGameData
                 }
                 catch (System.Exception e)
                 {
-                    userHeroData.Reset();
+                    Application.Quit();
+                    //userHeroData.Reset();
                     Debug.LogError(e);
                 }
             }
@@ -468,7 +472,8 @@ public class BackEndGameData
                 }
                 catch (System.Exception e)
                 {
-                    userQuestData.Reset();
+                    Application.Quit();
+                    //userQuestData.Reset();
                     Debug.LogError(e);
                 }
             }
@@ -517,7 +522,8 @@ public class BackEndGameData
                 }
                 catch (System.Exception e)
                 {
-                    userAbilityData.Reset();
+                    Application.Quit();
+                    //userAbilityData.Reset();
                     Debug.LogError(e);
                 }
             }
@@ -552,7 +558,8 @@ public class BackEndGameData
                 }
                 catch (System.Exception e)
                 {
-                    userCashData.Reset();
+                    Application.Quit();
+                    //userCashData.Reset();
                     Debug.LogError(e);
                 }
             }
@@ -593,6 +600,7 @@ public class BackEndGameData
             {"energy", userGameData.energy },
             {"highestChapter", userGameData.highestChapter },
             {"highestRewardChapter", userGameData.highestRewardChapter },
+            {"loginCount", userGameData.loginCount },
         };
 
         if (string.IsNullOrEmpty(gameUserDataRawInData))

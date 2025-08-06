@@ -23,8 +23,7 @@ public class Terrorist : PlayerCtrl
     {
         if (!isFinalSkill)
         {
-            fireRate = tempFireRate;
-            Debug.Log(fireRate);
+            fireRate = tempFireRate * 3;
             monster = enemy;
             _animator.SetBool("isAttacking", true);
             StartCoroutine(Shoot());
@@ -58,7 +57,7 @@ public class Terrorist : PlayerCtrl
         float attackDamage = 0;
         for (int i = 0; i < shootCount; i++)
         {
-            if (shootCount > 1) attackDamage = damage * 0.7f;
+            if (shootCount > 1) attackDamage = damage * 0.65f;
             else attackDamage = damage;
 
             if (monster.GetComponent<MonsterCtrl>() != null) monster.GetComponent<MonsterCtrl>().GetAttack(attackDamage);
@@ -79,6 +78,7 @@ public class Terrorist : PlayerCtrl
 
             yield return new WaitForSeconds(0.3f);
         }
+        fireRate = tempFireRate;
         if (nowBullet <= 0) StartCoroutine(Reloading());
         yield return null;
     }

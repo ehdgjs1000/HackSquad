@@ -9,6 +9,7 @@ public class UserGameData
     public int energy;
     public float highestChapter;
     public float highestRewardChapter;
+    public int loginCount;
 
     public void Reset()
     {
@@ -19,6 +20,7 @@ public class UserGameData
         energy = 30;
         highestChapter = 0;
         highestRewardChapter = -1;
+        loginCount = 1;
     }
 
 

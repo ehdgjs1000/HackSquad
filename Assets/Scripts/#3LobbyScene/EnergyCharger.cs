@@ -73,9 +73,10 @@ public class EnergyCharger : MonoBehaviour
                 BackEndGameData.Instance.UserGameData.energy += addEnergy;
                 if (BackEndGameData.Instance.UserGameData.energy >= (30 +
             BackEndGameData.Instance.UserAbilityData.abilityLevel[9]))
+                {
                     BackEndGameData.Instance.UserGameData.energy = 30 +
             BackEndGameData.Instance.UserAbilityData.abilityLevel[9];
-
+                }
                 BackEndGameData.Instance.GameDataUpdate();
                 LobbyManager.instance.UpdateUIAll();
             }

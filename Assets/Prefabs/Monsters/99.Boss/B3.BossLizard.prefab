@@ -1128,8 +1128,6 @@ GameObject:
   - component: {fileID: 4527530870830992880}
   - component: {fileID: 4527530870837994034}
   - component: {fileID: 3843838210807680543}
-  - component: {fileID: -6577766201295137080}
-  - component: {fileID: -1181034178027125623}
   - component: {fileID: -8912651353733802542}
   m_Layer: 0
   m_Name: B3.BossLizard
@@ -1148,7 +1146,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4527530870830992854}
@@ -1198,48 +1196,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.7
   m_Center: {x: 0, y: 0.7, z: 0}
---- !u!114 &-6577766201295137080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4527530870830567824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c84a12d07aceefc449839672505e9217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDelay: 0.2
-  damage: 5
-  speed: 1.3
-  hp: 8
-  exp: 3
-  gold: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  isDie: 0
-  attackRange: 2
-  attackTerm: 1
-  summonVFX: {fileID: 5885065744576850680, guid: 5b0614d0b0fe497428ae4c0b034323a8, type: 3}
---- !u!114 &-1181034178027125623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4527530870830567824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee5731808a99a34fb09e0d8d8d3a5d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderer: {fileID: 4527530870833683698}
-  mtrlOrg: {fileID: 2100000, guid: 55c75a509fdd4540aecd4870e31229cb, type: 2}
-  matrlDissolve: {fileID: 2100000, guid: 34120ee33a42466281b0e38604cb49c0, type: 2}
-  fadeTime: 1
-  value: 0
 --- !u!114 &-8912651353733802542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1252,6 +1208,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d090615212df3e45b983fb35ae4a770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDelay: 0
+  damage: 0
+  speed: 0
+  hp: 0
+  exp: 0
+  gold: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isDie: 0
+  attackRange: 0
+  attackTerm: 0
 --- !u!1 &4527530870830567826
 GameObject:
   m_ObjectHideFlags: 0
