@@ -73,19 +73,17 @@ public abstract class PlayerCtrl : MonoBehaviour
         reloadingTime = initReloadingTime;
 
         damage = initDamage * Mathf.Pow(1.3f, BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]) *
-            (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[0]*0.02f) *
-            (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[3] * 0.05f) *
-            (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[6] * 0.1f); 
+            (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[0]*0.05f) *
+            (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[3] * 0.10f) *
+            (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[6] * 0.20f); 
         hp = initHp + 5* BackEndGameData.Instance.UserHeroData.heroLevel[heroNum];
          
         nowBullet = maxBullet;
         tempFireRate = fireRate;
         fireRate = 0;
     }
-    public void AttackRandom()
-    {
-        attackRandom = true;
-    }
+    public void AttackRandom() => attackRandom = true;
+
     public float ReturnInitHp()
     {
         return initHp;

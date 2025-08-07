@@ -201,8 +201,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isDie: 0
-  attackRange: 6
-  attackTerm: 2
+  attackRange: 2
+  attackTerm: 1
   summonVFX: {fileID: 5885065744576850680, guid: 5b0614d0b0fe497428ae4c0b034323a8, type: 3}
 --- !u!114 &2454620038108425560
 MonoBehaviour:

@@ -84,7 +84,7 @@ public class Skill : MonoBehaviour
         else if (skillId == 102) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.8f);
         else if (skillId == 103) GameManager.instance.players[skillCharacterNum].GetComponent<Cowboy>().shotGunBulletSkillLevel++;
         else if (skillId == 201) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
-        else if (skillId == 202) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 5);
+        else if (skillId == 202) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 15);
         else if (skillId == 203) GameManager.instance.players[skillCharacterNum].GetComponent<Veteran>().FixMaxRandomDegree(-5);
         else if (skillId == 301) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 1);
         else if (skillId == 302) GameManager.instance.players[skillCharacterNum].GetComponent<Bazooka>().UpgradeExploseRadius(1.1f);
@@ -96,7 +96,7 @@ public class Skill : MonoBehaviour
         else if (skillId == 502) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.8f);
         else if (skillId == 503) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 1);
         else if (skillId == 601) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
-        else if (skillId == 602) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 1);
+        else if (skillId == 602) GameManager.instance.players[skillCharacterNum].GetComponent<Iceman>().AttackCountUpgrade();
         else if (skillId == 603) GameManager.instance.players[skillCharacterNum].GetComponent<Iceman>().UpgradeSlowSkill();
         else if (skillId == 701) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 702) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 3);

@@ -67,6 +67,10 @@ public class MainManager : MonoBehaviour
             });
         }
     }
+    public void ResetPlayerPrefab()
+    {
+        PlayerPrefs.DeleteAll();
+    }
     public void BuyEnergyOnClick()
     {
         energyBuyPanel.SetActive(true);

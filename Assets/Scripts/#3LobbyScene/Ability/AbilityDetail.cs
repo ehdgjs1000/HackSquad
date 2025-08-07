@@ -21,14 +21,14 @@ public class AbilityDetail : MonoBehaviour
         abilityLevelText.text = "Lv." + ability.abilityLevel.ToString();
         abilityImage.sprite = ability.abilitySprite;
         abilityGrade = ability.abilityGrade;
-        float nextAbilityLevel = ability.abilityLevel +1;
-        if (ability.abilityId == 0) abilityDescText.text = "공격력 " + 2 * nextAbilityLevel + "% 증가";
+        float nextAbilityLevel = ability.abilityLevel;
+        if (ability.abilityId == 0) abilityDescText.text = "공격력 " + 5 * nextAbilityLevel + "% 증가";
         else if (ability.abilityId == 1) abilityDescText.text = "파티체력 " + 2 * nextAbilityLevel + " 증가";
         else if (ability.abilityId == 2) abilityDescText.text = "에너지 " + 1 * nextAbilityLevel + " 증가";
-        else if (ability.abilityId == 3) abilityDescText.text = "공격력 " + 5 * nextAbilityLevel + "% 증가";
+        else if (ability.abilityId == 3) abilityDescText.text = "공격력 " + 10 * nextAbilityLevel + "% 증가";
         else if (ability.abilityId == 4) abilityDescText.text = "파티체력 " + 5 * nextAbilityLevel + " 증가";
         else if (ability.abilityId == 5) abilityDescText.text = "받는 피해 " + 1 * nextAbilityLevel + " 감소";
-        else if (ability.abilityId == 6) abilityDescText.text = "공격력 " + 10 * nextAbilityLevel + "% 증가";
+        else if (ability.abilityId == 6) abilityDescText.text = "공격력 " + 20 * nextAbilityLevel + "% 증가";
         else if (ability.abilityId == 7) abilityDescText.text = "파티체력 " + 10 * nextAbilityLevel + " 증가";
         else if (ability.abilityId == 8) abilityDescText.text = "받는피해 " + 3 * nextAbilityLevel + " 감소";
         else if (ability.abilityId == 9) abilityDescText.text = "최대 에너지 " + 1 * nextAbilityLevel + " 증가";

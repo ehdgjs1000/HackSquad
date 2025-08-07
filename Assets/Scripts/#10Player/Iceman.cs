@@ -11,6 +11,7 @@ public class Iceman : PlayerCtrl
     int slowSkillLevel = 0;
     float slowAmount = 0.2f;
     GameObject monster;
+    int attackCount = 1;
 
     protected override void Update()
     {
@@ -26,12 +27,13 @@ public class Iceman : PlayerCtrl
         base.Awake();
         tempFinalSkillTime = finalSkillTime;
     }
+    public void AttackCountUpgrade() => attackCount++;
     IEnumerator UseFinalSkill()
     {
         finalSkillTime = tempFinalSkillTime;
         yield return new WaitForSeconds(0.1f);
-        Instantiate(finalSkillTs, transform.position, Quaternion.identity);
-        finalSkillTs.GetComponent<IceGround>().iceDamage = damage * 0.7f;
+        Instantiate(finalSkillTs, new Vector3(0,0.1f,0), Quaternion.identity);
+        finalSkillTs.GetComponent<IceGround>().iceDamage = damage * 0.5f;
         finalSkillTs.GetComponent<IceGround>().slowAmount = 1;
     }
     public void UpgradeFinalSkill()
@@ -47,21 +49,48 @@ public class Iceman : PlayerCtrl
     {
         if (enemy != null)
         {
-            fireRate = tempFireRate;
-            monster = enemy;
-            _animator.SetBool("isAttacking", true);
-            StartCoroutine(Shoot());
+            nowBullet--;
+            fireRate = tempFireRate*3;
+
+            //AttakcCount만큰 공격하기
+            for(int i = 0; i<attackCount; i++)
+            {
+                monsterColls = null;
+                monsterColls = Physics.OverlapSphere(this.transform.position, attackRange, monsterLayer);
+                if (monsterColls.Length > 0)
+                {
+                    int randomMonster = Random.Range(0, monsterColls.Length);
+                    monster = monsterColls[randomMonster].gameObject;
+                    _animator.SetBool("isAttacking", true);
+                    StartCoroutine(Shoot(monster));
+                }
+                else
+                {
+                    if (GameManager.instance != null) _animator.SetBool("isAttacking", false);
+                }
+            }
+            
+            //monster = enemy;
+            //_animator.SetBool("isAttacking", true);
+            //StartCoroutine(Shoot());
         }
     }
-
     protected override IEnumerator Shoot()
     {
-        nowBullet--;
-        if(weaponFireClip != null) SoundManager.instance.PlaySound(weaponFireClip);
+        yield return null;
+    }
+    IEnumerator Shoot(GameObject target)
+    {
+        float iceDamage = 0;
+        if (attackCount == 1) iceDamage = damage;
+        else iceDamage = damage * 0.7f;
+        if (weaponFireClip != null) SoundManager.instance.PlaySound(weaponFireClip);
         Instantiate(muzzleFlash, bulletSpawnPos.position, transform.localRotation);
-        GameObject bullet = Instantiate(bulletGo, monster.transform.position, Quaternion.identity);
-        bullet.GetComponent<IceLight>().damage = damage;
+        GameObject bullet = Instantiate(bulletGo, target.transform.position, Quaternion.identity);
+        bullet.GetComponent<IceLight>().damage = iceDamage;
         bullet.GetComponent<IceLight>().slowAmount = slowAmount;
+
+        fireRate = tempFireRate;
         if (nowBullet <= 0) StartCoroutine(Reloading());
 
         yield return new WaitForSeconds(0.5f);

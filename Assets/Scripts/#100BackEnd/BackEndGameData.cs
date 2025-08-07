@@ -854,6 +854,10 @@ public class BackEndGameData
         }
     }
 
+    public void ResetPlayerPrefabData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
     private void CheckLevelUp()
     {
         if(UserGameData.exp >= 1000 * Mathf.Pow(1.2f, UserGameData.level + 1))

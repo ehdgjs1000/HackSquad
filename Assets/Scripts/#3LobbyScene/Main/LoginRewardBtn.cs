@@ -55,7 +55,8 @@ public class LoginRewardBtn : MonoBehaviour
     public void RewardBtnClick()
     {
         string text = "loginReward" + num;
-        if(PlayerPrefs.GetInt(text) == 0 && num >= BackEndGameData.Instance.UserGameData.loginCount) //수령 가능
+        Debug.Log($"{text} Click : " + num);
+        if(PlayerPrefs.GetInt(text) == 0 && num <= BackEndGameData.Instance.UserGameData.loginCount) //수령 가능
         {
             if(rewardType == "골드")
             {
