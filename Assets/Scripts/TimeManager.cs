@@ -86,7 +86,7 @@ public class TimeManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         //매일 리셋해야 하는 것 넣기
         BackEndGameData.Instance.UserQuestData.ResetDaily();
-        PlayerPrefs.SetInt("FreePackage", 0);
+        PlayerPrefs.SetInt("FreePackage", 1);
         PlayerPrefs.SetInt("DrawVideo", 3);
         PlayerPrefs.SetInt("remainAbilityVideo", 1); 
         PlayerPrefs.SetInt("sweepLeftVideo", 3);

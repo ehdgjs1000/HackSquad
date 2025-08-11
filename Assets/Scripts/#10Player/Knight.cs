@@ -42,14 +42,14 @@ public class Knight : PlayerCtrl
     private void FinalHeal()
     {
         finalHealTime = tempFinalHealTime;
-        GameManager.instance.HealHP(healAmount * 3);
+        if(GameManager.instance!=null)GameManager.instance.HealHP(healAmount * 3);
         Instantiate(healVFX, new Vector3(0,0.5f,0),Quaternion.identity);
         DamagePopUp.Create(new Vector3(0, 2.0f, 0), healAmount * 3, Color.green);
     }
     private void Heal()
     {
         healTime = tempHealTime;
-        GameManager.instance.HealHP(healAmount);
+        if (GameManager.instance != null) GameManager.instance.HealHP(healAmount);
         Instantiate(healVFX, new Vector3(0, 0.5f, 0), Quaternion.identity);
         DamagePopUp.Create(new Vector3(0,2.0f,0), healAmount, Color.green);
     }

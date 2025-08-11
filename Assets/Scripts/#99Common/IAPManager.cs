@@ -66,10 +66,6 @@ public class IAPManager : MonoBehaviour, IStoreListener
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
     {
         var product = purchaseEvent.purchasedProduct;
-
-        Debug.Log("구매 성공 : " + product.definition.id);
-
-        Debug.Log(product.definition.id);
         if (product.definition.id == package1100)
         {
             PopUpMessageBase.instance.SetMessage("패키지 구매 성공");

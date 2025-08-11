@@ -13,7 +13,7 @@ public class PackageStore : MonoBehaviour
     }
     public void UpdateUI()
     {
-        if (PlayerPrefs.GetInt("FreePackage") == 0)
+        if (PlayerPrefs.GetInt("FreePackage") == 1)
         {
             remainFreePackageText.text = "1/1";
             freePackageBG.gameObject.SetActive(false);

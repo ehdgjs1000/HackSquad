@@ -15,28 +15,28 @@ EditorBuildSettings:
     path: Assets/Scenes/InGameCommon.unity
     guid: a8c8575d99fa51e4586be7782fffe984
   - enabled: 1
-    path: Assets/Scenes/Chapter1.unity
+    path: Assets/Scenes/Chpater/Chapter1.unity
     guid: 5a785427786f3324fbaac6e853f52089
   - enabled: 1
-    path: Assets/Scenes/Chapter2.unity
+    path: Assets/Scenes/Chpater/Chapter2.unity
     guid: 6d0ba83029d56f647857146813023851
   - enabled: 1
-    path: Assets/Scenes/Chapter3.unity
+    path: Assets/Scenes/Chpater/Chapter3.unity
     guid: 16eb3df4d470f154d8278db7673f0d8d
   - enabled: 1
-    path: Assets/Scenes/Chapter4.unity
+    path: Assets/Scenes/Chpater/Chapter4.unity
     guid: 2da02d19d8baf1049b99c1aa84a3da8e
   - enabled: 1
-    path: Assets/Scenes/Chapter5.unity
+    path: Assets/Scenes/Chpater/Chapter5.unity
     guid: f4f83f6b3e69f124f9d99aada0d96ce7
   - enabled: 1
-    path: Assets/Scenes/Chapter6.unity
+    path: Assets/Scenes/Chpater/Chapter6.unity
     guid: b1079cce709affc4bb71300bdcc4c724
   - enabled: 1
-    path: Assets/Scenes/Chapter7.unity
+    path: Assets/Scenes/Chpater/Chapter7.unity
     guid: 592756453ccb5a74da5bdf2be5a7cc2e
   - enabled: 1
-    path: Assets/Scenes/Chapter8.unity
+    path: Assets/Scenes/Chpater/Chapter8.unity
     guid: 15ef47b010a921a46b74fdb2999dffb0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
