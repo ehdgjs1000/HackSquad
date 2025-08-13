@@ -37,25 +37,17 @@ public class GoldDungeonOverManager : MonoBehaviour
         //GoldDungeonManager min이 10분일떄 추가
         if (isWin)
         {
-            Debug.Log("Win");
             SoundManager.instance.PlaySound(gameWinClip);
             gameWinImage.transform.DOScale(Vector3.one, 0.5f);
 
-            BackEndGameData.Instance.UserGameData.highestChapter = (GoldDungeonManager.instance.gameLevel * 2) - 1;
-            Debug.Log(BackEndGameData.Instance.UserGameData.highestChapter);
+            PlayerPrefs.SetInt("highestGoldDungeon",GoldDungeonManager.instance.gameLevel);
         }
         else
         {
             Debug.Log("Lose");
             gameDefeatImage.transform.DOScale(Vector3.one, 0.5f);
             SoundManager.instance.PlaySound(gameLoseClip);
-            if (GoldDungeonManager.instance.min / 5 == 1)
-            {
-                BackEndGameData.Instance.UserGameData.highestChapter =
-                    (GoldDungeonManager.instance.gameLevel * 2) - 2;
-            }
         }
-        Debug.Log(BackEndGameData.Instance.UserGameData.highestChapter);
         BackEndGameData.Instance.UserGameData.gold += GoldDungeonManager.instance.getGold;
         BackEndGameData.Instance.GameDataUpdate();
         yield return new WaitForSeconds(2.0f);

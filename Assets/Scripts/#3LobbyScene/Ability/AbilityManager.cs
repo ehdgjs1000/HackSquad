@@ -98,24 +98,36 @@ public class AbilityManager : MonoBehaviour
     }
     private void DrawAbility()
     {
-        Ability choosedAbility;
+        Ability choosedAbility = null;
         float ranAbilityType = Random.Range(0, 100);
-        int ranNum;
-        if (ranAbilityType >= 0 && ranAbilityType <65)
+        int ranNum = 0;
+        bool canDraw = false;
+        while (canDraw == true)
         {
-            ranNum = Random.Range(0, 3);
-            choosedAbility = abilities[ranNum];
+            if (ranAbilityType >= 0 && ranAbilityType < 65)
+            {
+                ranNum = Random.Range(0, 3);
+                choosedAbility = abilities[ranNum];
+            }
+            else if (ranAbilityType >= 65 && ranAbilityType < 90)
+            {
+                ranNum = Random.Range(3, 6);
+                choosedAbility = abilities[ranNum];
+            }
+            else
+            {
+                ranNum = Random.Range(6, 12);
+                choosedAbility = abilities[ranNum];
+            }
+
+            //예외 처리 
+            if (ranNum == 11 && BackEndGameData.Instance.UserAbilityData.abilityLevel[11] >= 3)
+            {
+
+            }
+            else canDraw = false;
         }
-        else if (ranAbilityType >= 65 && ranAbilityType < 90)
-        {
-            ranNum = Random.Range(3, 6);
-            choosedAbility = abilities[ranNum];
-        }
-        else
-        {
-            ranNum = Random.Range(6, 12);
-            choosedAbility = abilities[ranNum];
-        }
+        
 
         //AbilityDetail에 띄우기
         SoundManager.instance.PlaySound(drawAbilityClip);

@@ -27,6 +27,7 @@ public class BazookaBullet : Bullet
             {
                 if(monster.GetComponent<MonsterCtrl>() != null) monster.GetComponent<MonsterCtrl>().GetAttack(damage);
                 else if(monster.GetComponent<BossMonsterCtrl>() !=null) monster.GetComponent<BossMonsterCtrl>().GetAttack(damage);
+                else if (monster.GetComponent<GoldMonsterCtrl>() != null) monster.GetComponent<GoldMonsterCtrl>().GetAttack(damage);
 
                 ColorUtility.TryParseHtmlString("#E800FF", out color);
                 DamagePopUp.Create(new Vector3(monster.transform.position.x,

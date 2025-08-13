@@ -56,6 +56,9 @@ public abstract class Bullet : MonoBehaviour
                 }else if (co.gameObject.GetComponent<BossMonsterCtrl>() != null)
                 {
                     co.gameObject.GetComponent<BossMonsterCtrl>().GetAttack(damage);
+                }else if (co.gameObject.GetComponent<GoldMonsterCtrl>() != null)
+                {
+                    co.gameObject.GetComponent<GoldMonsterCtrl>().GetAttack(damage);
                 }
                 OnHit();
                 OnHitVFX(this.transform.position);

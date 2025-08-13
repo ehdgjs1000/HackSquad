@@ -3104,6 +3104,7 @@ MonoBehaviour:
   canSweepImage: {fileID: 1333058131939797786}
   dungeonStartText: {fileID: 2470432777779064329}
   stageText: {fileID: 170571054287897041}
+  sweepPanel: {fileID: 0}
   goldAmount: 1000
 --- !u!1 &9174296860824901641
 GameObject:

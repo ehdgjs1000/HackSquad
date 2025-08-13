@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         {
             sec += Time.deltaTime;
             GamePlayProgressUpdate();
-            if(min >= 10 && sec >= 1.0f)
+            if(min >= 10 && sec >= 1.0f && !isGameOver)
             {
                 StartCoroutine(GameWin());
             }

@@ -153,7 +153,5 @@ public class MainManager : MonoBehaviour
             SceneManager.LoadScene(scene, LoadSceneMode.Additive);
         }
         else PopUpMessageBase.instance.SetMessage("에너지가 부족합니다.");
-        
-
     }
 }

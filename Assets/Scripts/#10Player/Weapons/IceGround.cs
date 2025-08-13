@@ -39,6 +39,10 @@ public class IceGround : MonoBehaviour
                 {
                     col.GetComponent<BossMonsterCtrl>().GetAttack(iceDamage);
                 }
+                else if (col.GetComponent<GoldMonsterCtrl>() != null)
+                {
+                    col.GetComponent<GoldMonsterCtrl>().GetAttack(iceDamage);
+                }
 
                 ColorUtility.TryParseHtmlString("#24E9F8", out color);
                 DamagePopUp.Create(new Vector3(col.transform.position.x,

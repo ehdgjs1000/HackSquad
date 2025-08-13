@@ -58,7 +58,7 @@ public class PoolManager : MonoBehaviour
         terroristBullet = new GameObject[20];
         thunderBullet = new GameObject[30];
 
-        monster1 = new GameObject[30];
+        monster1 = new GameObject[50];
         monster2 = new GameObject[30];
         monster3 = new GameObject[30];
         monster4 = new GameObject[30];

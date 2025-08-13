@@ -88,8 +88,6 @@ public class Knight : PlayerCtrl
         bullet2.transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, randomDegree);
         bullet2.GetComponent<Bullet>().SetBulletInfo(damage, penetrateCount);
 
-
-
         if (nowBullet <= 0) StartCoroutine(Reloading());
         yield return null;
     }

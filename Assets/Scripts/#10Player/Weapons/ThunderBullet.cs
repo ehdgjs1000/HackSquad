@@ -32,6 +32,8 @@ public class ThunderBullet : MonoBehaviour
             {
                 if (co.GetComponent<MonsterCtrl>() != null) co.GetComponent<MonsterCtrl>().GetAttack(attackDamage);
                 else if (co.GetComponent<BossMonsterCtrl>() != null) co.GetComponent<BossMonsterCtrl>().GetAttack(attackDamage);
+                else if (co.GetComponent<GoldMonsterCtrl>() != null) co.GetComponent<GoldMonsterCtrl>().GetAttack(attackDamage);
+
                 DamagePopUp.Create(new Vector3(co.transform.position.x,
                     co.transform.position.y + 2.5f, co.transform.position.z), attackDamage, Color.blue);
             }

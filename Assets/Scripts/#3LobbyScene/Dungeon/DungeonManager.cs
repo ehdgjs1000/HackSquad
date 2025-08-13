@@ -14,10 +14,10 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] Image canExpSweepImage;
     [SerializeField] TextMeshProUGUI remainGoldSweepText;
     [SerializeField] TextMeshProUGUI remainExpSweepText;
+    [SerializeField] TextMeshProUGUI[] remainTimeText;
 
-
-    [HideInInspector] public int remainGoldSweep;
-    [HideInInspector] public int remainExpSweep;
+    [HideInInspector] public int remainGoldDungeon;
+    [HideInInspector] public int remainExpDungeon;
     [HideInInspector] public int highestGoldDungeon;
     [HideInInspector] public int highestExpDungeon;
 
@@ -29,12 +29,16 @@ public class DungeonManager : MonoBehaviour
     {
         UpdateUI();
     }
+    private void Update()
+    {
+        UpdateUI();
+    }
     public void UpdateInfo()
     {
-        if (PlayerPrefs.HasKey("remainGoldSweep")) remainGoldSweep = PlayerPrefs.GetInt("remainGoldSweep");
-        else remainGoldSweep = 2;
-        if (PlayerPrefs.HasKey("remainExpSweep")) remainExpSweep = PlayerPrefs.GetInt("remainExpSweep");
-        else remainExpSweep = 2;
+        if (PlayerPrefs.HasKey("remainGoldDungeonCount")) remainGoldDungeon = PlayerPrefs.GetInt("remainGoldDungeonCount");
+        else remainGoldDungeon = 2;
+        if (PlayerPrefs.HasKey("remainExpDungeonCount")) remainExpDungeon = PlayerPrefs.GetInt("remainExpDungeonCount");
+        else remainExpDungeon = 2;
         highestGoldDungeon = PlayerPrefs.GetInt("highestGoldDungeon");
         highestExpDungeon = PlayerPrefs.GetInt("highestExpDungeon");
         
@@ -42,17 +46,18 @@ public class DungeonManager : MonoBehaviour
     public void UpdateUI()
     {
         UpdateInfo();
+        foreach (TextMeshProUGUI textGO in remainTimeText)
+        {
+            textGO.text = TimeManager.instance.dailyStr;
+        }
 
-        if (remainGoldSweep > 0) canGoldSweepImage.gameObject.SetActive(true);
+        if (remainGoldDungeon > 0) canGoldSweepImage.gameObject.SetActive(true);
         else canGoldSweepImage.gameObject.SetActive(false);
-        if (remainExpSweep > 0) canExpSweepImage.gameObject.SetActive(true);
+        if (remainGoldDungeon > 0) canExpSweepImage.gameObject.SetActive(true);
         else canExpSweepImage.gameObject.SetActive(false);
 
-        remainGoldSweepText.text = $"소탕 가능 횟수:{remainGoldSweep.ToString()}";
-        remainExpSweepText.text = $"소탕 가능 횟수:{remainExpSweep.ToString()}";
-
-
-
+        remainGoldSweepText.text = $"플레이 가능 횟수:{remainGoldDungeon.ToString()}";
+        remainExpSweepText.text = $"플레이 가능 횟수:{remainExpDungeon.ToString()}";
     }
 
     public void GoldDungeonOnClick()

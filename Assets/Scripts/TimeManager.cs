@@ -90,6 +90,10 @@ public class TimeManager : MonoBehaviour
         PlayerPrefs.SetInt("DrawVideo", 3);
         PlayerPrefs.SetInt("remainAbilityVideo", 1); 
         PlayerPrefs.SetInt("sweepLeftVideo", 3);
+        PlayerPrefs.SetInt("remainGoldSweep", 2);
+        PlayerPrefs.SetInt("remainExpSweep", 2);
+        PlayerPrefs.SetInt("remainGoldDungeonCount",2);
+        PlayerPrefs.SetInt("remainExpDungeonCount",2);
         BackEndGameData.Instance.UserGameData.loginCount++;
 
         BackEndGameData.Instance.GameDataUpdate();

@@ -14,7 +14,6 @@ public class Ability : MonoBehaviour
     public string abilityName;
     public int abilityGrade;
     public int abilityLevel;
-    public string abilityDesc;
 
     private void Start()
     {

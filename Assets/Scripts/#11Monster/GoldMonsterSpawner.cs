@@ -34,7 +34,7 @@ public class GoldMonsterSpawner : MonoBehaviour
         {
             int randomSapwnPos = Random.Range(0, monsterSpawnPoses.Length - 1);
 
-            GameObject monster = GoldPoolManager.instance.MakeObj("monster1");
+            GameObject monster = PoolManager.instance.MakeObj("monster1");
             monster.transform.position = monsterSpawnPoses[randomSapwnPos].position;
             monster.GetComponent<GoldMonsterCtrl>().InitMonster();
             monster.GetComponent<GoldMonsterCtrl>().DoFade();

@@ -158,10 +158,20 @@ public abstract class PlayerCtrl : MonoBehaviour
         {
             //vector3.distance 보다 sqrMagnitude의 계산이 더 빠름
             float distance = (entity.transform.position - this.transform.position).sqrMagnitude;
-            if (distance < closestDist && !entity.GetComponent<MonsterCtrl>().isDie)
+            if (entity.GetComponent<MonsterCtrl>() != null)
             {
-                closestDist = distance;
-                target = entity;
+                if (distance < closestDist && !entity.GetComponent<MonsterCtrl>().isDie)
+                {
+                    closestDist = distance;
+                    target = entity;
+                }
+            }else if (entity.GetComponent<GoldMonsterCtrl>() != null)
+            {
+                if (distance < closestDist && !entity.GetComponent<GoldMonsterCtrl>().isDie)
+                {
+                    closestDist = distance;
+                    target = entity;
+                }
             }
         }
         return target;

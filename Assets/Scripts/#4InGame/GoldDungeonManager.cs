@@ -32,6 +32,7 @@ public class GoldDungeonManager : MonoBehaviour
     [SerializeField] private GameObject damagePopUpTr;
     [SerializeField] Image gamePlayTimeProgress;
     [SerializeField] TextMeshProUGUI gamePlayTimeText;
+    [SerializeField] TextMeshProUGUI gameNameText;
     public int min = 0;
     float sec = 0;
     public int getGold = 0;
@@ -42,7 +43,6 @@ public class GoldDungeonManager : MonoBehaviour
     {
         instance = this;
     }
-
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -50,17 +50,18 @@ public class GoldDungeonManager : MonoBehaviour
         string sceneName = SceneManager.GetSceneAt(1).name;
         string numbersOnly = Regex.Replace(sceneName, "[^0-9]", "");
         gameLevel = int.Parse(numbersOnly);
+        gameNameText.text = "골드던전" + gameLevel;
         getGold += gameLevel * 1000;
         Debug.Log($"GameLevel : {gameLevel}");
         SetHeros();
         UpdateUI();
-        InitSkillInfo();
     }
     private void Update()
     {
         sec += Time.deltaTime;
+        UpdateUI();
         GamePlayProgressUpdate();
-        if (min >= 2 && sec >= 0.0f)
+        if (min >= 2 && sec >= 0.0f && !isGameOver)
         {
             StartCoroutine(GameWin());
         }
@@ -130,23 +131,7 @@ public class GoldDungeonManager : MonoBehaviour
         initHp = hp;
     }
     //게임 시작시 초기 스킬들을 저장해둠
-    private void InitSkillInfo()
-    {
-        int skillCount = 0;
-        for (int a = 0; a < players.Length; a++)
-        {
-            if (players[a] != null)
-            {
-                for (int b = 0; b < 3; b++)
-                {
-                    SkillManager.instance.skillDatas[skillCount] = players[a].characterSkills[b];
-                    skillCount++;
-                }
-                SkillManager.instance.finalSkill[a] = players[a].finalSkill;
-            }
 
-        }
-    }
     private void UpdateUI()
     {
         goldText.text = getGold.ToString();

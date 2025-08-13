@@ -261,6 +261,7 @@ MonoBehaviour:
   damagePopUpTr: {fileID: 4453229395328416960, guid: f89fa60e57839544d9d1d446af99bea3, type: 3}
   gamePlayTimeProgress: {fileID: 783518645}
   gamePlayTimeText: {fileID: 1011640942}
+  gameNameText: {fileID: 482527928}
   min: 0
   getGold: 0
 --- !u!1 &34895004
@@ -3039,8 +3040,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 11373112}
+        m_TargetAssemblyTypeName: GoldDungeonManager, Assembly-CSharp
         m_MethodName: SettingOnClick
         m_Mode: 1
         m_Arguments:
@@ -3917,47 +3918,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 459493915335829241, guid: d99b75fec62e4394e8adae44438091c9, type: 3}
   m_PrefabInstance: {fileID: 5117787657723646021}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1208441897
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _OuterUV: {r: 0, g: 0, b: 1, a: 0.99999994}
-    - _WidthHeightRadius: {r: 681.6385, g: 45, b: 40, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &1336425379
 GameObject:
   m_ObjectHideFlags: 0
@@ -4158,7 +4118,7 @@ GameObject:
   - component: {fileID: 1443768718}
   - component: {fileID: 1443768720}
   - component: {fileID: 1443768719}
-  - component: {fileID: 1443768721}
+  - component: {fileID: 1443768723}
   - component: {fileID: 1443768722}
   m_Layer: 5
   m_Name: GameOverSet
@@ -4228,26 +4188,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443768717}
   m_CullTransparentMesh: 1
---- !u!114 &1443768721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443768717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3621486dc3e0fb41a974dab65a9bd35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameWinImage: {fileID: 867428523}
-  gameDefeatImage: {fileID: 1336425379}
-  gameOverText: {fileID: 705172793}
-  isWin: 0
-  goldRewardText: {fileID: 5117787657723646022}
-  expRewardText: {fileID: 2121109455}
-  gameLoseClip: {fileID: 8300000, guid: a84778c56316aac4d9d2fb86cfbe0d95, type: 3}
-  gameWinClip: {fileID: 8300000, guid: f5d113abcaf23bd46b17c1997d5efe42, type: 3}
 --- !u!114 &1443768722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4292,8 +4232,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1443768721}
-        m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
+      - m_Target: {fileID: 1443768723}
+        m_TargetAssemblyTypeName: GoldDungeonOverManager, Assembly-CSharp
         m_MethodName: ExitLobbyOnClick
         m_Mode: 1
         m_Arguments:
@@ -4304,6 +4244,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1443768723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443768717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c152f0077e2b9428655c747a76dc4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameWinImage: {fileID: 867428523}
+  gameDefeatImage: {fileID: 1336425379}
+  gameOverText: {fileID: 705172793}
+  isWin: 0
+  goldRewardText: {fileID: 5117787657723646022}
+  gameLoseClip: {fileID: 8300000, guid: a84778c56316aac4d9d2fb86cfbe0d95, type: 3}
+  gameWinClip: {fileID: 8300000, guid: f5d113abcaf23bd46b17c1997d5efe42, type: 3}
 --- !u!1 &1462810922
 GameObject:
   m_ObjectHideFlags: 0
@@ -4523,8 +4482,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 11373112}
+        m_TargetAssemblyTypeName: GoldDungeonManager, Assembly-CSharp
         m_MethodName: GameSpeedOnClick
         m_Mode: 1
         m_Arguments:
@@ -5944,7 +5903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1208441897}
+  m_Material: {fileID: 2076755534}
   m_Color: {r: 1, g: 0, b: 0.108383656, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -6091,6 +6050,47 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!21 &2076755534
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _OuterUV: {r: 0, g: 0, b: 1, a: 0.99999994}
+    - _WidthHeightRadius: {r: 681.6385, g: 45, b: 40, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &2089465596
 GameObject:
   m_ObjectHideFlags: 0
@@ -6361,17 +6361,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 459493915335829241, guid: d99b75fec62e4394e8adae44438091c9, type: 3}
   m_PrefabInstance: {fileID: 2121109453}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2121109455 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1028691469272614342, guid: d99b75fec62e4394e8adae44438091c9, type: 3}
-  m_PrefabInstance: {fileID: 2121109453}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5117787657723646021
 PrefabInstance:
   m_ObjectHideFlags: 0
