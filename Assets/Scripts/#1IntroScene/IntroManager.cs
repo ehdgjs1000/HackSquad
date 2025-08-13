@@ -11,6 +11,7 @@ public class IntroManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI progressTimeText;
     [SerializeField] Button loginBtn;
     [SerializeField] GameObject progressGo;
+    [SerializeField] Material sceneTransitionMat;
     float progressTime = 1;
 
     bool isLoadingEnd = false;
@@ -18,6 +19,10 @@ public class IntroManager : MonoBehaviour
     private void Awake()
     {
         SystemSetUp();
+    }
+    private void Start()
+    {
+        sceneTransitionMat.SetFloat("_Progress",1);
     }
     private void SystemSetUp()
     {

@@ -78,12 +78,13 @@ public class MainManager : MonoBehaviour
     public void ChapterOnClick()
     {
         SoundManager.instance.BtnClickPlay();
-        chapterClear.gameObject.SetActive(true);
+        chapterClear.transform.DOScale(Vector3.one,0);
         chapterClear.UpdateRecentReward();
     }
     public void QuestBtnOnClick()
     {
         SoundManager.instance.BtnClickPlay();
+        questManager.transform.DOScale(Vector3.one, 0);
         QuestManager.instance.UpdateQuestUI();
     }
     public void SweepOnClick()

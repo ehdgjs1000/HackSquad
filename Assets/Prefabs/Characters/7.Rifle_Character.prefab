@@ -108,8 +108,8 @@ MonoBehaviour:
   heroGrade: 1
   heroNum: 7
   heroTypeSprite: {fileID: 21300000, guid: 9b0d83d9c93f3764c8c5ebd8f076dc74, type: 3}
-  heroLevel: 2
-  heroCount: 1
+  heroLevel: 0
+  heroCount: 0
   heroJob: "\uACF5\uACA9\uD615"
 --- !u!135 &2359848337617631033
 SphereCollider:
@@ -185,7 +185,7 @@ MonoBehaviour:
   initFireRate: 0.2
   initMaxBullet: 25
   initReloadingTime: 2.5
-  initDamage: 3
+  initDamage: 6
   initHp: 20
   isMoving: 0
   monsterLayer:

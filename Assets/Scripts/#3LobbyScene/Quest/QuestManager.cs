@@ -25,6 +25,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] GameObject dailyAlarmGo;
     [SerializeField] GameObject repeatAlarmGo;
+    [SerializeField] Image questCanClearImage;
 
     //¡ﬂæ” ¿œ¿œƒ˘Ω∫∆Æ
     public RewardPanel rewardPanel;
@@ -51,13 +52,22 @@ public class QuestManager : MonoBehaviour
     public void AlarmCheck()
     {
         bool canRecieve = false;
+        int cantClearCount = 0;
         for (int i = 0;  i < questGOs.Length; i++)
         {
             questGOs[i].UpdateBtn();
             if (questGOs[i].canRecieve) canRecieve=true;
         }
-        if(canRecieve) dailyAlarmGo.SetActive(true);
-        else dailyAlarmGo.SetActive(false);
+        if(canRecieve)
+        {
+            dailyAlarmGo.SetActive(true);
+            questCanClearImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            dailyAlarmGo.SetActive(false);
+            cantClearCount++;
+        }
 
         bool repeatcanRecieve = false;
         for (int i = 0; i < repeatGOs.Length; i++)
@@ -65,8 +75,22 @@ public class QuestManager : MonoBehaviour
             repeatGOs[i].UpdateBtn();
             if (repeatGOs[i].canRecieve) repeatcanRecieve = true;
         }
-        if (repeatcanRecieve) repeatAlarmGo.SetActive(true);
-        else repeatAlarmGo.SetActive(false);
+        if (repeatcanRecieve)
+        {
+            repeatAlarmGo.SetActive(true);
+            questCanClearImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            repeatAlarmGo.SetActive(false);
+            cantClearCount++;
+        }
+        if(cantClearCount == 2) questCanClearImage.gameObject.SetActive(false);
+    }
+    public void QuestExitOnClick()
+    {
+        this.transform.DOScale(Vector3.zero,0);
+        SoundManager.instance.BtnClickPlay();
     }
     private void UpdateTimerUI()
     {
@@ -137,7 +161,7 @@ public class QuestManager : MonoBehaviour
         {
             repeatGOs[i].UpdateUI();
         }
-
+        AlarmCheck();
         MainManager.instance.UpdateMainUI();
     }
 

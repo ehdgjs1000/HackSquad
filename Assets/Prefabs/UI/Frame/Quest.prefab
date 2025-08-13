@@ -1183,6 +1183,7 @@ MonoBehaviour:
   clearAmount: 0
   rewardAmount: 10
   questNum: 0
+  canRecieve: 0
 --- !u!1 &7318046515365055064
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 603
   skillName: "\uC801 \uB290\uB824\uC9D0"
-  skillDescription: "<b><color=red>\uB0C9\uB3D9\uACE0</color></b>\uC758 \uC5BC\uC74C\uC7A5\uD310\uC774
+  skillDescription: "<b><color=#45A5D4>\uB0C9\uB3D9\uACE0</color></b>\uC758 \uC5BC\uC74C\uC7A5\uD310\uC774
     \uC801\uC744 \uB354\uC6B1 \uB290\uB824\uC9C0\uAC8C \uD569\uB2C8\uB2E4"
   skillImage: {fileID: 21300000, guid: 01b617e9262bd8d4e96c251036900326, type: 3}
   skillCharacterImage: {fileID: 21300000, guid: 535800aa843641443a956f78c313c988, type: 3}

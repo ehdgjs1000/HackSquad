@@ -1594,7 +1594,7 @@ MonoBehaviour:
   initFireRate: 0.2
   initMaxBullet: 40
   initReloadingTime: 2.5
-  initDamage: 2.2
+  initDamage: 3
   initHp: 20
   isMoving: 0
   monsterLayer:

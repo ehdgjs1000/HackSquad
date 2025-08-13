@@ -39,7 +39,6 @@ public class SweepManager : MonoBehaviour
             rewards[0].Setting(198 * (Mathf.Pow(1.2f, highestChapter)) * time);
             rewards[1].Setting(33 * (Mathf.Pow(1.2f, highestChapter)) * time);
             rewardTimeText.text = "<color=#FFE100>" + time.ToString() + "</color>" + "시간 소탕 보상";
-            
         }
 
 

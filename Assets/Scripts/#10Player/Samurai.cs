@@ -19,7 +19,7 @@ public class Samurai : PlayerCtrl
         SoundManager.instance.PlaySound(weaponFireClip);
         if (isFinalSkillUpgrade)
         {
-            GameObject bullet = Instantiate(samuraiFinalBulletGO, bulletSpawnPos.position, transform.localRotation);
+            GameObject bullet = Instantiate(samuraiFinalBulletGO, new Vector3(bulletSpawnPos.position.x, bulletSpawnPos.position.y + 0.5f, bulletSpawnPos.position.z), transform.localRotation);
             bullet.GetComponent<Bullet>().SetBulletInfo(damage*1.2f, 10);
             bullet.GetComponent<SamuraiBullet>().isFinalBullet = true;
         }

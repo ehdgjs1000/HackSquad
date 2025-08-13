@@ -39,10 +39,12 @@ public class Alien : PlayerCtrl
         fireRate = tempFireRate * 1.5f;
         aMonsterColls = null;
         aMonsterColls = Physics.OverlapSphere(transform.position, radius, monsterLayer);
-        float finalDamage = damage * 0.2f;
+        float finalDamage = damage * 0.5f;
+        int maxHitCount = 5;
         foreach (Collider co in aMonsterColls)
         {
-            GameObject monsterF = null;
+            maxHitCount--;
+               GameObject monsterF = null;
             if(co.GetComponent<MonsterCtrl>() != null)
             {
                 monsterF = co.gameObject;
@@ -64,6 +66,7 @@ public class Alien : PlayerCtrl
             ColorUtility.TryParseHtmlString("#5B4A00", out color);
             DamagePopUp.Create(new Vector3(monsterF.transform.position.x,
                         monsterF.transform.position.y + 2.0f, monsterF.transform.position.z), finalDamage, color);
+            if (maxHitCount <= 0) yield return null;
         }
         yield return null;
     }

@@ -43,8 +43,8 @@ public class PoolManager : MonoBehaviour
 
         alienBullets = new GameObject[50];
         bazookaBullets = new GameObject[10];
-        cowboyBullets = new GameObject[50];
-        hoodieBullets = new GameObject[20];
+        cowboyBullets = new GameObject[100];
+        hoodieBullets = new GameObject[50];
         icemanBullets = new GameObject[10];
         jesterBullets = new GameObject[30];
         pistolBullets = new GameObject[20];

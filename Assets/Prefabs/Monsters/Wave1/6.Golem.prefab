@@ -410,7 +410,7 @@ MonoBehaviour:
   _renderer: {fileID: 8906563309612271995}
   mtrlOrg: {fileID: 2100000, guid: 55c75a509fdd4540aecd4870e31229cb, type: 2}
   matrlDissolve: {fileID: 2100000, guid: 702dc684652a3c34ca4698ab3e154e1e, type: 2}
-  fadeTime: 3
+  fadeTime: 4
   value: 0
 --- !u!1 &1529562697945487335
 GameObject:

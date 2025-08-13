@@ -21,6 +21,7 @@ public class LobbyManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(InitUI());
+        UpdateUIAll();
         SoundManager.instance.PlayBGM();
     }
 
@@ -78,6 +79,8 @@ public class LobbyManager : MonoBehaviour
         AbilityManager.instance.UpdateUI();
         StoreManager.instance.UpdateUI();
         DrawManager.instance.UpdateMainUI();
+        QuestManager.instance.UpdateQuestUI();
+        ChapterClear.instance.UpdateRecentReward();
     }
     public void BtnClickPlay()
     {

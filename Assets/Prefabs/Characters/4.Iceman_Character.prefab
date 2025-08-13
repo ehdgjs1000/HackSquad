@@ -333,7 +333,7 @@ MonoBehaviour:
   heroGrade: 3
   heroNum: 4
   heroTypeSprite: {fileID: 21300000, guid: 6038af874f20a904e8f4a9ff1e8f62e9, type: 3}
-  heroLevel: 1
+  heroLevel: 0
   heroCount: 0
   heroJob: "\uB9C8\uBC95\uD615"
 --- !u!114 &3891278100387399118
@@ -362,7 +362,7 @@ MonoBehaviour:
   initFireRate: 1.5
   initMaxBullet: 6
   initReloadingTime: 3
-  initDamage: 17
+  initDamage: 20
   initHp: 20
   isMoving: 0
   monsterLayer:
