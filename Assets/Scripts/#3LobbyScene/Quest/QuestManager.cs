@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -87,6 +88,7 @@ public class QuestManager : MonoBehaviour
         }
         if(cantClearCount == 2) questCanClearImage.gameObject.SetActive(false);
     }
+   
     public void QuestExitOnClick()
     {
         this.transform.DOScale(Vector3.zero,0);

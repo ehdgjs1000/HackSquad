@@ -12,9 +12,21 @@ public class AbilityDetail : MonoBehaviour
     [SerializeField] TextMeshProUGUI abilityLevelText;
     [SerializeField] TextMeshProUGUI abilityDescText;
     int abilityGrade;
-
+    float canExitTime = 1.0f;
+    private void Update()
+    {
+        canExitTime-= Time.deltaTime;
+    }
+    public void ExitOnClick()
+    {
+        if (canExitTime <= 0.0f)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
     public void UpdateUI(Ability _ability)
     {
+        canExitTime = 1.0f;
         ability = _ability;
 
         abilityNameText.text = ability.abilityName;

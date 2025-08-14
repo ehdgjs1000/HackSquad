@@ -59,7 +59,8 @@ public class GoldDungeon : MonoBehaviour
             startBtn.image.color = color;
             remainAmountText.text = $"¼ÒÅÁ °¡´É È½¼ö : {DungeonManager.instance.remainGoldDungeon}";
             dungeonStartText.text = "¼ÒÅÁ";
-            canSweepImage.SetActive(true);
+            if (DungeonManager.instance.remainGoldDungeon > 0)canSweepImage.SetActive(true);
+            else canSweepImage.SetActive(false);
             cantPlayBG.gameObject.SetActive(false);
         }
         else

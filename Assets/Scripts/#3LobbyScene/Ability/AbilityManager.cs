@@ -101,7 +101,7 @@ public class AbilityManager : MonoBehaviour
         Ability choosedAbility = null;
         float ranAbilityType = Random.Range(0, 100);
         int ranNum = 0;
-        bool canDraw = false;
+        bool canDraw = true;
         while (canDraw == true)
         {
             if (ranAbilityType >= 0 && ranAbilityType < 65)
@@ -119,7 +119,7 @@ public class AbilityManager : MonoBehaviour
                 ranNum = Random.Range(6, 12);
                 choosedAbility = abilities[ranNum];
             }
-
+            Debug.Log(abilities[ranNum]);
             //예외 처리 
             if (ranNum == 11 && BackEndGameData.Instance.UserAbilityData.abilityLevel[11] >= 3)
             {
@@ -127,7 +127,6 @@ public class AbilityManager : MonoBehaviour
             }
             else canDraw = false;
         }
-        
 
         //AbilityDetail에 띄우기
         SoundManager.instance.PlaySound(drawAbilityClip);

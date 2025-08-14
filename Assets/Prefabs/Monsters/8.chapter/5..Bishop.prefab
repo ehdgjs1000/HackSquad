@@ -323,7 +323,7 @@ MonoBehaviour:
   damage: 5
   speed: 1.3
   hp: 130
-  exp: 6
+  exp: 5
   gold: 2
   playerLayer:
     serializedVersion: 2
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 1094461860028784769}
   mtrlOrg: {fileID: 2100000, guid: 8b468189b8154acaa64ff172c8425c5f, type: 2}
-  matrlDissolve: {fileID: 2100000, guid: aacb4142fb411dc40912e0a14d0b89c4, type: 2}
+  matrlDissolve: {fileID: 2100000, guid: 702dc684652a3c34ca4698ab3e154e1e, type: 2}
   fadeTime: 2
   value: 0
 --- !u!1 &3625018258903866162

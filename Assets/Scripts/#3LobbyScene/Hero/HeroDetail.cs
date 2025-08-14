@@ -77,10 +77,15 @@ public class HeroDetail : MonoBehaviour
         //UI Update
         SkillUiUpdate();
         heroLevelText.text = heroLevel.ToString() + "·¹º§";
-        needGoldText.text = needGold[heroLevel].ToString();
+
+        if(needGold[heroLevel] >= 10000) needGoldText.text = $"{needGold[heroLevel] / 1000}K";
+        else needGoldText.text = needGold[heroLevel].ToString();
+        if (BackEndGameData.Instance.UserGameData.gold >= 10000) nowGoldText.text = $"{BackEndGameData.Instance.UserGameData.gold / 1000}K";
+        else nowGoldText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
+
         needHeroAmountText.text = needHeroConut[heroLevel].ToString();
         nowHeroAmountText.text = BackEndGameData.Instance.UserHeroData.heroCount[heroNum].ToString();
-        nowGoldText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
+        
         float heroDamge = hero.initDamage * Mathf.Pow(1.5f, 
             BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]);
         if (canUpgrade)

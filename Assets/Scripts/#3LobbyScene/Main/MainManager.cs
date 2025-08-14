@@ -20,6 +20,8 @@ public class MainManager : MonoBehaviour
 
     [SerializeField] GameObject midGameClearSet;
     [SerializeField] GameObject energyBuyPanel;
+    [SerializeField] GameObject dungeonBtn;
+    [SerializeField] GameObject inventoryPanel;
     //GameData
     int gem;
     int gold;
@@ -31,7 +33,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] Image chapterImage;
     [SerializeField] Sprite[] chapterSprites;
     string[] gameLevelName = new string[] {"null스테이지" ,"따뜻한 안방","냄새나는 주방", "축축한 화장실",
-    "나른한 컴퓨터실", "책상 위에서", "빛을 잃은 컴퓨터","4막"};
+    "나른한 컴퓨터실", "책상 위에서", "빛을 잃은 컴퓨터","4막","스타디움","겨울동화","일방통행","무정차역"};
     int gameLevel = 1;  
     int highestWave = 0;
 
@@ -55,17 +57,7 @@ public class MainManager : MonoBehaviour
     private void Update()
     {
         if (startBtnclickTerm > 0.0f) startBtnclickTerm -= Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Backend.Utils.GetServerTime(callback =>
-            {
-                string serverTime = callback.GetFlattenJSON()["utcTime"].ToString();
-                DateTime parsedDate = DateTime.Parse(serverTime);
-                Debug.Log(serverTime + " : " + parsedDate);
-                Debug.Log(DateTime.Now);
-                Debug.Log(DateTime.UtcNow);
-            });
-        }
+
     }
     public void ResetPlayerPrefab()
     {
@@ -115,6 +107,8 @@ public class MainManager : MonoBehaviour
 
         if (gameLevel > 1) midGameClearSet.SetActive(true);
         else midGameClearSet.SetActive(false);
+        if (gameLevel > 2) dungeonBtn.SetActive(true);
+        else dungeonBtn.SetActive(false);
 
     }
     public void GameStartOnClick()

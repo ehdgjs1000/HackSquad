@@ -395,8 +395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 4735800100433067177}
-  mtrlOrg: {fileID: 2100000, guid: 26d05c1a860151342a34c6dbc3dd6416, type: 2}
-  matrlDissolve: {fileID: 2100000, guid: aacb4142fb411dc40912e0a14d0b89c4, type: 2}
+  mtrlOrg: {fileID: 2100000, guid: 7f5812216780cc047946f92b5a5b33e8, type: 2}
+  matrlDissolve: {fileID: 2100000, guid: 702dc684652a3c34ca4698ab3e154e1e, type: 2}
   fadeTime: 0.5
   value: 0
 --- !u!1 &4735800100427854255

@@ -40,6 +40,10 @@ public class BackEndGameData
     private UserCashData userCashData = new UserCashData();
     public UserCashData UserCashData => userCashData;
     private string gameCashDataRawInData = string.Empty;
+
+    private UserInvenData userInvenData = new UserInvenData();
+    public UserInvenData UserInvenData => userInvenData;
+    private string gameInvenDataRawInData = string.Empty;
     
     /// <summary>
     /// 뒤끝 콘솔 테이블에 새로운 유저 정보 추가
@@ -51,6 +55,7 @@ public class BackEndGameData
         GameQuestDataInsert();
         GameAbilityDataInsert();
         GameCashDataInsert();
+        GameInvenDataInsert();
     }
     public void GameUserDataInsert()
     {
@@ -262,6 +267,28 @@ public class BackEndGameData
             }
         });
     }
+    public void GameInvenDataInsert()
+    {
+        userInvenData.Reset();
+
+        Param param = new Param()
+        {
+            {"juiceItemCount", userInvenData.juiceItemCount},
+
+        };
+
+        Backend.GameData.Insert("INVENTORY_DATA", param, callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                gameInvenDataRawInData = callback.GetInDate();
+            }
+            else
+            {
+                Debug.LogError("어빌리티 정보 삽입에 실패했습니다.");
+            }
+        });
+    }
 
     /// <summary>
     /// 뒤끝 콜솔 테이블에서 유저 정보를 불러올떄 호출
@@ -273,6 +300,7 @@ public class BackEndGameData
         GameQuestDataLoad();
         GameAbilityDataLoad();
         GameCashDataLoad();
+        GameInvenDataLoad();
     }
     public void GameUserDataLoad()
     {
@@ -569,6 +597,40 @@ public class BackEndGameData
             }
         });
     }
+    public void GameInvenDataLoad()
+    {
+        Backend.GameData.GetMyData("INVENTORY_DATA", new Where(), callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                try
+                {
+                    LitJson.JsonData gameInvenDataJson = callback.FlattenRows();
+
+                    if (gameInvenDataJson.Count <= 0)
+                    {
+                        Debug.LogWarning("데이터가 존재하지 않습니다.");
+                    }
+                    else
+                    {
+                        //불러온 게임 정보의 고유 값
+                        gameInvenDataRawInData = gameInvenDataJson[0]["inDate"].ToString();
+
+                        userInvenData.juiceItemCount = int.Parse(gameInvenDataJson[0]["juiceItemCount"].ToString());
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Application.Quit();
+                    Debug.LogError(e);
+                }
+            }
+            else // 실패했을 때
+            {
+                Debug.LogError($"인벤토리 정보 데이터 불러오기에 실패했습니다. : {callback}");
+            }
+        });
+    }
 
     public void GameDataUpdate(UnityAction action = null)
     {
@@ -577,6 +639,7 @@ public class BackEndGameData
         GameQuestDataUpdate();
         GameAbilityDataUpdate();
         GameCashDataUpdate();
+        GameInvenDataUpdate();
 
         if (LobbyManager.instance != null) CheckLevelUp();
     }
@@ -840,6 +903,39 @@ public class BackEndGameData
         else
         {
             Backend.GameData.UpdateV2("CASH_DATA", gameCashDataRawInData, Backend.UserInDate, param,
+                callback =>
+                {
+                    if (callback.IsSuccess())
+                    {
+                        //action?.Invoke();
+                    }
+                    else
+                    {
+                        Debug.LogError("게임 정보 데이터 수정에 실패했습니다 : " + callback);
+                    }
+                });
+        }
+    }
+    public void GameInvenDataUpdate(UnityAction action = null)
+    {
+        if (userInvenData == null)
+        {
+            Debug.LogError("서버에서 다운받거나 새로 삽입한 데이터가 존재하지 않습니다.");
+            return;
+        }
+
+        Param param = new Param()
+        {
+            {"juiceItemCount", userInvenData.juiceItemCount },
+        };
+
+        if (string.IsNullOrEmpty(gameInvenDataRawInData))
+        {
+            Debug.LogError("유저의 inDate 정보가 없어 Update에 실패했습니다.");
+        }
+        else
+        {
+            Backend.GameData.UpdateV2("INVENTORY_DATA", gameInvenDataRawInData, Backend.UserInDate, param,
                 callback =>
                 {
                     if (callback.IsSuccess())

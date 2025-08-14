@@ -1950,7 +1950,7 @@ MonoBehaviour:
   attackDelay: 0.3
   damage: 10
   speed: 1
-  hp: 1600
+  hp: 9500
   exp: 100
   gold: 100
   playerLayer:

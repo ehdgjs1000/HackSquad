@@ -2057,7 +2057,7 @@ Animator:
   m_GameObject: {fileID: 8397811692824748261}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 51b62abcc35145468d38a72a80bd584f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4ece1b8c8f5ef854aa86d112f91e3000, type: 2}
+  m_Controller: {fileID: 9100000, guid: a13418f55ac4a814797b06fe35eaf45f, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2106,7 +2106,7 @@ MonoBehaviour:
   damage: 10
   speed: 1.8
   hp: 70
-  exp: 6
+  exp: 5
   gold: 2
   playerLayer:
     serializedVersion: 2

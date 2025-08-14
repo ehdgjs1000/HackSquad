@@ -17,6 +17,7 @@ public class Ability : MonoBehaviour
 
     private void Start()
     {
+        abilityId = transform.GetSiblingIndex();
         UpdateUI();
     }
     public void UpdateUI()

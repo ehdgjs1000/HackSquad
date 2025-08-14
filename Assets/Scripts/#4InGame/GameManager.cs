@@ -6,6 +6,11 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+#if UNITY_EDITOR
+    float highestSpeed = 5.0f;
+#else
+    float highestSpeed = 2.0f;
+#endif
     public static GameManager instance;
     MonsterSpawner monsterSpawner;
 
@@ -89,12 +94,12 @@ public class GameManager : MonoBehaviour
         if (gameSpeed == 1.0f) gameSpeed = 1.5f;
         else if (gameSpeed == 1.5f && BackEndGameData.Instance.UserCashData.isBuyGameSpeedPackage) 
         {
-            gameSpeed = 5.0f;
+            gameSpeed = highestSpeed;
         }else if(gameSpeed == 1.5f && !BackEndGameData.Instance.UserCashData.isBuyGameSpeedPackage)
         {
             gameSpeed = 1.0f;
         }
-        else if (gameSpeed == 5.0f) gameSpeed = 1.0f;
+        else if (gameSpeed == highestSpeed) gameSpeed = 1.0f;
         GameSpeed(gameSpeed);
     }
     public void IsBossDie()

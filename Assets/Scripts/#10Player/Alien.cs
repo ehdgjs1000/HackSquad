@@ -36,7 +36,7 @@ public class Alien : PlayerCtrl
     }
     IEnumerator UseFinalSkill()
     {
-        fireRate = tempFireRate * 1.5f;
+        fireRate = tempFireRate * 2f;
         aMonsterColls = null;
         aMonsterColls = Physics.OverlapSphere(transform.position, radius, monsterLayer);
         float finalDamage = damage * 0.5f;
@@ -66,7 +66,7 @@ public class Alien : PlayerCtrl
             ColorUtility.TryParseHtmlString("#5B4A00", out color);
             DamagePopUp.Create(new Vector3(monsterF.transform.position.x,
                         monsterF.transform.position.y + 2.0f, monsterF.transform.position.z), finalDamage, color);
-            if (maxHitCount <= 0) yield return null;
+            if (maxHitCount <= 0) break;
         }
         yield return null;
     }
