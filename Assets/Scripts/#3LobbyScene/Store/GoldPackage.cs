@@ -22,7 +22,7 @@ public class GoldPackage : MonoBehaviour
     }
     private void UpdateUI()
     {
-        if(isUserWon) topGoldAmountText.text = "¥Ÿ¿Ãæ∆ x" + goldAmount.ToString();
+        if(isUserWon) topGoldAmountText.text = "«Ÿƒ⁄¿Œ x" + goldAmount.ToString();
         else topGoldAmountText.text = "∞ÒµÂ x" + goldAmount.ToString();
 
         goldAmountText.text = goldAmount.ToString();

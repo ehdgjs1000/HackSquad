@@ -1237,6 +1237,7 @@ GameObject:
   - component: {fileID: 882887404566683747}
   - component: {fileID: 5211936133385609030}
   - component: {fileID: 1664733270258001582}
+  - component: {fileID: -4795370419433548344}
   m_Layer: 6
   m_Name: 14.Terrorist
   m_TagString: Player
@@ -1387,6 +1388,18 @@ MonoBehaviour:
   weaponFireClip: {fileID: 8300000, guid: 14d3e567a7da3ff4fae848160e7d1e9c, type: 3}
   isFinalSkill: 0
   shootCount: 1
+--- !u!114 &-4795370419433548344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6591424895292977550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7367265757328738044
 GameObject:
   m_ObjectHideFlags: 0

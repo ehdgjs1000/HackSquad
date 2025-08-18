@@ -946,6 +946,7 @@ GameObject:
   - component: {fileID: 4399933469497272321}
   - component: {fileID: 4252793518877113192}
   - component: {fileID: 1250319279907255037}
+  - component: {fileID: 5739846719284531602}
   m_Layer: 6
   m_Name: 3.Hoodie_Character
   m_TagString: Player
@@ -1009,8 +1010,8 @@ MonoBehaviour:
   heroGrade: 0
   heroNum: 3
   heroTypeSprite: {fileID: 21300000, guid: 9b0d83d9c93f3764c8c5ebd8f076dc74, type: 3}
-  heroLevel: 1
-  heroCount: 0
+  heroLevel: 2
+  heroCount: 9
   heroJob: "\uACF5\uACA9\uD615"
 --- !u!114 &4399933469497272321
 MonoBehaviour:
@@ -1098,6 +1099,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
+--- !u!114 &5739846719284531602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719529357021677878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5848817177697854599
 GameObject:
   m_ObjectHideFlags: 0

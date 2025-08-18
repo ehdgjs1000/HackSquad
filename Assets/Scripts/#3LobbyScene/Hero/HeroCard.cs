@@ -111,6 +111,7 @@ public class HeroCard : MonoBehaviour
         heroDetail.gameObject.SetActive(true);
         heroDetail.SetHero(heroPrefab, canUpgrade);
         heroDetail.HeroDetailUpdate();
+        heroDetail.InitHeroDetail();
     }
 
 }

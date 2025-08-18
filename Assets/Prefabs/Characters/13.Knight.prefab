@@ -1454,6 +1454,7 @@ GameObject:
   - component: {fileID: 6491079568504179789}
   - component: {fileID: 1711524894594050350}
   - component: {fileID: 3134099336258330939}
+  - component: {fileID: 8463462041214240973}
   m_Layer: 0
   m_Name: 13.Knight
   m_TagString: Untagged
@@ -1517,7 +1518,7 @@ MonoBehaviour:
   heroGrade: 1
   heroNum: 13
   heroTypeSprite: {fileID: 21300000, guid: cbce9149234d58c4ba81fb042ff4ef79, type: 3}
-  heroLevel: 0
+  heroLevel: 3
   heroCount: 0
   heroJob: "\uCE58\uC720\uD615"
 --- !u!54 &6491079568504179789
@@ -1607,6 +1608,18 @@ MonoBehaviour:
   healVFX: {fileID: 8037160467862551414, guid: 12a56ee4630040c4eb17ae9707ed4cef, type: 3}
   penetrateCount: 0
   isFinalSkill: 0
+--- !u!114 &8463462041214240973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8603597928603082201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8657194758692041295
 GameObject:
   m_ObjectHideFlags: 0

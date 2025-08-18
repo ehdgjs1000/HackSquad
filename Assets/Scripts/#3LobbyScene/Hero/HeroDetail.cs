@@ -8,6 +8,7 @@ public class HeroDetail : MonoBehaviour
     public GameObject heroGo;
     HeroInfo heroInfo;
     int heroNum;
+    [Header("Hero Info UI")]
     [SerializeField] TextMeshProUGUI heroNameText;
     [SerializeField] TextMeshProUGUI heroGradeText;
     [SerializeField] TextMeshProUGUI heroJobText;
@@ -25,14 +26,20 @@ public class HeroDetail : MonoBehaviour
     [SerializeField] TextMeshProUGUI skillName;
     [SerializeField] TextMeshProUGUI skillDesc;
     [SerializeField] Image skillImage;
+
+    [SerializeField] GameObject levelUpGO;
+    [SerializeField] GameObject evolvingGO;
+    [SerializeField] Button levelUpBtn, evolvingBtn;
+
+
     bool canUpgrade;
     int heroLevel;
-    int[] needGold = new int[] {1000,2000,4000,8000,16000,32000,64000,128000,256000};
-    int[] needHeroConut = new int[] { 1,2,4,8,16,32,64,128,256};
+    int[] needGold = new int[] { 1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000,512000,1024000 };
+    int[] needHeroConut = new int[] { 1, 2, 4, 8, 16, 32, 64, 128, 256,512,1024 };
 
     //Audio
     [SerializeField] AudioClip upgradeClip;
-    
+
     /// <summary>
     /// 히어로 정보를 UI에 동기화
     /// </summary>
@@ -78,15 +85,15 @@ public class HeroDetail : MonoBehaviour
         SkillUiUpdate();
         heroLevelText.text = heroLevel.ToString() + "레벨";
 
-        if(needGold[heroLevel] >= 10000) needGoldText.text = $"{needGold[heroLevel] / 1000}K";
+        if (needGold[heroLevel] >= 10000) needGoldText.text = $"{needGold[heroLevel] / 1000}K";
         else needGoldText.text = needGold[heroLevel].ToString();
         if (BackEndGameData.Instance.UserGameData.gold >= 10000) nowGoldText.text = $"{BackEndGameData.Instance.UserGameData.gold / 1000}K";
         else nowGoldText.text = BackEndGameData.Instance.UserGameData.gold.ToString();
 
         needHeroAmountText.text = needHeroConut[heroLevel].ToString();
         nowHeroAmountText.text = BackEndGameData.Instance.UserHeroData.heroCount[heroNum].ToString();
-        
-        float heroDamge = hero.initDamage * Mathf.Pow(1.5f, 
+
+        float heroDamge = hero.initDamage * Mathf.Pow(1.5f,
             BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]);
         if (canUpgrade)
         {
@@ -123,6 +130,14 @@ public class HeroDetail : MonoBehaviour
     {
         canUpgrade = _canUpgrade;
         heroGo = _hero;
+    }
+    public void InitHeroDetail()
+    {
+        levelUpGO.SetActive(true);
+        evolvingGO.SetActive(false);
+
+        levelUpBtn.image.color = levelUpBtn.colors.pressedColor;
+        evolvingBtn.image.color = evolvingBtn.colors.normalColor;
     }
     private void SkillUiUpdate()
     {

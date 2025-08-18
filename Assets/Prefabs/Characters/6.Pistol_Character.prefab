@@ -951,6 +951,7 @@ GameObject:
   - component: {fileID: 5077355716773800604}
   - component: {fileID: 921015031830571002}
   - component: {fileID: 882996371590751563}
+  - component: {fileID: -7360968608378153905}
   m_Layer: 6
   m_Name: 6.Pistol_Character
   m_TagString: Player
@@ -1015,7 +1016,7 @@ MonoBehaviour:
   heroNum: 6
   heroTypeSprite: {fileID: 21300000, guid: 9b0d83d9c93f3764c8c5ebd8f076dc74, type: 3}
   heroLevel: 1
-  heroCount: 5
+  heroCount: 14
   heroJob: "\uACF5\uACA9\uD615"
 --- !u!114 &5077355716773800604
 MonoBehaviour:
@@ -1101,6 +1102,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &-7360968608378153905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569675016110974154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5588869547950762279
 GameObject:
   m_ObjectHideFlags: 0

@@ -1332,6 +1332,7 @@ GameObject:
   - component: {fileID: 2786384566587779167}
   - component: {fileID: 7965974700410864029}
   - component: {fileID: 3186678064846968216}
+  - component: {fileID: -5967802676450143208}
   m_Layer: 6
   m_Name: 8.Samurai98_Character
   m_TagString: Player
@@ -1395,8 +1396,8 @@ MonoBehaviour:
   heroGrade: 2
   heroNum: 8
   heroTypeSprite: {fileID: 21300000, guid: 6038af874f20a904e8f4a9ff1e8f62e9, type: 3}
-  heroLevel: 0
-  heroCount: 0
+  heroLevel: 1
+  heroCount: 1
   heroJob: "\uB9C8\uBC95\uD615"
 --- !u!114 &2786384566587779167
 MonoBehaviour:
@@ -1482,6 +1483,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
+--- !u!114 &-5967802676450143208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8737618447321866415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8766054431001187230
 GameObject:
   m_ObjectHideFlags: 0

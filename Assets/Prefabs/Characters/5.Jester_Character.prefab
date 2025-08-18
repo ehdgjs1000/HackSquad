@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 6631523188191314197}
   - component: {fileID: 5922995484593701344}
   - component: {fileID: 3156688756998329329}
+  - component: {fileID: 1031497261254264396}
   m_Layer: 6
   m_Name: 5.Jester_Character
   m_TagString: Player
@@ -225,6 +226,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
+--- !u!114 &1031497261254264396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417451982240984076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &437629238717501120
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,6 +62,7 @@ public class TimeManager : MonoBehaviour
             if (now >= nextDailyResetTime)
             {
                 StartCoroutine(DailyReset());
+                //서버 리셋 성공했을떄 call 하기
                 ScheduleNextDailyReset();
             }
 

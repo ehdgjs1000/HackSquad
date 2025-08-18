@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2359848337617631033}
   - component: {fileID: 7782557324181817926}
   - component: {fileID: 5869665392982007803}
+  - component: {fileID: 7463094050004540874}
   m_Layer: 6
   m_Name: 7.Rifle_Character
   m_TagString: Player
@@ -108,8 +109,8 @@ MonoBehaviour:
   heroGrade: 1
   heroNum: 7
   heroTypeSprite: {fileID: 21300000, guid: 9b0d83d9c93f3764c8c5ebd8f076dc74, type: 3}
-  heroLevel: 0
-  heroCount: 0
+  heroLevel: 2
+  heroCount: 2
   heroJob: "\uACF5\uACA9\uD615"
 --- !u!135 &2359848337617631033
 SphereCollider:
@@ -195,6 +196,18 @@ MonoBehaviour:
   weaponFireClip: {fileID: 8300000, guid: 8f4ceceef7c95734db087862715b9c82, type: 3}
   maxRandomDegree: 10
   penetrateCount: 0
+--- !u!114 &7463094050004540874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517485432205214629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1817925976543717375
 GameObject:
   m_ObjectHideFlags: 0
