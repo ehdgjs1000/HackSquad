@@ -1270,11 +1270,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7671765680855321515}
   - component: {fileID: 9196999434245013111}
+  - component: {fileID: 8524543133586700784}
   - component: {fileID: -6736550017120443177}
   - component: {fileID: 2572919331884939278}
   - component: {fileID: 8178868555563967007}
   - component: {fileID: 2518935678540099135}
-  - component: {fileID: 8524543133586700784}
   m_Layer: 6
   m_Name: 2.Cowboy_Character
   m_TagString: Player
@@ -1322,6 +1322,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8524543133586700784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6131835711874345953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uAD00\uD1B5 \uC624\uD1A0 \uC0F7\uAC74\uC774 2\uD68C \uAD00\uD1B5\uD569\uB2C8\uB2E4"
+  - "\uAD00\uD1B5 \uC624\uD1A0 \uC0F7\uAC74\uC774 3\uD68C \uAD00\uD1B5\uD569\uB2C8\uB2E4"
 --- !u!114 &-6736550017120443177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,8 +1358,8 @@ MonoBehaviour:
   heroGrade: 1
   heroNum: 2
   heroTypeSprite: {fileID: 21300000, guid: 9b0d83d9c93f3764c8c5ebd8f076dc74, type: 3}
-  heroLevel: 2
-  heroCount: 3
+  heroLevel: 0
+  heroCount: 0
   heroJob: "\uACF5\uACA9\uD615"
 --- !u!114 &2572919331884939278
 MonoBehaviour:
@@ -1426,18 +1446,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
---- !u!114 &8524543133586700784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6131835711874345953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6240994477016516030
 GameObject:
   m_ObjectHideFlags: 0

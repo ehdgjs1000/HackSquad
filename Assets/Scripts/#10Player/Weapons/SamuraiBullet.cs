@@ -11,6 +11,7 @@ public class SamuraiBullet : Bullet
     private void Start()
     {
         InitBullet();
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[8] > 1) exploseRadius *= 1.5f;
     }
     private void InitBullet()
     {

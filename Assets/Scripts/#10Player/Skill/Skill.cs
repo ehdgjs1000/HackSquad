@@ -133,7 +133,7 @@ public class Skill : MonoBehaviour
         {
             GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.5f);
             GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.7f);
-            GameManager.instance.players[skillCharacterNum].GetComponent<Cowboy>().penetrateCount = 10;
+            GameManager.instance.players[skillCharacterNum].GetComponent<Cowboy>().penetrateCount++;
         }else if (skillId == 209)
         {
             GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 90000);
@@ -172,7 +172,7 @@ public class Skill : MonoBehaviour
         }
         else if (skillId == 1009)
         {
-            GameManager.instance.players[skillCharacterNum].GetComponent<Veteran>().penetrateCount = 10;
+            GameManager.instance.players[skillCharacterNum].GetComponent<Veteran>().penetrateCount = 1;
         }else if (skillId == 1109)
         {
             GameManager.instance.players[skillCharacterNum].GetComponent<Jester>().UpgradeFinalSkill();

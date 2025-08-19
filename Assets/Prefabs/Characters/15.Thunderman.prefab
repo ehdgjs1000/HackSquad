@@ -689,11 +689,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2784936785966594658}
   - component: {fileID: 3400095641523236440}
+  - component: {fileID: 1556398500937423956}
   - component: {fileID: 2684885789123016774}
   - component: {fileID: 3737114273290235733}
   - component: {fileID: 4057758158369349303}
   - component: {fileID: 9148393595716809169}
-  - component: {fileID: 1556398500937423956}
   m_Layer: 6
   m_Name: 15.Thunderman
   m_TagString: Player
@@ -741,6 +741,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1556398500937423956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237757843185035269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uACF5\uACA9\uC758 \uD06C\uAE30\uAC00 \uB300\uD3ED\uC0C1\uC2B9\uD569\uB2C8\uB2E4"
+  - "\uD3ED\uD48D\uC5F0\uAD6C\uC6D0A\uAC00 1\uD68C \uB354 \uACF5\uACA9\uD569\uB2C8\uB2E4"
 --- !u!114 &2684885789123016774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,18 +864,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
---- !u!114 &1556398500937423956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4237757843185035269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4377079988534758923
 GameObject:
   m_ObjectHideFlags: 0

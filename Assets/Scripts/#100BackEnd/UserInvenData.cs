@@ -1,6 +1,5 @@
-using UnityEngine;
 [System.Serializable]
-public class UserInvenData : MonoBehaviour
+public class UserInvenData
 {
     public int juiceItemCount;
 

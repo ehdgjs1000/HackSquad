@@ -1002,11 +1002,11 @@ GameObject:
   m_Component:
   - component: {fileID: 251058324781998770}
   - component: {fileID: 7494853896536094506}
+  - component: {fileID: -4702295193572374096}
   - component: {fileID: 1034384367697653969}
   - component: {fileID: 7865869705215328634}
   - component: {fileID: 2699482456285542743}
   - component: {fileID: 1923487558173644120}
-  - component: {fileID: -4702295193572374096}
   m_Layer: 6
   m_Name: 11.Robot_Character
   m_TagString: Player
@@ -1054,6 +1054,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4702295193572374096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6087978888023428716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uC740\uD558\uC758 \uD06C\uAE30\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uC740\uD558\uB97C 1\uAC1C \uCD94\uAC00 \uC18C\uD658\uD569\uB2C8"
 --- !u!114 &1034384367697653969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1157,18 +1177,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &-4702295193572374096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6087978888023428716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6123806711440373352
 GameObject:
   m_ObjectHideFlags: 0

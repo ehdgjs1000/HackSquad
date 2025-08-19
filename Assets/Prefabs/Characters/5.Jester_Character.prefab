@@ -72,11 +72,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8938337900680506433}
   - component: {fileID: 4709771721828765062}
+  - component: {fileID: 1031497261254264396}
   - component: {fileID: -6479614763242348538}
   - component: {fileID: 6631523188191314197}
   - component: {fileID: 5922995484593701344}
   - component: {fileID: 3156688756998329329}
-  - component: {fileID: 1031497261254264396}
   m_Layer: 6
   m_Name: 5.Jester_Character
   m_TagString: Player
@@ -124,6 +124,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1031497261254264396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417451982240984076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uB3C5\uC7A5\uD310\uC758 \uD06C\uAE30\uAC00 20% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uB354 \uC790\uC8FC \uB3C5 \uB370\uBBF8\uC9C0\uB97C \uC785\uD799\uB2C8\uB2E4"
 --- !u!114 &-6479614763242348538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,18 +246,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
---- !u!114 &1031497261254264396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417451982240984076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &437629238717501120
 GameObject:
   m_ObjectHideFlags: 0

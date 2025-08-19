@@ -9,6 +9,10 @@ public class Thunderman : PlayerCtrl
     public bool isFinalSkill = false;
     float thunderSpeed = 5.0f;
     public int thunderCount = 1;
+    private void Start()
+    {
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[15] > 2) thunderCount++;
+    }
     protected override void Attack(GameObject enemy)
     {
         if (!isFinalSkill)

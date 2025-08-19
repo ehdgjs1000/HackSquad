@@ -9,6 +9,10 @@ public class RobotBullet : MonoBehaviour
     [SerializeField] LayerMask monsterLayer;
     Collider[] monsterColls;
 
+    private void Start()
+    {
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[11] > 1) radius *= 1.3f;
+    }
     public void StartAttack()
     {
         StartCoroutine(Attack());

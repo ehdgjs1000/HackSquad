@@ -48,9 +48,10 @@ public abstract class PlayerCtrl : MonoBehaviour
         if (instance == null) instance = this;
         _animator = GetComponent<Animator>();
         heroInfo = GetComponent<HeroInfo>();
-
         InitCharacterStats();
     }
+    //Start 구현하지 말기!!
+
     protected virtual void Update()
     {
         fireRate -= Time.deltaTime;
@@ -75,7 +76,9 @@ public abstract class PlayerCtrl : MonoBehaviour
         damage = initDamage * Mathf.Pow(1.3f, BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]) *
             (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[0]*0.05f) *
             (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[3] * 0.10f) *
-            (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[6] * 0.20f); 
+            (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[6] * 0.20f);
+        //Evolving 1진화 데미지 적용
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 0) damage *= 1.3f;
         hp = initHp + 5* BackEndGameData.Instance.UserHeroData.heroLevel[heroNum];
          
         nowBullet = maxBullet;

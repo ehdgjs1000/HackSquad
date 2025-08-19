@@ -6,6 +6,10 @@ public class Robot : PlayerCtrl
     GameObject monster;
     public int attackCount;
     public bool isFinalSkill = false;
+    private void Start()
+    {
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[11] > 2) attackCount++;
+    }
     protected override void Attack(GameObject enemy)
     {
         if (enemy != null)

@@ -41,6 +41,9 @@ public class Alien : PlayerCtrl
         aMonsterColls = Physics.OverlapSphere(transform.position, radius, monsterLayer);
         float finalDamage = damage * 0.5f;
         int maxHitCount = 5;
+        //Evolving Data Àû¿ë
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 1) finalDamage *= 1.5f;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 2) maxHitCount = 7;
         foreach (Collider co in aMonsterColls)
         {
             maxHitCount--;

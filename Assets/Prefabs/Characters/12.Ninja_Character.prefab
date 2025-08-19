@@ -42,11 +42,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8210054821813082684}
   - component: {fileID: 5069877914803586907}
+  - component: {fileID: 8221069196492657736}
   - component: {fileID: 2908339992961300445}
   - component: {fileID: 2224469341235000843}
   - component: {fileID: 3736930013069414552}
   - component: {fileID: 7922148105337764558}
-  - component: {fileID: 8221069196492657736}
   m_Layer: 6
   m_Name: 12.Ninja_Character
   m_TagString: Player
@@ -94,6 +94,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8221069196492657736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372498094334279770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uC790\uAC1D\uC804\uB3C4\uAC00 \uBC18\uB300\uBC29\uD5A5\uC73C\uB85C 30%\uC758
+    \uACF5\uACA9\uC744 \uB0A0\uB9BD\uB2C8\uB2E4"
+  - "\uC790\uAC1D\uC804\uB3C4\uAC00 1\uD68C \uCD94\uAC00 \uACF5\uACA9\uD569\uB2C8"
 --- !u!114 &2908339992961300445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,18 +218,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &8221069196492657736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372498094334279770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &472693388172126998
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,8 @@ using DG.Tweening;
 public class HeroCard : MonoBehaviour
 {
     [SerializeField] GameObject heroPrefab;
-    
+    HeroInfo hero;
+
     //UI
     [SerializeField] Image heroImage;
     [SerializeField] TextMeshProUGUI heroLevelText;
@@ -21,18 +22,20 @@ public class HeroCard : MonoBehaviour
     [SerializeField] Image heroTypeImage;
     [SerializeField] TextMeshProUGUI heroNameText;
     [SerializeField] Sprite[] heroTypeSprite;
+    [SerializeField] GameObject[] starSets;
     string heroType;
 
 
     private void Start()
     {
+       
         UpdateHeroCard();
     }
     public void UpdateHeroCard()
     {
         CheckUpgrade();
 
-        HeroInfo hero = heroPrefab.GetComponent<HeroInfo>();
+        hero = heroPrefab.GetComponent<HeroInfo>();
         hero.UpdateHeroInfo();
         heroImage.sprite = hero.ReturnHeroProfile();
         heroCount = hero.ReturnHeroCount();
@@ -98,6 +101,33 @@ public class HeroCard : MonoBehaviour
             heroTypeBg.sprite = heroTypeSprite[3];
         }
         heroTypeImage.sprite = hero.ReturnHeroTypeImage();
+
+        //히어로 진화 star UI Update
+        int heroEvolvingLevel = BackEndGameData.Instance.UserEvolvingData.evolvingLevel[hero.ReturnHeroNum()];
+        if(heroEvolvingLevel == 0)
+        {
+            starSets[0].SetActive(false);
+            starSets[1].SetActive(false);
+            starSets[2].SetActive(false);
+        }else if (heroEvolvingLevel == 1)
+        {
+            starSets[0].SetActive(true);
+            starSets[1].SetActive(false);
+            starSets[2].SetActive(false);
+        }
+        else if (heroEvolvingLevel == 2)
+        {
+            starSets[0].SetActive(false);
+            starSets[1].SetActive(true);
+            starSets[2].SetActive(true);
+        }
+        else if (heroEvolvingLevel == 3)
+        {
+            starSets[0].SetActive(true);
+            starSets[1].SetActive(true);
+            starSets[2].SetActive(true);
+        }
+
 
     }
     //업그레이드가 가능한지 체크

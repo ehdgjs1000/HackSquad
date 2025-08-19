@@ -26,6 +26,7 @@ public class Iceman : PlayerCtrl
     {
         base.Awake();
         tempFinalSkillTime = finalSkillTime;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 1) attackCount++;
     }
     public void AttackCountUpgrade() => attackCount++;
     IEnumerator UseFinalSkill()
@@ -34,7 +35,9 @@ public class Iceman : PlayerCtrl
         yield return new WaitForSeconds(0.1f);
         Instantiate(finalSkillTs, new Vector3(0,0.1f,0), Quaternion.identity);
         finalSkillTs.GetComponent<IceGround>().iceDamage = damage * 0.5f;
-        finalSkillTs.GetComponent<IceGround>().slowAmount = 1;
+        if(BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 2) finalSkillTs.GetComponent<IceGround>().slowAmount = 0.6f;
+        else finalSkillTs.GetComponent<IceGround>().slowAmount = 0.3f;
+
     }
     public void UpgradeFinalSkill()
     {

@@ -32,6 +32,15 @@ public class Samurai : PlayerCtrl
 
             bullet.GetComponent<Bullet>().SetBulletInfo(damage, 10);
         }
+        //진화 레벨 2적용
+        if(BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 2)
+        {
+            GameObject bullet = PoolManager.instance.MakeObj("samuraiBullet");
+            bullet.transform.position = bulletSpawnPos.position;
+            bullet.transform.rotation = Quaternion.Inverse(transform.localRotation);
+
+            bullet.GetComponent<Bullet>().SetBulletInfo(damage * 0.3f, 10);
+        }
 
         if (nowBullet <= 0) StartCoroutine(Reloading());
 

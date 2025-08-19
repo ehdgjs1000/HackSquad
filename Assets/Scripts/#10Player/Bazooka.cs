@@ -15,7 +15,9 @@ public class Bazooka : PlayerCtrl
     private void Start()
     {
         tempFinalSkillTime = finalSkillTime;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 2) tempFinalSkillTime *= 0.7f;
         exploseRadius = 3;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 1) exploseRadius = 4;
     }
     protected override void Update()
     {

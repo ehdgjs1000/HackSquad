@@ -74,11 +74,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6438403582337594217}
   - component: {fileID: 4852438023412154464}
+  - component: {fileID: -1315526499170220358}
   - component: {fileID: 2290123823799255019}
   - component: {fileID: 4208636807303334144}
   - component: {fileID: 6896667776085871785}
   - component: {fileID: 2756405111545345264}
-  - component: {fileID: -1315526499170220358}
   m_Layer: 6
   m_Name: 1.Bazooka_Character
   m_TagString: Player
@@ -126,6 +126,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1315526499170220358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400532037552124468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uD3ED\uBC1C \uBC94\uC704\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uB179\uC999\uD558\uC0AC\uAC00 \uB354 \uC790\uC8FC \uACF5\uC911\uD3ED\uACA9\uC744
+    \uC694\uCCAD\uD569\uB2C8\uB2E4"
 --- !u!114 &2290123823799255019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,18 +255,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &-1315526499170220358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400532037552124468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1462263109482212955
 GameObject:
   m_ObjectHideFlags: 0

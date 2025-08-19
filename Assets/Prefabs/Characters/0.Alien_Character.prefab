@@ -1295,11 +1295,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6905164467203063}
   - component: {fileID: 5341888443763620168}
+  - component: {fileID: -1016682360370336794}
   - component: {fileID: -8137560510037431519}
   - component: {fileID: 1484280763057746414}
   - component: {fileID: 8418941107210238570}
   - component: {fileID: 4274846799345873304}
-  - component: {fileID: -1016682360370336794}
   m_Layer: 6
   m_Name: 0.Alien_Character
   m_TagString: Player
@@ -1347,6 +1347,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1016682360370336794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6192336581468143728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uACE0\uC694\uD55C \uAC00\uB974\uCE68\uC758 \uACF5\uACA9\uB825\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uACE0\uC694\uD55C \uAC00\uB974\uCE68\uC758 \uD0C0\uACA9 \uD69F\uC218\uAC00
+    2\uAC1C \uC99D\uAC00\uD569\uB2C8\uB2E4"
 --- !u!114 &-8137560510037431519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,7 +1384,7 @@ MonoBehaviour:
   heroGrade: 3
   heroNum: 0
   heroTypeSprite: {fileID: 21300000, guid: b016aeb3e3aee754caf1235a612d545e, type: 3}
-  heroLevel: 1
+  heroLevel: 0
   heroCount: 0
   heroJob: "\uC678\uACC4\uD615"
 --- !u!114 &1484280763057746414
@@ -1448,18 +1469,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &-1016682360370336794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6192336581468143728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6595040481052323429
 GameObject:
   m_ObjectHideFlags: 0

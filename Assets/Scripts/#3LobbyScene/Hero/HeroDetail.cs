@@ -7,6 +7,7 @@ public class HeroDetail : MonoBehaviour
 {
     public GameObject heroGo;
     HeroInfo heroInfo;
+    EvolvingInfo evolvingInfo;
     int heroNum;
     [Header("Hero Info UI")]
     [SerializeField] TextMeshProUGUI heroNameText;
@@ -30,8 +31,8 @@ public class HeroDetail : MonoBehaviour
     [SerializeField] GameObject levelUpGO;
     [SerializeField] GameObject evolvingGO;
     [SerializeField] Button levelUpBtn, evolvingBtn;
-
-
+    
+    int upgradeType;
     bool canUpgrade;
     int heroLevel;
     int[] needGold = new int[] { 1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000,512000,1024000 };
@@ -47,6 +48,7 @@ public class HeroDetail : MonoBehaviour
     {
         PlayerCtrl hero = heroGo.GetComponent<PlayerCtrl>();
         heroInfo = heroGo.GetComponent<HeroInfo>();
+        evolvingInfo = heroGo.GetComponent<EvolvingInfo>();
         heroNum = heroInfo.ReturnHeroNum();
         heroNameText.text = hero.characterName;
         heroJobText.text = heroInfo.heroJob;
@@ -118,6 +120,8 @@ public class HeroDetail : MonoBehaviour
         }
 
         float dps = (1 / hero.initFireRate) * heroDamge;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 0) dps *= 1.3f;
+;
         heroDpsText.text = dps.ToString("F1");
         heroPowerText.text = heroDamge.ToString("F1");
         previewManager.UpdateHeroGO(hero.characterName);
@@ -135,9 +139,9 @@ public class HeroDetail : MonoBehaviour
     {
         levelUpGO.SetActive(true);
         evolvingGO.SetActive(false);
-
-        levelUpBtn.image.color = levelUpBtn.colors.pressedColor;
-        evolvingBtn.image.color = evolvingBtn.colors.normalColor;
+        upgradeType = 0;
+        levelUpBtn.image.color = levelUpBtn.colors.selectedColor;
+        //evolvingBtn.image.color = evolvingBtn.colors.normalColor;
     }
     private void SkillUiUpdate()
     {
@@ -148,25 +152,34 @@ public class HeroDetail : MonoBehaviour
         skillName.text = finalSkill.skillName;
         skillDesc.text = finalSkill.skillDescription;
     }
-    public void HeroLevelUpOnClick()
+    public void HeroUpgradeOnClick()
     {
-        //TODO : 골드 있으면 레벨업
-        if(BackEndGameData.Instance.UserGameData.gold >= needGold[heroLevel] &&
-            BackEndGameData.Instance.UserHeroData.heroCount[heroNum] >= needHeroConut[heroLevel])
+        if (upgradeType == 0)
         {
-            //Upgrade Hero
-            UpgradeHero();
-        }else if (BackEndGameData.Instance.UserGameData.gold <= needGold[heroLevel])
+            //TODO : 골드 있으면 레벨업
+            if (BackEndGameData.Instance.UserGameData.gold >= needGold[heroLevel] &&
+                BackEndGameData.Instance.UserHeroData.heroCount[heroNum] >= needHeroConut[heroLevel])
+            {
+                //Upgrade Hero
+                UpgradeHero();
+            }
+            else if (BackEndGameData.Instance.UserGameData.gold <= needGold[heroLevel])
+            {
+                SoundManager.instance.ErrorClipPlay();
+                PopUpMessageBase.instance.SetMessage("골드가 충분하지 않습니다");
+            }
+            else if (BackEndGameData.Instance.UserHeroData.heroCount[heroNum] >= needHeroConut[heroLevel])
+            {
+                SoundManager.instance.ErrorClipPlay();
+                PopUpMessageBase.instance.SetMessage("영웅 갯수가 충분하지 않습니다");
+            }
+            HeroDetailUpdate();
+        }else if (upgradeType == 1)
         {
-            SoundManager.instance.ErrorClipPlay();
-            PopUpMessageBase.instance.SetMessage("골드가 충분하지 않습니다");
-        }else if (BackEndGameData.Instance.UserHeroData.heroCount[heroNum] >= needHeroConut[heroLevel])
-        {
-            SoundManager.instance.ErrorClipPlay();
-            PopUpMessageBase.instance.SetMessage("영웅 갯수가 충분하지 않습니다");
-        }
+            //진화 아이템 갯수 확인 후 진화 진행
 
-        HeroDetailUpdate();
+        }
+       
     }
     private void UpgradeHero()
     {
@@ -226,6 +239,23 @@ public class HeroDetail : MonoBehaviour
             SoundManager.instance.ErrorClipPlay();
             PopUpMessageBase.instance.SetMessage("핵쟁이가 0레벨 입니다");
         }
+    }
+    public void LevelUpOnClick()
+    {
+        evolvingGO.SetActive(false);
+        levelUpGO.SetActive(true);
+        upgradeType = 0;
+        SoundManager.instance.BtnClickPlay();
+        HeroDetailUpdate();
+    }
+    public void EvolvingOnClick()
+    {
+        evolvingGO.SetActive(true);
+        levelUpGO.SetActive(false);
+        levelUpBtn.image.color = levelUpBtn.colors.normalColor;
+        upgradeType = 1;
+        SoundManager.instance.BtnClickPlay();
+        EvolvingManager.instance.UpdateUI(heroNum, evolvingInfo);
     }
 
 }

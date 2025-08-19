@@ -266,11 +266,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8870210602765959087}
   - component: {fileID: 5252365188892202971}
+  - component: {fileID: 5762061435753011410}
   - component: {fileID: -2235523293251238979}
   - component: {fileID: 3891278100387399118}
   - component: {fileID: 1416556942910317333}
   - component: {fileID: 2591806524729269031}
-  - component: {fileID: 5762061435753011410}
   m_Layer: 6
   m_Name: 4.Iceman_Character
   m_TagString: Player
@@ -318,6 +318,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5762061435753011410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046878463364114994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uB0C9\uB3D9\uACE0\uC758 \uC5BC\uC74C\uC7A5\uD310 \uACF5\uACA9 \uD69F\uC218\uAC00
+    1\uD68C \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uB0C9\uB3D9\uACE0\uAC00 \uC801\uC740 \uB9E4\uC6B0 \uB290\uB824\uC9C0\uAC8C
+    \uB9CC\uB4E6\uB2C8\uB2E4"
 --- !u!114 &-2235523293251238979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,8 +356,8 @@ MonoBehaviour:
   heroGrade: 3
   heroNum: 4
   heroTypeSprite: {fileID: 21300000, guid: 6038af874f20a904e8f4a9ff1e8f62e9, type: 3}
-  heroLevel: 1
-  heroCount: 1
+  heroLevel: 0
+  heroCount: 0
   heroJob: "\uB9C8\uBC95\uD615"
 --- !u!114 &3891278100387399118
 MonoBehaviour:
@@ -421,18 +443,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
---- !u!114 &5762061435753011410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046878463364114994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1104571853736192972
 GameObject:
   m_ObjectHideFlags: 0

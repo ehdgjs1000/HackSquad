@@ -11,6 +11,8 @@ public class Cowboy : PlayerCtrl
     {
         base.Awake();
         penetrateCount = 0;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 1) penetrateCount++;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 2) penetrateCount++;
         shotGunBulletSkillLevel = 0;
     }
     protected override void Attack(GameObject enemy)

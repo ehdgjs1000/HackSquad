@@ -9,6 +9,10 @@ public class ThunderBullet : MonoBehaviour
     [SerializeField] float attackRadius;
     [SerializeField] LayerMask monsterLayer;
     public Collider[] monsterColls;
+    private void Start()
+    {
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[15] > 1) attackRadius *= 1.3f;
+    }
     private void Update()
     {
         thunderattackTerm -= Time.deltaTime;

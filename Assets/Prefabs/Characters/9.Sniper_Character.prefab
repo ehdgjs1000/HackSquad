@@ -1426,11 +1426,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2800583379450180120}
   - component: {fileID: 2775969460164274919}
+  - component: {fileID: 3996565807456122479}
   - component: {fileID: 2009763838488006354}
   - component: {fileID: 7433037871242573569}
   - component: {fileID: 5381026613823512338}
   - component: {fileID: 6881518829996260452}
-  - component: {fileID: 3996565807456122479}
   m_Layer: 6
   m_Name: 9.Sniper_Character
   m_TagString: Player
@@ -1478,6 +1478,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3996565807456122479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6617296349683140436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uACF5\uACA9\uC0AC\uAC70\uB9AC\uAC00 \uBB34\uD55C\uC774 \uB429\uB2C8\uB2E4"
+  - "\uACF5\uACA9\uC18D\uB3C4\uAC00 \uB300\uD3ED \uC0C1\uC2B9\uD569\uB2C8\uB2E4"
 --- !u!114 &2009763838488006354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,7 +1515,7 @@ MonoBehaviour:
   heroNum: 9
   heroTypeSprite: {fileID: 21300000, guid: 9b0d83d9c93f3764c8c5ebd8f076dc74, type: 3}
   heroLevel: 1
-  heroCount: 17
+  heroCount: 0
   heroJob: "\uACF5\uACA9\uD615"
 --- !u!135 &7433037871242573569
 SphereCollider:
@@ -1579,18 +1599,6 @@ MonoBehaviour:
     m_Bits: 128
   monsterColls: []
   weaponFireClip: {fileID: 8300000, guid: f53762c5d3781f14f91efaccdee3247f, type: 3}
---- !u!114 &3996565807456122479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6617296349683140436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6896475685015863472
 GameObject:
   m_ObjectHideFlags: 0

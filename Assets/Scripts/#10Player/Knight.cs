@@ -23,6 +23,8 @@ public class Knight : PlayerCtrl
         tempHealTime = healTime;
         tempFinalHealTime = finalHealTime;
         healAmount *= Mathf.Pow(1.5f, BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]);
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 1) healAmount *= 1.3f;
+        else if(BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 2) healAmount *= 1.5f;
     }
     protected override void Update()
     {

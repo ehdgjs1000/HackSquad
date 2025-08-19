@@ -10,6 +10,11 @@ public class Terrorist : PlayerCtrl
     float stunTime = 0.1f;
     public bool isFinalSkill = false;
     public int shootCount = 1;
+    private void Start()
+    {
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 1) tempFireRate *= 0.7f;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 2) shootCount++;
+    }
     public void UpgradeFinalSkill()
     {
         isFinalSkill = true;

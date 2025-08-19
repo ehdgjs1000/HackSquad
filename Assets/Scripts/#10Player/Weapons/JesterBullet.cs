@@ -15,6 +15,7 @@ public class JesterBullet : MonoBehaviour
     private void Awake()
     {
         tempAttackTerm = attackTerm;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[5] > 2) tempAttackTerm *= 0.65f;
     }
     private void Update()
     {

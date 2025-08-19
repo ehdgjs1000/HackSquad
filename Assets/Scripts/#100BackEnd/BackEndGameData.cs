@@ -1,5 +1,5 @@
-using UnityEngine;
 using BackEnd;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class BackEndGameData
@@ -45,6 +45,10 @@ public class BackEndGameData
     public UserInvenData UserInvenData => userInvenData;
     private string gameInvenDataRawInData = string.Empty;
     
+    private UserEvolvingData userEvolvingData = new UserEvolvingData();
+    public UserEvolvingData UserEvolvingData => userEvolvingData;
+    private string gameEvolvingDataRawInData = string.Empty;
+    
     /// <summary>
     /// 뒤끝 콘솔 테이블에 새로운 유저 정보 추가
     /// </summary>
@@ -56,6 +60,7 @@ public class BackEndGameData
         GameAbilityDataInsert();
         GameCashDataInsert();
         GameInvenDataInsert();
+        GameEvolvingDataInsert();
     }
     public void GameUserDataInsert()
     {
@@ -289,7 +294,42 @@ public class BackEndGameData
             }
         });
     }
+    public void GameEvolvingDataInsert()
+    {
+        userEvolvingData.Reset();
 
+        Param param = new Param()
+        {
+            {"evolvingLevel0", userEvolvingData.evolvingLevel[0]},
+            {"evolvingLevel1", userEvolvingData.evolvingLevel[1]},
+            {"evolvingLevel2", userEvolvingData.evolvingLevel[2]},
+            {"evolvingLevel3", userEvolvingData.evolvingLevel[3]},
+            {"evolvingLevel4", userEvolvingData.evolvingLevel[4]},
+            {"evolvingLevel5", userEvolvingData.evolvingLevel[5]},
+            {"evolvingLevel6", userEvolvingData.evolvingLevel[6]},
+            {"evolvingLevel7", userEvolvingData.evolvingLevel[7]},
+            {"evolvingLevel8", userEvolvingData.evolvingLevel[8]},
+            {"evolvingLevel9", userEvolvingData.evolvingLevel[9]},
+            {"evolvingLevel10", userEvolvingData.evolvingLevel[10]},
+            {"evolvingLevel11", userEvolvingData.evolvingLevel[11]},
+            {"evolvingLevel12", userEvolvingData.evolvingLevel[12]},
+            {"evolvingLevel13", userEvolvingData.evolvingLevel[13]},
+            {"evolvingLevel14", userEvolvingData.evolvingLevel[14]},
+            {"evolvingLevel15", userEvolvingData.evolvingLevel[15]},
+        };
+
+        Backend.GameData.Insert("EVOLVING_DATA", param, callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                gameEvolvingDataRawInData = callback.GetInDate();
+            }
+            else
+            {
+                Debug.LogError("어빌리티 정보 삽입에 실패했습니다.");
+            }
+        });
+    }
     /// <summary>
     /// 뒤끝 콜솔 테이블에서 유저 정보를 불러올떄 호출
     /// </summary>
@@ -301,6 +341,7 @@ public class BackEndGameData
         GameAbilityDataLoad();
         GameCashDataLoad();
         GameInvenDataLoad();
+        GameEvolvingDataLoad();
     }
     public void GameUserDataLoad()
     {
@@ -631,6 +672,56 @@ public class BackEndGameData
             }
         });
     }
+    public void GameEvolvingDataLoad()
+    {
+        Backend.GameData.GetMyData("EVOLVING_DATA", new Where(), callback =>
+        {
+            if (callback.IsSuccess())
+            {
+                try
+                {
+                    LitJson.JsonData gameEvolvingDataJson = callback.FlattenRows();
+
+                    if (gameEvolvingDataJson.Count <= 0)
+                    {
+                        Debug.LogWarning("데이터가 존재하지 않습니다.");
+                    }
+                    else
+                    {
+                        //불러온 게임 정보의 고유 값
+                        gameEvolvingDataRawInData = gameEvolvingDataJson[0]["inDate"].ToString();
+
+                        userEvolvingData.evolvingLevel[0] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel0"].ToString());
+                        userEvolvingData.evolvingLevel[1] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel1"].ToString());
+                        userEvolvingData.evolvingLevel[2] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel2"].ToString());
+                        userEvolvingData.evolvingLevel[3] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel3"].ToString());
+                        userEvolvingData.evolvingLevel[4] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel4"].ToString());
+                        userEvolvingData.evolvingLevel[5] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel5"].ToString());
+                        userEvolvingData.evolvingLevel[6] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel6"].ToString());
+                        userEvolvingData.evolvingLevel[7] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel7"].ToString());
+                        userEvolvingData.evolvingLevel[8] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel8"].ToString());
+                        userEvolvingData.evolvingLevel[9] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel9"].ToString());
+                        userEvolvingData.evolvingLevel[10] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel10"].ToString());
+                        userEvolvingData.evolvingLevel[11] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel11"].ToString());
+                        userEvolvingData.evolvingLevel[12] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel12"].ToString());
+                        userEvolvingData.evolvingLevel[13] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel13"].ToString());
+                        userEvolvingData.evolvingLevel[14] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel14"].ToString());
+                        userEvolvingData.evolvingLevel[15] = int.Parse(gameEvolvingDataJson[0]["evolvingLevel15"].ToString());
+
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Application.Quit();
+                    Debug.LogError(e);
+                }
+            }
+            else // 실패했을 때
+            {
+                Debug.LogError($"인벤토리 정보 데이터 불러오기에 실패했습니다. : {callback}");
+            }
+        });
+    }
 
     public void GameDataUpdate(UnityAction action = null)
     {
@@ -640,6 +731,7 @@ public class BackEndGameData
         GameAbilityDataUpdate();
         GameCashDataUpdate();
         GameInvenDataUpdate();
+        GameEvolvingDataUpdate();
 
         if (LobbyManager.instance != null) CheckLevelUp();
     }
@@ -936,6 +1028,54 @@ public class BackEndGameData
         else
         {
             Backend.GameData.UpdateV2("INVENTORY_DATA", gameInvenDataRawInData, Backend.UserInDate, param,
+                callback =>
+                {
+                    if (callback.IsSuccess())
+                    {
+                        //action?.Invoke();
+                    }
+                    else
+                    {
+                        Debug.LogError("게임 정보 데이터 수정에 실패했습니다 : " + callback);
+                    }
+                });
+        }
+    }
+    public void GameEvolvingDataUpdate(UnityAction action = null)
+    {
+        if (userEvolvingData == null)
+        {
+            Debug.LogError("서버에서 다운받거나 새로 삽입한 데이터가 존재하지 않습니다.");
+            return;
+        }
+
+        Param param = new Param()
+        {
+            {"evolvingLevel0", userEvolvingData.evolvingLevel[0]},
+            {"evolvingLevel1", userEvolvingData.evolvingLevel[1]},
+            {"evolvingLevel2", userEvolvingData.evolvingLevel[2]},
+            {"evolvingLevel3", userEvolvingData.evolvingLevel[3]},
+            {"evolvingLevel4", userEvolvingData.evolvingLevel[4]},
+            {"evolvingLevel5", userEvolvingData.evolvingLevel[5]},
+            {"evolvingLevel6", userEvolvingData.evolvingLevel[6]},
+            {"evolvingLevel7", userEvolvingData.evolvingLevel[7]},
+            {"evolvingLevel8", userEvolvingData.evolvingLevel[8]},
+            {"evolvingLevel9", userEvolvingData.evolvingLevel[9]},
+            {"evolvingLevel10", userEvolvingData.evolvingLevel[10]},
+            {"evolvingLevel11", userEvolvingData.evolvingLevel[11]},
+            {"evolvingLevel12", userEvolvingData.evolvingLevel[12]},
+            {"evolvingLevel13", userEvolvingData.evolvingLevel[13]},
+            {"evolvingLevel14", userEvolvingData.evolvingLevel[14]},
+            {"evolvingLevel15", userEvolvingData.evolvingLevel[15]},
+        };
+
+        if (string.IsNullOrEmpty(gameEvolvingDataRawInData))
+        {
+            Debug.LogError("유저의 inDate 정보가 없어 Update에 실패했습니다.");
+        }
+        else
+        {
+            Backend.GameData.UpdateV2("EVOLVING_DATA", gameEvolvingDataRawInData, Backend.UserInDate, param,
                 callback =>
                 {
                     if (callback.IsSuccess())

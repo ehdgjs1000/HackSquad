@@ -171,11 +171,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5632538679171878207}
   - component: {fileID: 6297338641993938022}
+  - component: {fileID: -2518362396080228809}
   - component: {fileID: 41555389179456035}
   - component: {fileID: 5382232839653408220}
   - component: {fileID: 3156002366613036789}
   - component: {fileID: 2519317270462145898}
-  - component: {fileID: -2518362396080228809}
   m_Layer: 6
   m_Name: 10.Veteran_Character
   m_TagString: Player
@@ -223,6 +223,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2518362396080228809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264002223265251507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uCD08\uB300\uC6A9\uB7C9 \uD0C4\uCC3D\uC744 \uC7A5\uCC29\uD569\uB2C8\uB2E4"
+  - "\uAC00\uB054 \uCD1D\uC54C\uC774 \uAD00\uD1B5\uD569\uB2C8\uB2E4(30%)"
 --- !u!114 &41555389179456035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,8 +259,8 @@ MonoBehaviour:
   heroGrade: 2
   heroNum: 10
   heroTypeSprite: {fileID: 21300000, guid: 9b0d83d9c93f3764c8c5ebd8f076dc74, type: 3}
-  heroLevel: 1
-  heroCount: 1
+  heroLevel: 0
+  heroCount: 0
   heroJob: "\uACF5\uACA9\uD615"
 --- !u!114 &5382232839653408220
 MonoBehaviour:
@@ -326,18 +346,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &-2518362396080228809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264002223265251507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1275421656621470528
 GameObject:
   m_ObjectHideFlags: 0

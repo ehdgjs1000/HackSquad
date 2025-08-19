@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class Sniper : PlayerCtrl
 {
+    protected override void Awake()
+    {
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 1) attackRange = 50;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 2) tempFireRate = 0.7f;
+    }
     protected override void Attack(GameObject enemy)
     {
         fireRate = tempFireRate;

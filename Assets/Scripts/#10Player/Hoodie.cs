@@ -23,6 +23,7 @@ public class Hoodie : PlayerCtrl
     protected override void Attack(GameObject enemy)
     {
         fireRate = tempFireRate;
+        if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 1) fireRate *= 0.7f;
         _animator.SetBool("isAttacking", true);
         StartCoroutine(Shoot());
     }
@@ -34,7 +35,8 @@ public class Hoodie : PlayerCtrl
     {
         finalSkillTime = 8.0f;
         GameObject clone =  Instantiate(this.gameObject, new Vector3(0,0,0), Quaternion.identity);
-        Destroy(clone, 10.0f);
+        if(BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 2) Destroy(clone, 12.0f);
+        else Destroy(clone, 10.0f);
     }
     protected override IEnumerator Shoot()
     {

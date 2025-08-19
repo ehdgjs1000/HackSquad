@@ -1233,11 +1233,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1243367517811908159}
   - component: {fileID: 7532739212366147641}
+  - component: {fileID: -4795370419433548344}
   - component: {fileID: 5892561303926466728}
   - component: {fileID: 882887404566683747}
   - component: {fileID: 5211936133385609030}
   - component: {fileID: 1664733270258001582}
-  - component: {fileID: -4795370419433548344}
   m_Layer: 6
   m_Name: 14.Terrorist
   m_TagString: Player
@@ -1285,6 +1285,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4795370419433548344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6591424895292977550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evolvingSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  evolvingDesc:
+  - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  - "\uACF5\uACA9 \uC18D\uB3C4\uAC00 30% \uAC10\uC18C\uD569\uB2C8\uB2E4"
+  - "\uD751\uBCF5\uD3ED\uAD70\uC774 1\uD68C \uCD94\uAC00 \uACF5\uACA9\uD569\uB2C8\uB2E4"
 --- !u!114 &5892561303926466728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1388,18 +1408,6 @@ MonoBehaviour:
   weaponFireClip: {fileID: 8300000, guid: 14d3e567a7da3ff4fae848160e7d1e9c, type: 3}
   isFinalSkill: 0
   shootCount: 1
---- !u!114 &-4795370419433548344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6591424895292977550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba88cc6296b0714c8e4fa6fadd31b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7367265757328738044
 GameObject:
   m_ObjectHideFlags: 0
