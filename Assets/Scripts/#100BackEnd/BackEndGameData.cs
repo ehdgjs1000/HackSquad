@@ -278,7 +278,10 @@ public class BackEndGameData
 
         Param param = new Param()
         {
-            {"juiceItemCount", userInvenData.juiceItemCount},
+            {"juiceLevel1ItemCount", userInvenData.juiceLevel1ItemCount},
+            {"juiceLevel2ItemCount", userInvenData.juiceLevel2ItemCount},
+            {"juiceLevel3ItemCount", userInvenData.juiceLevel3ItemCount},
+            {"juiceLevel4ItemCount", userInvenData.juiceLevel4ItemCount},
 
         };
 
@@ -657,7 +660,10 @@ public class BackEndGameData
                         //불러온 게임 정보의 고유 값
                         gameInvenDataRawInData = gameInvenDataJson[0]["inDate"].ToString();
 
-                        userInvenData.juiceItemCount = int.Parse(gameInvenDataJson[0]["juiceItemCount"].ToString());
+                        userInvenData.juiceLevel1ItemCount = int.Parse(gameInvenDataJson[0]["juiceLevel1ItemCount"].ToString());
+                        userInvenData.juiceLevel2ItemCount = int.Parse(gameInvenDataJson[0]["juiceLevel2ItemCount"].ToString());
+                        userInvenData.juiceLevel3ItemCount = int.Parse(gameInvenDataJson[0]["juiceLevel3ItemCount"].ToString());
+                        userInvenData.juiceLevel4ItemCount = int.Parse(gameInvenDataJson[0]["juiceLevel4ItemCount"].ToString());
                     }
                 }
                 catch (System.Exception e)
@@ -1018,7 +1024,10 @@ public class BackEndGameData
 
         Param param = new Param()
         {
-            {"juiceItemCount", userInvenData.juiceItemCount },
+            {"juiceLevel1ItemCount", userInvenData.juiceLevel1ItemCount },
+            {"juiceLevel2ItemCount", userInvenData.juiceLevel2ItemCount },
+            {"juiceLevel3ItemCount", userInvenData.juiceLevel3ItemCount },
+            {"juiceLevel4ItemCount", userInvenData.juiceLevel4ItemCount },
         };
 
         if (string.IsNullOrEmpty(gameInvenDataRawInData))

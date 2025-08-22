@@ -40,7 +40,7 @@ public class LevelUp : MonoBehaviour
         upgradeJuiceText.text = "1";
 
         //Backend Update
-        BackEndGameData.Instance.UserInvenData.juiceItemCount++;
+        BackEndGameData.Instance.UserInvenData.juiceLevel1ItemCount++;
         BackEndGameData.Instance.UserGameData.gem += gemAmount;
         BackEndGameData.Instance.UserGameData.gold += goldAmount;
         BackEndGameData.Instance.UserGameData.energy += 20;

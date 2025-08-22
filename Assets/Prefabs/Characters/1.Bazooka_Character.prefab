@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   evolvingSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 86e364e2bbe93cc4a8f7890f328d3a34, type: 3}
+  - {fileID: 21300000, guid: aaa594371f9e43747873f80353dbefc2, type: 3}
+  - {fileID: 21300000, guid: e8537a9b02e566a478487180cf60ef5b, type: 3}
   evolvingDesc:
   - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
   - "\uD3ED\uBC1C \uBC94\uC704\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4"

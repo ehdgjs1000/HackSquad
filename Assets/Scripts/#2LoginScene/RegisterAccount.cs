@@ -71,14 +71,9 @@ public class RegisterAccount : LoginBase
 
                     //계정 생성에 성공했을 ?? 해당 계정에 게임 정보 생성
                     BackEndGameData.Instance.GameDataInsert();
+                    BackEndGameData.Instance.ResetPlayerPrefabData();
                     PlayerPrefs.SetString("ID", inputFieldID.text);
                     PlayerPrefs.SetString("PW", inputFieldPW.text);
-
-                    /*PlayerPrefs.SetInt("QUTCDay", DateTime.UtcNow.Day);
-                    PlayerPrefs.SetInt("QUTCMonth", DateTime.UtcNow.Month);
-                    PlayerPrefs.SetInt("QUTCYear", DateTime.UtcNow.Year);
-                    PlayerPrefs.SetInt("IsSkipTutorial", 0);*/
-                    BackEndGameData.Instance.ResetPlayerPrefabData();
                     SceneManager.LoadScene("LobbyScene");
                 });
             }

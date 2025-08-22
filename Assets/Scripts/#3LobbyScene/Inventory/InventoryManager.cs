@@ -29,14 +29,16 @@ public class InventoryManager : MonoBehaviour
         ClearGrid();
         //인벤토리 눌렀을 경우 backend-inventory 가져와 UI Update
         //아이템 갯수 가져오기
-        int juiceItemCount = BackEndGameData.Instance.UserInvenData.juiceItemCount;
+        int juiceItem1Count = BackEndGameData.Instance.UserInvenData.juiceLevel1ItemCount;
+        int juiceItem2Count = BackEndGameData.Instance.UserInvenData.juiceLevel2ItemCount;
+        int juiceItem3Count = BackEndGameData.Instance.UserInvenData.juiceLevel3ItemCount;
+        int juiceItem4Count = BackEndGameData.Instance.UserInvenData.juiceLevel4ItemCount;
 
-
-        if(juiceItemCount > 0)
+        if(juiceItem1Count > 0)
         {
-            GameObject juiceItem = Instantiate(juiceItemPrefab);
-            Inventory juiceInventory = juiceItem.GetComponent<Inventory>();
-            juiceInventory.SetUp(juiceItemCount);
+            GameObject juice1Item = Instantiate(juiceItemPrefab);
+            Inventory juiceInventory = juice1Item.GetComponent<Inventory>();
+            juiceInventory.SetUp(juiceItem1Count);
 
             juiceInventory.transform.SetParent(gridParent, false);
         }

@@ -141,6 +141,7 @@ public class HeroDetail : MonoBehaviour
         evolvingGO.SetActive(false);
         upgradeType = 0;
         levelUpBtn.image.color = levelUpBtn.colors.selectedColor;
+        levelUpBtn.gameObject.SetActive(true);
         //evolvingBtn.image.color = evolvingBtn.colors.normalColor;
     }
     private void SkillUiUpdate()
@@ -179,8 +180,8 @@ public class HeroDetail : MonoBehaviour
             //진화 아이템 갯수 확인 후 진화 진행
 
         }
-       
     }
+    
     private void UpgradeHero()
     {
         BackEndGameData.Instance.UserGameData.gold -= needGold[heroLevel];
@@ -255,7 +256,7 @@ public class HeroDetail : MonoBehaviour
         levelUpBtn.image.color = levelUpBtn.colors.normalColor;
         upgradeType = 1;
         SoundManager.instance.BtnClickPlay();
-        EvolvingManager.instance.UpdateUI(heroNum, evolvingInfo);
+        EvolvingManager.instance.UpdateUI(heroNum, evolvingInfo, heroInfo);
     }
 
 }

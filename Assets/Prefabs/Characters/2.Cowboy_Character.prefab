@@ -1335,9 +1335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   evolvingSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 86e364e2bbe93cc4a8f7890f328d3a34, type: 3}
+  - {fileID: 21300000, guid: e2ed3388f35ca99478c660b962f182b8, type: 3}
+  - {fileID: 21300000, guid: 1728e71f1d29f5548b1d3ef9ced978ab, type: 3}
   evolvingDesc:
   - "\uC2DC\uC791 \uACF5\uACA9\uB825\uC774 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
   - "\uAD00\uD1B5 \uC624\uD1A0 \uC0F7\uAC74\uC774 2\uD68C \uAD00\uD1B5\uD569\uB2C8\uB2E4"
@@ -1358,8 +1358,8 @@ MonoBehaviour:
   heroGrade: 1
   heroNum: 2
   heroTypeSprite: {fileID: 21300000, guid: 9b0d83d9c93f3764c8c5ebd8f076dc74, type: 3}
-  heroLevel: 0
-  heroCount: 0
+  heroLevel: 3
+  heroCount: 3
   heroJob: "\uACF5\uACA9\uD615"
 --- !u!114 &2572919331884939278
 MonoBehaviour:
