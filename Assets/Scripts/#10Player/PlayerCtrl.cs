@@ -15,7 +15,8 @@ public abstract class PlayerCtrl : MonoBehaviour
     [SerializeField] protected bool attackRandom;
     public SkillData[] characterSkills;
     public SkillData finalSkill;
-    //init Data
+    
+    [Header("Init Stats")]
     public float initAttackRange;
     public float initFireRate;
     public int initMaxBullet;
@@ -23,6 +24,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     public float initDamage;
     public float initHp;
 
+    //Temp Stats
     protected float attackRange;
     protected float fireRate;
     protected int maxBullet;
@@ -40,7 +42,7 @@ public abstract class PlayerCtrl : MonoBehaviour
     [SerializeField] protected LayerMask monsterLayer;
     public Collider[] monsterColls;
 
-    //Sound
+    //SFX
     [SerializeField] protected AudioClip weaponFireClip;
 
     protected virtual void Awake()
@@ -54,8 +56,11 @@ public abstract class PlayerCtrl : MonoBehaviour
 
     protected virtual void Update()
     {
-        fireRate -= Time.deltaTime;
-        CheckMonster();
+        if (GameManager.instance.isGameOver == false)
+        {
+            fireRate -= Time.deltaTime;
+            CheckMonster();
+        }
     }
     public void UpgradeStats(int type, float amount)
     {
@@ -73,6 +78,7 @@ public abstract class PlayerCtrl : MonoBehaviour
         maxBullet = initMaxBullet;
         reloadingTime = initReloadingTime;
 
+        //어빌리티 적용
         damage = initDamage * Mathf.Pow(1.3f, BackEndGameData.Instance.UserHeroData.heroLevel[heroNum]) *
             (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[0]*0.05f) *
             (1 + BackEndGameData.Instance.UserAbilityData.abilityLevel[3] * 0.10f) *
@@ -150,8 +156,6 @@ public abstract class PlayerCtrl : MonoBehaviour
         isReloading = false;
         nowBullet = maxBullet;
     }
-    protected abstract void Attack(GameObject enemy);
-    protected abstract IEnumerator Shoot();
     private Collider FindClosestTarget(Collider[] targets)
     {
         float closestDist = Mathf.Infinity;
@@ -179,5 +183,9 @@ public abstract class PlayerCtrl : MonoBehaviour
         }
         return target;
     }
-
+    protected abstract void Attack(GameObject enemy);
+    protected abstract IEnumerator Shoot();
 }
+
+
+

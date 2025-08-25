@@ -66,7 +66,7 @@ public class GameOverManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         canExit = true;
         gameOverText.gameObject.SetActive(true);
-        Time.timeScale = 0.0f;
+        //Time.timeScale = 0.0f;
     }
     public void ExitLobbyOnClick()
     {

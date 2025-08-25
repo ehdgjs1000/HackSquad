@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-    public GameObject juiceItemPrefab; // 인벤토리 프리팹
+    public GameObject[] juiceItemPrefabs; // 인벤토리 프리팹
     public Transform gridParent;
 
 
@@ -36,13 +36,33 @@ public class InventoryManager : MonoBehaviour
 
         if(juiceItem1Count > 0)
         {
-            GameObject juice1Item = Instantiate(juiceItemPrefab);
+            GameObject juice1Item = Instantiate(juiceItemPrefabs[0]);
             Inventory juiceInventory = juice1Item.GetComponent<Inventory>();
             juiceInventory.SetUp(juiceItem1Count);
-
             juiceInventory.transform.SetParent(gridParent, false);
         }
-        
+        if (juiceItem2Count > 0)
+        {
+            GameObject juice2Item = Instantiate(juiceItemPrefabs[1]);
+            Inventory juiceInventory = juice2Item.GetComponent<Inventory>();
+            juiceInventory.SetUp(juiceItem2Count);
+            juiceInventory.transform.SetParent(gridParent, false);
+        }
+        if (juiceItem3Count > 0)
+        {
+            GameObject juice3Item = Instantiate(juiceItemPrefabs[2]);
+            Inventory juiceInventory = juice3Item.GetComponent<Inventory>();
+            juiceInventory.SetUp(juiceItem3Count);
+            juiceInventory.transform.SetParent(gridParent, false);
+        }
+        if (juiceItem4Count > 0)
+        {
+            GameObject juice4Item = Instantiate(juiceItemPrefabs[3]);
+            Inventory juiceInventory = juice4Item.GetComponent<Inventory>();
+            juiceInventory.SetUp(juiceItem4Count);
+            juiceInventory.transform.SetParent(gridParent, false);
+        }
+
 
     }
 }

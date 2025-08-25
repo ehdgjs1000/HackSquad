@@ -371,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 4735800100433067177}
   mtrlOrg: {fileID: 2100000, guid: 8b468189b8154acaa64ff172c8425c5f, type: 2}
-  matrlDissolve: {fileID: 2100000, guid: aacb4142fb411dc40912e0a14d0b89c4, type: 2}
+  matrlDissolve: {fileID: 2100000, guid: 702dc684652a3c34ca4698ab3e154e1e, type: 2}
   fadeTime: 0.5
   value: 0
 --- !u!114 &4961677045660165632
@@ -389,7 +389,7 @@ MonoBehaviour:
   attackDelay: 0.2
   damage: 10
   speed: 1.3
-  hp: 12
+  hp: 20
   gold: 5
   playerLayer:
     serializedVersion: 2
