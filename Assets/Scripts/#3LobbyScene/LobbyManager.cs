@@ -20,6 +20,7 @@ public class LobbyManager : MonoBehaviour
     }
     private void Start()
     {
+        Application.targetFrameRate = 60;
         StartCoroutine(InitUI());
         UpdateUIAll();
         SoundManager.instance.PlayBGM();

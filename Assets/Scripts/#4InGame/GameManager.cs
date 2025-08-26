@@ -54,9 +54,16 @@ public class GameManager : MonoBehaviour
     int rebornCount = 0;
     float rebornAmount = 0;
 
-    private void Awake()
+    void Awake()
     {
-        instance = this;
+        if (null == instance)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Start()

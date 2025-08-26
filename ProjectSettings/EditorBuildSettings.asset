@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LobbyScene.unity
-    guid: a3bd3c6f70be26649ae19fa5cc901b1f
+    path: Assets/Scenes/IntroScene.unity
+    guid: d68882a9bb17d1244b1100c81f46a21a
   - enabled: 1
     path: Assets/Scenes/LoginScene.unity
     guid: 81c50c3fac329da4e842a4b5ab394f61
+  - enabled: 1
+    path: Assets/Scenes/LobbyScene.unity
+    guid: a3bd3c6f70be26649ae19fa5cc901b1f
   - enabled: 1
     path: Assets/Scenes/InGameCommon.unity
     guid: a8c8575d99fa51e4586be7782fffe984
@@ -48,8 +51,26 @@ EditorBuildSettings:
     path: Assets/Scenes/Chpater/Chapter10.unity
     guid: 7abe522158bb63748a507ffe30818a53
   - enabled: 1
+    path: Assets/Scenes/Chpater/Chapter11.unity
+    guid: 8ae5f7f72bb39ab4083c16e121a20bcd
+  - enabled: 1
     path: Assets/Scenes/Dungeon/GoldDungeon/Gold1.unity
     guid: cbe7ce64b10bc6043a2909ae227fb614
+  - enabled: 1
+    path: Assets/Scenes/Dungeon/GoldDungeon/Gold2.unity
+    guid: 787bea743991ed042992941ffcb38344
+  - enabled: 1
+    path: Assets/Scenes/Dungeon/GoldDungeon/Gold3.unity
+    guid: f6b0e3ffc9d53f74ea11fd6917bb4568
+  - enabled: 1
+    path: Assets/Scenes/Dungeon/GoldDungeon/Gold4.unity
+    guid: 4ff94b349ef8f324d89a2380ce5620bb
+  - enabled: 1
+    path: Assets/Scenes/Dungeon/GoldDungeon/Gold5.unity
+    guid: d19e51276efffda4eb6982d5b75ec296
+  - enabled: 1
+    path: Assets/Scenes/Dungeon/GoldDungeon/Gold6.unity
+    guid: 6adfaa55cea4f2a448a98ea3a075f655
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -33,6 +33,8 @@ public class Thunderman : PlayerCtrl
         {
             if (monster.GetComponent<MonsterCtrl>() != null) monster.GetComponent<MonsterCtrl>().GetAttack(damage);
             else if (monster.GetComponent<BossMonsterCtrl>() != null) monster.GetComponent<BossMonsterCtrl>().GetAttack(damage);
+            else if (monster.GetComponent<GoldMonsterCtrl>() != null) monster.GetComponent<GoldMonsterCtrl>().GetAttack(damage);
+
             SoundManager.instance.PlaySound(weaponFireClip);
 
             GameObject bullet = PoolManager.instance.MakeObj("thunderBullet");

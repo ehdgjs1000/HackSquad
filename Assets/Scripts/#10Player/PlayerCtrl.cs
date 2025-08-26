@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public abstract class PlayerCtrl : MonoBehaviour
 {
     public static PlayerCtrl instance;
@@ -56,11 +57,16 @@ public abstract class PlayerCtrl : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (GameManager.instance.isGameOver == false)
+        if(GameManager.instance != null && GameManager.instance.isGameOver == false)
+        {
+            fireRate -= Time.deltaTime;
+            CheckMonster();
+        }else if (GoldDungeonManager.instance != null && GoldDungeonManager.instance.isGameOver == false)
         {
             fireRate -= Time.deltaTime;
             CheckMonster();
         }
+        
     }
     public void UpgradeStats(int type, float amount)
     {
@@ -113,11 +119,11 @@ public abstract class PlayerCtrl : MonoBehaviour
                         {
                             enemyGO = FindClosestTarget(monsterColls).gameObject;
                         }
-                        else if(monsterColls.Length == 1)
+                        else if (monsterColls.Length == 1)
                         {
                             enemyGO = monsterColls[0].gameObject;
                         }
-                        
+
                         this.transform.LookAt(enemyGO.transform.position);
                         //MonsterCtrl enemy = enemyGO.GetComponent<MonsterCtrl>();
                         //공격
@@ -125,13 +131,13 @@ public abstract class PlayerCtrl : MonoBehaviour
                     }
                     else
                     {
-                        int randomMonster = Random.Range(0,monsterColls.Length);
+                        int randomMonster = Random.Range(0, monsterColls.Length);
                         GameObject enemyGO = monsterColls[randomMonster].gameObject;
                         //MonsterCtrl enemy = enemyGO.GetComponent<MonsterCtrl>(); 
                         //공격
                         if (fireRate <= 0.0f && !isReloading) Attack(enemyGO);
                     }
-                    
+
                 }
 
                 catch (System.ObjectDisposedException e)

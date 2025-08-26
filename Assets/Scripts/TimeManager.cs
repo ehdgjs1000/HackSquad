@@ -92,9 +92,9 @@ public class TimeManager : MonoBehaviour
         PlayerPrefs.SetInt("remainAbilityVideo", 1); 
         PlayerPrefs.SetInt("sweepLeftVideo", 3);
         PlayerPrefs.SetInt("remainGoldSweep", 2);
-        PlayerPrefs.SetInt("remainExpSweep", 2);
+        PlayerPrefs.SetInt("remainEvolvingSweep", 2);
         PlayerPrefs.SetInt("remainGoldDungeonCount",2);
-        PlayerPrefs.SetInt("remainExpDungeonCount",2);
+        PlayerPrefs.SetInt("remainEvolvingDungeonCount",2);
         BackEndGameData.Instance.UserGameData.loginCount++;
 
         BackEndGameData.Instance.GameDataUpdate();
@@ -107,6 +107,10 @@ public class TimeManager : MonoBehaviour
         PlayerPrefs.SetInt("DrawVideo", 3);
         PlayerPrefs.SetInt("remainAbilityVideo", 1);
         PlayerPrefs.SetInt("sweepLeftVideo", 3);
+        PlayerPrefs.SetInt("remainGoldSweep", 2);
+        PlayerPrefs.SetInt("remainEvolvingSweep", 2);
+        PlayerPrefs.SetInt("remainGoldDungeonCount", 2);
+        PlayerPrefs.SetInt("remainEvolvingDungeonCount", 2);
         BackEndGameData.Instance.GameDataUpdate();
         yield return new WaitForSeconds(1f);
         //QuestManager.instance.UpdateQuestUI();

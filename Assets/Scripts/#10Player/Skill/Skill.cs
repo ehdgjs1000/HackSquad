@@ -110,9 +110,9 @@ public class Skill : MonoBehaviour
         else if (skillId == 1001) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 1002) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 5);
         else if (skillId == 1003) GameManager.instance.players[skillCharacterNum].GetComponent<Veteran>().FixMaxRandomDegree(-3);
-        else if (skillId == 1101) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
+        else if (skillId == 1103) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 1102) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(2, 1);
-        else if (skillId == 1103) GameManager.instance.players[skillCharacterNum].GetComponent<Jester>().PoisionTermUpgrade();
+        else if (skillId == 1101) GameManager.instance.players[skillCharacterNum].GetComponent<Jester>().PoisionTermUpgrade();
         else if (skillId == 1201) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(0, 1.3f);
         else if (skillId == 1202) GameManager.instance.players[skillCharacterNum].GetComponent<Robot>().attackCount++;
         else if (skillId == 1203) GameManager.instance.players[skillCharacterNum].GetComponent<PlayerCtrl>().UpgradeStats(1, 0.9f);

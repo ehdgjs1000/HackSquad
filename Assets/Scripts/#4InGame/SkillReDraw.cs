@@ -7,6 +7,7 @@ public class SkillReDraw : MonoBehaviour
     [SerializeField] TextMeshProUGUI redrawCountText;
     [SerializeField] Image videoImage;
 
+    float redrawTerm = 3.0f;
     int redrawCount;
 
     private void Awake()
@@ -15,7 +16,12 @@ public class SkillReDraw : MonoBehaviour
     }
     private void Start()
     {
+        redrawTerm = 0.0f;
         UpdateUI();
+    }
+    private void Update()
+    {
+        if (redrawTerm > 0.0f) redrawTerm -= Time.deltaTime;
     }
     private void UpdateUI()
     {
@@ -33,17 +39,20 @@ public class SkillReDraw : MonoBehaviour
     }
     public void ReDrawSkillOnClick()
     {
-        if(redrawCount > 0)
+        if(redrawTerm <= 0.0f)
         {
-            redrawCount--;
-            GameManager.instance.SkillChoose();
+            if (redrawCount > 0)
+            {
+                redrawCount--;
+                GameManager.instance.SkillChoose();
+            }
+            else
+            {
+                //광고 보고 스킬리롤
+                AdsVideo.instance.RefreshSkillsOnClick();
+            }
+            UpdateUI();
         }
-        else
-        {
-            //광고 보고 스킬리롤
-            AdsVideo.instance.RefreshSkillsOnClick();
-        }
-        UpdateUI();
     }
 
 

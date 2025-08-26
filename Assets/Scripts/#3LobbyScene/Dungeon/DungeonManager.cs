@@ -9,17 +9,17 @@ public class DungeonManager : MonoBehaviour
     public static DungeonManager instance;
 
     [SerializeField] GameObject goldDungeonPanel;
-    [SerializeField] GameObject expDungeonPanel;
+    [SerializeField] GameObject evolvingDungeonPanel;
     [SerializeField] Image canGoldSweepImage;
-    [SerializeField] Image canExpSweepImage;
+    [SerializeField] Image canEvolvingSweepImage;
     [SerializeField] TextMeshProUGUI remainGoldSweepText;
-    [SerializeField] TextMeshProUGUI remainExpSweepText;
+    [SerializeField] TextMeshProUGUI remainEvolvingSweepText;
     [SerializeField] TextMeshProUGUI[] remainTimeText;
 
     [HideInInspector] public int remainGoldDungeon;
-    [HideInInspector] public int remainExpDungeon;
+    [HideInInspector] public int remainEvolvingDungeon;
     [HideInInspector] public int highestGoldDungeon;
-    [HideInInspector] public int highestExpDungeon;
+    [HideInInspector] public int highestEvolvingDungeon;
 
     private void Awake()
     {
@@ -37,10 +37,10 @@ public class DungeonManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("remainGoldDungeonCount")) remainGoldDungeon = PlayerPrefs.GetInt("remainGoldDungeonCount");
         else remainGoldDungeon = 2;
-        if (PlayerPrefs.HasKey("remainExpDungeonCount")) remainExpDungeon = PlayerPrefs.GetInt("remainExpDungeonCount");
-        else remainExpDungeon = 2;
+        if (PlayerPrefs.HasKey("remainEvolvingDungeonCount")) remainEvolvingDungeon = PlayerPrefs.GetInt("remainEvolvingDungeonCount");
+        else remainEvolvingDungeon = 2;
         highestGoldDungeon = PlayerPrefs.GetInt("highestGoldDungeon");
-        highestExpDungeon = PlayerPrefs.GetInt("highestExpDungeon");
+        highestEvolvingDungeon = PlayerPrefs.GetInt("highestEvolvingDungeon");
         
     }
     public void UpdateUI()
@@ -53,29 +53,29 @@ public class DungeonManager : MonoBehaviour
 
         if (remainGoldDungeon > 0) canGoldSweepImage.gameObject.SetActive(true);
         else canGoldSweepImage.gameObject.SetActive(false);
-        if (remainGoldDungeon > 0) canExpSweepImage.gameObject.SetActive(true);
-        else canExpSweepImage.gameObject.SetActive(false);
+        if (remainEvolvingDungeon > 0) canEvolvingSweepImage.gameObject.SetActive(true);
+        else canEvolvingSweepImage.gameObject.SetActive(false);
 
         remainGoldSweepText.text = $"플레이 가능 횟수:{remainGoldDungeon.ToString()}";
-        remainExpSweepText.text = $"플레이 가능 횟수:{remainExpDungeon.ToString()}";
+        remainEvolvingSweepText.text = $"플레이 가능 횟수:{remainEvolvingDungeon.ToString()}";
     }
 
     public void GoldDungeonOnClick()
     {
         goldDungeonPanel.SetActive(true);
-        expDungeonPanel.SetActive(false);
+        evolvingDungeonPanel.SetActive(false);
         SoundManager.instance.BtnClickPlay();
     }
-    public void ExpDungeonOnClick()
+    public void EvolvingDungeonOnClick()
     {
         goldDungeonPanel.SetActive(false);
-        expDungeonPanel.SetActive(true);
+        evolvingDungeonPanel.SetActive(true);
         SoundManager.instance.BtnClickPlay();
     }
     public void DungeonExitOnClick()
     {
         goldDungeonPanel.SetActive(false);
-        expDungeonPanel.SetActive(false);
+        evolvingDungeonPanel.SetActive(false);
         SoundManager.instance.BtnClickPlay();
         this.gameObject.SetActive(false);
 

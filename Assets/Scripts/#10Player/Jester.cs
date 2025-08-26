@@ -11,6 +11,7 @@ public class Jester : PlayerCtrl
     float jesterSkillSize = 1.0f;
     protected override void Awake()
     {
+        base.Awake();
         if (BackEndGameData.Instance.UserEvolvingData.evolvingLevel[heroNum] > 1) jesterSkillSize *= 1.2f;
     }
     public void UpgradeFinalSkill()

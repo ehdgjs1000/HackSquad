@@ -27,7 +27,7 @@ public class ThunderBullet : MonoBehaviour
     IEnumerator Attack()
     {
         thunderattackTerm = 0.2f;
-        float attackDamage = damage / 5;
+        float attackDamage = damage / 3;
         monsterColls = null;
         monsterColls = Physics.OverlapSphere(transform.position, attackRadius, monsterLayer);
         if (monsterColls.Length > 0)

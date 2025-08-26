@@ -24,6 +24,7 @@ public class IntroManager : MonoBehaviour
     {
         sceneTransitionMat.SetFloat("_Progress",1);
     }
+
     private void SystemSetUp()
     {
         Application.runInBackground = true;

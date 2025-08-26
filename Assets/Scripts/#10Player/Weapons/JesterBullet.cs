@@ -6,7 +6,7 @@ public class JesterBullet : MonoBehaviour
     [SerializeField] float attackRadius;
     [SerializeField] LayerMask monsterLayer;
     public float attackTerm;
-    float damage;
+    public float damage;
     Collider[] monsterColls;
     float tempAttackTerm;
     public float bulletSize = 1.0f;

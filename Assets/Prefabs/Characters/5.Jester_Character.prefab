@@ -72,9 +72,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8938337900680506433}
   - component: {fileID: 4709771721828765062}
+  - component: {fileID: 6631523188191314197}
   - component: {fileID: 1031497261254264396}
   - component: {fileID: -6479614763242348538}
-  - component: {fileID: 6631523188191314197}
   - component: {fileID: 5922995484593701344}
   - component: {fileID: 3156688756998329329}
   m_Layer: 6
@@ -124,6 +124,41 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6631523188191314197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417451982240984076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8701948fa19bfd840bd9a6356eb29809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: "P.\uC5D0\uB85C"
+  bulletSpawnPos: {fileID: 6662217893701859795}
+  bulletGo: {fileID: 6108195706035121270, guid: 6f692cd2d2d5eb84ab790976eccc0bae, type: 3}
+  muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
+  attackRandom: 1
+  characterSkills:
+  - {fileID: 11400000, guid: 105c2291b8f504a4d9e514e6727341ae, type: 2}
+  - {fileID: 11400000, guid: 8d93ad338b3faff44a617e640968afef, type: 2}
+  - {fileID: 11400000, guid: 49a4dba4a3062244c85f05977f2711a3, type: 2}
+  finalSkill: {fileID: 11400000, guid: 08c5c0d82c267a34b95a88c150b60172, type: 2}
+  initAttackRange: 8
+  initFireRate: 3
+  initMaxBullet: 2
+  initReloadingTime: 3
+  initDamage: 6
+  initHp: 20
+  isMoving: 0
+  monsterLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  monsterColls: []
+  weaponFireClip: {fileID: 8300000, guid: eb390fd51e43f4944ac7672fef4d926c, type: 3}
+  finalBullet: {fileID: 6108195706035121270, guid: 2ac265a359485f6429d7c6a1ab9edb75, type: 3}
 --- !u!114 &1031497261254264396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,44 +195,9 @@ MonoBehaviour:
   heroGrade: 2
   heroNum: 5
   heroTypeSprite: {fileID: 21300000, guid: b016aeb3e3aee754caf1235a612d545e, type: 3}
-  heroLevel: 0
+  heroLevel: 1
   heroCount: 0
   heroJob: "\uC678\uACC4\uD615"
---- !u!114 &6631523188191314197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417451982240984076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8701948fa19bfd840bd9a6356eb29809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: "P.\uC5D0\uB85C"
-  bulletSpawnPos: {fileID: 6662217893701859795}
-  bulletGo: {fileID: 6108195706035121270, guid: 6f692cd2d2d5eb84ab790976eccc0bae, type: 3}
-  muzzleFlash: {fileID: 5964926015556990192, guid: ffc81ee0a498559449888baf8451558f, type: 3}
-  attackRandom: 1
-  characterSkills:
-  - {fileID: 11400000, guid: 105c2291b8f504a4d9e514e6727341ae, type: 2}
-  - {fileID: 11400000, guid: 8d93ad338b3faff44a617e640968afef, type: 2}
-  - {fileID: 11400000, guid: 49a4dba4a3062244c85f05977f2711a3, type: 2}
-  finalSkill: {fileID: 11400000, guid: 08c5c0d82c267a34b95a88c150b60172, type: 2}
-  initAttackRange: 8
-  initFireRate: 3
-  initMaxBullet: 2
-  initReloadingTime: 3
-  initDamage: 6
-  initHp: 20
-  isMoving: 0
-  monsterLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  monsterColls: []
-  weaponFireClip: {fileID: 8300000, guid: eb390fd51e43f4944ac7672fef4d926c, type: 3}
-  finalBullet: {fileID: 6108195706035121270, guid: 2ac265a359485f6429d7c6a1ab9edb75, type: 3}
 --- !u!135 &5922995484593701344
 SphereCollider:
   m_ObjectHideFlags: 0
