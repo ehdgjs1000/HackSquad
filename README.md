@@ -1,2 +1,2 @@
-# HeroCardGame
+# HackSquad
 Card LougeLike Hero Game
