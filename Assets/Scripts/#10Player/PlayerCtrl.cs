@@ -66,7 +66,7 @@ public abstract class PlayerCtrl : MonoBehaviour
             fireRate -= Time.deltaTime;
             CheckMonster();
         }
-        
+
     }
     public void UpgradeStats(int type, float amount)
     {
