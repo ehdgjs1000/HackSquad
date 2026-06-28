@@ -1,0 +1,1 @@
+public enum Grade { Normal, Rare, Epic, Legend }

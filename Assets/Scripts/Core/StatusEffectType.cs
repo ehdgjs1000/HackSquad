@@ -1,0 +1,1 @@
+public enum StatusEffectType { Burn, Chill, Bleed, Poison }
