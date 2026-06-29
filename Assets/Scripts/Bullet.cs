@@ -9,12 +9,14 @@ public class Bullet : MonoBehaviour
     int _pierceLeft;
     Vector3 _direction;
     int _monsterLayer;
+    GameObject _hitVFX;
 
-    public void Init(float damage, Vector3 direction, int pierceCount)
+    public void Init(float damage, Vector3 direction, int pierceCount, GameObject hitVFX = null)
     {
         _damage = damage;
         _direction = direction.normalized;
         _pierceLeft = pierceCount;
+        _hitVFX = hitVFX;
         _monsterLayer = LayerMask.GetMask("Monster");
         Destroy(gameObject, maxLifetime);
     }
@@ -30,10 +32,21 @@ public class Bullet : MonoBehaviour
         if (!other.TryGetComponent(out Monster monster)) return;
 
         monster.TakeDamage(_damage);
+        SpawnVFX();
 
         if (_pierceLeft <= 0)
             Destroy(gameObject);
         else
             _pierceLeft--;
+    }
+
+    void SpawnVFX()
+    {
+        if (_hitVFX == null) return;
+        var vfx = Instantiate(_hitVFX, transform.position, Quaternion.identity);
+        if (!vfx.TryGetComponent<ParticleSystem>(out var ps))
+            Destroy(vfx, 3f);
+        else if (ps.main.stopAction != ParticleSystemStopAction.Destroy)
+            Destroy(vfx, ps.main.duration + ps.main.startLifetime.constantMax);
     }
 }

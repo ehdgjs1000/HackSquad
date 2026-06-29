@@ -40,6 +40,6 @@ public class AutoAttackBehavior : IAttackBehavior
     {
         var go = Object.Instantiate(hero.bulletPrefab, pos, Quaternion.LookRotation(dir));
         if (go.TryGetComponent(out Bullet bullet))
-            bullet.Init(damage, dir, hero.stats.pierceCount);
+            bullet.Init(damage, dir, hero.stats.pierceCount, hero.hitVFX);
     }
 }

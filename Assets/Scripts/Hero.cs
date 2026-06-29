@@ -11,6 +11,7 @@ public abstract class Hero : MonoBehaviour
     [Header("Weapon")]
     public Transform firePos;
     public GameObject bulletPrefab;
+    public GameObject hitVFX;
     public IAttackBehavior attackBehavior;
 
     [Header("Skills (max 3 slots)")]

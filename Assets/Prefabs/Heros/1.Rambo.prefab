@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4161828f07e7c428318b6c5d1eb7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rambuwe
-  heroData: {fileID: 0}
+  heroData: {fileID: 11400000, guid: e6dd98d3372c5bd48b199fbf0a164130, type: 2}
   stats:
     attackSpeed: 0.1
     attackDamage: 10
@@ -179,7 +179,9 @@ MonoBehaviour:
     spreadAngle: 30
     backAttackRatio: 0
     pierceCount: 0
+    explosionRadius: 0
   firePos: {fileID: 5412267648647151311}
+  bulletPrefab: {fileID: 1049234075114562, guid: 10a4ac22e29478a48af515fc17800c20, type: 3}
 --- !u!136 &1806939127851409424
 CapsuleCollider:
   m_ObjectHideFlags: 0

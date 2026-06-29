@@ -1520,6 +1520,7 @@ GameObject:
   - component: {fileID: 583122635772705337}
   - component: {fileID: 7124407846968378886}
   - component: {fileID: -5731267232352675002}
+  - component: {fileID: 7806783099639342601}
   m_Layer: 10
   m_Name: 2.Green
   m_TagString: Untagged
@@ -1590,6 +1591,37 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.96, z: 0}
+--- !u!114 &7806783099639342601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818921259429335623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3123bf6ce1febf144bc2a837fedecc31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GreenHasa
+  heroData: {fileID: 11400000, guid: 823c497df3ae87140868474775ba86aa, type: 2}
+  stats:
+    attackSpeed: 0.5
+    attackDamage: 10
+    critChance: 0.1
+    critDamage: 2
+    range: 10
+    maxHp: 100
+    maxAmmo: 30
+    reloadSpeed: 1.5
+    spreadAngle: 0
+    backAttackRatio: 0
+    pierceCount: 0
+    explosionRadius: 0
+  firePos: {fileID: 1384807153322137150}
+  bulletPrefab: {fileID: 1483711411511920907, guid: 2a267433ba06380418d706e0feb8fa55, type: 3}
+  hitVFX: {fileID: 894903862499943472, guid: 945c60bcd099b4943b719551ef92e271, type: 3}
+  clusterCount: 0
+  hasNapalm: 0
 --- !u!1 &8225266880170732201
 GameObject:
   m_ObjectHideFlags: 0
