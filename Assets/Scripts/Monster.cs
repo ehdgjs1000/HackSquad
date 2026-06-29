@@ -7,14 +7,19 @@ public class Monster : MonoBehaviour
     public int expReward = 10;
 
     float _hp;
-    Transform _target;  // 중앙 Squad 위치
+    Transform _target;
+    Renderer _renderer;
+    Color _baseColor;
 
     void Start()
     {
         _hp = maxHp;
-        // Squad 중앙(origin)을 향해 이동
         var squad = GameObject.FindWithTag("Squad");
         _target = squad != null ? squad.transform : null;
+
+        _renderer = GetComponent<Renderer>();
+        if (_renderer != null)
+            _baseColor = _renderer.material.color;
     }
 
     void Update()
@@ -27,6 +32,11 @@ public class Monster : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         _hp -= dmg;
+        if (_renderer != null)
+        {
+            float ratio = Mathf.Clamp01(_hp / maxHp);
+            _renderer.material.color = Color.Lerp(Color.red, _baseColor, ratio);
+        }
         if (_hp <= 0f) Die();
     }
 

@@ -11,6 +11,9 @@ public struct HeroStats
     public float maxHp;
     public int   maxAmmo;
     public float reloadSpeed;   // 장전 시간(초)
+    public float spreadAngle;   // 발사각(도), 0=완전정확
+    public float backAttackRatio; // 후방 공격 데미지 비율 (0=없음, 0.5=50%)
+    public int   pierceCount;   // 관통 횟수
 
     public static HeroStats Default => new HeroStats
     {

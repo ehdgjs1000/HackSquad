@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - Squad
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - Monster
   - OverUI
   - PostProcessing
+  - Hero
   - 
-  - 
-  - 
+  - Bullet
   - 
   - 
   - 

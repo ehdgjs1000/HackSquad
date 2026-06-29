@@ -2,29 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hero : MonoBehaviour
+public abstract class Hero : MonoBehaviour
 {
-    [Header("Stats")]
-    public HeroStats stats = HeroStats.Default;
+    [Header("Data")]
+    public HeroDataSO heroData;
+    [HideInInspector] public HeroStats stats = HeroStats.Default;
 
     [Header("Weapon")]
+    public Transform firePos;
+    public GameObject bulletPrefab;
     public IAttackBehavior attackBehavior;
 
     [Header("Skills (max 3 slots)")]
     public List<SkillBase> skills = new();
 
-    // 탄약 상태
     int _currentAmmo;
     bool _reloading;
     float _attackTimer;
+    LayerMask _monsterLayer;
 
     Monster _currentTarget;
 
+    // OverlapSphere 결과 버퍼 — Update는 단일 스레드라 static 공유 안전
+    static readonly Collider[] _overlapBuffer = new Collider[64];
+
     void Start()
     {
+        _monsterLayer = LayerMask.GetMask("Monster");
+        if (heroData != null && heroData.statsSO != null)
+            stats = heroData.statsSO.stats;
+        else
+            Debug.LogWarning($"[{name}] heroData 또는 statsSO가 할당되지 않았습니다. 기본값을 사용합니다.");
+        Init();
         _currentAmmo = stats.maxAmmo;
-        // 기본 공격 행동: 연사형
         attackBehavior ??= new AutoAttackBehavior();
+    }
+
+    protected abstract void Init();
+
+    public virtual List<SkillBase> GetSkillCandidates()
+    {
+        return new List<SkillBase>
+        {
+            new AttackSpeedSkill(),
+            new DamageSkill(),
+            new AmmoSkill()
+        };
     }
 
     void Update()
@@ -32,7 +55,6 @@ public class Hero : MonoBehaviour
         _currentTarget = FindNearestMonster();
         if (_currentTarget == null) return;
 
-        // 히어로가 몬스터 방향으로 회전
         Vector3 dir = (_currentTarget.transform.position - transform.position).normalized;
         if (dir != Vector3.zero)
             transform.rotation = Quaternion.LookRotation(dir);
@@ -41,9 +63,7 @@ public class Hero : MonoBehaviour
 
         _attackTimer -= Time.deltaTime;
         if (_attackTimer <= 0f)
-        {
             TryAttack();
-        }
     }
 
     void TryAttack()
@@ -71,6 +91,7 @@ public class Hero : MonoBehaviour
         yield return new WaitForSeconds(stats.reloadSpeed);
         _currentAmmo = stats.maxAmmo;
         _reloading = false;
+        foreach (var skill in skills) skill.OnReload(this);
     }
 
     public float CalcDamage()
@@ -81,13 +102,18 @@ public class Hero : MonoBehaviour
 
     Monster FindNearestMonster()
     {
+        int count = Physics.OverlapSphereNonAlloc(transform.position, stats.range, _overlapBuffer, _monsterLayer);
+
         Monster nearest = null;
-        float minDist = stats.range;
-        foreach (var m in FindObjectsByType<Monster>(FindObjectsSortMode.None))
+        float minSqrDist = float.MaxValue;
+
+        for (int i = 0; i < count; i++)
         {
-            float d = Vector3.Distance(transform.position, m.transform.position);
-            if (d < minDist) { minDist = d; nearest = m; }
+            if (!_overlapBuffer[i].TryGetComponent(out Monster m)) continue;
+            float sqrDist = (_overlapBuffer[i].transform.position - transform.position).sqrMagnitude;
+            if (sqrDist < minSqrDist) { minSqrDist = sqrDist; nearest = m; }
         }
+
         return nearest;
     }
 }
