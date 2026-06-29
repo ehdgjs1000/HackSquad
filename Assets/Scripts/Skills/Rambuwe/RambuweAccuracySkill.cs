@@ -1,13 +1,11 @@
 using UnityEngine;
-
-// 스킬 2: 정확도 증가 / 최종: 후방 지원 (50% 데미지)
-// spreadAngle은 AutoAttackBehavior에서 추후 적용
 public class RambuweAccuracySkill : SkillBase
 {
     public RambuweAccuracySkill()
     {
         skillName = "정확도 증가";
         description = "발사각 감소";
+        finalDescription = "발사각 감소 + 후방 지원 (50% 데미지)";
     }
 
     public override void OnEquip(Hero hero)

@@ -5,6 +5,7 @@ public class RambuweAttackSpeedSkill : SkillBase
     {
         skillName = "발사 속도 증가";
         description = "공격 간격 20% 감소";
+        finalDescription = "공격 간격 감소 + 최대탄약 +50";
     }
 
     public override void OnEquip(Hero hero)

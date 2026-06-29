@@ -26,7 +26,16 @@ public class SkillUpgradeManager : MonoBehaviour
     {
         if (_hero == null) return;
 
-        var candidates = _hero.GetSkillCandidates();
+        // 이미 최종형에 도달한 스킬 제외
+        var candidates = _hero.GetSkillCandidates()
+            .FindAll(c =>
+            {
+                var existing = _hero.skills.Find(s => s.skillName == c.skillName);
+                return existing == null || !existing.IsMaxLevel;
+            });
+
+        if (candidates.Count == 0) return;
+
         skillUpgradePanel.SetActive(true);
         Time.timeScale = 0f;
 

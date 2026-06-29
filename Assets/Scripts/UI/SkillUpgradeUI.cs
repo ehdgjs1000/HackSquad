@@ -18,8 +18,13 @@ public class SkillUpgradeUI : MonoBehaviour
         _skill = skill;
         _onSelect = onSelect;
 
-        skillNameText.text = GetNameLabel(skill, hero);
-        skillDescText.text = skill.description;
+        var existing = hero.skills.Find(s => s.skillName == skill.skillName);
+        bool aboutToFinalize = existing != null && existing.level == SkillBase.MaxLevel - 1;
+
+        skillNameText.text = GetNameLabel(skill, hero, aboutToFinalize);
+        skillDescText.text = aboutToFinalize && !string.IsNullOrEmpty(skill.finalDescription)
+            ? skill.finalDescription
+            : (existing?.description ?? skill.description);
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(OnClick);
@@ -37,11 +42,11 @@ public class SkillUpgradeUI : MonoBehaviour
         _onSelect?.Invoke(_skill);
     }
 
-    string GetNameLabel(SkillBase skill, Hero hero)
+    string GetNameLabel(SkillBase skill, Hero hero, bool aboutToFinalize)
     {
         var existing = hero.skills.Find(s => s.skillName == skill.skillName);
         if (existing == null)      return $"[NEW] {skill.skillName}";
-        if (existing.IsMaxLevel)   return $"[MAX] {skill.skillName}";
+        if (aboutToFinalize)       return $"[FINAL] {skill.skillName}";
         return $"[Lv.{existing.level}→{existing.level + 1}] {skill.skillName}";
     }
 }

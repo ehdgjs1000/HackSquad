@@ -8,6 +8,7 @@ public class RambuweOverheatSkill : SkillBase
     {
         skillName = "과열";
         description = "한 발마다 공격력 1% 증가 (장전 시 초기화)";
+        finalDescription = "한 발마다 공격력 1% 증가 + 관통 1회";
     }
 
     public override void OnEquip(Hero hero)

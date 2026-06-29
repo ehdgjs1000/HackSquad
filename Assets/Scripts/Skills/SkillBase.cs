@@ -4,6 +4,7 @@ public abstract class SkillBase
 {
     public string skillName;
     public string description;
+    public string finalDescription;
     public int level;
     public const int MaxLevel = 3;
     public bool IsFinalized { get; private set; }
