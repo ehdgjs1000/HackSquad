@@ -29,9 +29,12 @@ public class Monster : MonoBehaviour
             transform.position, _target.position, moveSpeed * Time.deltaTime);
     }
 
-    public void TakeDamage(float dmg)
+    public void TakeDamage(float dmg, bool isCrit = false)
     {
         _hp -= dmg;
+
+        DamageTextManager.Show(transform.position, dmg, isCrit);
+
         if (_renderer != null)
         {
             float ratio = Mathf.Clamp01(_hp / maxHp);
