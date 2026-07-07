@@ -6,6 +6,7 @@ public class Rocket : MonoBehaviour
     public float maxLifetime = 5f;
 
     float _damage;
+    bool _isCrit;
     float _explosionRadius;
     int _clusterCount;
     bool _hasNapalm;
@@ -20,9 +21,10 @@ public class Rocket : MonoBehaviour
     bool _exploded;
     float _vfxScale = 1f;
 
-    public void Init(float damage, Transform target, float explosionRadius, GameObject hitVFX, int clusterCount = 0, bool hasNapalm = false, GameObject napalmVFX = null, float vfxScale = 1f, float napalmDamageRatio = 0.3f, float napalmDuration = 5f, float napalmTickInterval = -1f)
+    public void Init(float damage, Transform target, float explosionRadius, GameObject hitVFX, int clusterCount = 0, bool hasNapalm = false, GameObject napalmVFX = null, float vfxScale = 1f, float napalmDamageRatio = 0.3f, float napalmDuration = 5f, float napalmTickInterval = -1f, bool isCrit = false)
     {
         _damage = damage;
+        _isCrit = isCrit;
         _target = target;
         _targetPos = target.position;
         _explosionRadius = explosionRadius;
@@ -67,7 +69,7 @@ public class Rocket : MonoBehaviour
         var cols = Physics.OverlapSphere(transform.position, _explosionRadius, _monsterLayer);
         foreach (var col in cols)
             if (col.TryGetComponent(out Monster m))
-                m.TakeDamage(_damage);
+                m.TakeDamage(_damage, _isCrit);
 
         if (_clusterCount > 0)
         {
@@ -78,7 +80,7 @@ public class Rocket : MonoBehaviour
                 var clusterCols = Physics.OverlapSphere(clusterPos, _explosionRadius * 0.4f, _monsterLayer);
                 foreach (var col in clusterCols)
                     if (col.TryGetComponent(out Monster m))
-                        m.TakeDamage(_damage * 0.5f);
+                        m.TakeDamage(_damage * 0.5f, _isCrit);
             }
         }
 

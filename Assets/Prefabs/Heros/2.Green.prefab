@@ -1630,6 +1630,7 @@ MonoBehaviour:
   hasNapalm: 0
   napalmDamageRatio: 0.3
   napalmDuration: 5
+  napalmTickInterval: 0.6
   explosionSkillData: {fileID: 11400000, guid: dced769b44be44a4fb331dcf7f70d969, type: 2}
   clusterSkillData: {fileID: 11400000, guid: 67e0466d79a4bc64d933723a522c187f, type: 2}
   napalmSkillData: {fileID: 11400000, guid: 68d02a0af5fbf7e439cec3646893f333, type: 2}

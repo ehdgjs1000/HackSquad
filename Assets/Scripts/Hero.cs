@@ -98,10 +98,21 @@ public abstract class Hero : MonoBehaviour
         foreach (var skill in skills) skill.OnReload(this);
     }
 
-    public float CalcDamage()
+    public float CalcDamage() => CalcDamage(out _);
+
+    public float CalcDamage(out bool isCrit)
     {
-        bool isCrit = Random.value < stats.critChance;
+        isCrit = Random.value < stats.critChance;
         return stats.attackDamage * (isCrit ? stats.critDamage : 1f);
+    }
+
+    // 보유 스킬들의 대상별 데미지 배율을 모두 곱해서 반환 (기본 1배)
+    public float GetDamageMultiplier(Monster target)
+    {
+        float mult = 1f;
+        foreach (var skill in skills)
+            mult *= skill.GetDamageMultiplier(target);
+        return mult;
     }
 
     Monster FindNearestMonster()

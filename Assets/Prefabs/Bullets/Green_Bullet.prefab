@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5066615651372980316}
   - component: {fileID: 5897797157678141358}
   - component: {fileID: 1964115531626515495}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: bright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4987,7 +4987,7 @@ GameObject:
   - component: {fileID: 4223053323653190900}
   - component: {fileID: 7188598097950916422}
   - component: {fileID: 6050169198515465470}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Green_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10013,7 +10013,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Rocket
   speed: 10
   maxLifetime: 5
-  explosionVFX: {fileID: 894903862499943472, guid: 945c60bcd099b4943b719551ef92e271, type: 3}
 --- !u!1 &7554417158792927082
 GameObject:
   m_ObjectHideFlags: 0
@@ -10025,7 +10024,7 @@ GameObject:
   - component: {fileID: 1596432848023421408}
   - component: {fileID: 6002053524844401253}
   - component: {fileID: 4966963131185141594}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

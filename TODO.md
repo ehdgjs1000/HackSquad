@@ -21,6 +21,10 @@
   - [x] GreenHasaExplosionSkill (최종: 원산폭격)
   - [x] GreenHasaClusterSkill (최종: 융단폭격)
   - [x] GreenHasaNapalmSkill (최종: 플레임타워)
+- [x] **길리슈트 (Ghillie)** - 스나이퍼, AutoAttackBehavior 재사용
+  - [x] GhilliePierceSkill (최종: 무한관통)
+  - [x] GhillieHeadshotSkill (최종: 더블 공격)
+  - [x] GhillieWeakpointSkill (최종: 지원사격)
 
 ### 투사체 & 이펙트
 - [x] Bullet.cs - 직선, 관통, hitVFX 지원
@@ -53,7 +57,6 @@
 ## 📋 TODO
 
 ### 히어로 추가 제작 (Hero.md 순서)
-- [ ] 길리슈트
 - [ ] 아이스맨
 - [ ] 복면
 - [ ] 사무라이98
@@ -70,7 +73,7 @@
 - [ ] 연구원C
 
 ### 전투 시스템
-- [ ] 크리티컬 데미지 텍스트 연동 (CalcDamage에서 isCrit 반환)
+- [x] 크리티컬 데미지 텍스트 연동 (CalcDamage에서 isCrit 반환)
 - [ ] 몬스터 HP바 UI
 - [ ] 몬스터 스포너 / 웨이브 시스템
 - [ ] 몬스터 다양화 (스탯 다른 종류)

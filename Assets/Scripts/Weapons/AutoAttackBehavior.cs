@@ -27,19 +27,25 @@ public class AutoAttackBehavior : IAttackBehavior
             dir = Quaternion.AngleAxis(offset, Vector3.up) * dir;
         }
 
-        SpawnBullet(hero, spawnPos, dir, hero.CalcDamage());
+        float damage = hero.CalcDamage(out bool isCrit) * hero.GetDamageMultiplier(target);
+        SpawnBullet(hero, spawnPos, dir, damage, isCrit);
+
+        // 더블 공격: 같은 방향으로 추가 발사 (길리슈트 헤드샷 최종)
+        int extraShots = hero is Ghillie gh ? gh.extraShotCount : 0;
+        for (int i = 0; i < extraShots; i++)
+            SpawnBullet(hero, spawnPos, dir, damage, isCrit);
 
         // 후방 지원: 반대 방향으로 추가 발사
         if (hero.stats.backAttackRatio > 0f)
-            SpawnBullet(hero, spawnPos, -dir, hero.CalcDamage() * hero.stats.backAttackRatio);
+            SpawnBullet(hero, spawnPos, -dir, damage * hero.stats.backAttackRatio, isCrit);
 
         hero.ConsumeAmmo(1);
     }
 
-    void SpawnBullet(Hero hero, Vector3 pos, Vector3 dir, float damage)
+    void SpawnBullet(Hero hero, Vector3 pos, Vector3 dir, float damage, bool isCrit)
     {
         var go = Object.Instantiate(hero.bulletPrefab, pos, Quaternion.LookRotation(dir));
         if (go.TryGetComponent(out Bullet bullet))
-            bullet.Init(damage, dir, hero.stats.pierceCount, hero.hitVFX);
+            bullet.Init(damage, dir, hero.stats.pierceCount, hero.hitVFX, isCrit);
     }
 }

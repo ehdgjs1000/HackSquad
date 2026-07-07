@@ -6,14 +6,16 @@ public class Bullet : MonoBehaviour
     public float maxLifetime = 3f;
 
     float _damage;
+    bool _isCrit;
     int _pierceLeft;
     Vector3 _direction;
     int _monsterLayer;
     GameObject _hitVFX;
 
-    public void Init(float damage, Vector3 direction, int pierceCount, GameObject hitVFX = null)
+    public void Init(float damage, Vector3 direction, int pierceCount, GameObject hitVFX = null, bool isCrit = false)
     {
         _damage = damage;
+        _isCrit = isCrit;
         _direction = direction.normalized;
         _pierceLeft = pierceCount;
         _hitVFX = hitVFX;
@@ -31,12 +33,13 @@ public class Bullet : MonoBehaviour
         if (((1 << other.gameObject.layer) & _monsterLayer) == 0) return;
         if (!other.TryGetComponent(out Monster monster)) return;
 
-        monster.TakeDamage(_damage);
+        monster.TakeDamage(_damage, _isCrit);
         SpawnVFX();
 
-        if (_pierceLeft <= 0)
+        // pierceCount == -1: 무한관통, 절대 파괴되지 않고 maxLifetime으로만 소멸
+        if (_pierceLeft == 0)
             Destroy(gameObject);
-        else
+        else if (_pierceLeft > 0)
             _pierceLeft--;
     }
 

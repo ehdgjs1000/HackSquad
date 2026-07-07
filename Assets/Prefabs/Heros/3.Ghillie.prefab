@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 6940498461303810895}
   - component: {fileID: 6828124040533986513}
   - component: {fileID: -9161281365396672034}
+  - component: {fileID: 5221959461290088495}
   m_Layer: 10
   m_Name: 3.Ghillie
   m_TagString: Untagged
@@ -240,6 +241,40 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.96, z: 0}
+--- !u!114 &5221959461290088495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227573321729982004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cf16928ac734b41bce4c8bc7dfccde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ghillie
+  heroData: {fileID: 11400000, guid: 62c259cf0d4cd6441ad2f67d1c22fb88, type: 2}
+  stats:
+    attackSpeed: 0.5
+    attackDamage: 10
+    critChance: 0.1
+    critDamage: 2
+    range: 10
+    maxHp: 100
+    maxAmmo: 30
+    reloadSpeed: 1.5
+    spreadAngle: 0
+    backAttackRatio: 0
+    pierceCount: 0
+    explosionRadius: 0
+  firePos: {fileID: 4185120109070843814}
+  bulletPrefab: {fileID: 1049234075114562, guid: 10a4ac22e29478a48af515fc17800c20, type: 3}
+  hitVFX: {fileID: 0}
+  baseExplosionRadius: 0
+  extraShotCount: 0
+  pierceSkillData: {fileID: 11400000, guid: 7c5c5ec106356754a828f71494032767, type: 2}
+  headshotSkillData: {fileID: 11400000, guid: f3d61dab08d9a3b42ad547eab84d1471, type: 2}
+  weakpointSkillData: {fileID: 11400000, guid: f8efb9a9a0de3044f92cc11cacd3f7fc, type: 2}
 --- !u!1 &1327975283264549503
 GameObject:
   m_ObjectHideFlags: 0

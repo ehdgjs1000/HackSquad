@@ -52,4 +52,7 @@ public abstract class SkillBase
     public virtual void OnKill(Hero hero, Monster target) { }
     public virtual void OnTick(Hero hero) { }
     public virtual void OnReload(Hero hero) { }
+
+    // 특정 대상에게 적용할 데미지 배율 (기본 1배, 조건부 보너스 데미지 스킬이 오버라이드)
+    public virtual float GetDamageMultiplier(Monster target) => 1f;
 }
