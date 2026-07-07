@@ -3,35 +3,40 @@ using UnityEngine;
 
 public class FireZone : MonoBehaviour
 {
+    [SerializeField] float tickInterval = 0.5f;
+
     float _damagePerTick;
     float _radius;
     int _monsterLayer;
 
-    public static void Spawn(Vector3 pos, float damagePerTick, float radius, float lifetime, GameObject vfxPrefab = null)
+    public static void Spawn(GameObject vfxPrefab, Vector3 pos, float damagePerTick, float radius, float lifetime, float vfxScale = 1f)
     {
-        var go = new GameObject("FireZone");
-        go.transform.position = pos;
-        var fz = go.AddComponent<FireZone>();
-        fz._damagePerTick = damagePerTick;
-        fz._radius        = radius;
-        fz._monsterLayer  = LayerMask.GetMask("Monster");
+        GameObject go = vfxPrefab != null
+            ? Instantiate(vfxPrefab, pos, Quaternion.identity)
+            : new GameObject("FireZone");
 
-        if (vfxPrefab != null)
-        {
-            var vfx = Instantiate(vfxPrefab, pos, Quaternion.identity, go.transform);
-            // 파티클 수명 관리는 부모 오브젝트(FireZone)가 Destroy하므로 별도 처리 불필요
-            if (!vfx.TryGetComponent<ParticleSystem>(out _))
-                Destroy(vfx, lifetime);
-        }
+        go.transform.position = pos;
+        go.transform.localScale *= vfxScale;
+
+        if (!go.TryGetComponent(out FireZone fz))
+            fz = go.AddComponent<FireZone>();
+        fz.Init(damagePerTick, radius);
 
         Destroy(go, lifetime);
+    }
+
+    void Init(float damagePerTick, float radius)
+    {
+        _damagePerTick = damagePerTick;
+        _radius        = radius;
+        _monsterLayer  = LayerMask.GetMask("Monster");
     }
 
     void Start() => StartCoroutine(TickLoop());
 
     IEnumerator TickLoop()
     {
-        var wait = new WaitForSeconds(0.5f);
+        var wait = new WaitForSeconds(tickInterval);
         while (true)
         {
             var cols = Physics.OverlapSphere(transform.position, _radius, _monsterLayer);

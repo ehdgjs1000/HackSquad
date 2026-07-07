@@ -24,4 +24,4 @@ MonoBehaviour:
     spreadAngle: 0
     backAttackRatio: 0
     pierceCount: 0
-    explosionRadius: 3
+    explosionRadius: 2.5

@@ -4905,6 +4905,7 @@ GameObject:
   - component: {fileID: 4190386726181640023}
   - component: {fileID: 2683654441423229669}
   - component: {fileID: 8340263471811959679}
+  - component: {fileID: -1001657644349848189}
   m_Layer: 0
   m_Name: FireField
   m_TagString: Untagged
@@ -4923,7 +4924,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.59246, y: 0.05, z: -0.02048}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3472033703448153688}
   - {fileID: 8056500792259652249}
@@ -9792,6 +9793,19 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &-1001657644349848189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496772091474895406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8184c7c1969a5c74590a132e7e5f03cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireZone
+  tickInterval: 0.6
 --- !u!1 &3847784785361307347
 GameObject:
   m_ObjectHideFlags: 0

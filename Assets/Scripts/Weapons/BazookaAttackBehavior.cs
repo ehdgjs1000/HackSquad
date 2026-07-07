@@ -23,10 +23,11 @@ public class BazookaAttackBehavior : IAttackBehavior
         int clusterCount    = hero is GreenHasa gh  ? gh.clusterCount : 0;
         bool hasNapalm      = hero is GreenHasa gh2 && gh2.hasNapalm;
         GameObject napalmVFX = hero is GreenHasa gh3 ? gh3.napalmVFX : null;
+        float vfxScale = hero.baseExplosionRadius > 0f ? hero.stats.explosionRadius / hero.baseExplosionRadius : 1f;
 
         var go = Object.Instantiate(hero.bulletPrefab, spawnPos, Quaternion.LookRotation(dir));
         if (go.TryGetComponent(out Rocket rocket))
-            rocket.Init(hero.CalcDamage(), target.transform, hero.stats.explosionRadius, hero.hitVFX, clusterCount, hasNapalm, napalmVFX);
+            rocket.Init(hero.CalcDamage(), target.transform, hero.stats.explosionRadius, hero.hitVFX, clusterCount, hasNapalm, napalmVFX, vfxScale);
 
         hero.ConsumeAmmo(1);
     }

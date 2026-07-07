@@ -14,6 +14,8 @@ public abstract class Hero : MonoBehaviour
     public GameObject hitVFX;
     public IAttackBehavior attackBehavior;
 
+    [HideInInspector] public float baseExplosionRadius;
+
     [Header("Skills (max 3 slots)")]
     public List<SkillBase> skills = new();
 
@@ -34,6 +36,7 @@ public abstract class Hero : MonoBehaviour
             stats = heroData.statsSO.stats;
         else
             Debug.LogWarning($"[{name}] heroData 또는 statsSO가 할당되지 않았습니다. 기본값을 사용합니다.");
+        baseExplosionRadius = stats.explosionRadius;
         Init();
         _currentAmmo = stats.maxAmmo;
         attackBehavior ??= new AutoAttackBehavior();

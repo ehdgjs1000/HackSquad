@@ -15,8 +15,9 @@ public class Rocket : MonoBehaviour
     Vector3 _targetPos;
     int _monsterLayer;
     bool _exploded;
+    float _vfxScale = 1f;
 
-    public void Init(float damage, Transform target, float explosionRadius, GameObject hitVFX, int clusterCount = 0, bool hasNapalm = false, GameObject napalmVFX = null)
+    public void Init(float damage, Transform target, float explosionRadius, GameObject hitVFX, int clusterCount = 0, bool hasNapalm = false, GameObject napalmVFX = null, float vfxScale = 1f)
     {
         _damage = damage;
         _target = target;
@@ -26,6 +27,7 @@ public class Rocket : MonoBehaviour
         _clusterCount = clusterCount;
         _hasNapalm = hasNapalm;
         _napalmVFX = napalmVFX;
+        _vfxScale = vfxScale;
         _monsterLayer = LayerMask.GetMask("Monster");
         Destroy(gameObject, maxLifetime);
     }
@@ -75,7 +77,7 @@ public class Rocket : MonoBehaviour
         }
 
         if (_hasNapalm)
-            FireZone.Spawn(transform.position, _damage * 0.3f, _explosionRadius, 5f, _napalmVFX);
+            FireZone.Spawn(_napalmVFX, transform.position, _damage * 0.3f, _explosionRadius, 5f, _vfxScale);
 
         Destroy(gameObject);
     }
@@ -84,6 +86,7 @@ public class Rocket : MonoBehaviour
     {
         if (_hitVFX == null) return;
         var vfx = Instantiate(_hitVFX, transform.position, Quaternion.identity);
+        vfx.transform.localScale *= _vfxScale;
         if (!vfx.TryGetComponent<ParticleSystem>(out var ps))
             Destroy(vfx, 3f);
         else if (ps.main.stopAction != ParticleSystemStopAction.Destroy)

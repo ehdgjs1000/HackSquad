@@ -1620,6 +1620,12 @@ MonoBehaviour:
   firePos: {fileID: 1384807153322137150}
   bulletPrefab: {fileID: 1483711411511920907, guid: 2a267433ba06380418d706e0feb8fa55, type: 3}
   hitVFX: {fileID: 894903862499943472, guid: 945c60bcd099b4943b719551ef92e271, type: 3}
+  baseExplosionRadius: 0
+  nuclearWarningVFX: {fileID: 0}
+  nuclearExplosionVFX: {fileID: 4524581959799797790, guid: a095fd3cd5f1f014ab2eb5fd02e7c535, type: 3}
+  carpetExplosionVFX: {fileID: 0}
+  flameTowerPrefab: {fileID: 4672377158834540392, guid: 510557f1d0acd5e4e898044ac2d7a126, type: 3}
+  napalmVFX: {fileID: 1496772091474895406, guid: 6116d665804a62e438023937f15eadf7, type: 3}
   clusterCount: 0
   hasNapalm: 0
 --- !u!1 &8225266880170732201
