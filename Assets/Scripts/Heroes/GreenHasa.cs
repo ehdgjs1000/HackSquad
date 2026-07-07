@@ -118,16 +118,16 @@ public class GreenHasa : Hero
         }
     }
 
-    // 플레임타워: data.loopInterval초마다 랜덤 위치에 화염타워 설치 (data.lifetime초 지속)
+    // 플레임타워: 최종 승급 즉시 1개 설치 후, data.loopInterval초마다 추가 설치 (data.lifetime초 지속)
     IEnumerator FlameTowerLoop(SkillDataSO data)
     {
         while (true)
         {
-            yield return new WaitForSeconds(data.loopInterval);
-
             Vector3 rand = Random.insideUnitSphere * data.spawnRange;
             rand.y = 0f;
-            FlameTower.Spawn(flameTowerPrefab, rand, stats.attackDamage * data.damageMultiplier, stats.explosionRadius, data.lifetime);
+            FlameTower.Spawn(flameTowerPrefab, rand, stats.attackDamage * data.damageMultiplier, data.lifetime);
+
+            yield return new WaitForSeconds(data.loopInterval);
         }
     }
 

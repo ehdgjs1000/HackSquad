@@ -6,15 +6,17 @@ public class FlameTower : MonoBehaviour
     [Header("References")]
     public Transform firePos;
 
-    const float ConeAngle   = 60f;  // 좌우 30도, 총 60도 콘
+    [Header("Attack")]
+    [SerializeField] float attackRange = 5f;   // 사거리(길이)
+    [SerializeField] float attackAngle = 60f;  // 공격 범위(콘 각도, 좌우 절반씩)
+
     const float TickInterval = 0.1f; // 0.1초마다 데미지
 
     float _damage;
-    float _range;
     int _monsterLayer;
     ParticleSystem _flamePS;
 
-    public static void Spawn(GameObject prefab, Vector3 pos, float damage, float range, float lifetime)
+    public static void Spawn(GameObject prefab, Vector3 pos, float damage, float lifetime)
     {
         GameObject go = prefab != null
             ? Instantiate(prefab, pos, Quaternion.identity)
@@ -22,16 +24,16 @@ public class FlameTower : MonoBehaviour
 
         go.transform.position = pos;
 
-        var ft = go.GetComponent<FlameTower>() ?? go.AddComponent<FlameTower>();
-        ft.Init(damage, range);
+        if (!go.TryGetComponent(out FlameTower ft))
+            ft = go.AddComponent<FlameTower>();
+        ft.Init(damage);
 
         Destroy(go, lifetime);
     }
 
-    public void Init(float damage, float range)
+    void Init(float damage)
     {
         _damage = damage;
-        _range  = range;
         _monsterLayer = LayerMask.GetMask("Monster");
 
         // 자식 ParticleSystem(화염 VFX) 자동 탐색 후 재생
@@ -67,11 +69,11 @@ public class FlameTower : MonoBehaviour
         Vector3 origin  = firePos != null ? firePos.position : transform.position;
         Vector3 forward = firePos != null ? firePos.forward  : transform.forward;
 
-        var cols = Physics.OverlapSphere(origin, _range, _monsterLayer);
+        var cols = Physics.OverlapSphere(origin, attackRange, _monsterLayer);
         foreach (var col in cols)
         {
             Vector3 toMonster = (col.transform.position - origin).normalized;
-            if (Vector3.Angle(forward, toMonster) > ConeAngle * 0.5f) continue;
+            if (Vector3.Angle(forward, toMonster) > attackAngle * 0.5f) continue;
             if (col.TryGetComponent(out Monster m))
                 m.TakeDamage(_damage * TickInterval);
         }
@@ -79,7 +81,7 @@ public class FlameTower : MonoBehaviour
 
     Monster FindNearest()
     {
-        var cols = Physics.OverlapSphere(transform.position, _range, _monsterLayer);
+        var cols = Physics.OverlapSphere(transform.position, attackRange, _monsterLayer);
         Monster nearest = null;
         float minSqr = float.MaxValue;
         foreach (var col in cols)
