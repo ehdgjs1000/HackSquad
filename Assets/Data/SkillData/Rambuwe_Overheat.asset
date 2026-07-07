@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94d5f4a50f26b04cb488a1e1bd55461, type: 3}
+  m_Name: Rambuwe_Overheat
+  m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
+  skillName: "\uACFC\uC5F4"
+  initDescription: "\uD55C \uBC1C\uB9C8\uB2E4 \uACF5\uACA9\uB825 1% \uC99D\uAC00"
+  description: "\uD55C \uBC1C\uB9C8\uB2E4 \uACF5\uACA9\uB825 1% \uC99D\uAC00"
+  finalDescription: "\uAD00\uD1B5 1\uD68C"
+  equipValue: 0.01
+  upgradeValue: 0
+  finalValue: 1
+  loopInterval: 0
+  warningDuration: 0
+  radiusMultiplier: 0
+  damageMultiplier: 0
+  lifetime: 0
+  spawnRange: 0
+  bombCount: 0
+  bombSpacing: 0
+  bombDelay: 0

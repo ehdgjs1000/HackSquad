@@ -22,9 +22,7 @@ public class SkillUpgradeUI : MonoBehaviour
         bool aboutToFinalize = existing != null && existing.level == SkillBase.MaxLevel - 1;
 
         skillNameText.text = GetNameLabel(skill, hero, aboutToFinalize);
-        skillDescText.text = aboutToFinalize && !string.IsNullOrEmpty(skill.finalDescription)
-            ? skill.finalDescription
-            : (existing?.description ?? skill.description);
+        skillDescText.text = GetDescription(skill, existing, aboutToFinalize);
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(OnClick);
@@ -48,5 +46,17 @@ public class SkillUpgradeUI : MonoBehaviour
         if (existing == null)      return $"[NEW] {skill.skillName}";
         if (aboutToFinalize)       return $"[FINAL] {skill.skillName}";
         return $"[Lv.{existing.level}→{existing.level + 1}] {skill.skillName}";
+    }
+
+    // 신규 습득: initDescription / 최종 승급 직전: finalDescription / 그 외 업그레이드: description
+    string GetDescription(SkillBase skill, SkillBase existing, bool aboutToFinalize)
+    {
+        if (existing == null)
+            return !string.IsNullOrEmpty(skill.initDescription) ? skill.initDescription : skill.description;
+
+        if (aboutToFinalize && !string.IsNullOrEmpty(skill.finalDescription))
+            return skill.finalDescription;
+
+        return existing.description;
     }
 }

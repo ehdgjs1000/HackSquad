@@ -19,6 +19,14 @@ public class GreenHasa : Hero
 
     [HideInInspector] public int clusterCount;
     [HideInInspector] public bool hasNapalm;
+    [HideInInspector] public float napalmDamageRatio = 0.3f;
+    [HideInInspector] public float napalmDuration = 5f;
+    [HideInInspector] public float napalmTickInterval = 0.6f;
+
+    [Header("Skill Data")]
+    public SkillDataSO explosionSkillData;
+    public SkillDataSO clusterSkillData;
+    public SkillDataSO napalmSkillData;
 
     protected override void Init()
     {
@@ -27,21 +35,21 @@ public class GreenHasa : Hero
 
     public override List<SkillBase> GetSkillCandidates() => new()
     {
-        new GreenHasaExplosionSkill(),
-        new GreenHasaClusterSkill(),
-        new GreenHasaNapalmSkill()
+        new GreenHasaExplosionSkill(explosionSkillData),
+        new GreenHasaClusterSkill(clusterSkillData),
+        new GreenHasaNapalmSkill(napalmSkillData)
     };
 
-    public void StartOhsanBombing()   => StartCoroutine(OhsanBombingLoop());
-    public void StartCarpetBombing()  => StartCoroutine(CarpetBombingLoop());
-    public void StartFlameTowerLoop() => StartCoroutine(FlameTowerLoop());
+    public void StartOhsanBombing(SkillDataSO data)   => StartCoroutine(OhsanBombingLoop(data));
+    public void StartCarpetBombing(SkillDataSO data)  => StartCoroutine(CarpetBombingLoop(data));
+    public void StartFlameTowerLoop(SkillDataSO data) => StartCoroutine(FlameTowerLoop(data));
 
-    // 원산폭격: 15초마다 랜덤 몬스터 위치에 경고 원 → 폭발
-    IEnumerator OhsanBombingLoop()
+    // 원산폭격: data.loopInterval초마다 랜덤 몬스터 위치에 경고 원 → 폭발
+    IEnumerator OhsanBombingLoop(SkillDataSO data)
     {
         while (true)
         {
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(data.loopInterval);
 
             var monsters = FindObjectsByType<Monster>(FindObjectsSortMode.None);
             Vector3 targetPos = monsters.Length > 0
@@ -54,30 +62,30 @@ public class GreenHasa : Hero
             if (nuclearWarningVFX != null)
                 warning = Instantiate(nuclearWarningVFX, targetPos, Quaternion.identity);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(data.warningDuration);
 
             if (warning != null) Destroy(warning);
 
             // 폭발 VFX + 데미지
             SpawnExplosionVFX(nuclearExplosionVFX, targetPos);
-            float radius = stats.explosionRadius * 2f;
+            float radius = stats.explosionRadius * data.radiusMultiplier;
             int monsterLayer = LayerMask.GetMask("Monster");
             var cols = Physics.OverlapSphere(targetPos, radius, monsterLayer);
             foreach (var col in cols)
                 if (col.TryGetComponent(out Monster m))
-                    m.TakeDamage(stats.attackDamage * 5f);
+                    m.TakeDamage(stats.attackDamage * data.damageMultiplier);
         }
     }
 
-    // 융단폭격: 10초마다 무작위 방향 1자 라인 경고 → 순차 폭발
-    IEnumerator CarpetBombingLoop()
+    // 융단폭격: data.loopInterval초마다 무작위 방향 1자 라인 경고 → 순차 폭발
+    IEnumerator CarpetBombingLoop(SkillDataSO data)
     {
-        const int bombCount = 8;
-        const float spacing = 2.5f;
+        int bombCount = data.bombCount;
+        float spacing = data.bombSpacing;
 
         while (true)
         {
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(data.loopInterval);
 
             Vector3 dir = Random.insideUnitSphere;
             dir.y = 0f;
@@ -90,36 +98,36 @@ public class GreenHasa : Hero
             // LineRenderer로 1자 라인 표시
             GameObject lineGO = CreateLineIndicator(positions[0], positions[bombCount - 1]);
 
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(data.warningDuration);
 
             if (lineGO != null) Destroy(lineGO);
 
             // 순차 폭발
             int monsterLayer = LayerMask.GetMask("Monster");
-            float bombRadius = stats.explosionRadius * 0.5f;
+            float bombRadius = stats.explosionRadius * data.radiusMultiplier;
             for (int i = 0; i < bombCount; i++)
             {
                 SpawnExplosionVFX(carpetExplosionVFX, positions[i]);
                 var cols = Physics.OverlapSphere(positions[i], bombRadius, monsterLayer);
                 foreach (var col in cols)
                     if (col.TryGetComponent(out Monster m))
-                        m.TakeDamage(stats.attackDamage * 0.6f);
+                        m.TakeDamage(stats.attackDamage * data.damageMultiplier);
 
-                yield return new WaitForSeconds(0.15f);
+                yield return new WaitForSeconds(data.bombDelay);
             }
         }
     }
 
-    // 플레임타워: 20초마다 랜덤 위치에 화염타워 설치 (8초 지속)
-    IEnumerator FlameTowerLoop()
+    // 플레임타워: data.loopInterval초마다 랜덤 위치에 화염타워 설치 (data.lifetime초 지속)
+    IEnumerator FlameTowerLoop(SkillDataSO data)
     {
         while (true)
         {
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(data.loopInterval);
 
-            Vector3 rand = Random.insideUnitSphere * 8f;
+            Vector3 rand = Random.insideUnitSphere * data.spawnRange;
             rand.y = 0f;
-            FlameTower.Spawn(flameTowerPrefab, rand, stats.attackDamage * 0.4f, stats.explosionRadius, 8f);
+            FlameTower.Spawn(flameTowerPrefab, rand, stats.attackDamage * data.damageMultiplier, stats.explosionRadius, data.lifetime);
         }
     }
 

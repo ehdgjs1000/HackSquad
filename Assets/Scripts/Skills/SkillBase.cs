@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class SkillBase
 {
     public string skillName;
+    public string initDescription;
     public string description;
     public string finalDescription;
     public int level;
@@ -10,7 +11,20 @@ public abstract class SkillBase
     public bool IsFinalized { get; private set; }
     public bool IsMaxLevel => level >= MaxLevel;
 
+    protected SkillDataSO Data { get; private set; }
     protected Hero Owner { get; private set; }
+
+    protected SkillBase(SkillDataSO data)
+    {
+        Data = data;
+        skillName = data.skillName;
+        initDescription = data.initDescription;
+        description = data.description;
+        finalDescription = data.finalDescription;
+    }
+
+    // 미사용 레거시 스킬(AmmoSkill 등)을 위한 하드코딩 호환용 생성자
+    protected SkillBase() { }
 
     public virtual void OnEquip(Hero hero)
     {

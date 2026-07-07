@@ -9,6 +9,9 @@ public class Rocket : MonoBehaviour
     float _explosionRadius;
     int _clusterCount;
     bool _hasNapalm;
+    float _napalmDamageRatio;
+    float _napalmDuration;
+    float _napalmTickInterval;
     GameObject _hitVFX;
     GameObject _napalmVFX;
     Transform _target;
@@ -17,7 +20,7 @@ public class Rocket : MonoBehaviour
     bool _exploded;
     float _vfxScale = 1f;
 
-    public void Init(float damage, Transform target, float explosionRadius, GameObject hitVFX, int clusterCount = 0, bool hasNapalm = false, GameObject napalmVFX = null, float vfxScale = 1f)
+    public void Init(float damage, Transform target, float explosionRadius, GameObject hitVFX, int clusterCount = 0, bool hasNapalm = false, GameObject napalmVFX = null, float vfxScale = 1f, float napalmDamageRatio = 0.3f, float napalmDuration = 5f, float napalmTickInterval = -1f)
     {
         _damage = damage;
         _target = target;
@@ -28,6 +31,9 @@ public class Rocket : MonoBehaviour
         _hasNapalm = hasNapalm;
         _napalmVFX = napalmVFX;
         _vfxScale = vfxScale;
+        _napalmDamageRatio = napalmDamageRatio;
+        _napalmDuration = napalmDuration;
+        _napalmTickInterval = napalmTickInterval;
         _monsterLayer = LayerMask.GetMask("Monster");
         Destroy(gameObject, maxLifetime);
     }
@@ -77,7 +83,7 @@ public class Rocket : MonoBehaviour
         }
 
         if (_hasNapalm)
-            FireZone.Spawn(_napalmVFX, transform.position, _damage * 0.3f, _explosionRadius, 5f, _vfxScale);
+            FireZone.Spawn(_napalmVFX, transform.position, _damage * _napalmDamageRatio, _explosionRadius, _napalmDuration, _vfxScale, _napalmTickInterval);
 
         Destroy(gameObject);
     }

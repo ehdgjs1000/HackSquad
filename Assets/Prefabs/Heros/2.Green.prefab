@@ -1628,6 +1628,11 @@ MonoBehaviour:
   napalmVFX: {fileID: 1496772091474895406, guid: 6116d665804a62e438023937f15eadf7, type: 3}
   clusterCount: 0
   hasNapalm: 0
+  napalmDamageRatio: 0.3
+  napalmDuration: 5
+  explosionSkillData: {fileID: 11400000, guid: dced769b44be44a4fb331dcf7f70d969, type: 2}
+  clusterSkillData: {fileID: 11400000, guid: 67e0466d79a4bc64d933723a522c187f, type: 2}
+  napalmSkillData: {fileID: 11400000, guid: 68d02a0af5fbf7e439cec3646893f333, type: 2}
 --- !u!1 &8225266880170732201
 GameObject:
   m_ObjectHideFlags: 0

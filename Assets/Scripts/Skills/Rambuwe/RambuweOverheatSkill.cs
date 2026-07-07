@@ -1,15 +1,11 @@
-// 스킬 3: 과열 (한발마다 데미지 1% 증가, 장전 시 초기화) / 최종: 관통 +1
+// 스킬 3: 과열 (한발마다 데미지 증가, 장전 시 초기화) / 최종: 관통 증가
+// Data.equipValue = 한 발당 스택 증가율(0.01 = 1%), Data.finalValue = pierceCount 증가량
 public class RambuweOverheatSkill : SkillBase
 {
     float _baseDamage;
     int _stack;
 
-    public RambuweOverheatSkill()
-    {
-        skillName = "과열";
-        description = "한 발마다 공격력 1% 증가 (장전 시 초기화)";
-        finalDescription = "한 발마다 공격력 1% 증가 + 관통 1회";
-    }
+    public RambuweOverheatSkill(SkillDataSO data) : base(data) { }
 
     public override void OnEquip(Hero hero)
     {
@@ -21,7 +17,7 @@ public class RambuweOverheatSkill : SkillBase
     public override void OnAttack(Hero hero, Monster target)
     {
         _stack++;
-        hero.stats.attackDamage = _baseDamage * (1f + _stack * 0.01f);
+        hero.stats.attackDamage = _baseDamage * (1f + _stack * Data.equipValue);
     }
 
     public override void OnReload(Hero hero)
@@ -32,7 +28,7 @@ public class RambuweOverheatSkill : SkillBase
 
     protected override void OnFinalize()
     {
-        Owner.stats.pierceCount += 1;
-        description = "한 발마다 공격력 1% 증가 + 관통 1회";
+        Owner.stats.pierceCount += (int)Data.finalValue;
+        description = finalDescription;
     }
 }

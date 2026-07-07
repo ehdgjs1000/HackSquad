@@ -9,7 +9,7 @@ public class FireZone : MonoBehaviour
     float _radius;
     int _monsterLayer;
 
-    public static void Spawn(GameObject vfxPrefab, Vector3 pos, float damagePerTick, float radius, float lifetime, float vfxScale = 1f)
+    public static void Spawn(GameObject vfxPrefab, Vector3 pos, float damagePerTick, float radius, float lifetime, float vfxScale = 1f, float tickInterval = -1f)
     {
         GameObject go = vfxPrefab != null
             ? Instantiate(vfxPrefab, pos, Quaternion.identity)
@@ -20,16 +20,18 @@ public class FireZone : MonoBehaviour
 
         if (!go.TryGetComponent(out FireZone fz))
             fz = go.AddComponent<FireZone>();
-        fz.Init(damagePerTick, radius);
+        fz.Init(damagePerTick, radius, tickInterval);
 
         Destroy(go, lifetime);
     }
 
-    void Init(float damagePerTick, float radius)
+    void Init(float damagePerTick, float radius, float tickIntervalOverride)
     {
         _damagePerTick = damagePerTick;
         _radius        = radius;
         _monsterLayer  = LayerMask.GetMask("Monster");
+        if (tickIntervalOverride >= 0f)
+            tickInterval = tickIntervalOverride;
     }
 
     void Start() => StartCoroutine(TickLoop());

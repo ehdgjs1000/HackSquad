@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94d5f4a50f26b04cb488a1e1bd55461, type: 3}
+  m_Name: GreenHasa_Cluster
+  m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
+  skillName: "\uD074\uB7EC\uC2A4\uD130 \uC0DD\uC131"
+  initDescription: "\uD3ED\uBC1C \uC2DC \uD074\uB7EC\uC2A4\uD130\uD0C4 \uC0DD\uC131"
+  description: "\uD074\uB7EC\uC2A4\uD130\uD0C4 2\uAC1C \uCD94\uAC00 \uC0DD\uC131"
+  finalDescription: "10\uCD08 \uB9C8\uB2E4 \uC735\uB2E8\uD3ED\uACA9"
+  equipValue: 3
+  upgradeValue: 2
+  finalValue: 0
+  loopInterval: 10
+  warningDuration: 1.5
+  radiusMultiplier: 0.5
+  damageMultiplier: 0.6
+  lifetime: 0
+  spawnRange: 0
+  bombCount: 8
+  bombSpacing: 2.5
+  bombDelay: 0.15
