@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Ghillie_Headshot
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
   skillName: "\uD5E4\uB4DC\uC0F7"
-  initDescription: "\uCE58\uBA85\uD0C0 \uD655\uB960/\uD53C\uD574 \uC99D\uAC00"
-  description: "\uCE58\uBA85\uD0C0 \uD655\uB960/\uD53C\uD574 \uCD94\uAC00 \uC99D\uAC00"
-  finalDescription: "\uCE58\uBA85\uD0C0 \uD655\uB960/\uD53C\uD574 \uC99D\uAC00 +
-    \uB354\uBE14 \uACF5\uACA9"
+  initDescription: "\uCE58\uBA85\uD0C0 \uD655\uB960 \uBC0F \uD53C\uD574 \uC99D\uAC00"
+  description: "\uCE58\uBA85\uD0C0 \uD655\uB960 \uBC0F \uD53C\uD574 \uCD94\uAC00
+    \uC99D\uAC00"
+  finalDescription: "\uB354\uBE14 \uACF5\uACA9"
   equipValue: 0.1
   upgradeValue: 0.2
   finalValue: 0

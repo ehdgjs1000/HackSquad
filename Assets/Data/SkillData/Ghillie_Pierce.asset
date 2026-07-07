@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ghillie_Pierce
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
   skillName: "\uAD00\uD1B5 \uC218 \uC99D\uAC00"
-  initDescription: "\uAD00\uD1B5 \uC218 +1"
-  description: "\uAD00\uD1B5 \uC218 +1"
+  initDescription: "\uAD00\uD1B5 \uC218 \uC99D\uAC00"
+  description: "\uAD00\uD1B5 \uC218 \uC99D\uAC00"
   finalDescription: "\uBB34\uD55C\uAD00\uD1B5"
   equipValue: 1
   upgradeValue: 1

@@ -268,10 +268,11 @@ MonoBehaviour:
     pierceCount: 0
     explosionRadius: 0
   firePos: {fileID: 4185120109070843814}
-  bulletPrefab: {fileID: 1049234075114562, guid: 10a4ac22e29478a48af515fc17800c20, type: 3}
-  hitVFX: {fileID: 0}
+  bulletPrefab: {fileID: 8364901568852797108, guid: ba6106aeb317f7a468ec96ee541683f9, type: 3}
+  hitVFX: {fileID: 5524506809627810765, guid: d3c52325ec9286f48a731516ca801c57, type: 3}
   baseExplosionRadius: 0
   extraShotCount: 0
+  supportFireBulletPrefab: {fileID: 7058502825412558188, guid: cb6739671435b254bb82eae2909fbbe1, type: 3}
   pierceSkillData: {fileID: 11400000, guid: 7c5c5ec106356754a828f71494032767, type: 2}
   headshotSkillData: {fileID: 11400000, guid: f3d61dab08d9a3b42ad547eab84d1471, type: 2}
   weakpointSkillData: {fileID: 11400000, guid: f8efb9a9a0de3044f92cc11cacd3f7fc, type: 2}

@@ -1211,6 +1211,10 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 8364901568852797108, guid: ba6106aeb317f7a468ec96ee541683f9, type: 3}
+    - target: {fileID: 5221959461290088495, guid: 1d56db5edd13a80479e005ddd8b3351b, type: 3}
+      propertyPath: supportFireBulletPrefab
+      value: 
+      objectReference: {fileID: 7058502825412558188, guid: cb6739671435b254bb82eae2909fbbe1, type: 3}
     - target: {fileID: 6940498461303810895, guid: 1d56db5edd13a80479e005ddd8b3351b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.9069
