@@ -502,12 +502,14 @@ MonoBehaviour:
     explosionRadius: 0
   firePos: {fileID: 0}
   bulletPrefab: {fileID: 0}
-  hitVFX: {fileID: 0}
+  hitVFX: {fileID: 3294679137599525525, guid: c41cfa9df2f63594ab0dc28403c531df, type: 3}
   baseExplosionRadius: 0
-  iceVfxPrefab: {fileID: 0}
+  iceVfxPrefab: {fileID: 2870177188126838604, guid: b76ac62b72652354dbd4e16b8027d0e8, type: 3}
   slowMultiplier: 0.5
   iceDuration: 3
-  chainZoneCount: 0
+  hasIcicleBurst: 0
+  tornadoVfxPrefab: {fileID: 6356931042169034323, guid: 090d7324b53c5ea42897c05103e8ee2e, type: 3}
+  icicleVfxPrefab: {fileID: 5461336826850474850, guid: 12c798c0b76971e4ebf79ef48999b605, type: 3}
   chillSkillData: {fileID: 11400000, guid: 5cd2977e02cf8204c9d7597a4f9c5661, type: 2}
   radiusSkillData: {fileID: 11400000, guid: bab54404367099c46b42bca3106a84f4, type: 2}
   shatterSkillData: {fileID: 11400000, guid: aa1468c4a439be140ac0b1cbfa984edf, type: 2}

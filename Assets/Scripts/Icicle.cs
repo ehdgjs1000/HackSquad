@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// 아이스맨 스킬3 최종: 결빙 폭풍 — 장판 위치에서 사방으로 발사되는 고드름 투사체
+// 아이스맨 고드름 투사체 — 기본 공격마다 발사되며, 스킬3 최종(결빙 폭풍)에서는 장판 위치에서 사방으로 발사됨
 public class Icicle : MonoBehaviour
 {
     public float speed = 12f;
@@ -11,13 +11,16 @@ public class Icicle : MonoBehaviour
     Vector3 _direction;
     int _monsterLayer;
 
+    static readonly Quaternion SpawnRotation = Quaternion.Euler(0f, 0f, 0f);
+
     public static void Spawn(GameObject prefab, Vector3 pos, float baseDamage, Vector3 direction)
     {
         GameObject go = prefab != null
-            ? Instantiate(prefab, pos, Quaternion.LookRotation(direction))
+            ? Instantiate(prefab, pos, SpawnRotation)
             : new GameObject("Icicle");
 
         go.transform.position = pos;
+        go.transform.rotation = SpawnRotation;
 
         if (!go.TryGetComponent(out Icicle icicle))
             icicle = go.AddComponent<Icicle>();

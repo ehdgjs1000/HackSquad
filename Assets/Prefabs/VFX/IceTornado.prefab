@@ -19554,10 +19554,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856f83ec36e18c840ba77ef4ca2fc698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tornado
-  vfxScale: 0.6
+  vfxScale: 0.8
   radius: 2
   damageRatio: 2
-  moveSpeed: 2
+  moveSpeed: 3
   wanderRadius: 6
   directionChangeInterval: 2
 --- !u!1 &7620471923838651797

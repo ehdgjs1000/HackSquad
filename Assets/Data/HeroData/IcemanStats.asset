@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: IcemanStats
   m_EditorClassIdentifier: Assembly-CSharp::HeroStatsSO
   stats:
-    attackSpeed: 1
-    attackDamage: 35
+    attackSpeed: 1.5
+    attackDamage: 50
     critChance: 0.1
     critDamage: 2
     range: 8

@@ -8,6 +8,7 @@ public class Iceman : Hero
     public GameObject iceVfxPrefab;
     [HideInInspector] public float slowMultiplier = 0.5f; // 장판 위 이동속도 배율 (1=정상, 0=완전정지)
     [HideInInspector] public float iceDuration = 3f;       // 장판 유지시간(초)
+    [HideInInspector] public bool hasIcicleBurst;          // 스킬 3 최종: 장판 생성 시 고드름 4방향 발사 여부
 
     [Header("스킬 2 최종: 연쇄 빙결(토네이도)")]
     public GameObject tornadoVfxPrefab;
@@ -33,50 +34,25 @@ public class Iceman : Hero
     };
 
     public void StartTornadoLoop(SkillDataSO data) => StartCoroutine(TornadoLoop(data));
-    public void StartFrostStormLoop(SkillDataSO data) => StartCoroutine(FrostStormLoop(data));
 
-    // 연쇄 빙결: data.loopInterval초마다 무작위 적 위치에 토네이도 생성 (공격과 무관한 독립 루프)
+    // 연쇄 빙결: 승급 즉시 토네이도 생성 후, data.loopInterval초 쿨마다 재생성 (공격과 무관한 독립 루프)
     IEnumerator TornadoLoop(SkillDataSO data)
     {
         while (true)
         {
+            SpawnTornado(data);
             yield return new WaitForSeconds(data.loopInterval);
-
-            var monsters = FindObjectsByType<Monster>(FindObjectsSortMode.None);
-            if (monsters.Length == 0) continue;
-
-            Vector3 pos = monsters[Random.Range(0, monsters.Length)].transform.position;
-            pos.y = 0f;
-
-            Tornado.Spawn(tornadoVfxPrefab, pos, stats.attackDamage, data.lifetime);
         }
     }
 
-    // 결빙 폭풍: data.loopInterval초마다 무작위 적 위치에 광역 장판 생성(데미지 1회 + 슬로우 지속) + 그 위치에서 90도 간격으로 고드름 4개 발사
-    IEnumerator FrostStormLoop(SkillDataSO data)
+    void SpawnTornado(SkillDataSO data)
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(data.loopInterval);
+        var monsters = FindObjectsByType<Monster>(FindObjectsSortMode.None);
+        Vector3 pos = monsters.Length > 0
+            ? monsters[Random.Range(0, monsters.Length)].transform.position
+            : transform.position;
+        pos.y = 0f;
 
-            var monsters = FindObjectsByType<Monster>(FindObjectsSortMode.None);
-            if (monsters.Length == 0) continue;
-
-            Vector3 pos = monsters[Random.Range(0, monsters.Length)].transform.position;
-            pos.y = 0f;
-
-            float radius = stats.explosionRadius * data.radiusMultiplier;
-            float zoneDamage = stats.attackDamage * data.damageMultiplier;
-            float vfxScale = baseExplosionRadius > 0f ? radius / baseExplosionRadius : 1f;
-            IceZone.Spawn(iceVfxPrefab, pos, zoneDamage, radius, slowMultiplier, data.lifetime, vfxScale: vfxScale);
-
-            // 장판 위치에서 90도 간격으로 고드름 4방향 발사
-            float baseAngle = Random.Range(0f, 360f);
-            for (int i = 0; i < 4; i++)
-            {
-                Vector3 dir = Quaternion.Euler(0f, baseAngle + i * 90f, 0f) * Vector3.forward;
-                Icicle.Spawn(icicleVfxPrefab, pos, stats.attackDamage, dir);
-            }
-        }
+        Tornado.Spawn(tornadoVfxPrefab, pos, stats.attackDamage, data.lifetime);
     }
 }

@@ -1,6 +1,5 @@
-// 스킬 3: 냉기 파쇄 — 이미 슬로우 상태인 적에게 추가 데미지 배율 / 최종: 결빙 폭풍 (주기적 광역 장판)
+// 스킬 3: 냉기 파쇄 — 이미 슬로우 상태인 적에게 추가 데미지 배율 / 최종: 결빙 폭풍 (기본 공격의 장판 생성 시 그 위치에서 고드름 4방향 발사)
 // Data.equipValue = 최초 배율, Data.upgradeValue = 강화당 추가 배율
-// Data.loopInterval = 결빙 폭풍 주기, Data.radiusMultiplier/damageMultiplier = 장판 범위/데미지 배율, Data.lifetime = 장판 지속시간
 public class IcemanShatterSkill : SkillBase
 {
     float _multiplier;
@@ -24,6 +23,6 @@ public class IcemanShatterSkill : SkillBase
     protected override void OnFinalize()
     {
         if (Owner is Iceman ice)
-            ice.StartFrostStormLoop(Data);
+            ice.hasIcicleBurst = true;
     }
 }
