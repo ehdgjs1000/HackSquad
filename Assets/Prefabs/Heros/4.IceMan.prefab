@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 5246440731078014624}
   - component: {fileID: 7044963384409335572}
   - component: {fileID: 2726588414380859572}
+  - component: {fileID: 4715985110709471771}
   m_Layer: 10
   m_Name: 4.IceMan
   m_TagString: Untagged
@@ -473,6 +474,43 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.96, z: 0}
+--- !u!114 &4715985110709471771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906855515284739908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cee0db36fb88243886ee1536aae755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Iceman
+  heroData: {fileID: 11400000, guid: 594c2839cb0717a49ad327e5ec9557a3, type: 2}
+  stats:
+    attackSpeed: 0.5
+    attackDamage: 10
+    critChance: 0.1
+    critDamage: 2
+    range: 10
+    maxHp: 100
+    maxAmmo: 30
+    reloadSpeed: 1.5
+    spreadAngle: 0
+    backAttackRatio: 0
+    pierceCount: 0
+    explosionRadius: 0
+  firePos: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  hitVFX: {fileID: 0}
+  baseExplosionRadius: 0
+  iceVfxPrefab: {fileID: 0}
+  slowMultiplier: 0.5
+  iceDuration: 3
+  chainZoneCount: 0
+  chillSkillData: {fileID: 11400000, guid: 5cd2977e02cf8204c9d7597a4f9c5661, type: 2}
+  radiusSkillData: {fileID: 11400000, guid: bab54404367099c46b42bca3106a84f4, type: 2}
+  shatterSkillData: {fileID: 11400000, guid: aa1468c4a439be140ac0b1cbfa984edf, type: 2}
 --- !u!1 &1959401150760576372
 GameObject:
   m_ObjectHideFlags: 0

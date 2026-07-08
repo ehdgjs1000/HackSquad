@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -10,6 +11,13 @@ public class Monster : MonoBehaviour
     Transform _target;
     Renderer _renderer;
     Color _baseColor;
+
+    // 슬로우 배율 목록(1=정상, 0=완전정지). 여러 장판이 겹칠 수 있어 가장 강한(최소) 값을 적용
+    readonly List<float> _slowMultipliers = new();
+    public bool IsSlowed => _slowMultipliers.Count > 0;
+
+    public void AddSlow(float multiplier) => _slowMultipliers.Add(multiplier);
+    public void RemoveSlow(float multiplier) => _slowMultipliers.Remove(multiplier);
 
     void Start()
     {
@@ -25,8 +33,13 @@ public class Monster : MonoBehaviour
     void Update()
     {
         if (_target == null) return;
+
+        float speedMultiplier = 1f;
+        for (int i = 0; i < _slowMultipliers.Count; i++)
+            speedMultiplier = Mathf.Min(speedMultiplier, _slowMultipliers[i]);
+
         transform.position = Vector3.MoveTowards(
-            transform.position, _target.position, moveSpeed * Time.deltaTime);
+            transform.position, _target.position, moveSpeed * speedMultiplier * Time.deltaTime);
     }
 
     public void TakeDamage(float dmg, bool isCrit = false)
