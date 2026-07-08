@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: Iceman_Radius
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
   skillName: "\uC7A5\uD310 \uD655\uC7A5"
-  initDescription: "\uC7A5\uD310 \uBC94\uC704"
-  description: "\uC7A5\uD310 \uBC94\uC704"
-  finalDescription: "\uC7A5\uD310 \uCD94\uAC00 \uC0DD\uC131"
-  equipValue: 1
-  upgradeValue: 1
+  initDescription: "\uC7A5\uD310 \uD06C\uAE30 30% \uC99D\uAC00"
+  description: "\uC7A5\uD310 \uD06C\uAE30 30% \uC99D\uAC00"
+  finalDescription: "6\uCD08\uB9C8\uB2E4 \uD544\uB4DC\uC5D0 \uD1A0\uB124\uC774\uB3C4
+    \uC18C\uD658 (\uB2FF\uC740 \uC801\uC5D0\uAC8C 1\uCD08\uB9C8\uB2E4 \uD53C\uD574)"
+  equipValue: 0.3
+  upgradeValue: 0.3
   finalValue: 0
-  loopInterval: 0
+  loopInterval: 6
   warningDuration: 0
   radiusMultiplier: 0
   damageMultiplier: 0
-  lifetime: 0
+  lifetime: 6
   spawnRange: 0
   bombCount: 2
   bombSpacing: 0

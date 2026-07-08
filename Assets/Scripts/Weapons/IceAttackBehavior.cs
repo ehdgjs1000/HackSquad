@@ -17,32 +17,14 @@ public class IceAttackBehavior : IAttackBehavior
         }
 
         float damage = hero.CalcDamage(out bool isCrit) * hero.GetDamageMultiplier(target);
-        SpawnZoneAt(iceman, target.transform.position, damage, isCrit);
+        Vector3 pos = target.transform.position;
+        pos.y = 0f;
 
-        // 스킬 2 최종: 연쇄 빙결 — 다른 적들에게도 동시에 장판 생성
-        if (iceman.chainZoneCount > 0)
-            SpawnChainZones(iceman, target, damage, isCrit);
+        // 장판 확장 스킬로 늘어난 비율만큼 VFX 크기도 함께 키움
+        float vfxScale = iceman.baseExplosionRadius > 0f ? iceman.stats.explosionRadius / iceman.baseExplosionRadius : 1f;
+
+        IceZone.Spawn(iceman.iceVfxPrefab, pos, damage, iceman.stats.explosionRadius, iceman.slowMultiplier, iceman.iceDuration, isCrit, vfxScale);
 
         hero.ConsumeAmmo(1);
-    }
-
-    void SpawnChainZones(Iceman iceman, Monster excludeTarget, float damage, bool isCrit)
-    {
-        var monsters = Object.FindObjectsByType<Monster>(FindObjectsSortMode.None);
-        int spawned = 0;
-        foreach (var m in monsters)
-        {
-            if (spawned >= iceman.chainZoneCount) break;
-            if (m == excludeTarget) continue;
-
-            SpawnZoneAt(iceman, m.transform.position, damage, isCrit);
-            spawned++;
-        }
-    }
-
-    void SpawnZoneAt(Iceman iceman, Vector3 pos, float damage, bool isCrit)
-    {
-        pos.y = 0f;
-        IceZone.Spawn(iceman.iceVfxPrefab, pos, damage, iceman.stats.explosionRadius, iceman.slowMultiplier, iceman.iceDuration, isCrit);
     }
 }

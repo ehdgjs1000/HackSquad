@@ -13,13 +13,18 @@ public class IceZone : MonoBehaviour
 
     static readonly Collider[] _buffer = new Collider[32];
 
-    public static void Spawn(GameObject vfxPrefab, Vector3 pos, float damage, float radius, float slowMultiplier, float duration, bool isCrit = false)
+    const float GroundOffset = 0.1f; // 바닥에 파묻히지 않도록 생성 위치보다 살짝 위에 스폰
+
+    public static void Spawn(GameObject vfxPrefab, Vector3 pos, float damage, float radius, float slowMultiplier, float duration, bool isCrit = false, float vfxScale = 1f)
     {
+        pos.y += GroundOffset;
+
         GameObject go = vfxPrefab != null
             ? Instantiate(vfxPrefab, pos, Quaternion.identity)
             : new GameObject("IceZone");
 
         go.transform.position = pos;
+        go.transform.localScale *= vfxScale; // 자식 파티클은 Scaling Mode: Hierarchy로 설정되어 함께 스케일됨
 
         if (!go.TryGetComponent(out IceZone zone))
             zone = go.AddComponent<IceZone>();
