@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SamuraiStats
   m_EditorClassIdentifier: Assembly-CSharp::HeroStatsSO
   stats:
-    attackSpeed: 0.4
+    attackSpeed: 0.6
     attackDamage: 8
     critChance: 0.1
     critDamage: 2

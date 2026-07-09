@@ -63,7 +63,9 @@ public class AutoAttackBehavior : IAttackBehavior
 
     void SpawnBullet(Hero hero, Vector3 pos, Vector3 dir, float damage, bool isCrit)
     {
-        var go = Object.Instantiate(hero.bulletPrefab, pos, Quaternion.LookRotation(dir));
+        // 화염구체(사무라이)는 방향과 무관하게 항상 X축 90도로 고정 생성
+        Quaternion rotation = hero is Samurai ? Quaternion.Euler(90f, 0f, 0f) : Quaternion.LookRotation(dir);
+        var go = Object.Instantiate(hero.bulletPrefab, pos, rotation);
 
         float damageIncreasePerPierce = 0f;
         float splitChance = 0f;
@@ -84,16 +86,18 @@ public class AutoAttackBehavior : IAttackBehavior
             }
         }
 
-        // 화염구체(사무라이 기본 공격): 명중 시 화상 적용
+        // 화염구체(사무라이 기본 공격): 명중 시 화상 적용, 크기는 화염구체 강화 스킬로 누적
         if (hero is Samurai sam)
         {
+            go.transform.localScale *= sam.bulletScaleMultiplier;
+
             burn = new BurnApplication
             {
                 damagePerTick = damage * sam.burnDamagePerTickRatio,
+                maxTicks = sam.burnMaxTicks,
+                explodeEveryTicks = sam.hasCombustionExplosion ? sam.burnExplodeEveryTicks : 0,
                 explosionDamage = damage * sam.burnExplosionDamageRatio,
                 explosionRadius = sam.burnExplosionRadius,
-                maxTicks = sam.burnMaxTicks,
-                explodeEveryTicks = sam.burnExplodeEveryTicks,
                 explosionVfxPrefab = sam.combustionExplosionVfxPrefab
             };
         }

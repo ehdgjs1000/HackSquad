@@ -920,17 +920,37 @@ MonoBehaviour:
     pierceCount: 0
     explosionRadius: 0
   firePos: {fileID: 6323264167446811571}
-  bulletPrefab: {fileID: 7058502825412558188, guid: cb6739671435b254bb82eae2909fbbe1, type: 3}
+  bulletPrefab: {fileID: 8163687648242399499, guid: 837c70db722ec0e4da7cebc8f7731e29, type: 3}
   hitVFX: {fileID: 0}
   baseExplosionRadius: 0
-  burnDamagePerTickRatio: 0.2
+  burnDamagePerTickRatio: 0.3
   burnMaxTicks: 3
+  burnMaxTicksIncreasePerLevel: 1
+  burnDamageIncreasePerLevel: 0.1
+  meteorVfxPrefab: {fileID: 8041962680771351040, guid: d5e40f607b1db47488ab02ee0c0223e9, type: 3}
+  meteorExplosionVfxPrefab: {fileID: 5435732824223675151, guid: 4017e4f093afa164ea14d1be725d1dff, type: 3}
+  meteorLoopInterval: 3
+  meteorFallHeight: 10
+  meteorFallDuration: 0.8
+  meteorDamageRatio: 3
+  meteorRadius: 3
+  fireballSizeIncreasePerLevel: 0.15
+  fireballDamageIncreasePerLevel: 0.1
+  bulletScaleMultiplier: 1
+  slashVfxPrefab: {fileID: 3112187473896389159, guid: 02d5f75fd1d40c74e8dfe9e656018b07, type: 3}
+  slashLoopInterval: 4
+  slashMinTargets: 3
+  slashMaxTargets: 6
+  slashDamageRatio: 1.3
+  ashMaxTicksIncreasePerLevel: 1
+  combustionExplosionVfxPrefab: {fileID: 7226084368883193175, guid: 34d6d197d9c177d44a44723dc86e6172, type: 3}
   burnExplodeEveryTicks: 3
-  combustionExplosionVfxPrefab: {fileID: 0}
   burnExplosionDamageRatio: 1.5
   burnExplosionRadius: 2.5
-  meteorVfxPrefab: {fileID: 0}
-  fireWaveVfxPrefab: {fileID: 0}
+  hasCombustionExplosion: 0
+  burnSkillData: {fileID: 11400000, guid: 6a6f6029d0bbb044eaf8de53b782d635, type: 2}
+  fireballSkillData: {fileID: 11400000, guid: 4f4b5603f3acfa84eacd95ff7cfa351b, type: 2}
+  ashSkillData: {fileID: 11400000, guid: d2f415de3b082bd40a2e7677023e30a2, type: 2}
 --- !u!1 &5079986547711788914
 GameObject:
   m_ObjectHideFlags: 0

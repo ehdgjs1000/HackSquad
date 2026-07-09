@@ -1621,11 +1621,33 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1483711411511920907, guid: 2a267433ba06380418d706e0feb8fa55, type: 3}
   hitVFX: {fileID: 894903862499943472, guid: 945c60bcd099b4943b719551ef92e271, type: 3}
   baseExplosionRadius: 0
+  explosionRadiusEquipMultiplier: 1.3
+  explosionRadiusUpgradeMultiplier: 1.2
   nuclearWarningVFX: {fileID: 0}
-  nuclearExplosionVFX: {fileID: 4524581959799797790, guid: a095fd3cd5f1f014ab2eb5fd02e7c535, type: 3}
+  nuclearExplosionVFX: {fileID: 7185735816699003191, guid: 9bc2d519fd18e8b4f98e9e2cddee424a, type: 3}
+  ohsanLoopInterval: 10
+  ohsanWarningDuration: 2
+  ohsanRadiusMultiplier: 2
+  ohsanDamageMultiplier: 5
+  clusterCountEquip: 3
+  clusterCountUpgrade: 2
   carpetExplosionVFX: {fileID: 0}
+  carpetLoopInterval: 10
+  carpetWarningDuration: 1.5
+  carpetRadiusMultiplier: 0.5
+  carpetDamageMultiplier: 0.6
+  carpetBombCount: 8
+  carpetBombSpacing: 2.5
+  carpetBombDelay: 0.15
+  napalmDamageRatioEquip: 0.3
+  napalmDurationEquip: 5
+  napalmTickDecreasePerUpgrade: 0.1
   flameTowerPrefab: {fileID: 4672377158834540392, guid: 510557f1d0acd5e4e898044ac2d7a126, type: 3}
   napalmVFX: {fileID: 1496772091474895406, guid: 6116d665804a62e438023937f15eadf7, type: 3}
+  flameTowerLoopInterval: 20
+  flameTowerDamageMultiplier: 0.4
+  flameTowerLifetime: 10
+  flameTowerSpawnRange: 8
   clusterCount: 0
   hasNapalm: 0
   napalmDamageRatio: 0.3
