@@ -35,6 +35,10 @@ public class AutoAttackBehavior : IAttackBehavior
         for (int i = 0; i < extraShots; i++)
             SpawnBullet(hero, spawnPos, dir, damage, isCrit);
 
+        // 확률 추가 발사 (복면 연사 스킬): 매우 짧은 텀을 두고 한 발 더 발사
+        if (hero is MaskHero mask && Random.value < mask.extraShotChance)
+            hero.RunDelayed(mask.extraShotDelay, () => SpawnBullet(hero, spawnPos, dir, damage, isCrit));
+
         // 후방 지원: 반대 방향으로 추가 발사
         if (hero.stats.backAttackRatio > 0f)
             SpawnBullet(hero, spawnPos, -dir, damage * hero.stats.backAttackRatio, isCrit);
@@ -45,7 +49,26 @@ public class AutoAttackBehavior : IAttackBehavior
     void SpawnBullet(Hero hero, Vector3 pos, Vector3 dir, float damage, bool isCrit)
     {
         var go = Object.Instantiate(hero.bulletPrefab, pos, Quaternion.LookRotation(dir));
+
+        float damageIncreasePerPierce = 0f;
+        float splitChance = 0f;
+        float splitAngle = 0f;
+
+        if (hero is MaskHero mask)
+        {
+            go.transform.localScale *= mask.bulletScaleMultiplier;
+
+            if (mask.hasPierceDamageBonus)
+                damageIncreasePerPierce = mask.damageIncreasePerPierce;
+
+            if (mask.hasSplitShot)
+            {
+                splitChance = mask.splitChance;
+                splitAngle = mask.splitAngle;
+            }
+        }
+
         if (go.TryGetComponent(out Bullet bullet))
-            bullet.Init(damage, dir, hero.stats.pierceCount, hero.hitVFX, isCrit);
+            bullet.Init(damage, dir, hero.stats.pierceCount, hero.hitVFX, isCrit, damageIncreasePerPierce, splitChance, splitAngle);
     }
 }

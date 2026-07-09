@@ -89,6 +89,15 @@ public abstract class Hero : MonoBehaviour
         _currentAmmo = Mathf.Max(0, _currentAmmo - amount);
     }
 
+    // 공격 로직(IAttackBehavior)은 MonoBehaviour가 아니므로, 짧은 지연 후 콜백이 필요한 경우 이 헬퍼를 통해 코루틴을 대신 돌려준다
+    public void RunDelayed(float delay, System.Action action) => StartCoroutine(DelayedRoutine(delay, action));
+
+    IEnumerator DelayedRoutine(float delay, System.Action action)
+    {
+        yield return new WaitForSeconds(delay);
+        action?.Invoke();
+    }
+
     IEnumerator Reload()
     {
         _reloading = true;

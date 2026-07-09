@@ -826,6 +826,7 @@ GameObject:
   - component: {fileID: 2384908656373518962}
   - component: {fileID: 8275845077192024898}
   - component: {fileID: 6745151308118203853}
+  - component: {fileID: 4790333526028013831}
   m_Layer: 10
   m_Name: 5.Mask
   m_TagString: Untagged
@@ -896,6 +897,50 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.96, z: 0}
+--- !u!114 &4790333526028013831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4856751298958924754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99abe794230029944ba7ddb83bf5ec0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MaskHero
+  heroData: {fileID: 11400000, guid: 9f8db8c6f075e6e47aea9a54c14c7144, type: 2}
+  stats:
+    attackSpeed: 0.5
+    attackDamage: 10
+    critChance: 0.1
+    critDamage: 2
+    range: 10
+    maxHp: 100
+    maxAmmo: 30
+    reloadSpeed: 1.5
+    spreadAngle: 0
+    backAttackRatio: 0
+    pierceCount: 0
+    explosionRadius: 0
+  firePos: {fileID: 917644560271002730}
+  bulletPrefab: {fileID: 7889016732847309528, guid: 05c9be66ad7927940bcb52f1edf6607f, type: 3}
+  hitVFX: {fileID: 787468734119995486, guid: ea559bba49a1b894e8a05028480247a5, type: 3}
+  baseExplosionRadius: 0
+  bulletSizeIncreasePerLevel: 0.33
+  bulletDamageIncreasePerLevel: 0.1
+  bulletScaleMultiplier: 1
+  extraShotChancePerLevel: 0.2
+  extraShotChance: 0
+  splitChance: 0.5
+  splitAngle: 90
+  hasSplitShot: 0
+  damageIncreasePerPierce: 0.1
+  hasPierceDamageBonus: 0
+  ionStormVfxPrefab: {fileID: 7988386426028607909, guid: 31c9b34dce4eddf4990b928ebdf35186, type: 3}
+  bulletSizeSkillData: {fileID: 11400000, guid: 3a92f265bd2e4a942aa417947619e9b2, type: 2}
+  rapidFireSkillData: {fileID: 11400000, guid: 4a8503371e19f5748861699973c79a14, type: 2}
+  pierceDamageSkillData: {fileID: 11400000, guid: 3a18f45daf5074d4c9b8f05254eeaad0, type: 2}
 --- !u!1 &4926124175844329642
 GameObject:
   m_ObjectHideFlags: 0
