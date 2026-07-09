@@ -6,8 +6,23 @@ public class Ghillie : Hero
 {
     [HideInInspector] public int extraShotCount;
 
+    [Header("스킬 1: 관통 수 증가")]
+    public int pierceCountEquip = 1;
+    public int pierceCountUpgrade = 1;
+
+    [Header("스킬 2: 헤드샷 (치명타 확률/피해 증가, 매 레벨 동일하게 적용)")]
+    public float critChanceIncreasePerLevel = 0.1f;
+    public float critDamageIncreasePerLevel = 0.2f;
+
+    [Header("스킬 3: 약점 분석 (이미 명중시킨 적을 다시 맞히면 데미지 배율 적용)")]
+    public float weakpointMultiplierEquip = 1.5f;
+    public float weakpointMultiplierUpgrade = 0.3f;
+
     [Header("스킬 3 최종: 지원사격")]
     public GameObject supportFireBulletPrefab;
+    public float supportFireLoopInterval = 10f;
+    public int supportFireBombCount = 5;
+    public float supportFireDamageMultiplier = 6f;
 
     const float OffscreenSpawnDistance = 25f; // 화면 밖으로 취급할 스폰 거리
 
@@ -28,20 +43,20 @@ public class Ghillie : Hero
         new GhillieWeakpointSkill(weakpointSkillData)
     };
 
-    public void StartSupportFireLoop(SkillDataSO data) => StartCoroutine(SupportFireLoop(data));
+    public void StartSupportFireLoop() => StartCoroutine(SupportFireLoop());
 
-    // 지원사격: 최종 승급 즉시 1회 발사 후, data.loopInterval초마다 재발사
-    // 화면 밖 랜덤 위치에서 서로 다른 적 data.bombCount마리를 향해 일자로 날아오는 무한관통 고데미지 탄 발사
-    IEnumerator SupportFireLoop(SkillDataSO data)
+    // 지원사격: 최종 승급 즉시 1회 발사 후, supportFireLoopInterval초마다 재발사
+    // 화면 밖 랜덤 위치에서 서로 다른 적 supportFireBombCount마리를 향해 일자로 날아오는 무한관통 고데미지 탄 발사
+    IEnumerator SupportFireLoop()
     {
         while (true)
         {
-            FireSupportVolley(data);
-            yield return new WaitForSeconds(data.loopInterval);
+            FireSupportVolley();
+            yield return new WaitForSeconds(supportFireLoopInterval);
         }
     }
 
-    void FireSupportVolley(SkillDataSO data)
+    void FireSupportVolley()
     {
         if (supportFireBulletPrefab == null) return;
 
@@ -55,8 +70,8 @@ public class Ghillie : Hero
             (monsters[i], monsters[j]) = (monsters[j], monsters[i]);
         }
 
-        float damage = stats.attackDamage * data.damageMultiplier;
-        int shotCount = Mathf.Min(data.bombCount, monsters.Length);
+        float damage = stats.attackDamage * supportFireDamageMultiplier;
+        int shotCount = Mathf.Min(supportFireBombCount, monsters.Length);
 
         for (int i = 0; i < shotCount; i++)
         {

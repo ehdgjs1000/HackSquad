@@ -28,7 +28,7 @@ public class AutoAttackBehavior : IAttackBehavior
         }
 
         float damage = hero.CalcDamage(out bool isCrit) * hero.GetDamageMultiplier(target);
-        SpawnBullet(hero, spawnPos, dir, damage, isCrit);
+        FireMainShot(hero, spawnPos, dir, damage, isCrit);
 
         // 더블 공격: 같은 방향으로 추가 발사 (길리슈트 헤드샷 최종)
         int extraShots = hero is Ghillie gh ? gh.extraShotCount : 0;
@@ -44,6 +44,21 @@ public class AutoAttackBehavior : IAttackBehavior
             SpawnBullet(hero, spawnPos, -dir, damage * hero.stats.backAttackRatio, isCrit);
 
         hero.ConsumeAmmo(1);
+    }
+
+    // 기본 발사: 복면 강화탄 최종(더블샷)이면 진행방향에 수직으로 살짝 벌어진 2발을 나란히 동시 발사
+    void FireMainShot(Hero hero, Vector3 pos, Vector3 dir, float damage, bool isCrit)
+    {
+        if (hero is MaskHero mask && mask.hasDoubleShot)
+        {
+            Vector3 side = Vector3.Cross(Vector3.up, dir).normalized * (mask.doubleShotOffset * 0.5f);
+            SpawnBullet(hero, pos + side, dir, damage, isCrit);
+            SpawnBullet(hero, pos - side, dir, damage, isCrit);
+        }
+        else
+        {
+            SpawnBullet(hero, pos, dir, damage, isCrit);
+        }
     }
 
     void SpawnBullet(Hero hero, Vector3 pos, Vector3 dir, float damage, bool isCrit)

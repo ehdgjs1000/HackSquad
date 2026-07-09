@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Data.equipValue/upgradeValue = spreadAngle 감소량, Data.finalValue = backAttackRatio 설정값
+// 스킬 2: 정확도 증가 / 최종: 후방 지원
 public class RambuweAccuracySkill : SkillBase
 {
     public RambuweAccuracySkill(SkillDataSO data) : base(data) { }
@@ -8,17 +8,20 @@ public class RambuweAccuracySkill : SkillBase
     public override void OnEquip(Hero hero)
     {
         base.OnEquip(hero);
-        hero.stats.spreadAngle = Mathf.Max(0f, hero.stats.spreadAngle - Data.equipValue);
+        if (hero is Rambuwe ram)
+            hero.stats.spreadAngle = Mathf.Max(0f, hero.stats.spreadAngle - ram.spreadAngleEquipDecrease);
     }
 
     protected override void OnUpgrade()
     {
-        Owner.stats.spreadAngle = Mathf.Max(0f, Owner.stats.spreadAngle - Data.upgradeValue);
+        if (Owner is Rambuwe ram)
+            Owner.stats.spreadAngle = Mathf.Max(0f, Owner.stats.spreadAngle - ram.spreadAngleUpgradeDecrease);
     }
 
     protected override void OnFinalize()
     {
-        Owner.stats.backAttackRatio = Data.finalValue;
+        if (Owner is Rambuwe ram)
+            Owner.stats.backAttackRatio = ram.backAttackRatioFinal;
         description = finalDescription;
     }
 }

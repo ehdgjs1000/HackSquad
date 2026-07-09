@@ -769,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4790333526028013831, guid: b155f9b67a094584ebf5275040cb6f40, type: 3}
       propertyPath: bulletSizeIncreasePerLevel
-      value: 0.33
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4856751298958924754, guid: b155f9b67a094584ebf5275040cb6f40, type: 3}
       propertyPath: m_Name

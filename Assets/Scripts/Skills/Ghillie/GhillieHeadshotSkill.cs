@@ -1,5 +1,4 @@
 // 스킬 2: 헤드샷 — 치명타 확률/치명타 피해 증가 / 최종: 더블 공격
-// Data.equipValue = 치명타 확률 증가량, Data.upgradeValue = 치명타 피해 증가량 (equip/upgrade 시 매번 동일하게 적용)
 public class GhillieHeadshotSkill : SkillBase
 {
     public GhillieHeadshotSkill(SkillDataSO data) : base(data) { }
@@ -7,14 +6,19 @@ public class GhillieHeadshotSkill : SkillBase
     public override void OnEquip(Hero hero)
     {
         base.OnEquip(hero);
-        hero.stats.critChance += Data.equipValue;
-        hero.stats.critDamage += Data.upgradeValue;
+        Apply(hero);
     }
 
     protected override void OnUpgrade()
     {
-        Owner.stats.critChance += Data.equipValue;
-        Owner.stats.critDamage += Data.upgradeValue;
+        Apply(Owner);
+    }
+
+    void Apply(Hero hero)
+    {
+        if (hero is not Ghillie gh) return;
+        hero.stats.critChance += gh.critChanceIncreasePerLevel;
+        hero.stats.critDamage += gh.critDamageIncreasePerLevel;
     }
 
     protected override void OnFinalize()

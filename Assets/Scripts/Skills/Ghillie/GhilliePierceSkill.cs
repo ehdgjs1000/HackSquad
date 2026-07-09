@@ -1,5 +1,4 @@
 // 스킬 1: 관통 수 증가 / 최종: 무한관통
-// Data.equipValue/upgradeValue = pierceCount 증가량
 public class GhilliePierceSkill : SkillBase
 {
     public GhilliePierceSkill(SkillDataSO data) : base(data) { }
@@ -7,12 +6,14 @@ public class GhilliePierceSkill : SkillBase
     public override void OnEquip(Hero hero)
     {
         base.OnEquip(hero);
-        hero.stats.pierceCount += (int)Data.equipValue;
+        if (hero is Ghillie gh)
+            hero.stats.pierceCount += gh.pierceCountEquip;
     }
 
     protected override void OnUpgrade()
     {
-        Owner.stats.pierceCount += (int)Data.upgradeValue;
+        if (Owner is Ghillie gh)
+            Owner.stats.pierceCount += gh.pierceCountUpgrade;
     }
 
     protected override void OnFinalize()

@@ -16,15 +16,3 @@ MonoBehaviour:
   initDescription: "\uBC1C\uC0AC\uAC01 \uAC10\uC18C"
   description: "\uBC1C\uC0AC\uAC01 \uAC10\uC18C"
   finalDescription: "\uD6C4\uBC29 \uC9C0\uC6D0"
-  equipValue: 10
-  upgradeValue: 10
-  finalValue: 0.5
-  loopInterval: 0
-  warningDuration: 0
-  radiusMultiplier: 0
-  damageMultiplier: 0
-  lifetime: 0
-  spawnRange: 0
-  bombCount: 0
-  bombSpacing: 0
-  bombDelay: 0

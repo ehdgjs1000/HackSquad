@@ -1,5 +1,4 @@
 // 스킬 1: 발사 속도 증가 / 최종: 최대탄약 증가
-// Data.equipValue/upgradeValue = attackSpeed 배율, Data.finalValue = maxAmmo 증가량
 public class RambuweAttackSpeedSkill : SkillBase
 {
     public RambuweAttackSpeedSkill(SkillDataSO data) : base(data) { }
@@ -7,17 +6,20 @@ public class RambuweAttackSpeedSkill : SkillBase
     public override void OnEquip(Hero hero)
     {
         base.OnEquip(hero);
-        hero.stats.attackSpeed *= Data.equipValue;
+        if (hero is Rambuwe ram)
+            hero.stats.attackSpeed *= ram.attackSpeedEquipMultiplier;
     }
 
     protected override void OnUpgrade()
     {
-        Owner.stats.attackSpeed *= Data.upgradeValue;
+        if (Owner is Rambuwe ram)
+            Owner.stats.attackSpeed *= ram.attackSpeedUpgradeMultiplier;
     }
 
     protected override void OnFinalize()
     {
-        Owner.stats.maxAmmo += (int)Data.finalValue;
+        if (Owner is Rambuwe ram)
+            Owner.stats.maxAmmo += ram.maxAmmoBonusFinal;
         description = finalDescription;
     }
 }

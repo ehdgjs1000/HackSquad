@@ -17,15 +17,3 @@ MonoBehaviour:
   description: "\uC7A5\uD310 \uD06C\uAE30 \uC99D\uAC00"
   finalDescription: "6\uCD08\uB9C8\uB2E4 \uD544\uB4DC\uC5D0 \uD1A0\uB124\uC774\uB3C4
     \uC18C\uD658"
-  equipValue: 0.15
-  upgradeValue: 0.15
-  finalValue: 0
-  loopInterval: 6
-  warningDuration: 0
-  radiusMultiplier: 0
-  damageMultiplier: 0
-  lifetime: 6
-  spawnRange: 0
-  bombCount: 2
-  bombSpacing: 0
-  bombDelay: 0

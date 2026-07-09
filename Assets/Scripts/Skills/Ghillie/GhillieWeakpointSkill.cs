@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 
 // 스킬 3: 약점 분석 — 이 히어로가 이미 명중시킨 적을 다시 맞히면 데미지 배율 적용 / 최종: 지원사격
-// Data.equipValue = 최초 배율, Data.upgradeValue = 강화당 추가 배율
-// Data.loopInterval = 지원사격 주기, Data.bombCount = 발사 탄 개수, Data.damageMultiplier = 탄당 데미지 배율
 public class GhillieWeakpointSkill : SkillBase
 {
     readonly HashSet<Monster> _hitMonsters = new();
@@ -13,12 +11,14 @@ public class GhillieWeakpointSkill : SkillBase
     public override void OnEquip(Hero hero)
     {
         base.OnEquip(hero);
-        _multiplier = Data.equipValue;
+        if (hero is Ghillie gh)
+            _multiplier = gh.weakpointMultiplierEquip;
     }
 
     protected override void OnUpgrade()
     {
-        _multiplier += Data.upgradeValue;
+        if (Owner is Ghillie gh)
+            _multiplier += gh.weakpointMultiplierUpgrade;
     }
 
     public override float GetDamageMultiplier(Monster target)
@@ -33,6 +33,6 @@ public class GhillieWeakpointSkill : SkillBase
     protected override void OnFinalize()
     {
         if (Owner is Ghillie gh)
-            gh.StartSupportFireLoop(Data);
+            gh.StartSupportFireLoop();
     }
 }

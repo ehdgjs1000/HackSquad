@@ -15,16 +15,5 @@ MonoBehaviour:
   skillName: "\uACFC\uCDA9\uC804"
   initDescription: "\uCD1D\uC54C \uD06C\uAE30 \uBC0F \uB370\uBBF8\uC9C0 \uC99D\uAC00"
   description: "\uCD1D\uC54C \uD06C\uAE30 \uBC0F \uB370\uBBF8\uC9C0 \uC99D\uAC00"
-  finalDescription: "(\uBBF8\uAD6C\uD604)"
-  equipValue: 0
-  upgradeValue: 0
-  finalValue: 0
-  loopInterval: 0
-  warningDuration: 0
-  radiusMultiplier: 0
-  damageMultiplier: 0
-  lifetime: 0
-  spawnRange: 0
-  bombCount: 0
-  bombSpacing: 0
-  bombDelay: 0
+  finalDescription: "\uB354\uBE14\uC0F7: \uC88C\uC6B0\uB85C \uC0B4\uC9DD
+    \uBC8C\uC5B4\uC9C4 2\uBC1C \uB3D9\uC2DC \uBC1C\uC0AC"

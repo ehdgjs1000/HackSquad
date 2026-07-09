@@ -15,6 +15,6 @@ public class MaskPierceDamageSkill : SkillBase
     protected override void OnFinalize()
     {
         if (Owner is MaskHero mask)
-            mask.StartIonStormLoop(Data);
+            mask.StartIonStormLoop();
     }
 }

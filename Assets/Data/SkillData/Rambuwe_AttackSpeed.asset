@@ -17,15 +17,3 @@ MonoBehaviour:
   description: "\uACF5\uACA9 \uAC04\uACA9 15% \uAC10\uC18C"
   finalDescription: "\uACF5\uACA9 \uAC04\uACA9 \uAC10\uC18C + \uCD5C\uB300\uD0C4\uC57D
     +50"
-  equipValue: 0.8
-  upgradeValue: 0.85
-  finalValue: 50
-  loopInterval: 0
-  warningDuration: 0
-  radiusMultiplier: 0
-  damageMultiplier: 0
-  lifetime: 0
-  spawnRange: 0
-  bombCount: 0
-  bombSpacing: 0
-  bombDelay: 0
