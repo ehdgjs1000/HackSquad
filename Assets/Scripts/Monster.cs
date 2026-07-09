@@ -80,6 +80,66 @@ public class Monster : MonoBehaviour
                 m.TakeDamage(_burn.explosionDamage);
     }
 
+    // 독(Poison): 최초 부여 후 explodeDelay초 뒤, 그동안 누적된 스택(최대 maxStacks)만큼 한 번에 폭발
+    PoisonApplication _poison;
+    int _poisonStacks;
+    bool _poisoning;
+    GameObject _poisonUiInstance;
+    PoisonStackUI _poisonUiScript;
+
+    public void ApplyPoison(PoisonApplication poison)
+    {
+        if (!poison.IsActive) return;
+
+        _poison = poison;
+        _poisonStacks = Mathf.Min(_poisonStacks + 1, poison.maxStacks);
+
+        if (_poisonUiScript != null)
+            _poisonUiScript.SetStacks(_poisonStacks);
+
+        if (_poisoning) return;
+        _poisoning = true;
+        SpawnPoisonUI();
+        StartCoroutine(PoisonRoutine());
+    }
+
+    void SpawnPoisonUI()
+    {
+        if (_poison.poisonUiPrefab == null) return;
+        _poisonUiInstance = Instantiate(_poison.poisonUiPrefab, transform.position, Quaternion.identity);
+        if (_poisonUiInstance.TryGetComponent(out _poisonUiScript))
+        {
+            _poisonUiScript.Init(transform);
+            _poisonUiScript.SetStacks(_poisonStacks);
+        }
+    }
+
+    IEnumerator PoisonRoutine()
+    {
+        yield return new WaitForSeconds(_poison.explodeDelay);
+
+        TriggerPoisonExplosion(_poison.damagePerStack * _poisonStacks);
+
+        _poisoning = false;
+        _poisonStacks = 0;
+        _poisonUiScript = null;
+        if (_poisonUiInstance != null) Destroy(_poisonUiInstance);
+    }
+
+    void TriggerPoisonExplosion(float damage)
+    {
+        if (_poison.explosionVfxPrefab != null)
+        {
+            var vfx = Instantiate(_poison.explosionVfxPrefab, transform.position, Quaternion.identity);
+            if (!vfx.TryGetComponent<ParticleSystem>(out var ps))
+                Destroy(vfx, 3f);
+            else if (ps.main.stopAction != ParticleSystemStopAction.Destroy)
+                Destroy(vfx, ps.main.duration + ps.main.startLifetime.constantMax);
+        }
+
+        TakeDamage(damage);
+    }
+
     void Start()
     {
         _hp = maxHp;
