@@ -17,8 +17,11 @@ public class Bullet : MonoBehaviour
     float _splitChance;
     float _splitAngle;
 
+    // 사무라이 전용 옵션: 명중한 적에게 화상 적용 (기본값 default면 미적용)
+    BurnApplication _burn;
+
     public void Init(float damage, Vector3 direction, int pierceCount, GameObject hitVFX = null, bool isCrit = false,
-        float damageIncreasePerPierce = 0f, float splitChance = 0f, float splitAngle = 0f)
+        float damageIncreasePerPierce = 0f, float splitChance = 0f, float splitAngle = 0f, BurnApplication burn = default)
     {
         _damage = damage;
         _isCrit = isCrit;
@@ -29,6 +32,7 @@ public class Bullet : MonoBehaviour
         _damageIncreasePerPierce = damageIncreasePerPierce;
         _splitChance = splitChance;
         _splitAngle = splitAngle;
+        _burn = burn;
         Destroy(gameObject, maxLifetime);
     }
 
@@ -45,6 +49,9 @@ public class Bullet : MonoBehaviour
         monster.TakeDamage(_damage, _isCrit);
         SpawnVFX();
         TrySplit();
+
+        if (_burn.IsActive)
+            monster.ApplyBurn(_burn);
 
         // 관통마다 데미지 누적 증가 (복면 스킬3)
         if (_damageIncreasePerPierce > 0f)

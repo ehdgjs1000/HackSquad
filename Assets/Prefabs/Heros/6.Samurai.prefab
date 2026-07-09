@@ -822,6 +822,7 @@ GameObject:
   - component: {fileID: 7908530464644657648}
   - component: {fileID: 5459347278540979266}
   - component: {fileID: -4488044995985250063}
+  - component: {fileID: 4604679969496578557}
   m_Layer: 10
   m_Name: 6.Samurai
   m_TagString: Untagged
@@ -892,6 +893,44 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.96, z: 0}
+--- !u!114 &4604679969496578557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773577100825032224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228fecca93474df40b41ea4c0e2d39e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Samurai
+  heroData: {fileID: 11400000, guid: ff8191ac3b831444db30334f109d7f2c, type: 2}
+  stats:
+    attackSpeed: 0.5
+    attackDamage: 10
+    critChance: 0.1
+    critDamage: 2
+    range: 10
+    maxHp: 100
+    maxAmmo: 30
+    reloadSpeed: 1.5
+    spreadAngle: 0
+    backAttackRatio: 0
+    pierceCount: 0
+    explosionRadius: 0
+  firePos: {fileID: 6323264167446811571}
+  bulletPrefab: {fileID: 7058502825412558188, guid: cb6739671435b254bb82eae2909fbbe1, type: 3}
+  hitVFX: {fileID: 0}
+  baseExplosionRadius: 0
+  burnDamagePerTickRatio: 0.2
+  burnMaxTicks: 3
+  burnExplodeEveryTicks: 3
+  combustionExplosionVfxPrefab: {fileID: 0}
+  burnExplosionDamageRatio: 1.5
+  burnExplosionRadius: 2.5
+  meteorVfxPrefab: {fileID: 0}
+  fireWaveVfxPrefab: {fileID: 0}
 --- !u!1 &5079986547711788914
 GameObject:
   m_ObjectHideFlags: 0

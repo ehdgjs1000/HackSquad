@@ -68,6 +68,7 @@ public class AutoAttackBehavior : IAttackBehavior
         float damageIncreasePerPierce = 0f;
         float splitChance = 0f;
         float splitAngle = 0f;
+        BurnApplication burn = default;
 
         if (hero is MaskHero mask)
         {
@@ -83,7 +84,21 @@ public class AutoAttackBehavior : IAttackBehavior
             }
         }
 
+        // 화염구체(사무라이 기본 공격): 명중 시 화상 적용
+        if (hero is Samurai sam)
+        {
+            burn = new BurnApplication
+            {
+                damagePerTick = damage * sam.burnDamagePerTickRatio,
+                explosionDamage = damage * sam.burnExplosionDamageRatio,
+                explosionRadius = sam.burnExplosionRadius,
+                maxTicks = sam.burnMaxTicks,
+                explodeEveryTicks = sam.burnExplodeEveryTicks,
+                explosionVfxPrefab = sam.combustionExplosionVfxPrefab
+            };
+        }
+
         if (go.TryGetComponent(out Bullet bullet))
-            bullet.Init(damage, dir, hero.stats.pierceCount, hero.hitVFX, isCrit, damageIncreasePerPierce, splitChance, splitAngle);
+            bullet.Init(damage, dir, hero.stats.pierceCount, hero.hitVFX, isCrit, damageIncreasePerPierce, splitChance, splitAngle, burn);
     }
 }

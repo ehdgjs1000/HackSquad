@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,66 @@ public class Monster : MonoBehaviour
 
     public void AddSlow(float multiplier) => _slowMultipliers.Add(multiplier);
     public void RemoveSlow(float multiplier) => _slowMultipliers.Remove(multiplier);
+
+    // 화상(Burn): 1틱=1초. 재적용 시 남은 틱만 최대치로 갱신되고, 폭발까지의 경과 틱은 계속 누적된다
+    const float BurnTickInterval = 1f;
+    BurnApplication _burn;
+    int _burnTicksRemaining;
+    int _burnElapsedTicks;
+    bool _burning;
+    GameObject _burnVfxInstance;
+
+    public void ApplyBurn(BurnApplication burn)
+    {
+        if (!burn.IsActive) return;
+
+        _burn = burn;
+        _burnTicksRemaining = burn.maxTicks;
+
+        if (_burning) return;
+        _burning = true;
+        _burnVfxInstance = VFXManager.SpawnBurnVFX(transform);
+        StartCoroutine(BurnLoop());
+    }
+
+    IEnumerator BurnLoop()
+    {
+        var wait = new WaitForSeconds(BurnTickInterval);
+        while (_burnTicksRemaining > 0)
+        {
+            yield return wait;
+            _burnTicksRemaining--;
+            _burnElapsedTicks++;
+
+            TakeDamage(_burn.damagePerTick);
+
+            if (_burn.explodeEveryTicks > 0 && _burnElapsedTicks % _burn.explodeEveryTicks == 0)
+                TriggerBurnExplosion();
+        }
+
+        _burning = false;
+        _burnElapsedTicks = 0;
+        if (_burnVfxInstance != null) Destroy(_burnVfxInstance);
+    }
+
+    // 연소폭발: explodeEveryTicks마다 발생하는 광역 폭발 (자신 포함 범위 내 전체 피해)
+    void TriggerBurnExplosion()
+    {
+        if (_burn.explosionVfxPrefab != null)
+        {
+            var vfx = Instantiate(_burn.explosionVfxPrefab, transform.position, Quaternion.identity);
+            if (!vfx.TryGetComponent<ParticleSystem>(out var ps))
+                Destroy(vfx, 3f);
+            else if (ps.main.stopAction != ParticleSystemStopAction.Destroy)
+                Destroy(vfx, ps.main.duration + ps.main.startLifetime.constantMax);
+        }
+
+        int monsterLayer = LayerMask.GetMask("Monster");
+        var cols = Physics.OverlapSphere(transform.position, _burn.explosionRadius, monsterLayer);
+        foreach (var col in cols)
+            if (col.TryGetComponent(out Monster m))
+                m.TakeDamage(_burn.explosionDamage);
+    }
 
     void Start()
     {

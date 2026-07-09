@@ -927,17 +927,22 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7889016732847309528, guid: 05c9be66ad7927940bcb52f1edf6607f, type: 3}
   hitVFX: {fileID: 787468734119995486, guid: ea559bba49a1b894e8a05028480247a5, type: 3}
   baseExplosionRadius: 0
-  bulletSizeIncreasePerLevel: 0.33
+  bulletSizeIncreasePerLevel: 1
   bulletDamageIncreasePerLevel: 0.1
   bulletScaleMultiplier: 1
+  doubleShotOffset: 0.6
+  hasDoubleShot: 0
   extraShotChancePerLevel: 0.2
+  extraShotDelay: 0.1
   extraShotChance: 0
-  splitChance: 0.5
+  splitChance: 0.6
   splitAngle: 90
   hasSplitShot: 0
   damageIncreasePerPierce: 0.1
   hasPierceDamageBonus: 0
   ionStormVfxPrefab: {fileID: 7988386426028607909, guid: 31c9b34dce4eddf4990b928ebdf35186, type: 3}
+  ionStormLoopInterval: 8
+  ionStormLifetime: 4
   bulletSizeSkillData: {fileID: 11400000, guid: 3a92f265bd2e4a942aa417947619e9b2, type: 2}
   rapidFireSkillData: {fileID: 11400000, guid: 4a8503371e19f5748861699973c79a14, type: 2}
   pierceDamageSkillData: {fileID: 11400000, guid: 3a18f45daf5074d4c9b8f05254eeaad0, type: 2}
