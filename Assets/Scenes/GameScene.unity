@@ -902,6 +902,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 386284310509630927, guid: c6be65a671abd0b4da4aa6961b480a75, type: 3}
+      propertyPath: firePos
+      value: 
+      objectReference: {fileID: 769083899}
     - target: {fileID: 862613846721123701, guid: c6be65a671abd0b4da4aa6961b480a75, type: 3}
       propertyPath: m_Name
       value: 7.Robotic
@@ -951,6 +955,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6be65a671abd0b4da4aa6961b480a75, type: 3}
+--- !u!4 &769083899 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3776118252942520335, guid: c6be65a671abd0b4da4aa6961b480a75, type: 3}
+  m_PrefabInstance: {fileID: 769083898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &906158833
 GameObject:
   m_ObjectHideFlags: 0
